@@ -50,7 +50,7 @@ public class LoginUser implements UserDetails{
 	 * @return Entityクラスのユーザー名の情報(メールアドレスからユーザー名を検索する)
 	 */
 	@Override
-	public String getUserName() {
+	public String getUsername() {
 		return this.user.getEmail();
 	}
 	
