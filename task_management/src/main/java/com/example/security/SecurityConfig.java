@@ -18,7 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 	@Bean
 	protected SecurityFilterChain securityFilterChainConfig(HttpSecurity http) throws Exception {
-		// ログイン情報
+		// ログイン処理
 		http.formLogin(login -> login
 				.loginProcessingUrl("/login") // ログイン処理のパス
 				.loginPage("/loginForm") // ログインページの指定
