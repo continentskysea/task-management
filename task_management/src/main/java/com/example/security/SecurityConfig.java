@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -35,4 +38,30 @@ public class SecurityConfig {
 		
 		return http.build();
 	}
+	
+	/**
+	 * ハッシュアルゴリズムの定義
+	 * 
+	 * @return 生成されたパスワードのハッシュ値
+	 */
+	@Bean
+	protected PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+
+	
+	/**
+	 * Webシステム全体のセキュリティ設定のカスタマイズ
+	 * 
+	 * @return
+	 */
+	@Bean
+	protected WebSecurityCustomizer webSecurityCustomizer() {
+		return web -> web.ignoring().requestMatchers("/css/**").requestMatchers("/js/**");
+	}
+	
+	
+	
+	
 }
