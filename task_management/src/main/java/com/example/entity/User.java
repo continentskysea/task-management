@@ -56,7 +56,7 @@ public class User {
 		this.email = email;
 	}
 	
-	p	public String getPassword() {
+	public String getPassword() {
 		return this.password;
 	}
 	
