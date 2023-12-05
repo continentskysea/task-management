@@ -49,7 +49,6 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-
 	
 	/**
 	 * Webシステム全体のセキュリティ設定のカスタマイズ
@@ -60,8 +59,4 @@ public class SecurityConfig {
 	protected WebSecurityCustomizer webSecurityCustomizer() {
 		return web -> web.ignoring().requestMatchers("/css/**").requestMatchers("/js/**");
 	}
-	
-	
-	
-	
 }

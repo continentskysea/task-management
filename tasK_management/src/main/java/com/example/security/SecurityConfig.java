@@ -49,7 +49,6 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-
 	
 	/**
 	 * Webシステム全体のセキュリティ設定のカスタマイズ
