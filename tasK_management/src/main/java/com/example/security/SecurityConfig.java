@@ -60,8 +60,4 @@ public class SecurityConfig {
 	protected WebSecurityCustomizer webSecurityCustomizer() {
 		return web -> web.ignoring().requestMatchers("/css/**").requestMatchers("/js/**");
 	}
-	
-	
-	
-	
 }
