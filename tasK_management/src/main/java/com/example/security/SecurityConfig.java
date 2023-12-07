@@ -23,7 +23,7 @@ public class SecurityConfig {
 	protected SecurityFilterChain securityFilterChainConfig(HttpSecurity http) throws Exception {
 		// ログイン処理
 		http.formLogin(login -> login
-				.loginProcessingUrl("/login") // ログイン処理のパス
+				.loginProcessingUrl("/loginForm") // ログイン処理のパス
 				.loginPage("/loginForm") // ログインページの指定
 				.usernameParameter("email") // ログインページのメールアドレス
 				.passwordParameter("password") // ログインページのパスワード
@@ -33,7 +33,7 @@ public class SecurityConfig {
 		// ログアウト処理		
 		).logout(logout -> logout
 				.logoutUrl("/logout") // ログアウト処理のパス
-				.logoutSuccessUrl("loginForm") // ログアウト成功時のパス
+				.logoutSuccessUrl("/loginForm") // ログアウト成功時のパス
 		);
 		
 		return http.build();
