@@ -29,7 +29,6 @@ public class SecurityConfig {
 				.passwordParameter("password") // ログインページのパスワード
 				.defaultSuccessUrl("/home", true) // ログイン成功時のパス
 				.failureUrl("/loginForm?error") // ログイン失敗時のパス
-				.permitAll()
 		// ログアウト処理		
 		).logout(logout -> logout
 				.logoutUrl("/logout") // ログアウト処理のパス
