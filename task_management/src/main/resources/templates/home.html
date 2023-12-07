@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>ホーム画面</title>
+</head>
+<body>
+	<h1>タスク集中管理</h1>
+	
+	<!-- タスク管理画面遷移 -->
+	<form th:action="@{/getTask}" method="get">
+		<input type="submit" value="タスク管理" />
+	</form>
+	<!-- タイマー管理画面遷移 -->
+	<form th:action="@{/getTimer}" method="get">
+		<input type="submit" value="タイマー管理" />
+	</form>
+	<!-- ユーザ新規登録画面遷移 -->
+	<form th:action="@{/getRegister}" method="get">
+		<input type="submit" value="新規登録" />
+	</form>
+	<!-- ログアウト -->
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="ログアウト" />
+	</form>
+
+</body>
+</html>
