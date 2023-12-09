@@ -21,4 +21,17 @@ public class TaskController {
 		// タスク管理初期画面を表示
 		return "tasks/taskHome";
 	}
+	
+	/**
+	 * タスク登録画面表示
+	 * 
+	 * @return タスク登録画面
+	 */
+	@GetMapping("/createTask") // URLの紐づけ
+	public String createTask() {
+		// タスク登録画面を表示
+		return "tasks/taskForm";
+	}
+	
+	
 }
