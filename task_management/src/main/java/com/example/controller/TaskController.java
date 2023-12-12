@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +13,17 @@ import com.example.entity.Task;
  * @author yoshi
  *
  */
+import com.example.service.TaskService;
 @Controller
 public class TaskController {
+	
+	private final TaskService taskService;
+	
+	// コンストラクタインジェクション
+	@Autowired
+	public TaskController(TaskService taskService) {
+		this.taskService = taskService;
+	}
 	
 	/**
 	 * タスク管理初期画面表示
@@ -36,6 +48,21 @@ public class TaskController {
 		model.addAttribute("task", task);
 		// タスク登録画面を表示
 		return "tasks/taskForm";
+	}
+	
+	
+	/**
+	 * タスク一覧画面表示
+	 * 
+	 * @return タスク登録画面
+	 */
+	@GetMapping("/listTasks") // URLの紐づけ
+	public String listTasks(Model model) {
+		// 全タスク情報の取得
+		List<Task> listTasks = this.taskService.listAll();
+		model.addAttribute("listTasks ", listTasks );
+		// タスク登録画面を表示
+		return "tasks/tasks";
 	}
 	
 	
