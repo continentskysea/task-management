@@ -14,11 +14,11 @@
 		<label>優先順位</label>
 		<input type="number" placeholder="優先順位を入力してください" th:field="*{priority}">
 		<label>期日</label>
-		<input type="number" placeholder="期日を入力してください" th:field="*{dueDate}">
+		<input type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
 	
 		<button>登録</button>
 		
-		<a th:href="@{/getTask}">戻る</a>
+		<a th:href="@{/getTask}">キャンセル</a>
 	</form>
 
 </body>
