@@ -19,6 +19,7 @@
 		<tbody>
 			<!-- タスクリストの表示 -->
 			<tr th:each="task : ${listTasks}">
+				<td th:text="${task.id}"></td>
 				<td th:text="${task.name}"></td>
 				<td th:text="${task.priority}"></td>
 				<td th:text="${task.dueDate}"></td>
