@@ -32,4 +32,14 @@ public class TaskService {
 	public List<Task> listAll() {
 		return this.taskRepository.findAll();
 	}
+	
+	/**
+	 * タスク情報登録処理
+	 * 
+	 * @param task 保存したいタスク情報
+	 * @return 保存したタスク情報
+	 */
+	public Task save(Task task) {
+		return taskRepository.save(task);
+	}
 }
