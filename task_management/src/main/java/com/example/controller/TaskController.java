@@ -62,7 +62,7 @@ public class TaskController {
 	public String listTasks(Model model) {
 		// 全タスク情報の取得
 		List<Task> listTasks = this.taskService.listAll();
-		model.addAttribute("listTasks ", listTasks );
+		model.addAttribute("listTasks", listTasks );
 		// タスク一覧画面を表示
 		return "tasks/tasks";
 	}
