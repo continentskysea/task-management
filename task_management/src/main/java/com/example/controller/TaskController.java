@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.entity.Task;
@@ -74,11 +75,11 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */	 
 	@PostMapping("/register") // URLの紐づけ
-	public String registerTask(Task task) {
+	public String registerTask(@ModelAttribute("task") Task task) {
 		// タスクサービスを呼び出す
 		taskService.save(task);
 		// タスク一覧画面をリダイレクト表示
-		return "redirect:tasks/tasks";
+		return "redirect:/listTasks";
 	}
 	
 }
