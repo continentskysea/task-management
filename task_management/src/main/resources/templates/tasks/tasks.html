@@ -19,6 +19,8 @@
 		<tbody>
 			<!-- タスクリストの表示 -->
 			<tr th:each="task : ${listTasks}">
+				<!-- チェックボックスを追加 -->
+				<td><input type="checkbox" th:value="${task.id}" th:name="taskIds" onclick="generateLink()" /></td>
 				<td th:text="${task.id}"></td>
 				<td th:text="${task.name}"></td>
 				<td th:text="${task.priority}"></td>
@@ -26,6 +28,10 @@
 			</tr>
 		</tbody>
 	</table>
+	<!-- 編集ボタンの追加 -->
+	<a id="editLink" th:href="@{'/editTask/' + $task.id}">編集</a>
 	<a th:href="@{/getTask}">戻る</a>
 </body>
+<!-- JavaScriptを読み込む -->
+<script src='/js/taskEdit.js'></script>
 </html>

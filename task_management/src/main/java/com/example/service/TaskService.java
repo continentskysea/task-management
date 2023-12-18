@@ -42,4 +42,14 @@ public class TaskService {
 	public Task save(Task task) {
 		return taskRepository.save(task);
 	}
+	
+	/**
+	 * IDに紐づくタスク情報取得処理
+	 * 
+	 * @param id タスクID
+	 * @return タスク情報
+	 */
+	public Task get(Integer id) {
+		return taskRepository.findById(id).get();
+	}
 }

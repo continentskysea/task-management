@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.entity.Task;
@@ -80,6 +81,28 @@ public class TaskController {
 		taskService.save(task);
 		// タスク一覧画面をリダイレクト表示
 		return "redirect:/listTasks";
+	}
+	
+	/**
+	 * タスク編集画面表示
+	 * 
+	 * @param task タスク情報
+	 * 
+	 * @return タスク編集画面
+	 */
+	@GetMapping("/editTask/{id}")
+	public String editTask(@PathVariable(name = "id")  Integer id, Model model) {
+		// タスクIDに紐づくタスク情報を取得
+		Task task = taskService.get(id);
+		
+	if (task == null) {
+		// エラーページ
+		return "redirect:/listTasks";
+	} else {
+		// 取得したタスク情報を画面に渡す
+		model.addAttribute("task" ,task);
+		return "tasks/taskEdit";		
+	}
 	}
 	
 }
