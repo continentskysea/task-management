@@ -105,4 +105,17 @@ public class TaskController {
 	}
 	}
 	
+	/**
+	 * タスク削除処理
+	 * 
+	 * @param id タスクID
+	 * 
+	 * @return タスク一覧画面 
+	 */
+	@PostMapping("/deleteTask/{id}")
+	public String deleteTask(@PathVariable(name = "id") Integer id) {
+		taskService.delete(id);
+		return "redirect:/listTasks";
+	}
+	
 }

@@ -52,4 +52,14 @@ public class TaskService {
 	public Task get(Integer id) {
 		return taskRepository.findById(id).get();
 	}
+	
+	
+	/**
+	 * IDに紐づくタスク情報削除処理
+	 * 
+	 * @param id タスクID
+	 */
+	public void delete(Integer id) {
+		taskRepository.deleteById(id);
+	}
 }
