@@ -28,8 +28,16 @@
 			</tr>
 		</tbody>
 	</table>
+	<!-- タイマー管理画面遷移 -->
+	<form th:action="@{/getTimer}" method="get">
+		<input type="submit" value="タイマー管理" />
+	</form>
 	<!-- 編集ボタンの追加 -->
 	<a id="editLink" th:href="@{'/editTask/' + $task.id}">編集</a>
+	<!-- タスク削除機能 -->
+	<form th:action="@{/deleteTask}" method="post">
+		<input type="submit" value="削除" />
+	</form>
 	<a th:href="@{/getTask}">戻る</a>
 </body>
 <!-- JavaScriptを読み込む -->
