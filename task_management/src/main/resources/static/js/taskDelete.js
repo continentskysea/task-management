@@ -13,10 +13,10 @@
 			deleteForm.action = '/deleteTask/'+ checkboxes[i].value;
 			return;
 		}
-		deleteForm.action = '#';
 	}
+	deleteForm.action = '#';
+}
 	
-	for (let i = 0; i < checkboxes.length; i++) {
-		checkboxes[i].addEventListener('change', updateDeleteLink);
-	}
+for (let i = 0; i < checkboxes.length; i++) {
+	checkboxes[i].addEventListener('change', updateDeleteLink);
 }
