@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <title>タスク一覧</title>
 </head>
+<style>
+
+	h1 {
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	form {
+		margin: 0 auto;
+		text-align: center;
+	}
+	table{
+		text-align: center;
+		margin: 0 auto;
+		background-color: #99FF99;
+		width: 600px;
+	}
+	
+	th, td {
+		background-color:  #E6E6E6;
+	}
+	
+	input {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	#timerForm input {
+		background-color: #007FFF; 
+		color: #FFFFFF;
+	}
+	
+</style>	
 <body>
 	<h1>タスク一覧</h1>
 	<!-- タスク削除機能用フォーム -->	
@@ -34,7 +67,7 @@
 	</form>
 	
 	<!-- タイマー管理画面遷移 -->
-	<form th:action="@{/getTimer}" method="get">
+	<form id="timerForm" th:action="@{/getTimer}" method="get">
 		<input type="submit" value="タイマー管理" />
 	</form>
 	<!-- 編集ボタンの追加 -->
