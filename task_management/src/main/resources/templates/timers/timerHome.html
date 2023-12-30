@@ -7,6 +7,17 @@
 <body>
 	<h1>集中タイマー</h1>
 	
+	<!-- タイマー入力画面へ遷移 -->
+	<form th:action="@{/getTimerSetting}">
+		<input type="submit" value="00:00:00">
+	</form>
+	
+	<!-- 休憩タイマー入力画面へ遷移 -->
+	<form th:action="@{/getRestTimerSetting}">
+		<input type="submit" value="00:00:00">
+	</form>
+	
+	
 	<div id="timerBtns">
 		<!-- タイマー画面へ遷移-->
 		<form th:action="@{/getStartTimer}" method="get">
