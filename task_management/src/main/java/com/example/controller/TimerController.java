@@ -21,4 +21,14 @@ public class TimerController {
 		// タスク管理初期画面を表示
 		return "timers/timerHome";
 	}
+	
+	/**
+	 * タイマー登録画面表示
+	 * 
+	 * @return タイマー登録画面
+	 */
+	@GetMapping("/getTimerSetting")
+	public String getTimerSetting() {
+		return "timers/timerSetting";
+	}
 }
