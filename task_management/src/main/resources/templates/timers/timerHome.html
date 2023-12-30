@@ -8,12 +8,12 @@
 	<h1>集中タイマー</h1>
 	
 	<!-- タイマー入力画面へ遷移 -->
-	<form th:action="@{/getTimerSetting}">
+	<form th:action="@{/getTimerSetting}" method="get">
 		<input type="submit" value="00:00:00">
 	</form>
 	
 	<!-- 休憩タイマー入力画面へ遷移 -->
-	<form th:action="@{/getRestTimerSetting}">
+	<form th:action="@{/getRestTimerSetting}" method="get">
 		<input type="submit" value="00:00:00">
 	</form>
 	
