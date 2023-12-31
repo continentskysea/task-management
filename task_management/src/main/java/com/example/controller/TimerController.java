@@ -31,4 +31,14 @@ public class TimerController {
 	public String getTimerSetting() {
 		return "timers/timerSetting";
 	}
+	
+	/**
+	 * 休憩タイマー登録画面表示
+	 * 
+	 * @return 休憩タイマー登録画面
+	 */
+	@GetMapping("/getRestTimerSetting")
+	public String getRestTimerSetting() {
+		return "timers/restTimerSetting";
+	}
 }
