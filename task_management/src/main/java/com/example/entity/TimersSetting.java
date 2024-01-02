@@ -1,0 +1,76 @@
+package com.example.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+/**
+ * タイマー設定用のデータクラス
+ * @author yoshi
+ *
+ */
+@Entity
+@Table(name = "TIMERS_SETTINGS")
+public class TimersSetting {
+	@Id
+	@SequenceGenerator(name = "TIMERS_SETTINGS_ID_GENERATOR", sequenceName = "TIMERS_SETTINGS_ID_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TIMERS_SETTINGS_ID_GENERATOR")
+	@Column(name = "ID")
+	private Integer id; // タイマー設定ID
+	
+	@Column(name = "USER_ID")
+	private Integer userId; // ユーザーID(外部キー)
+	
+	@Column(name = "FOCUS_TIME")
+	private Integer focusTime; // 集中時間
+	
+	@Column(name = "BREAK_TIME")
+	private Integer breakTime; // 休憩時間
+	
+	
+	// アクセサメソッド
+	
+	// タイマー設定ID
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
+	// ユーザーID
+	public Integer getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
+	
+	// 集中時間
+	public Integer getFocusTime() {
+		return focusTime;
+	}
+	
+	public void setFocusTime(Integer focusTime) {
+		this.focusTime = focusTime;
+	}
+	
+	
+	// 休憩時間
+	public Integer getBreakTime() {
+		return breakTime;
+	}
+	
+	public void setBreakTime(Integer breakTime) {
+		this.breakTime = breakTime;
+	}
+	
+}
