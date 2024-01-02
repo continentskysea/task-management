@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 @Table(name = "TASKS")
 public class Task {
 	@Id
-	@SequenceGenerator(name = "TASKS_ID_GEBREAK_TIMENERATOR", sequenceName = "TASKS_ID_SEQ", allocationSize = 1)
+	@SequenceGenerator(name = "TASKS_ID_GENERATOR", sequenceName = "TASKS_ID_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TASKS_ID_GENERATOR")
 	@Column(name = "ID")
 	private Integer id; // タスクID
