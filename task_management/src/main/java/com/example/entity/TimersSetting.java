@@ -26,10 +26,10 @@ public class TimersSetting {
 	private Integer userId; // ユーザーID(外部キー)
 	
 	@Column(name = "FOCUS_TIME")
-	private Integer focusTime; // 集中時間
+	private String focusTime; // 集中時間
 	
 	@Column(name = "BREAK_TIME")
-	private Integer breakTime; // 休憩時間
+	private String breakTime; // 休憩時間
 	
 	
 	// アクセサメソッド
@@ -55,21 +55,21 @@ public class TimersSetting {
 	
 	
 	// 集中時間
-	public Integer getFocusTime() {
+	public String getFocusTime() {
 		return focusTime;
 	}
 	
-	public void setFocusTime(Integer focusTime) {
+	public void setFocusTime(String focusTime) {
 		this.focusTime = focusTime;
 	}
 	
 	
 	// 休憩時間
-	public Integer getBreakTime() {
+	public String getBreakTime() {
 		return breakTime;
 	}
 	
-	public void setBreakTime(Integer breakTime) {
+	public void setBreakTime(String breakTime) {
 		this.breakTime = breakTime;
 	}
 	
