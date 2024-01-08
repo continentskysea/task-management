@@ -48,28 +48,17 @@ public class TimerController {
 		TimersSetting timersSetting = new TimersSetting();
 		model.addAttribute("timersSetting" ,timersSetting);
 		return "timers/timerSetting";
-	}
-	
-	/**
-	 * 休憩タイマー登録画面表示
-	 * 
-	 * @return 休憩タイマー登録画面
-	 */
-	@GetMapping("/getRestTimerSetting")
-	public String getRestTimerSetting() {
-		return "timers/restTimerSetting";
-	}
-	
+	}	
 	
 	/**
 	 * タイマーの登録処理
 	 * 
-	 * @param focusTime 集中時間
+	 * @param timersSetting 集中時間
 	 * @return タイマー管理初期画面
 	 */
 	@PostMapping("/save")
-	public String save(TimersSetting focusTime) {
-		timersSettingService.save(focusTime);
+	public String save(TimersSetting timersSetting) {
+		timersSettingService.save(timersSetting);
 		return "redirect:/getTimer";
 	}
 }
