@@ -48,7 +48,7 @@ public class TimerController {
 		TimersSetting timersSetting = new TimersSetting();
 		model.addAttribute("timersSetting" ,timersSetting);
 		return "timers/timerSetting";
-	}	
+	}
 	
 	/**
 	 * タイマーの登録処理

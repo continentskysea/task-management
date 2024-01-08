@@ -11,19 +11,17 @@
 	<form th:action="@{/getTimerSetting}" method="get">
 		<input type="submit" value="タイマー登録">
 	</form>
-	
+		
 	
 	<div id="timerBtns">
 		<!-- タイマー画面へ遷移-->
 		<form th:action="@{/getStartTimer}" method="get">
 			<input type="submit" value="起動"/>
 		</form>
-		
 		<!-- 休憩タイマー画面へ遷移 -->
 		<form th:action="@{/getRestTimer}" method="get">
 			<input type="submit" value="休憩">
 		</form>
-		
 		<!-- 初期画面へ遷移 -->
 		<a th:href="@{/home}">戻る</a>
 	</div>
