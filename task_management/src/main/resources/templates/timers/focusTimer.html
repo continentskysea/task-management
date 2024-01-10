@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>集中タイマー</title>
+</head>
+<body>
+
+	<h1>集中タイマー</h1>
+	<label>タスク名</label>
+	<p th:text="${task.name}"></p>
+	<a th:href="@{/listTasks}">タスク一覧へ</a>
+
+</body>
+</html>

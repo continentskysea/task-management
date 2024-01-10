@@ -29,4 +29,14 @@ public class TimersSettingService {
 	public TimersSetting save(TimersSetting timersSetting) {
 		return timersSettingRepository.save(timersSetting);
 	}
+	
+	/**
+	 * IDに紐づく設定タイマー情報取得
+	 * 
+	 * @param id タイマー設定ID
+	 * @return 設定したタイマー情報
+	 */
+	public TimersSetting get(Integer id) {
+		return timersSettingRepository.findById(id).get();
+	}
 }
