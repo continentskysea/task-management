@@ -73,7 +73,7 @@ public class TimerController {
 	 * @return 集中タイマー画面
 	 */
 	@GetMapping("/getFocusTimer/{id}")
-	public String getFocusTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getFocusTimer(@PathVariable(name = "id") Integer id, TimersSetting timersSetting, Model model) {
 		// タスクIDに紐づくタスク情報を取得
 		Task task = taskService.get(id);
 			
@@ -82,6 +82,9 @@ public class TimerController {
 			// エラーページ
 			return "redirect:/listTask";
 		} else {
+			
+			// 登録時間情報を取得
+			
 			// タスク情報を画面に流す
 			model.addAttribute("task", task);
 			return "timers/focusTimer";

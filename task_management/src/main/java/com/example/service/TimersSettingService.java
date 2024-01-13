@@ -1,8 +1,11 @@
 package com.example.service;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.TimersSetting;
+import com.example.entity.User;
 import com.example.repository.TimersSettingRepository;
 
 /**
@@ -16,7 +19,7 @@ public class TimersSettingService {
 	private final TimersSettingRepository timersSettingRepository;
 	
 	// コンストラクタインジェクション
-	public TimersSettingService(TimersSettingRepository timersSettingRepository) {
+	public TimersSettingService(TimersSettingRepository timersSettingRepository) { 
 		this.timersSettingRepository = timersSettingRepository;
 	}
 	
@@ -27,6 +30,12 @@ public class TimersSettingService {
 	 * @return 保存した集中時間情報
 	 */
 	public TimersSetting save(TimersSetting timersSetting) {
+		// ログインしているユーザー情報をtimersSettingにセットする
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		LoginUser loginUser = (LoginUser)authentication.getPrincipal();
+		User user = loginUser.getUser();
+		timersSetting.setUserId(user.getId()); 
+		
 		return timersSettingRepository.save(timersSetting);
 	}
 	
