@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +32,9 @@ public class TimersSetting {
 	
 	@Column(name = "BREAK_TIME")
 	private String breakTime; // 休憩時間
+	
+	@Column(name = "REGISTAR_AT")
+	private LocalDateTime registarAt; // 登録日
 	
 	
 	// アクセサメソッド
@@ -71,6 +76,16 @@ public class TimersSetting {
 	
 	public void setBreakTime(String breakTime) {
 		this.breakTime = breakTime;
+	}
+	
+	
+	// 登録日
+	public LocalDateTime getRegistarAt() {
+		return registarAt;
+	}
+	
+	public void setRegistarAt(LocalDateTime registarAt) {
+		this.registarAt = registarAt;
 	}
 	
 }
