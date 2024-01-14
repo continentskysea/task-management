@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,11 @@ public class TimersSettingService {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		LoginUser loginUser = (LoginUser)authentication.getPrincipal();
 		User user = loginUser.getUser();
-		timersSetting.setUserId(user.getId()); 
+		timersSetting.setUserId(user.getId());
+		
+		// LocalDateTimeオブジェクトを生成し、登録日時をセットする
+		LocalDateTime registarAt = LocalDateTime.now();
+		timersSetting.setRegistarAt(registarAt);		
 		
 		return timersSettingRepository.save(timersSetting);
 	}
