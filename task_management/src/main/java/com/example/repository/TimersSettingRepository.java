@@ -10,5 +10,6 @@ import com.example.entity.TimersSetting;
  *
  */
 public interface TimersSettingRepository extends JpaRepository<TimersSetting, Integer>{
-	
+	// ログインしているユーザーID情報から登録されているタイマーをエンティティの最新のレコードを取得する
+	public TimersSetting findTopByUserIdOrderByRegistarAtDesc(String currentUser);
 }
