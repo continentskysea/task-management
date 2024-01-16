@@ -46,12 +46,16 @@ public class TimersSettingService {
 	}
 	
 	/**
-	 * IDに紐づく設定タイマー情報取得
+	 * ログインしているユーザーIDに紐づくタイマー設定テーブルの最新のデータを取得する
 	 * 
-	 * @param id タイマー設定ID
-	 * @return 設定したタイマー情報
+	 * @return タイマー情報
 	 */
-	public TimersSetting get(Integer id) {
-		return timersSettingRepository.findById(id).get();
+	public TimersSetting getUsersFocusTimer() {
+		// ログインしているユーザー情報を取得する
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		LoginUser loginUser = (LoginUser)authentication.getPrincipal();
+		User user = loginUser.getUser();
+		
+		return timersSettingRepository.findTopByUserIdOrderByRegistarAtDesc(user.getId());
 	}
 }

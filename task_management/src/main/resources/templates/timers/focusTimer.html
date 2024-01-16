@@ -7,8 +7,14 @@
 <body>
 
 	<h1>集中タイマー</h1>
-	<label>タスク名</label>
-	<p th:text="${task.name}"></p>
+	<div >
+		<label>タスク名</label>
+		<p th:text="${task.name}"></p>
+	</div>
+	<div>
+		<label>集中時間</label>
+		<p th:text="${timersSetting.getFocusTime}"></p>
+	</div>
 	<a th:href="@{/listTasks}">タスク一覧へ</a>
 
 </body>
