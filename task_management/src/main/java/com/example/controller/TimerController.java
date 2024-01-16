@@ -81,10 +81,10 @@ public class TimerController {
 			// エラーページ
 			return "redirect:/listTask";
 		} else {
-			// タスク情報を画面に流す
-			model.addAttribute("task", task);
 			// タイマー情報を取得し画面に渡す
 			TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
+			// タスク情報を画面に流す
+			model.addAttribute("task", task);
 			model.addAttribute("timersSetting", latestTimersSetting);
 			return "timers/focusTimer";
 		}

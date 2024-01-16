@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class TimersSettingService {
 	private final TimersSettingRepository timersSettingRepository;
 	
 	// コンストラクタインジェクション
+	@Autowired
 	public TimersSettingService(TimersSettingRepository timersSettingRepository) { 
 		this.timersSettingRepository = timersSettingRepository;
 	}
