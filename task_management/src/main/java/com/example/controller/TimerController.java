@@ -79,7 +79,7 @@ public class TimerController {
 			
 		if (task == null) {
 			// エラーページ
-			return "redirect:/listTask";
+			return "redirect:/listTasks";
 		} else {
 			// タイマー情報を取得し画面に渡す
 			TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
@@ -90,3 +90,4 @@ public class TimerController {
 		}
 	}
 }
+

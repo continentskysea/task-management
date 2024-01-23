@@ -22,13 +22,11 @@
 				<!-- タスクリストの表示 -->
 				<tr th:each="task : ${listTasks}">
 					<!-- チェックボックスを追加 -->
-					<td><input class="taskCheckbox" type="checkbox" th:value="${task.id}" th:name="taskIds" onclick="generateLink();generateFocusTimerLink()" /></td>
+					<td><input class="taskCheckbox" type="checkbox" th:value="${task.id}" th:name="taskIds" /></td>
 					<td th:text="${task.id}"></td>
 					<td th:text="${task.name}"></td>
 					<td th:text="${task.priority}"></td>
 					<td th:text="${task.dueDate}"></td>
-					
-					
 				</tr>
 			</tbody>
 		</table>
@@ -40,9 +38,9 @@
 		<input type="submit" value="タイマー管理" />
 	</form>
 	<!-- 集中タイマー表示 -->
-	<a id="focusTimerLink" th:href="@{'/getFocusTimer/' + $task.id}">集中タイマー</a>
+	<a id="focusTimerLink" th:href="@{'/getFocusTimer/' + $task.id}" onclick="generateFocusTimerLink()">集中タイマー</a>
 	<!-- 編集ボタンの追加 -->
-	<a id="editLink" th:href="@{'/editTask/' + $task.id}">編集</a>
+	<a id="editLink" th:href="@{'/editTask/' + $task.id}" onclick="generateLink()">編集</a>
 	<a th:href="@{/getTask}">戻る</a>
 </body>
 <!-- JavaScriptを読み込む -->

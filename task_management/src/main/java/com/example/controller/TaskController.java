@@ -94,15 +94,15 @@ public class TaskController {
 	public String editTask(@PathVariable(name = "id")  Integer id, Model model) {
 		// タスクIDに紐づくタスク情報を取得
 		Task task = taskService.get(id);
-		
-	if (task == null) {
-		// エラーページ
-		return "redirect:/listTasks";
-	} else {
-		// 取得したタスク情報を画面に渡す
-		model.addAttribute("task" ,task);
-		return "tasks/taskEdit";		
-	}
+
+		if (task == null) {
+			// エラーページ
+			return "redirect:/listTasks";
+		} else {
+			// 取得したタスク情報を画面に渡す
+			model.addAttribute("task" ,task);
+			return "tasks/taskEdit";		
+		}
 	}
 	
 	/**
