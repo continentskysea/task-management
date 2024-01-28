@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,8 +50,8 @@ public class TaskService {
 	 * @param id タスクID
 	 * @return タスク情報
 	 */
-	public Task get(Integer id) {
-		return taskRepository.findById(id).get();
+	public Optional<Task> get(Integer id) {
+		return taskRepository.findById(id);
 	}
 	
 	

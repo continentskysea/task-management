@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,20 +76,30 @@ public class TimerController {
 	 */
 	@GetMapping("/getFocusTimer/{id}")
 	public String getFocusTimer(@PathVariable(name = "id") Integer id, Model model) {
-		// タスクIDに紐づくタスク情報を取得
-		Task task = taskService.get(id);
+		
+		// idの入力チェック
+		if (id == null) {
+			return "redirect:/listTasks";
+		}
+		// タスクIDに紐づくタスク情報を取得(null情報のチェックも行う)
+		Optional<Task> optionalTask = taskService.get(id);
 			
-		if (task == null) {
+		if (optionalTask.isEmpty()) {
 			// エラーページ
 			return "redirect:/listTasks";
-		} else {
-			// タイマー情報を取得し画面に渡す
-			TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
-			// タスク情報を画面に流す
-			model.addAttribute("task", task);
-			model.addAttribute("timersSetting", latestTimersSetting);
-			return "timers/focusTimer";
 		}
+		
+		
+		Task task = optionalTask.get();
+		
+		// タイマー情報を取得し画面に渡す
+		TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
+		
+		// タスク情報を画面に流す
+		model.addAttribute("task", task);
+		model.addAttribute("timersSetting", latestTimersSetting);
+		return "timers/focusTimer";
+		
 	}
 }
 

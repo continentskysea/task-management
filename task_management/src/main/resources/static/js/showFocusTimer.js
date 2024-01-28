@@ -5,6 +5,8 @@
  function generateFocusTimerLink() {
 	// すべてのチェックボックスを取得
 	let checkboxes = document.getElementsByName('taskIds');
+	// タイマーページのリンク
+	const focusTimerLink = document.getElementById('focusTimerLink');
 	// チェックボックスの数を格納
 	let checkedCount = 0;
 	let checkedId = "";
@@ -21,12 +23,12 @@
 	
 	// チェックが一つだけ入っている場合は、編集ページヘ遷移する
 	if (checkedCount === 1) {
-		document.getElementById('focusTimerLink').href =`/getFocusTimer/${checkedId}`;
+		return focusTimerLink.href =`/getFocusTimer/${checkedId}`;
 		
 	// チェックがないまたは複数ある場合は、アラートを表示ページをリダイレクト	
 	} else {
 		const errorMsg = "タスクが未選択あるいは複数選択されています";
 		alert(errorMsg);
-		document.getElementById('focusTimerLink').href = '/listTasks';
+		return focusTimerLink.href = '/listTasks';
 	}
 }

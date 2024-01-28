@@ -1,32 +1,33 @@
 /**
  * タスク編集画面表示用
  */
- // 選択されたチェックボックスに対応するリンクを生成する関数
- function generateLink() {
-	// すべてのチェックボックスを取得
-	let checkboxes = document.getElementsByName('taskIds');
-	// チェックボックスの数を格納
-	let checkedCount = 0;
-	let checkedId = "";
-	
-	// チェックが入っているチェックボックスの数をカウント
-	for (let i = 0; i < checkboxes.length; i++) {
-		
-		// チェックボックスが選択されている場合
-		if (checkboxes[i].checked) {
-			checkedCount++;
-			checkedId = checkboxes[i].value;
-		}
-	}
-	
-	// チェックが一つだけ入っている場合は、編集ページヘ遷移する
-	if (checkedCount === 1) {
-		document.getElementById('editLink').href =`/editTask/${checkedId}`;
-		
-	// チェックがないまたは複数ある場合は、アラートを表示ページをリダイレクト
-	} else {
-		const errorMsg = "タスクが未選択あるいは複数選択されています";
-		alert(errorMsg);
-		document.getElementById('editLink').href =`/listTasks`;
-	}
+function generateLink(checkedId) {
+    // "null" でないことを確認してから数値に変換
+    checkedId = checkedId !== null && checkedId !== "null" ? parseInt(checkedId) : null;
+    // エラーメッセージ
+    const errorMsg = "タスクが未選択あるいは複数選択されています";
+
+    // チェックが一つだけ入っている且つ集中タイマーをクリック場合は、集中タイマーページヘ遷移する
+    if (checkedId !== null && !isNaN(checkedId)) {
+        // 集中タイマーボタン
+        const focusTimerLink = document.getElementById('focusTimerLink');
+        // 編集ボタン
+        const editLink = document.getElementById('editLink');
+
+        if (focusTimerLink.href) {
+            return handleLink(focusTimerLink.href, checkedId);
+        } else if (editLink.href) {
+            return handleLink(editLink.href, checkedId);
+        }
+    } else {
+        alert(errorMsg);
+        const focusTimerLink = document.getElementById('focusTimerLink');
+        const editLink = document.getElementById('editLink');
+        focusTimerLink.href = `/listTasks`;
+        editLink.href = `/listTasks`;
+    }
+}
+
+function handleLink(link, checkedId) {
+    window.location.href = `${link}/${checkedId}`;
 }

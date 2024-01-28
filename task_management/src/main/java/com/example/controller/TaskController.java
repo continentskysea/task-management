@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,17 +92,18 @@ public class TaskController {
 	 * @return タスク編集画面
 	 */
 	@GetMapping("/editTask/{id}")
-	public String editTask(@PathVariable(name = "id")  Integer id, Model model) {
-		// タスクIDに紐づくタスク情報を取得
-		Task task = taskService.get(id);
-
-		if (task == null) {
-			// エラーページ
-			return "redirect:/listTasks";
-		} else {
+	public String editTask(@PathVariable(name = "id") Integer id, Model model) {
+		Optional<Task> optionalTask = taskService.get(id);
+		
+		if (optionalTask.isPresent()) {
+			// タスクIDに紐づくタスク情報を取得
+			Task task = optionalTask.get();
+			
 			// 取得したタスク情報を画面に渡す
 			model.addAttribute("task" ,task);
 			return "tasks/taskEdit";		
+		} else {
+			return "redirect:/listTasks";
 		}
 	}
 	
