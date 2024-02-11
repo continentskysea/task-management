@@ -18,11 +18,13 @@ import com.example.repository.UserRepository;
 public class LoginUserService implements UserDetailsService {
 	
 	private final UserRepository userRepository; // USERSテーブルの情報取得をするためのフィールド
+	private final TimersSettingService timersSettingService; // 予めTimersSettingテーブルの情報を取得する
 	
 	// コンストラクタインジェクション
 	@Autowired
-	public LoginUserService(UserRepository userRepository) {
+	public LoginUserService(UserRepository userRepository, TimersSettingService timersSettingService) {
 		this.userRepository = userRepository;
+		this.timersSettingService = timersSettingService;
 	}
 	
 	/**
@@ -43,7 +45,11 @@ public class LoginUserService implements UserDetailsService {
 			throw new UsernameNotFoundException("該当するユーザーが見つかりません");
 		}
 		
-		// ユーザーが見つかった場合は、UserDetailsを生成し返却する
+		// ユーザーが見つかった場合は、TimersSetting を取得し、 UserDetailsを生成し返却する
+		/*
+		TimersSetting timersSetting = timersSettingService.getUsersFocusTimer();
+		return new LoginUserService(user, timersSetting);
+		*/
 		return new LoginUser(user);
 	}
 }

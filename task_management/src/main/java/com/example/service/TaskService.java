@@ -56,6 +56,18 @@ public class TaskService {
 	
 	
 	/**
+	 * IDに紐づくタスク情報取得処理
+	 * 
+	 * @param id タスクID
+	 * @return タスク情報
+	 */
+	/*
+	public Task get(Integer id) {
+		return taskRepository.findById(id).get();
+	}*/
+	
+	
+	/**
 	 * IDに紐づくタスク情報削除処理
 	 * 
 	 * @param id タスクID

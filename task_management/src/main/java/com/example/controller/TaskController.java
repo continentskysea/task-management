@@ -52,8 +52,7 @@ public class TaskController {
 		model.addAttribute("task", task);
 		// タスク登録画面を表示
 		return "tasks/taskForm";
-	}
-	
+	}	
 	
 	/**
 	 * タスク一覧画面表示
@@ -92,18 +91,22 @@ public class TaskController {
 	 * @return タスク編集画面
 	 */
 	@GetMapping("/editTask/{id}")
-	public String editTask(@PathVariable(name = "id") Integer id, Model model) {
+	public String editTask(@PathVariable(name = "id")  Integer id, Model model) {
+		if (id == null) {
+			return "redirect:/listTasks";
+		}
+				
+		// タスクIDに紐づくタスク情報を取得
 		Optional<Task> optionalTask = taskService.get(id);
-		
-		if (optionalTask.isPresent()) {
-			// タスクIDに紐づくタスク情報を取得
+
+		if (optionalTask.isEmpty()) {
+			// エラーページ
+			return "redirect:/listTasks";
+		} else {
 			Task task = optionalTask.get();
-			
 			// 取得したタスク情報を画面に渡す
 			model.addAttribute("task" ,task);
 			return "tasks/taskEdit";		
-		} else {
-			return "redirect:/listTasks";
 		}
 	}
 	

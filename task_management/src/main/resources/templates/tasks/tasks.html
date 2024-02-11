@@ -38,13 +38,12 @@
 		<input type="submit" value="タイマー管理" />
 	</form>
 	<!-- 集中タイマー表示 -->
-	<a id="focusTimerLink" th:href="@{'/getFocusTimer/' + ${checkedId}}" onclick="generateLink('${checkedId}')">集中タイマー</a>
+   	<button th:onclick="redirectToFocusTimer()">集中タイマー</button>
 	<!-- 編集ボタンの追加 -->
-	<a id="editLink" th:href="@{'/editTask/' + ${checkedId}}" onclick="generateLink('${checkedId}')">編集</a>
+	<button th:onclick="redirectToEditTask()">編集</button>
 	<a th:href="@{/getTask}">戻る</a>
 </body>
 <!-- JavaScriptを読み込む -->
-<script src='/js/taskEdit.js'></script>
 <script src='/js/taskDelete.js'></script>
-<!-- <script src='/js/showFocusTimer.js'></script> -->
+<script src='/js/taskActions.js'></script>
 </html>

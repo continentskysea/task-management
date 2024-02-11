@@ -69,37 +69,35 @@ public class TimerController {
 		return "redirect:/getTimer";
 	}
 	
+	
 	/**
 	 * 集中タイマー画面表示
 	 * 
 	 * @return 集中タイマー画面
 	 */
+	
 	@GetMapping("/getFocusTimer/{id}")
 	public String getFocusTimer(@PathVariable(name = "id") Integer id, Model model) {
-		
-		// idの入力チェック
 		if (id == null) {
+			// エラーページ
 			return "redirect:/listTasks";
 		}
-		// タスクIDに紐づくタスク情報を取得(null情報のチェックも行う)
+		
+		// タスクIDに紐づくタスク情報を取得
 		Optional<Task> optionalTask = taskService.get(id);
 			
 		if (optionalTask.isEmpty()) {
 			// エラーページ
 			return "redirect:/listTasks";
+		} else {
+			Task task = optionalTask.get();
+			// タイマー情報を取得し画面に渡す
+			TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
+			// タスク情報を画面に流す
+			model.addAttribute("task", task);
+			model.addAttribute("timersSetting", latestTimersSetting);
+			return "timers/focusTimer";
 		}
-		
-		
-		Task task = optionalTask.get();
-		
-		// タイマー情報を取得し画面に渡す
-		TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
-		
-		// タスク情報を画面に流す
-		model.addAttribute("task", task);
-		model.addAttribute("timersSetting", latestTimersSetting);
-		return "timers/focusTimer";
-		
 	}
 }
 

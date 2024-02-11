@@ -20,11 +20,13 @@ import com.example.repository.TimersSettingRepository;
 public class TimersSettingService {
 	// タイマー設定用リポジトリのフィールドを追加
 	private final TimersSettingRepository timersSettingRepository;
+	private final UserService userService;
 	
 	// コンストラクタインジェクション
 	@Autowired
-	public TimersSettingService(TimersSettingRepository timersSettingRepository) { 
+	public TimersSettingService(TimersSettingRepository timersSettingRepository, UserService userService) { 
 		this.timersSettingRepository = timersSettingRepository;
+		this.userService = userService;
 	}
 	
 	/**
@@ -53,11 +55,10 @@ public class TimersSettingService {
 	 * @return タイマー情報
 	 */
 	public TimersSetting getUsersFocusTimer() {
-		// ログインしているユーザー情報を取得する
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		LoginUser loginUser = (LoginUser)authentication.getPrincipal();
-		User user = loginUser.getUser();
+		// ログインしているユーザー情報のIDを取得する
+		Integer userId = userService.getCurrentUserId();
 		
-		return timersSettingRepository.findTopByUserIdOrderByRegistarAtDesc(user.getId());
+		return timersSettingRepository.findTopByUserIdOrderByRegistarAtDesc(userId);
+		
 	}
 }
