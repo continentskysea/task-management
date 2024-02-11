@@ -16,6 +16,19 @@ function redirectToFocusTimer() {
     }
 }
 
+// 休憩タイマー画面に遷移する
+function redirectToBreakTimer() {
+	let selectedCheckbox = getSelectedCheckbox();
+	
+	if (selectedCheckbox) {
+		// 選択されたタスク情報を取得
+		let taskId = selectedCheckbox.value;
+		
+		// タスク情報を使って休憩タイマー画面にリダイレクト
+		window.location.href = '/getBreakTimer/' + taskId;
+	}
+}
+
 // タスク編集画面へ遷移する
 function redirectToEditTask() {
     let selectedCheckbox = getSelectedCheckbox();

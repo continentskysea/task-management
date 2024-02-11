@@ -99,5 +99,34 @@ public class TimerController {
 			return "timers/focusTimer";
 		}
 	}
+	
+	/**
+	 * 休憩タイマー画面表示
+	 * 
+	 * @return 休憩タイマー画面
+	 */
+	@GetMapping("/getBreakTimer/{id}")
+	public String getBreakTimer(@PathVariable(name = "id") Integer id, Model model) {
+		// エラーチェック
+		if (id == null) {
+			return "redirect:/listTasks";
+		}
+		// タスクIDに紐づくタスク情報を取得
+		Optional<Task> optinalTask = taskService.get(id);
+		
+		if (optinalTask.isEmpty()) {
+			// エラーページ
+			return "redirect:/listTasks";
+		} else {
+			Task task = optinalTask.get();
+			// タイマー情報を取得する
+			TimersSetting timersSetting = timersSettingService.getUsersFocusTimer();
+			// タスク情報を画面に渡す
+			model.addAttribute("task", task);
+			// タイマー情報を画面に渡す
+			model.addAttribute("timersSetting", timersSetting);
+			return "timers/breakTimer";
+		}
+	}
 }
 

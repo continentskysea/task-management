@@ -39,6 +39,8 @@
 	</form>
 	<!-- 集中タイマー表示 -->
    	<button th:onclick="redirectToFocusTimer()">集中タイマー</button>
+	<!-- 休憩タイマーの表示 -->
+	<button th:onclick="redirectToBreakTimer()">休憩タイマー</button>
 	<!-- 編集ボタンの追加 -->
 	<button th:onclick="redirectToEditTask()">編集</button>
 	<a th:href="@{/getTask}">戻る</a>

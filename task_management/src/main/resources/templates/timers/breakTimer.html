@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>休憩タイマー</title>
+</head>
+<body>
+
+	<h1>休憩タイマー</h1>
+
+	<div>
+		<label>タスク名</label>
+		<p th:text="${task.name}"></p>
+	</div>
+	<div>
+		<label>集中時間</label>
+		<p th:text="${timersSetting.getBreakTime}"></p>	
+	</div>
+
+	<a th:href="@{/listTasks}">タスク一覧へ</a>
+
+</body>
+</html>
