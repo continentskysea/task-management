@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
 
 import com.example.entity.User;
 import com.example.repository.UserRepository;
+
+import jakarta.validation.Validator;
 
 /**
  * ユーザー情報のサービスクラス
@@ -15,7 +18,7 @@ import com.example.repository.UserRepository;
  *
  */
 @Service
-public class UserService {
+public class UserService implements Validator{
 	private final UserRepository userRepository;
 	
 	@Autowired
@@ -54,6 +57,31 @@ public class UserService {
 		
 		// ユーザーが見つからない場合は null を返す
 		return null;
+	}
+	
+	@Override
+	public boolean supports(Class<?> clazz) {
+		return User.class.equals(clazz);
+	}
+	
+	@Override
+	public void validate(Object target, Errors errors) {
+		User user = (User) target;
+		
+		// 名前のバリデーション
+		if (!user.getName().matches("[\\p{IsHan}\\p{IsDigit}]{1,12}")) {
+			errors.rejectValue("name", "name.invalid", "名前は1文字以上12文字以内の漢字または数字で入力してください");
+		}
+		
+		// メールアドレスのバリデーション
+		if (!user.getEmail().matches("^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$")) {
+			errors.rejectValue("email", "email.invalid", "メールアドレスの形式が正しくありません");
+		}
+		
+		// パスワードのバリデーション
+		if (!user.getPassword().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$")) {
+			errors.rejectValue("password", "password.invalid", "パスワードは英数字の大文字小文字を含む必要があります");
+		}
 	}
 	
 }
