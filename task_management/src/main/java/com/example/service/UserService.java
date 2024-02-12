@@ -23,6 +23,18 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 	
+	
+	/**
+	 * ユーザー情報登録処理
+	 * 
+	 * @param 保存したいユーザー情報
+	 * @return 保存したユーザー情報
+	 * 
+	 */
+	public User save(User user) {
+		 return userRepository.save(user);
+	}
+	
 	/**
 	 * ログイン中のユーザーのemailを比較し、一致したユーザーのIDを取得する
 	 * @return user.getId() ユーザーID
@@ -43,4 +55,5 @@ public class UserService {
 		// ユーザーが見つからない場合は null を返す
 		return null;
 	}
+	
 }
