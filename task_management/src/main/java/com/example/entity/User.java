@@ -40,7 +40,7 @@ public class User {
 	
 	@NotBlank(message = "パスワードは必須です")
 	@Size(min = 1, max = 12, message = "パスワードは1文字以上12文字以内で入力してください")
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$", message = "パスワードは英数字の大文字小文字を含む必要があります)
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$", message = "パスワードは英数字の大文字小文字を含む必要があります")
 	@Column(name = "PASSWORD")
 	private String password; // パスワード
 	

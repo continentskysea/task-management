@@ -6,11 +6,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import com.example.entity.User;
 import com.example.repository.UserRepository;
 
-import jakarta.validation.Validator;
+
+
 
 /**
  * ユーザー情報のサービスクラス
@@ -61,7 +63,7 @@ public class UserService implements Validator{
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return User.class.equals(clazz);
+		return User.class.isAssignableFrom(clazz);
 	}
 	
 	@Override

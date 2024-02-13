@@ -3,12 +3,15 @@ package com.example.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.entity.User;
 import com.example.service.UserService;
+
+import jakarta.validation.Valid;
 
 /**
  * ユーザーコントローラー
@@ -48,10 +51,15 @@ public class UserController {
 	 * @return ホーム画面
 	 */	 
 	@PostMapping("/createUser") // URLの紐づけ
-	public String createUser(@ModelAttribute("user") User user) {
+	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+		// 入力に登録に不備があれば登録画面に戻る
+		if (bindingResult.hasErrors()) {
+			return "users/userForm";
+		}
+		
 		// ユーザー情報をDBに保存する
 		userService.save(user);
-		// ホーム画面をリダイレクト表示
+		// 登録が成功すればホーム画面をリダイレクト表示
 		return "redirect:/home";
 	}
 }
