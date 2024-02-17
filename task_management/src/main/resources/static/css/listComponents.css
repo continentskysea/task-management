@@ -1,0 +1,114 @@
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 60px;
+}
+
+form {
+    margin: 0 auto;
+    width: 1000px;
+    /* text-align: center; */
+}
+
+table {
+    width: 800px;
+    height: 500px;
+    border-collapse: separate;
+    border-spacing: 10px;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+
+button {
+    width: 150px;
+    height: 100px;
+    padding: 15px 0;
+}
+
+
+a {
+    padding: 15px 53px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    text-align: center;
+    border: solid 1px;
+    color: #000000;
+}
+
+button:hover, a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#listButtons {
+    width: 1000px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#listButtons button, #listButtons input, #listButtons a {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#listButtons a {
+    display: block;
+}
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ---------------------------------
+タスク一覧に適用
+--------------------------------- */
+
+#timerForm {
+    margin: 0;
+    padding: 0;
+    width: 180px;
+}
+
+#timerForm input {
+    width: 150px;
+    height: 100px;
+}
+#deleteForm {
+    /* display: flex; */
+    /* flex-direction: column; */
+    background-color: #99FF99;
+    text-align: center;
+}
+
+#deleteForm th, #deleteForm td {
+    background-color: #E6E6E6;
+    padding: 10px 20px;
+}
+
+
+.timersRelation {
+    background-color: #007FFF;
+}
+
+.timersRelation:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.timersRelation input {
+    width: 100px;
+    height: 50px;
+}
