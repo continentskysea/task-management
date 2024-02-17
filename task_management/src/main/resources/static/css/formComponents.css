@@ -1,13 +1,17 @@
+/* ---------------------------------
+個別の適用
+--------------------------------- */
 
+body {
+    margin: 0;
+    padding: 0;
+}
 h1 {
     text-align: center;
 }
 form {
-    display: flex;
-    flex-direction: column;
-    background-color: #E6E6E6;
+    margin: 0 auto;    
     width: 500px;
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -48,4 +52,35 @@ a {
 
 button:hover, a:hover {
     opacity: 0.5;
+}
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ---------------------------------
+ユーザー登録に適用
+--------------------------------- */
+.userForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #E6E6E6;
+}
+
+/* ---------------------------------
+タスク登録に適用
+--------------------------------- */
+.taskForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #99FF99;
+}
+
+/* ---------------------------------
+タイマー登録に適用
+--------------------------------- */
+.timerSettingsForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #007FFF;
 }
