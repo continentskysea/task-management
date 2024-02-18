@@ -59,6 +59,49 @@ button:hover, a:hover {
 --------------------------------- */
 
 /* ---------------------------------
+ログインに適用
+--------------------------------- */
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #E6E6E6;
+    margin-top: 50px;
+    text-align: center;
+}
+#errorMsg {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.loginForm label {
+    margin-left: 60px;
+}
+
+#login-button input {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 100px;
+    padding-right: 6px;
+    border-radius: 10px;
+}
+#login-button input:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#mailInput, #passwordInput {
+    margin-left: 70px;
+    width: 350px;
+    height: 25px;
+
+}
+
+
+/* ---------------------------------
 ユーザー登録に適用
 --------------------------------- */
 .userForm {
