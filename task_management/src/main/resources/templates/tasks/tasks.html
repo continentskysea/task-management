@@ -13,7 +13,6 @@
 			<thead>
 				<tr>
 					<th>選択</th>
-					<th>ID</th>
 					<th>タスク</th>
 					<th>優先順位</th>
 					<th>期日</th>
@@ -24,7 +23,7 @@
 				<tr th:each="task : ${listTasks}">
 					<!-- チェックボックスを追加 -->
 					<td><input class="taskCheckbox" type="checkbox" th:value="${task.id}" th:name="taskIds" /></td>
-					<td th:text="${task.id}"></td>
+					<td hidden th:text="${task.id}"></td>
 					<td th:text="${task.name}"></td>
 					<td th:text="${task.priority}"></td>
 					<td th:text="${task.dueDate}"></td>
@@ -43,9 +42,9 @@
 		<!-- 休憩タイマーの表示 -->
 		<button class="timersRelation" th:onclick="redirectToBreakTimer()">休憩タイマー</button>
 		<!-- 削除ボタンの表示 -->
-		<button type="submit">削除</button>
+		<button class="taskRelation" type="submit">削除</button>
 		<!-- 編集ボタンの追加 -->
-		<button th:onclick="redirectToEditTask()">編集</button>
+		<button class="taskRelation" th:onclick="redirectToEditTask()">編集</button>
 		<a th:href="@{/getTask}">戻る</a>
 	</div>
 </body>
