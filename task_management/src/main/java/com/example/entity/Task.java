@@ -33,6 +33,9 @@ public class Task {
 	@Column(name = "DUE_DATE") // 期日
 	private LocalDate dueDate;
 	
+	@Column(name = "USER_ID")
+	private Integer userId; // ユーザーID
+	
 	// アクセサメソッド
 	
 	// タスクIDを取得する
@@ -77,5 +80,16 @@ public class Task {
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}	
+	
+	
+	// ユーザーIDを取得する
+	public Integer getUserId() {
+		return this.userId;
+	}
+	
+	// ユーザーIDをセットする
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	
 }

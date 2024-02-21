@@ -18,15 +18,17 @@ import com.example.entity.Task;
  *
  */
 import com.example.service.TaskService;
+import com.example.service.UserService;
 @Controller
 public class TaskController {
 	
 	private final TaskService taskService;
-	
+	private final UserService userService;
 	// コンストラクタインジェクション
 	@Autowired
-	public TaskController(TaskService taskService) {
+	public TaskController(TaskService taskService, UserService userService) {
 		this.taskService = taskService;
+		this.userService = userService;
 	}
 	
 	/**
@@ -61,6 +63,13 @@ public class TaskController {
 	 */
 	@GetMapping("/listTasks") // URLの紐づけ
 	public String listTasks(Model model) {
+		// 現在ログインしているユーザーのIDを取得する
+		Integer currentUserId = userService.getCurrentUserId();
+		// タスクのuserIdにログインしているユーザーのidをセットする
+		Task task = new Task();
+		
+		
+		
 		// 全タスク情報の取得
 		List<Task> listTasks = this.taskService.listAll();
 		model.addAttribute("listTasks", listTasks );
