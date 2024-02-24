@@ -55,26 +55,19 @@ public class TaskController {
 		// タスク登録画面を表示
 		return "tasks/taskForm";
 	}	
-	
+
 	/**
-	 * タスク一覧画面表示
+	 * ユーザー別タスク一覧画面表示
 	 * 
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/listTasks") // URLの紐づけ
 	public String listTasks(Model model) {
-		// 現在ログインしているユーザーのIDを取得する
+		// ログインしているユーザーidを取得する
 		Integer currentUserId = userService.getCurrentUserId();
-		// タスクのuserIdにログインしているユーザーのidをセットする
-		Task task = new Task();
-		
-		
-		
-		// 全タスク情報の取得
-		List<Task> listTasks = this.taskService.listAll();
-		model.addAttribute("listTasks", listTasks );
-		// タスク一覧画面を表示
-		return "tasks/tasks";
+		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
+		model.addAttribute("listTasks", listTasks);
+		return "tasks/tasks";	
 	}
 	
 	/**

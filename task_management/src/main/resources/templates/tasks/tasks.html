@@ -23,7 +23,6 @@
 				<tr th:each="task : ${listTasks}">
 					<!-- チェックボックスを追加 -->
 					<td><input class="taskCheckbox" type="checkbox" th:value="${task.id}" th:name="taskIds" /></td>
-					<td hidden th:text="${task.id}"></td>
 					<td th:text="${task.name}"></td>
 					<td th:text="${task.priority}"></td>
 					<td th:text="${task.dueDate}"></td>

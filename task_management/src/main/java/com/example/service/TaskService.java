@@ -17,21 +17,22 @@ import com.example.repository.TaskRepository;
 @Service
 public class TaskService {
 	private final TaskRepository taskRepository;
-	
+	private final UserService userService;
 	
 	// コンストラクタインジェクション
 	@Autowired
-	public TaskService(TaskRepository taskRepository) {
+	public TaskService(TaskRepository taskRepository, UserService userService) {
 		this.taskRepository = taskRepository;
+		this.userService = userService;
 	}
-	
+		
 	/**
-	 * タスク情報全件取得
-	 * 
-	 * @return タスク情報のリスト
+	 * ユーザー別タスク情報全件取得	
+	 * @param userId
+	 * @return ユーザー別タスク情報のリスト
 	 */
-	public List<Task> listAll() {
-		return this.taskRepository.findAll();
+	public List<Task> getTasksByUserId(Integer userId) {
+		return taskRepository.findByUserId(userId);
 	}
 	
 	/**
@@ -41,6 +42,10 @@ public class TaskService {
 	 * @return 保存したタスク情報
 	 */
 	public Task save(Task task) {
+		// 現在ログインしているユーザーのIDを取得する
+		Integer currentLoggedInUserId = userService.getCurrentUserId();
+		// 取得してきたユーザーidをセットする
+		task.setUserId(currentLoggedInUserId);
 		return taskRepository.save(task);
 	}
 	
@@ -53,19 +58,6 @@ public class TaskService {
 	public Optional<Task> get(Integer id) {
 		return taskRepository.findById(id);
 	}
-	
-	
-	/**
-	 * IDに紐づくタスク情報取得処理
-	 * 
-	 * @param id タスクID
-	 * @return タスク情報
-	 */
-	/*
-	public Task get(Integer id) {
-		return taskRepository.findById(id).get();
-	}*/
-	
 	
 	/**
 	 * IDに紐づくタスク情報削除処理
