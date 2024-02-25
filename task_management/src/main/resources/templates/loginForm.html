@@ -8,7 +8,10 @@
 <body>
 	<!-- パラメータのチェック -->
 	<div id="errorMsg" th:if="${param.error}">
-	<p>ユーザー名またはパスワードが違います。</p>
+		<p>ユーザー名またはパスワードが違います。</p>
+		<form th:action="@{/loginForm}" method="get">
+			<input id="loginError" type="submit" value="戻る">
+		</form>
 	</div>
 	<form th:action="@{/loginForm}" method="post">
 		<div class="loginForm">
