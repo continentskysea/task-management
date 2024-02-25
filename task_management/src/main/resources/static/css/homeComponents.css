@@ -1,0 +1,181 @@
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+form {
+    margin: 0 auto;
+    text-align: center;
+}
+
+input {
+    font-size: 16px;
+    margin: 15px 0;
+    width: 250px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+input:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ------------------------------------------------------------------
+home.htmlに適用
+------------------------------------------------------------------ */
+
+
+#homeHeader {
+    background-color: #E6E6E6;
+    margin: 0 auto;
+}
+
+#homeHeader h1 {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+
+/* ---------------------------------
+管理関連ボタン群に適用
+--------------------------------- */
+#managementRelation {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #E6E6E6;
+}
+/* ---------------------------------
+タスク管理ボタンに適用
+--------------------------------- */
+#getTask {
+    background-color: #99FF99;
+}
+/* ---------------------------------
+タイマー管理ボタンに適用
+--------------------------------- */
+#getTimer {
+    background-color: #007FFF;
+    
+}
+/* ---------------------------------
+ユーザー関連ボタン群に適用
+--------------------------------- */
+
+#userRelation {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #E6E6E6;
+}
+/* ---------------------------------
+新規登録ボタンに適用
+--------------------------------- */
+#getCreateUser, #logut {
+    background-color: #f0f0f0;
+}
+
+
+/* ------------------------------------------------------------------
+taskHome.html
+------------------------------------------------------------------ */
+
+#taskMgmtHeader {
+    background-color: #99FF99;
+    margin: 0 auto;
+}
+
+#taskMgmtHeader h1 {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+/* ---------------------------------
+
+--------------------------------- */
+#taskHome {
+    display: flex;
+    background-color: #99FF99;
+    height: 500px;
+    margin: 0 auto;
+}
+
+
+a {
+    padding: 12.465px 20.2675px;
+    margin-left: 30px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    text-align: center;
+    border: solid 1px;
+    color: #000000;
+}
+
+/* ---------------------------------
+ログアウトボタンに適用
+--------------------------------- */
+
+#createTask, #listTasks, #getHome{
+    width: 250px;
+    height: 100px;
+    margin: 50px;
+}
+
+#createTask, #listTasks{
+    background-color: #00CCCC;
+    
+}
+
+/* ------------------------------------------------------------------
+timerHome.html
+------------------------------------------------------------------ */
+
+#timerHomeHedear {
+    background-color: #007FFF;
+}
+#timerHomeHedear h1 {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+#timerHome {
+    background-color: #007FFF;
+}
+
+#firstContainer {
+    display: flex;
+}
+
+#firstContainer form {
+    margin:0 auto;
+}
+
+#secondContainer {
+    display: flex;
+}
+#secondContainer form {
+    margin: 0 auto;
+}
+
+
+#getTimerSetting, #getStartTimer, #getRestTimer {
+    width: 250px;
+    height: 100px;
+    margin: 50px;
+    background-color: #3399FF; 
+    margin-left: 50px;
+}

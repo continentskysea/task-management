@@ -2,29 +2,37 @@
 <html 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 <head>
 	<meta charset="UTF-8">
 	<title>ホーム画面</title>
 </head>
 <body>
-	<h1>タスク集中管理</h1>
-	
-	<!-- タスク管理画面遷移 -->
-	<form th:action="@{/getTask}" method="get">
-		<input type="submit" value="タスク管理" />
-	</form>
-	<!-- タイマー管理画面遷移 -->
-	<form th:action="@{/getTimer}" method="get">
-		<input type="submit" value="タイマー管理" />
-	</form>
-	<!-- ユーザ新規登録画面遷移 -->
-	<form th:action="@{/getCreateUser}" method="get">
-		<input type="submit" value="新規登録" />
-	</form>
-	<!-- ログアウト -->
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="ログアウト" />
-	</form>
-
+	<!-- ヘッダー -->
+	<div id="homeHeader">
+		<h1>タスク集中管理</h1>
+	</div>
+	<!-- 管理関係のボタン群 -->
+	<div id="managementRelation">
+		<!-- タスク管理画面遷移 -->
+		<form th:action="@{/getTask}" method="get">
+			<input id="getTask" type="submit" value="タスク管理" />
+		</form>
+		<!-- タイマー管理画面遷移 -->
+		<form th:action="@{/getTimer}" method="get">
+			<input id="getTimer" type="submit" value="タイマー管理" />
+		</form>
+	</div>
+	<!-- ユーザー関係のボタン群 -->
+	<div id="userRelation">
+		<!-- ユーザ新規登録画面遷移 -->
+		<form th:action="@{/getCreateUser}" method="get">
+			<input id="getCreateUser" type="submit" value="新規登録" />
+		</form>
+		<!-- ログアウト -->
+		<form th:action="@{/logout}" method="post">
+			<input id="logout" type="submit" value="ログアウト" />
+		</form>
+	</div>
 </body>
 </html>

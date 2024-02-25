@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>タスク管理</title>
+	<meta charset="UTF-8">
+	<title>タスク管理</title>
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 </head>
 <body>
-	<h1>タスク管理</h1>
-	
-	
-	<!-- タスク登録画面遷移 -->
-	<form th:action="@{/createTask}" method="get">
-		<input type="submit" value="タスク登録" />
-	</form>
-	<!-- タスク一覧表示画面遷移 -->
-	<form th:action="@{/listTasks}" method="get">
-		<input type="submit" value="タスク一覧" />
-	</form>
-	<!-- 初期画面遷移 -->
-	<div class="btn">
-		<a th:href="@{/home}" >戻る</a>
+	<div id="taskMgmtHeader">
+		<h1>タスク管理</h1>
 	</div>
-</body>
+	<div id="taskHome">
+		<!-- タスク登録画面遷移 -->
+		<form id="createTaskForm" th:action="@{/createTask}" method="get">
+			<input id="createTask" type="submit" value="タスク登録" />
+		</form>
+		<!-- タスク一覧表示画面遷移 -->
+		<form id="listTasksForm" th:action="@{/listTasks}" method="get">
+			<input id="listTasks" type="submit" value="タスク一覧" />
+		</form>
+		<!-- 初期画面遷移 -->
+		<form th:action="@{/home}" method="get">
+			<input id="getHome" type="submit" value="戻る" />
+		</form>
+	</div>
+	</body>
 </html>
