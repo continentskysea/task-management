@@ -3,22 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>集中タイマー</title>
+	<link rel="stylesheet" th:href="@{/css/timerDisplay.css}">
 </head>
 <body>
-
-	<h1>集中タイマー</h1>
-
-		
-		<div>
-			<label>タスク名</label>
-			<p th:text="${task.name}"></p>
-		</div>
-		<div>
-			<label>集中時間</label>
-			<p th:text="${timersSetting.getFocusTime}"></p>	
-		</div>
-
-	<a th:href="@{/listTasks}">タスク一覧へ</a>
+	<div id="timerDisplayHeader">
+		<h1>集中タイマー</h1>
+	</div>
+	<form id="timerDisplayForm" th:action="@{/startTimer}" method="post">
+			<div id="timerDisplayWrapper">
+				<div id="taskContent">
+					<label>タスク名</label>
+					<p th:text="${task.name}"></p>
+				</div>
+				<div id="timerContent">
+					<label>集中時間</label>
+					<p th:text="${timersSetting.getFocusTime}"></p>	
+				</div>
+				<input id="startButton"  type="submit" value="起動">
+				<a th:href="@{/listTasks}">戻る</a>
+			</div>
+		</form>
 
 </body>
 </html>
