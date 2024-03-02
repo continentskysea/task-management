@@ -11,8 +11,6 @@
 	</div>
 	<form id="timerDisplayForm" th:action="@{/startTimer}" method="post">
 			<div id="timerDisplayWrapper">
-				<!-- ログ登録用にタイマーidを送信 -->
-				<input type="hidden" th:value="{timersSetting.id}">
 				<div id="taskContent">
 					<label>タスク名</label>
 					<p th:text="${task.name}"></p>
