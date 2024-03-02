@@ -11,6 +11,8 @@
 	</div>
 	<form id="timerDisplayForm" th:action="@{/startTimer}" method="post">
 			<div id="timerDisplayWrapper">
+				<!-- ログ登録用にタイマーidを送信 -->
+				<input type="hidden" th:value="{timersSetting.id}">
 				<div id="taskContent">
 					<label>タスク名</label>
 					<p th:text="${task.name}"></p>
@@ -19,6 +21,8 @@
 					<label>集中時間</label>
 					<p th:text="${timersSetting.getFocusTime}"></p>	
 				</div>
+				<!-- タイマーの種類判定用に送信 -->
+				<input type="hidden" value="1">
 				<input id="startButton"  type="submit" value="起動">
 				<a th:href="@{/listTasks}">戻る</a>
 			</div>
