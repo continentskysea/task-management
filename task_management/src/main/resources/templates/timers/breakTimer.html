@@ -21,7 +21,7 @@
 					<p th:text="${timersSetting.getBreakTime}"></p>	
 				</div>
 				<!-- タイマーの種類 -->
-				<input type="hidden" value="2">
+				<input type="hidden" name="timerType" value="2">
 				<input id="startButton"  type="submit" value="休憩">
 				<a th:href="@{/listTasks}">戻る</a>
 			</div>

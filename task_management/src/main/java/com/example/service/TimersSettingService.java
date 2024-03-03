@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,17 @@ public class TimersSettingService {
 	public TimersSettingService(TimersSettingRepository timersSettingRepository, UserService userService) { 
 		this.timersSettingRepository = timersSettingRepository;
 		this.userService = userService;
+	}
+	
+	/**
+	 * タイマー情報検索機能
+	 * 
+	 * @param 
+	 * 
+	 */
+	public TimersSetting findById(Integer settingId) {
+		Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
+		return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
 	}
 	
 	/**
