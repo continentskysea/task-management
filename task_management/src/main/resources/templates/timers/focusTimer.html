@@ -22,8 +22,13 @@
 				</div>
 				<!-- タイマーの種類判定用に送信 -->
 				<input type="hidden" name="timerType" value="1">
-				<input id="startButton"  type="submit" value="起動">
-				<a th:href="@{/listTasks}">戻る</a>
+				<!-- スタートボタン -->
+				<input id="startButton"  type="submit" value="起動" />
+				<!-- ストップボタン -->
+				<input  id="stopButton" type="submit" value="停止" disabled/>
+				<a id="listTasks" th:href="@{/listTasks}">戻る</a>
+				<!-- リセットボタン -->
+				<a id="resetTimer" th:href="@{/getFocusTimer}" onclick="location.reload();" disabled>リセット</a>
 			</div>
 		</form>
 

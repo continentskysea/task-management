@@ -59,14 +59,24 @@ a:hover {
 }
 
 
-#startButton {
+#startButton, #stopButton {
     background-color: #007FFF;
 }
 
 
-#startButton:hover {
+#startButton:hover, #stopButton:hover {
     cursor: pointer;
     opacity: 0.5;
+}
+
+/* 停止ボタンが非活性化の時(初期状態) */
+#stopButton:disabled {
+	display: none;
+}
+
+/* 起動ボタンが非活性化の時(起動ボタンがクリックされた時)*/
+#startButton:disabled {
+	display: none;
 }
 
 #taskContent {
@@ -101,10 +111,14 @@ a:hover {
     margin: 0px 0px;
 }
 
-#startButton {
+#startButton, #stopButton {
     width: 100px;
     height: 50px;
     border-radius: 10px;
 }
 
 
+#resetTimer {
+	pointer-events: none;
+	display: none;
+}
