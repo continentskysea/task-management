@@ -9,8 +9,9 @@
 	<div id="timerDisplayHeader">
 		<h1>集中タイマー</h1>
 	</div>
-	<form id="timerDisplayForm" th:action="@{/startTimer}" method="post">
+	<div id="timerDisplayForm">
 			<div id="timerDisplayWrapper">
+				<input type="hidden" name="taskId" th:vale="${task.id}">
 				<div id="taskContent">
 					<label>タスク名</label>
 					<p th:text="${task.name}"></p>
@@ -18,7 +19,7 @@
 				<div id="timerContent">
 					<label>集中時間</label>
 					<input type="hidden" name="settingId" th:value="${timersSetting.getId}" />
-					<p th:text="${timersSetting.getFocusTime}"></p>	
+					<p id="timerCount" th:text="${timersSetting.getFocusTime}"></p>	
 				</div>
 				<!-- タイマーの種類判定用に送信 -->
 				<input type="hidden" name="timerType" value="1">
@@ -28,9 +29,12 @@
 				<input  id="stopButton" type="submit" value="停止" disabled/>
 				<a id="listTasks" th:href="@{/listTasks}">戻る</a>
 				<!-- リセットボタン -->
-				<a id="resetTimer" th:href="@{/getFocusTimer}" onclick="location.reload();" disabled>リセット</a>
+				<input type="button" id="resetButton" onclick="location.reload();" value="リセット " disabled />
 			</div>
-		</form>
-
+	</div>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- javascriptの読み込み -->	
+	<script src='/js/timerActions.js'></script>
 </body>
 </html>

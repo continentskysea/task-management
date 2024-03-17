@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,16 +149,31 @@ public class TimerController {
 	 */
 	@PostMapping("/startTimer")
 	public String startTimer(
-			@RequestParam("focusTime") Integer focusTime, 
+			@RequestParam("taskId") Integer taskId,
+			@RequestParam("initialTime") String focusTime, 
 			@RequestParam("timerType") String timerType,  
 			@RequestParam("settingId") Integer settingId,
 			RedirectAttributes ra,
 			Model model) {
+
+		// 再描画用にタスクIDに紐づくタスク情報を取得
+		Optional<Task> optionalTask = taskService.get(taskId);
+		
+		if (optionalTask.isEmpty()) {
+			String errorMsg = "不正な操作がされました";
+			ra.addFlashAttribute("errorMsg", errorMsg);
+			return "redirect:/listTasks";
+		}
+		
+		Task task = optionalTask.get();
+		TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer();
+		// スタートタイム登録用に型変換をする
+		LocalDateTime startTime = LocalDateTime.parse(focusTime);
 		// ログ登録用にオブジェクトを生成する
 		TimerLog timerLog = new TimerLog();
 		
 		// 開始時間を設定する
-		timerLog.setStartTime(focusTime);
+		timerLog.setStartTime(startTime);
 		// 集中タイマーか休憩タイマーを判定する
 		if (timerType == "1") {
 			timerLog.setTimerType("集中");
@@ -180,7 +196,23 @@ public class TimerController {
 		// ログに登録する
 		timerLogService.save(timerLog);
 		
+		ra.addAttribute("task",task);
+		ra.addAttribute("timersSetting", latestTimersSetting);
+		ra.addAttribute("settingId", settingId);
+		ra.addAttribute("focusTime", focusTime);
+		ra.addAttribute("timerType", timerType);
+		
 		return "redirect:/focusTimer";
+	}
+	
+	/**
+	 * タイマーリセット
+	 * 
+	 */
+	@PostMapping("/resetTimer")
+	public String resetTimer() {
+		
+		return "redirect:/getFocusTimer/{id}";
 	}
 }
 

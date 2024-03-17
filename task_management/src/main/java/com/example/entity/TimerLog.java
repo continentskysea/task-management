@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,10 +28,10 @@ public class TimerLog {
 	private Integer settingId; // タイマー設定ID(外部キー)
 	
 	@Column(name = "START_TIME")
-	private Integer startTime; // 開始時間
+	private LocalDateTime startTime; // 開始時間
 	
 	@Column(name = "END_TIME")
-	private Integer endTime; // 終了時間
+	private LocalDateTime endTime; // 終了時間
 	
 	@Column(name = "TIMER_TYPE")
 	private String timerType; // タイマーのタイプ(集中 or 休憩)
@@ -57,21 +59,21 @@ public class TimerLog {
 	
 	
 	// 開始時間
-	public Integer getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 	
-	public void setStartTime(Integer startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 	
 	
 	// 終了時間
-	public Integer getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 	
-	public void setEndTime(Integer endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 	

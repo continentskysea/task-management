@@ -59,18 +59,22 @@ a:hover {
 }
 
 
-#startButton, #stopButton {
+#startButton, #stopButton, #resetButton{
     background-color: #007FFF;
 }
 
 
-#startButton:hover, #stopButton:hover {
+#startButton:hover, #stopButton:hover, #resetButton:hover {
     cursor: pointer;
     opacity: 0.5;
 }
 
 /* 停止ボタンが非活性化の時(初期状態) */
 #stopButton:disabled {
+	display: none;
+}
+
+#listTasks[disabled] {
 	display: none;
 }
 
@@ -111,12 +115,15 @@ a:hover {
     margin: 0px 0px;
 }
 
-#startButton, #stopButton {
+#startButton, #stopButton, #resetButton {
     width: 100px;
     height: 50px;
     border-radius: 10px;
 }
 
+#resetButton:disabled {
+	display: none;
+}
 
 #resetTimer {
 	pointer-events: none;
