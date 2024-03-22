@@ -4,45 +4,23 @@
 
 // 起動ボタンが押された時の処理
 $("#startButton").on("click", function() {
-	// タスクIDを取得
-	let taskId = document.getElementsByName("taskId");
+		
 	// 表示されている要素を取得する
 	let timerElement = document.getElementById("timerCount");
 	// 表示されている初期時間を取得する
 	let initialTime = timerElement.textContent;
-	// タイマーの種類を取得
-	let timerType = document.getElementsByName("timerType");
-	// タイマー設定IDを取得
-	let settingId = document.getElementsByClassName("settingId");
+	// 初期化用の時間
+	const immutableInitialTime = timerElement.textContent;
 
-	// ストップボタンを活性化する
+
+	// 停止ボタンを活性化する
 	$("#stopButton").prop("disabled", false);
-	// ストップボタンが活性化された場合、スタートボタンを非活性する
+	// 停止ボタンが活性化された場合
 	if($("#stopButton").prop("disabled", false)) {
-		$("#startButton").prop("disabled", true);
-		$("#listTasks").attr("disabled", true);
-		$("#resetButton").prop("disabled", false);
+		$("#startButton").prop("disabled", true); // 起動ボタンの非活性
+		$("#listTasks").attr("disabled", true); // 戻るボタンの非活性
+		$("#resetButton").prop("disabled", false); // リセットボタンの活性
 	}
-	console.log(initialTime);
-	
-	$.ajax({
-		url: '/startTimer',
-		type: 'POST',
-		async: true,
-		data: JSON.stringify({
-			"taskId" :  taskId,
-			"initialTime" : initialTime,
-			"timerType" : timerType,
-			"settingId" : settingId
-		}),
-		success: function(data) {
-			console.log(data);
-		},
-		error: function(error) {
-			console.error('Ther, has been a problem with your fetch operation:', error); // エラーが発生した場合の処理
-		}
-		
-	});
 	
 	// : ごとに配列に格納
 	let timeArray = initialTime.split(":");
@@ -61,15 +39,30 @@ $("#startButton").on("click", function() {
 		timerElement.textContent = 
 			formatTime(hoursLeft)+ ":"+ formatTime(minLeft) + ":" + formatTime(secLeft);
 			
-		// タイマーを1秒減少
-		totalTimeInSeconds--;
 		
 		// 残り時間が0になったらフォームを自動的に送信
 		if (totalTimeInSeconds < 0) {
-			window.alert("時間です！再開しましょう！");
 			clearInterval(countDownTimerId);
-			document.getElementById("timerDisplayForm").submit();
+			$("#stopButton").prop("disabled", true);
+			if ($("#stopButton").prop("disabled")) {
+				$("#startButton").prop("disabled", false)
+				$("#listTasks").attr("disabled", false);
+				$("#resetButton").prop("disabled", true);
+				
+			}
+			window.alert("時間です！");
+			// : ごとに配列に格納
+			const immutableTimeArray = immutableInitialTime.split(":");
+			const immutableHours = parseInt(immutableTimeArray[0]);
+			const immutableMin = parseInt(immutableTimeArray[1]);
+			const immutableSec = parseInt(immutableTimeArray[2]);
+			// 初期登録時間を表示
+			timerElement.textContent = 
+				formatTime(immutableHours)+ ":"+ formatTime(immutableMin) + ":" + formatTime(immutableSec);
+			return; // タイマーを強制狩猟し、-1を描画させない
 		}
+		// タイマーを1秒減少
+		totalTimeInSeconds--;
 	}, 1000);
 	
 	// 停止ボタンがクリックされた時の処理
@@ -87,48 +80,9 @@ $("#startButton").on("click", function() {
 
 }); 
 
-// リセットボタンがクリックされた時の処理
-$("resetButton").on("click", function() {
-	// 初期値の取得
-	let initialTime = document.getElementById("timerCount").textContent;
-	
-	
-	// Ajaxリクエストを送信
-	$.ajax({
-		url: '/resetTimer', // urlの指定
-		type: 'POST', // メソッドの指定
-		contentType: 'application/json', // ヘッダーの形式
-		data: JSON.stringify({ 
-			"taskId" : taskId,
-			"initialTime": initialTime,
-			"timerType" : timerType,
-			"settingId" : settingId
-			
-		}), // データをJSON形式に変換
-		success: function(data) { // 成功時
-			console.log(data); // サーバーからレスポンスをログに出力
-		},
-		error: function(error) {
-			console.error('Ther, has been a problem with your fetch operation:', error); // エラーが発生した場合の処理
-		}
-		
-	});
-});
-
 // 時間のフォーマットを調整する関数
 function formatTime(time) {
 	return time < 10 ? "0" + time : time;
 }
 
 
-/**
-	必要な処理
-	タイマーとスタートする処理
-		=> 表示されている値を取得する
-		=> 取得したカウントダウンさせる
-		=> 9まで数字がカウントされたら再び0から計測される
-		=> 時間が来たらすべて0にする
-	タイマー止める
-	タイマーをリセットする
-	表示されている
- */

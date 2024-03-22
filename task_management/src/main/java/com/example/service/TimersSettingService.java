@@ -70,7 +70,7 @@ public class TimersSettingService {
 		// ログインしているユーザー情報のIDを取得する
 		Integer userId = userService.getCurrentUserId();
 		
-		return timersSettingRepository.findTopByUserIdOrderByRegistarAtDesc(userId);
+		return timersSettingRepository.findTopByUserIdOrderByIdDesc(userId);
 		
 	}
 }

@@ -13,7 +13,6 @@ h1 {
 
 a {
     padding: 10px 30px;
-    margin-left: 30px;
     background-color: #007FFF;
     text-decoration: none;
     text-align: center;
@@ -125,7 +124,7 @@ a:hover {
 	display: none;
 }
 
-#resetTimer {
-	pointer-events: none;
-	display: none;
+#resetButton, #listTasks {
+	margin-left: 30px;
 }
+
