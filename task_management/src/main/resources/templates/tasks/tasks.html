@@ -41,12 +41,14 @@
 		<!-- 休憩タイマーの表示 -->
 		<button class="timersRelation" th:onclick="redirectToBreakTimer()">休憩タイマー</button>
 		<!-- 削除ボタンの表示 -->
-		<button class="taskRelation" type="submit">削除</button>
+		<button class="taskRelation" type="submit" >削除</button>
 		<!-- 編集ボタンの追加 -->
 		<button class="taskRelation" th:onclick="redirectToEditTask()">編集</button>
 		<a th:href="@{/getTask}">戻る</a>
 	</div>
 </body>
+<!-- jquetyを読み込む -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- JavaScriptを読み込む -->
 <script src='/js/taskDelete.js'></script>
 <script src='/js/taskActions.js'></script>

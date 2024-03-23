@@ -1,22 +1,23 @@
 /**
  * タスク選択削除用
  */
- // チェックボックスのクラス名を取得
- let checkboxes = document.getElementsByClassName('taskCheckbox');
- // 削除フォームのidを取得
- let deleteForm = document.getElementById('deleteForm');
  
- 
- function updateDeleteLink() {
-	for (let i = 0; i< checkboxes.length; i++) {
-		if (checkboxes[i].checked) {
-			deleteForm.action = '/deleteTask/'+ checkboxes[i].value;
-			return;
-		}
-	}
-	deleteForm.action = '#';
-}
+ $(".taskRelation").on("click", function() {
+	// チェックボックスクラスを取得する
+	let checkedCheckboxes = $('.taskCheckbox:checked');
+	// 削除フォームidを取得する
+	let deleteForm = $('#deleteForm');
 	
-for (let i = 0; i < checkboxes.length; i++) {
-	checkboxes[i].addEventListener('change', updateDeleteLink);
-}
+	// タスクの選択数をチェック
+	if (checkedCheckboxes.length > 0) {
+		
+		// タスクを取得し、urlにリクエストする
+		let taskId = checkedCheckboxes[0].value;
+		deleteForm.attr('action', '/deleteTask/' + taskId); 
+		deleteForm.submit();// フォームを送信する
+	} else {
+		const errorMsg = "タスクが未選択です";
+		alert(errorMsg);
+		deleteForm.attr('action', '#');
+	}
+});
