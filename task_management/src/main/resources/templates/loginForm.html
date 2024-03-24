@@ -4,10 +4,12 @@
 	<meta charset="UTF-8">
 	<title>ログイン</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 </head>
 <body>
+	<h1>ログイン</h1>
 	<!-- パラメータのチェック -->
-	<div id="errorMsg" th:if="${param.error}">
+	<div th:if="${param.error}">
 		<p>ユーザー名またはパスワードが違います。</p>
 		<form th:action="@{/loginForm}" method="get">
 			<input id="loginError" type="submit" value="戻る">
@@ -23,7 +25,7 @@
 				<input type="submit" value="ログイン">
 			</div>
 		</div>
-		</form>
-
+	</form>
+	
 </body>
 </html>

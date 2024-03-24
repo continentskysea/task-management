@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.User;
 import com.example.service.UserService;
@@ -51,15 +52,19 @@ public class UserController {
 	 * @return ホーム画面
 	 */	 
 	@PostMapping("/createUser") // URLの紐づけ
-	public String createUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
-		// 入力に登録に不備があれば登録画面に戻る
-		if (bindingResult.hasErrors()) {
-			return "users/userForm";
-		}
-		
-		// ユーザー情報をDBに保存する
-		userService.save(user);
-		// 登録が成功すればホーム画面をリダイレクト表示
-		return "redirect:/home";
+	public String createUser(
+		@Valid @ModelAttribute("user") User user, 
+		BindingResult bindingResult, 
+		RedirectAttributes ra) {
+			// 入力に登録に不備があれば登録画面に戻る
+			if (bindingResult.hasErrors()) {
+				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
+				return "redirect:/getCreateUser";
+			}
+			
+			// ユーザー情報をDBに保存する
+			userService.save(user);
+			// 登録が成功すればホーム画面をリダイレクト表示
+			return "redirect:/home";
 	}
 }

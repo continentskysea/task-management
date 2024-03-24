@@ -37,13 +37,13 @@
 			<input class="timersRelation" type="submit" value="タイマー管理" />
 		</form>
 		<!-- 集中タイマー表示 -->
-		<button class="timersRelation" th:onclick="redirectToFocusTimer()">集中タイマー</button>
+		<button class="timersRelation focusTimerRelation">集中タイマー</button>
 		<!-- 休憩タイマーの表示 -->
-		<button class="timersRelation" th:onclick="redirectToBreakTimer()">休憩タイマー</button>
+		<button class="timersRelation breakTimerRelation">休憩タイマー</button>
 		<!-- 削除ボタンの表示 -->
-		<button class="taskRelation" type="submit" >削除</button>
+		<button class="taskRelation taskDeleteRelation" type="submit">削除</button>
 		<!-- 編集ボタンの追加 -->
-		<button class="taskRelation" th:onclick="redirectToEditTask()">編集</button>
+		<button class="taskRelation taskEditRelation">編集</button>
 		<a th:href="@{/getTask}">戻る</a>
 	</div>
 </body>

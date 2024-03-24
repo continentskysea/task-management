@@ -2,7 +2,7 @@
  * タスク選択削除用
  */
  
- $(".taskRelation").on("click", function() {
+ $(".taskDeleteRelation").on("click", function() {
 	// チェックボックスクラスを取得する
 	let checkedCheckboxes = $('.taskCheckbox:checked');
 	// 削除フォームidを取得する
