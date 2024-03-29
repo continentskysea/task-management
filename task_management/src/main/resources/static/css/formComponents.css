@@ -100,7 +100,6 @@ button:hover, a:hover {
 
 }
 
-#
 /* ---------------------------------
 エラーメッセージが表示されたら出現
 --------------------------------- */
@@ -140,4 +139,13 @@ button:hover, a:hover {
     display: flex;
     flex-direction: column;
     background-color: #007FFF;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}
+
+.error-message p {
+    font-size: 20px;
 }

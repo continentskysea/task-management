@@ -11,7 +11,7 @@
 	<div th:if="${error_message}" class="error-message">
 		<p th:text="${error_message}"></p>
 		<form th:action="@{/getCreateUser}" method="get">
-			<input id="loginError" type="submit" value="戻る">
+			<input id="loginError" type="submit" value="OK">
 		</form>
 	</div>
 	
@@ -22,15 +22,17 @@
 			<label>氏名</label>
 			<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
 			<label>Email</label>
-			<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" value="@example.com">
+			<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
 			<label>パスワード</label>
 			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
 			<div id="select-button">
-				<button type="submit">登録</button>
+				<button type="submit" id="createUserButton">登録</button>
 				<a th:href="@{/home}">キャンセル</a>
 			</div>
 		</div>
 	</form>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- ユーザー登録バリデーション用のJavaScriptファイルの読み込み -->
 	<script th:src="@{/js/validateUser.js}"></script>
 </body>

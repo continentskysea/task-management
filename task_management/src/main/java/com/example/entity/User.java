@@ -27,22 +27,22 @@ public class User {
 	private Integer id; // ユーザーID
 	
 	@NotBlank(message = "名前は必須です")
-	@Size(min = 1, max = 12, message = "名前は1文字以上12文字以内で入力してください")
+	@Size(min = 3, max = 12, message = "名前は3文字以上12文字以内で入力してください")
 	@Pattern(regexp = "[\\p{IsHan}}]*", message = "名前は漢字のみ入力したください")
 	@Column(name = "NAME")
 	private String name; // ユーザー名
 	
 	@NotBlank(message = "メールアドレスは必須です")
 	@Email(message = "メールアドレスの形式が正しくありません")
-	@Size(max = 20, message = "メールアドレスは20文字以内で入力してください")
+	@Size(max = 50, message = "メールアドレスは50文字以内で入力してください")
 	@Column(name = "EMAIL")
 	private String email; // メールアドレス
 	
 	@NotBlank(message = "パスワードは必須です")
-	@Size(min = 1, max = 12, message = "パスワードは1文字以上12文字以内で入力してください")
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$", message = "パスワードは英数字の大文字小文字を含む必要があります")
+//	@Size(max = 12, message = "パスワードは1文字以上12文字以内で入力してください")
+	@Pattern(regexp = "^(?=.*[a-z0-9]).*", message = "パスワードは小文字と数字のみを含む必要があります")
 	@Column(name = "PASSWORD")
-	private String password; // パスワード
+	private String password; // -^パスワード
 	
 	// アクセサメソッド
 	public Integer getId() {

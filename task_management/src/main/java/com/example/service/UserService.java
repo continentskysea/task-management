@@ -4,6 +4,7 @@ package com.example.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -22,10 +23,12 @@ import com.example.repository.UserRepository;
 @Service
 public class UserService implements Validator{
 	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	public UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 	}
 	
 	
@@ -37,7 +40,9 @@ public class UserService implements Validator{
 	 * 
 	 */
 	public User save(User user) {
-		 return userRepository.save(user);
+		// パスワードをハッシュ化
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		return userRepository.save(user);
 	}
 	
 	/**
@@ -71,8 +76,8 @@ public class UserService implements Validator{
 		User user = (User) target;
 		
 		// 名前のバリデーション
-		if (!user.getName().matches("[\\p{IsHan}\\p{IsDigit}]{1,12}")) {
-			errors.rejectValue("name", "name.invalid", "名前は1文字以上12文字以内の漢字または数字で入力してください");
+		if (!user.getName().matches("[\\p{IsHan}\\p{IsDigit}]{3,12}")) {
+			errors.rejectValue("name", "name.invalid", "名前は3文字以上12文字以内の漢字で入力してください");
 		}
 		
 		// メールアドレスのバリデーション
@@ -80,10 +85,10 @@ public class UserService implements Validator{
 			errors.rejectValue("email", "email.invalid", "メールアドレスの形式が正しくありません");
 		}
 		
-		// パスワードのバリデーション
-		if (!user.getPassword().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$")) {
-			errors.rejectValue("password", "password.invalid", "パスワードは英数字の大文字小文字を含む必要があります");
-		}
+	    // パスワードのバリデーション
+	    if (!user.getPassword().matches("^(?=.*[a-z0-9]).*$")) {
+	        errors.rejectValue("password", "password.invalid", "パスワードは小文字と数字のみを含む必要があります");
+	    }
 	}
 	
 }

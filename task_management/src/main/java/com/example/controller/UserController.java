@@ -53,14 +53,20 @@ public class UserController {
 	 */	 
 	@PostMapping("/createUser") // URLの紐づけ
 	public String createUser(
-		@Valid @ModelAttribute("user") User user, 
-		BindingResult bindingResult, 
-		RedirectAttributes ra) {
-			// 入力に登録に不備があれば登録画面に戻る
-			if (bindingResult.hasErrors()) {
-				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
-				return "redirect:/getCreateUser";
-			}
+			@Valid @ModelAttribute("user") User user, 
+			BindingResult bindingResult, 
+			RedirectAttributes ra,
+			Model model
+		) {
+			System.out.println(user.getName());
+			System.out.println(user.getEmail());
+			System.out.println(user.getPassword());
+	        // 入力に登録に不備があれば登録画面に戻る(Entityで設定したバリデーションを使ってチェックする)
+	        if (bindingResult.hasErrors()) {
+	            // エラーメッセージを追加するのは、バリデーションエラーが発生した場合のみ
+	            ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
+	            return "redirect:/getCreateUser";
+	        }
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);
