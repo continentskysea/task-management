@@ -16,7 +16,7 @@
 	</div>
 	
 	<!-- 登録フォーム -->
-	<form th:action="@{/createUser}" method="post" th:object="${user}">
+	<form th:action="@{/registarUser}" method="post" th:object="${user}">
 		<div class="userForm">
             <input type="hidden" th:field="*{id}">
 			<label>氏名</label>

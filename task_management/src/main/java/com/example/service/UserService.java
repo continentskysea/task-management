@@ -112,5 +112,15 @@ public class UserService implements Validator{
 	        errors.rejectValue("password", "password.invalid", "パスワードは小文字と数字のみを含む必要があります");
 	    }
 	}
+
+
+	/**
+	 * ID情報に紐づくユーザー情報削除処理
+	 * 
+	 * @param id ユーザーID
+	 */
+	public void delete(Integer id) {
+		userRepository.deleteById(id);
+	}
 	
 }

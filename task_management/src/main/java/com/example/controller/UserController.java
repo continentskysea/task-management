@@ -46,7 +46,7 @@ public class UserController {
 	
 	
 	/**
-	 * ユーザー一覧表示
+	 * ユーザー一覧画面表示
 	 * 
 	 * @return ユーザー一覧画面
 	 */
@@ -58,7 +58,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ユーザー登録画面の表示
+	 * ユーザー登録画面表示
 	 * 
 	 * @return ユーザー登録画面
 	 */
@@ -93,7 +93,7 @@ public class UserController {
 			// エラーページ
 			return "redirect:/getListUsers";
 		} else {
-			
+
 			User user = optionalUser.get();
 			model.addAttribute("user", user);
 			return "users/userEdit";
@@ -101,14 +101,14 @@ public class UserController {
 	}
 
 	/**
-	 * ユーザー登録処理
+	 * ユーザー情報登録
 	 * 
 	 * @param user ユーザー情報
 	 * 
 	 * @return ユーザー一覧画面
 	 */	 
-	@PostMapping("/createUser") // URLの紐づけ
-	public String createUser(
+	@PostMapping("/registarUser") // URLの紐づけ
+	public String registarUser(
 			@Valid @ModelAttribute("user") User user, 
 			BindingResult bindingResult, 
 			RedirectAttributes ra,
@@ -128,5 +128,17 @@ public class UserController {
 			userService.save(user);
 			// 登録が成功すればホーム画面をリダイレクト表示
 			return "redirect:/home";
+	}
+
+	/**
+	 * ユーザー削除削除
+	 * 
+	 * @param id ユーザーID
+	 * @return ユーザー一覧画面
+	 */
+	@PostMapping("/deleteUser/{id}")
+	public String deleteUser(@PathVariable(name = "id") Integer id) {
+		userService.delete(id);
+		return "redirect:/getListUsers";
 	}
 }
