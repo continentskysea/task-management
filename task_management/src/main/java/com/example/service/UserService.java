@@ -2,6 +2,7 @@ package com.example.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -54,6 +55,16 @@ public class UserService implements Validator{
 		// パスワードをハッシュ化
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		return userRepository.save(user);
+	}
+
+
+	/**
+	 * idに紐づくユーザー情報取得処理
+	 * @param id ユーザーID
+	 * @return ユーザー情報
+	 */
+	public Optional<User> get(Integer id) {
+		return userRepository.findById(id);
 	}
 	
 	/**

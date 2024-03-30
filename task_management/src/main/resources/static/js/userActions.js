@@ -39,7 +39,7 @@ $(document).ready(function() {
 		チェックされた要素を調べる
 	 */
 	function getSelectedCheckbox() {
-		let checkboxes = $("input.taskCheckbox:checked");
+		let checkboxes = $("input.userCheckbox:checked");
 		let checkedCount = checkboxes.length;
 
 		// チェックの要素が1つだけか確認する
