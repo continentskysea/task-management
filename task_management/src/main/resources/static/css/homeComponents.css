@@ -73,6 +73,7 @@ home.htmlに適用
     background-color: #007FFF;
     
 }
+
 /* ---------------------------------
 ユーザー関連ボタン群に適用
 --------------------------------- */
@@ -82,12 +83,6 @@ home.htmlに適用
     margin: 0;
     padding: 0;
     background-color: #E6E6E6;
-}
-/* ---------------------------------
-新規登録ボタンに適用
---------------------------------- */
-#getCreateUser, #logut {
-    background-color: #f0f0f0;
 }
 
 
@@ -126,15 +121,7 @@ a {
     color: #000000;
 }
 
-/* ---------------------------------
-ログアウトボタンに適用
---------------------------------- */
 
-#createTask, #listTasks, #getHome{
-    width: 250px;
-    height: 100px;
-    margin: 50px;
-}
 
 #createTask, #listTasks{
     background-color: #00CCCC;
@@ -178,4 +165,32 @@ timerHome.html
     margin: 50px;
     background-color: #3399FF; 
     margin-left: 50px;
+}
+
+#getUserHome {
+    background-color: rgb(239, 229, 202); 
+}
+
+/* ------------------------------------------------------------------
+userHome.html
+------------------------------------------------------------------ */
+#userMgmtHeader {
+    background-color: rgb(235, 191, 107); /* 飴色 */
+}
+#userMgmtHeader h1 {
+    margin-bottom: 0px;
+}
+
+#userHome {
+    display: flex;
+    background-color: rgb(235, 191, 107); /* 飴色 */
+    height: 500px;
+    
+}
+#userHome form {
+    margin-top: 100px;
+}
+
+#createUser, #listUser {
+    background-color: rgb(239, 229, 202); /* 亜麻色 */
 }

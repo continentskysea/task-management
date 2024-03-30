@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import com.example.entity.User;
 import com.example.service.UserService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * ユーザーコントローラー
@@ -28,6 +32,28 @@ public class UserController {
 	@Autowired
 	public UserController(UserService userService) {
 		this.userService = userService; 
+	}
+	
+	/**
+	 * ユーザー管理初期画面表示
+	 * @return ユーザー管理初期画面
+	 */
+	@GetMapping("/getUserHome")
+	public String getUserHome() {
+		return "users/userHome";
+	}
+	
+	
+	/**
+	 * ユーザー一覧表示
+	 * 
+	 * @return ユーザー一覧画面
+	 */
+	@GetMapping("/getListUsers")	
+	public String getListUsers(Model model) {
+		List<User> listUsers = userService.findAll();
+		model.addAttribute("listUsers", listUsers);
+		return "users/users";
 	}
 	
 	/**
@@ -62,11 +88,11 @@ public class UserController {
 			System.out.println(user.getEmail());
 			System.out.println(user.getPassword());
 	        // 入力に登録に不備があれば登録画面に戻る(Entityで設定したバリデーションを使ってチェックする)
-	        if (bindingResult.hasErrors()) {
-	            // エラーメッセージを追加するのは、バリデーションエラーが発生した場合のみ
-	            ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
-	            return "redirect:/getCreateUser";
-	        }
+			if (bindingResult.hasErrors()) {
+				// エラーメッセージを追加するのは、バリデーションエラーが発生した場合のみ
+				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
+				return "redirect:/getCreateUser";
+			}
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);

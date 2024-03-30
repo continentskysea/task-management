@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー一覧</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/listComponents.css}">
+<!-- <link rel="stylesheet" th:href="@{/css/buttonComponents.css}"> -->
+<body>
+	<div id="listUserHeader">
+		<h1>ユーザー一覧</h1>
+	</div>
+	<!-- タスク削除機能用フォーム -->	
+	<form id="userDeleteForm" th:action="@{/deleteTask}" method="post">
+		<table>
+			<thead>
+				<tr>
+					<th>チェック</th>
+					<th>ユーザー名</th>
+					<th>メールアドレス</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- ユーザーリストの表示 -->
+				<tr th:each="user : ${listUsers}">
+					<!-- チェックボックスを追加 -->
+					<td><input class="userCheckbox" type="checkbox" th:value="${user.id}" th:name="userIds" /></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.email}"></td>
+				</tr>
+			</tbody>
+		</table>	
+	</form>
+	<div id="userButtonMenu">
+		<!-- ユーザー登録画面へ遷移 -->
+		<button id="createUser" type="submit">新規登録</button>
+		<!-- 新規登録タイマー表示 -->
+		<button id="editUser" type="submit">編集</button>
+		<!-- 削除ボタンの表示 -->
+		<button id="deleteUser" type="submit">削除</button>
+		<a id="userHome" th:href="@{/getUserHome}">戻る</a>
+	</div>
+</body>
+<!-- jquetyを読み込む -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- JavaScriptの読み込み -->
+<script src="/js/userActions.js"></script>
+<script src="/js/userDelete.js"></script>
+</html>

@@ -2,6 +2,7 @@
 <html 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<link rel="stylesheet" th:href="@{/css/buttonComponents.css}">
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 <head>
 	<meta charset="UTF-8">
@@ -25,9 +26,9 @@
 	</div>
 	<!-- ユーザー関係のボタン群 -->
 	<div id="userRelation">
-		<!-- ユーザ新規登録画面遷移 -->
-		<form th:action="@{/getCreateUser}" method="get">
-			<input id="getCreateUser" type="submit" value="新規登録" />
+		<!-- ユーザ管理画面遷移 -->
+		<form th:action="@{/getUserHome}" method="get">
+			<input id="getUserHome" type="submit" value="ユーザー管理" />
 		</form>
 		<!-- ログアウト -->
 		<form th:action="@{/logout}" method="post">

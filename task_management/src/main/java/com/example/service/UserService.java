@@ -1,6 +1,8 @@
 package com.example.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,6 +31,15 @@ public class UserService implements Validator{
 	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
+	}
+	
+	/**
+	 * ユーザー情報一覧取得処理
+	 * 
+	 * @return ユーザー一覧情報
+	 */
+	public List<User> findAll() {
+		return userRepository.findAll();
 	}
 	
 	

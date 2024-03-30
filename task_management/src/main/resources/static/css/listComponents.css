@@ -19,7 +19,6 @@ form {
     width: 1000px;
     border-radius: 15px;
     padding: 30px 60px 60px 30px;
-    /* text-align: center; */
 }
 
 table {
@@ -102,8 +101,6 @@ button:hover, a:hover {
 削除フォーム
 --------------------------------- */
 #deleteForm {
-    /* display: flex; */
-    /* flex-direction: column; */
     background-color: #99FF99;
     text-align: center;
 }
@@ -137,4 +134,44 @@ button:hover, a:hover {
 --------------------------------- */
 .taskRelation {
     background-color: #00CCCC;
+}
+
+
+/* ---------------------------------
+ユーザー一覧に適用
+--------------------------------- */
+#listUserHeader {
+    margin: 0 auto;
+    background-color: #deb068; /* 飴色 */
+    width: 1089px;
+}
+
+#listUserHeader h1 {
+    background-color: #deb068; /* 飴色 */
+    margin-bottom: 0px;
+    border-radius: 15px;
+}
+
+#userDeleteForm {
+    background-color: #deb068;
+    border-radius: 0px;
+}
+#userDeleteForm table {
+        background-color: rgb(235, 191, 107); /* 飴色 */
+}
+
+
+#userButtonMenu {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#createUser, #editUser, #deleteUser,  #userHome {
+    margin: 20px 20px 20px 20px;
+    background-color: rgb(239, 229, 202); /* 亜麻色 */
+}
+
+#userHome {
+    padding-top: 35px;
 }
