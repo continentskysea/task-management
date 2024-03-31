@@ -47,8 +47,8 @@ public class TaskController {
 	 * 
 	 * @return タスク登録画面
 	 */
-	@GetMapping("/createTask") // URLの紐づけ
-	public String createTask(Model model) {
+	@GetMapping("/getCreateTask") // URLの紐づけ
+	public String getCreateTask(Model model) {
 		// 新規登録用に空のタスク登録情報を作成
 		Task task = new Task();
 		model.addAttribute("task", task);

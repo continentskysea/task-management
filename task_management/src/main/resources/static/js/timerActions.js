@@ -78,11 +78,11 @@ $("#startButton").on("click", function() {
 		
 	});
 
+	// 時間のフォーマットを調整する関数
+	function formatTime(time) {
+		return time < 10 ? "0" + time : time;
+	}
 }); 
 
-// 時間のフォーマットを調整する関数
-function formatTime(time) {
-	return time < 10 ? "0" + time : time;
-}
 
 

@@ -32,24 +32,24 @@
 	</form>
 	<div id="listButtons">
 
-		<!-- タイマー管理画面遷移 -->
-		<form id="timerForm" th:action="@{/getTimer}" method="get">
-			<input class="timersRelation" type="submit" value="タイマー管理" />
-		</form>
-		<!-- 集中タイマー表示 -->
+		<!-- タイマー登録ボタンの表示 -->
+			<button class="timersRelation settingTimerRelation" type="submit" value="タイマー登録" />タイマー登録</button>
+		<!-- 集中タイマーボタンの表示 -->
 		<button class="timersRelation focusTimerRelation">集中タイマー</button>
-		<!-- 休憩タイマーの表示 -->
+		<!-- 休憩タイマーボタンの表示 -->
 		<button class="timersRelation breakTimerRelation">休憩タイマー</button>
-		<!-- 削除ボタンの表示 -->
-		<button class="taskRelation taskDeleteRelation" type="submit">削除</button>
+		<!-- タスク登録ボタンの表示 -->
+		<button class="taskRelation taskCreateRelation" type="submit">タスク登録</button>
 		<!-- 編集ボタンの追加 -->
 		<button class="taskRelation taskEditRelation">編集</button>
-		<a th:href="@{/getTask}">戻る</a>
+		<!-- 削除ボタンの表示 -->
+		<button class="taskRelation taskDeleteRelation" type="submit">削除</button>
+		<!-- 戻るボタンの表示 -->
+		<button class="taskRelation taskHomeRelation">戻る</button>
 	</div>
 </body>
 <!-- jquetyを読み込む -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- JavaScriptを読み込む -->
-<script src='/js/taskDelete.js'></script>
 <script src='/js/taskActions.js'></script>
 </html>
