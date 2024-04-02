@@ -3,6 +3,7 @@ package com.example.service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -72,5 +73,25 @@ public class TimersSettingService {
 		
 		return timersSettingRepository.findTopByUserIdOrderByIdDesc(userId);
 		
+	}
+
+	/**
+	 * ユーザー別タイマー情報全件取得処理
+	 * 
+	 * @param Id ユーザーID
+	 * @return ユーザー別登録タイマー情報リスト
+	 */
+	public List<TimersSetting> getTimersByUserId(Integer userId) {
+		return timersSettingRepository.findByUserId(userId);
+	}
+
+	/**
+	 * IDに紐づくタイマー情報取得処理
+	 * 
+	 * @param id タイマーID
+	 * @return タイマー情報
+	 */
+	public Optional<TimersSetting> get(Integer id) {
+		return timersSettingRepository.findById(id);
 	}
 }

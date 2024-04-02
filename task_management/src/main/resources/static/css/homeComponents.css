@@ -1,5 +1,5 @@
 /* ---------------------------------
-個別の適用
+共通の適用
 --------------------------------- */
 
 body {
@@ -29,6 +29,10 @@ input {
 input:hover {
     opacity: 0.5;
     cursor: pointer;
+}
+
+#getHome {
+    margin: 50px;
 }
 
 /* ---------------------------------
@@ -143,20 +147,12 @@ timerHome.html
     background-color: #007FFF;
 }
 
+
 #firstContainer {
     display: flex;
-}
-
-#firstContainer form {
     margin:0 auto;
 }
 
-#secondContainer {
-    display: flex;
-}
-#secondContainer form {
-    margin: 0 auto;
-}
 
 
 #getTimerSetting, #getStartTimer, #getRestTimer {

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>タイマー編集画面</title>
+	<title>タイマー編集</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
 <body>
@@ -16,7 +16,7 @@
 			<input type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
 			<div id="select-button">
 				<button type="submit">登録</button>
-				<a th:href="@{/getTimer}">キャンセル</a>
+				<a th:href="@{/getTimerlist}">キャンセル</a>
 			</div>
 		</div>
 	</form>
