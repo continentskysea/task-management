@@ -13,6 +13,8 @@ import com.example.entity.TimersSetting;
 import com.example.entity.User;
 import com.example.repository.TimersSettingRepository;
 
+import jakarta.validation.constraints.NotNull;
+
 /**
  * タイマー設定用サービスクラス
  * @author yoshi
@@ -93,5 +95,14 @@ public class TimersSettingService {
 	 */
 	public Optional<TimersSetting> get(Integer id) {
 		return timersSettingRepository.findById(id);
+	}
+
+	/**
+	 * タイマー情報削除処理
+	 * 
+	 * @param id タイマーID
+	 */
+	public void delete(Integer id) {
+		timersSettingRepository.deleteById(id);
 	}
 }

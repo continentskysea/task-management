@@ -46,6 +46,7 @@ button:hover, a:hover {
     width: 1500px;
     display: flex;
     margin: 0 auto;
+    justify-content: center;
 }
 
 #listButtons button {
@@ -145,6 +146,7 @@ button:hover, a:hover {
 #timerDeleteForm {
     width: 1500px;
     background-color: #007FFF;
+    margin: 0 auto;
 }
 
 #timerDeleteForm th, #timerDeleteForm td {

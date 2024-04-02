@@ -15,6 +15,8 @@ import com.example.entity.TimersSetting;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 /**
@@ -175,6 +177,18 @@ public class TimerController {
 			return "timers/timerEdit";		
 		}
 	}
+
+	/**
+	 * タイマー削除処理
+	 * 
+	 * @param id タイマーid
+	 */
+	@PostMapping("/delteTimer/{id}")
+	public String postMethodName(@PathVariable(name = "id") Integer id) {
+		timersSettingService.delete(id);
+		return "redirect:/getTimerlist";
+	}
+	
 	
 }
 
