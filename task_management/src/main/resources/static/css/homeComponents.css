@@ -96,7 +96,6 @@ taskHome.html
 
 #taskMgmtHeader {
     background-color: #99FF99;
-    margin: 0 auto;
 }
 
 #taskMgmtHeader h1 {
@@ -108,28 +107,19 @@ taskHome.html
 
 --------------------------------- */
 #taskHome {
-    display: flex;
     background-color: #99FF99;
-    height: 500px;
-    margin: 0 auto;
-}
-
-
-a {
-    padding: 12.465px 20.2675px;
-    margin-left: 30px;
-    background-color: #f0f0f0;
-    text-decoration: none;
-    text-align: center;
-    border: solid 1px;
-    color: #000000;
+    height: 350px;
 }
 
 
 
-#createTask, #listTasks{
+#getCreateTask, #getListTasks {
     background-color: #00CCCC;
     
+    width: 250px;
+    height: 100px;
+    margin: 50px;
+    margin-left: 50px;
 }
 
 /* ------------------------------------------------------------------

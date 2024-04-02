@@ -61,8 +61,8 @@ public class TaskController {
 	 * 
 	 * @return タスク一覧画面
 	 */
-	@GetMapping("/listTasks") // URLの紐づけ
-	public String listTasks(Model model) {
+	@GetMapping("/getListTasks") // URLの紐づけ
+	public String getListTasks(Model model) {
 		// ログインしているユーザーidを取得する
 		Integer currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
@@ -82,7 +82,7 @@ public class TaskController {
 		// タスクサービスを呼び出す
 		taskService.save(task);
 		// タスク一覧画面をリダイレクト表示
-		return "redirect:/listTasks";
+		return "redirect:/getListTasks";
 	}
 	
 	/**
@@ -92,10 +92,10 @@ public class TaskController {
 	 * 
 	 * @return タスク編集画面
 	 */
-	@GetMapping("/editTask/{id}")
-	public String editTask(@PathVariable(name = "id")  Integer id, Model model) {
+	@GetMapping("/getEditTask/{id}")
+	public String getEditTask(@PathVariable(name = "id")  Integer id, Model model) {
 		if (id == null) {
-			return "redirect:/listTasks";
+			return "redirect:/getListTasks";
 		}
 				
 		// タスクIDに紐づくタスク情報を取得
@@ -103,7 +103,7 @@ public class TaskController {
 
 		if (optionalTask.isEmpty()) {
 			// エラーページ
-			return "redirect:/listTasks";
+			return "redirect:/getListTasks";
 		} else {
 			Task task = optionalTask.get();
 			// 取得したタスク情報を画面に渡す
@@ -122,7 +122,7 @@ public class TaskController {
 	@PostMapping("/deleteTask/{id}")
 	public String deleteTask(@PathVariable(name = "id") Integer id) {
 		taskService.delete(id);
-		return "redirect:/listTasks";
+		return "redirect:/getListTasks";
 	}
 	
 }

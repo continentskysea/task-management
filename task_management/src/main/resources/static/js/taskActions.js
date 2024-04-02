@@ -56,7 +56,7 @@
 	        // 選択されたタスクの情報を取得
 	        let taskId = $(selectedCheckbox).val();
 	        // タスク情報を使って編集画面にリダイレクト
-	        window.location.href = '/editTask/' + taskId;
+	        window.location.href = '/getEditTask/' + taskId;
 	    }
 	});
 	/**
@@ -86,14 +86,14 @@
 		let deleteForm = $('#deleteForm');
 		
 		// タスクの選択数をチェック
-		if (checkedCheckboxes.length > 0) {
+		if (checkedCheckboxes.length === 1) {
 			
 			// タスクを取得し、urlにリクエストする
 			let taskId = checkedCheckboxes[0].value;
 			deleteForm.attr('action', '/deleteTask/' + taskId); 
 			deleteForm.submit();// フォームを送信する
 		} else {
-			const errorMsg = "タスクが未選択です";
+			const errorMsg = "タスクが未選択あるいは複数選択されています";
 			alert(errorMsg);
 			deleteForm.attr('action', '#');
 		}

@@ -2,23 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>タイマー編集画面</title>
-	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+	<title>タスク編集</title>
+<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
 <body>
-	<h1>タイマーをセットします</h1>
+	<h1>タスク編集</h1>
 	
-	<form th:action="@{/save}" method="post" th:object="${timersSetting}">
-		<div class="timerSettingsForm">
-			<label>集中タイマー</label>
-			<input type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
-			<label>休憩タイマー</label>
-			<input type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+	<!-- 登録フォーム -->
+	<form th:action="@{/register}" method="post" th:object="${task}">
+		<div class="taskForm">
+			<input type="hidden" th:field="*{id}">
+			<label>タスク</label>
+			<input type="text" placeholder="タスクを入力してください" th:field="*{name}">
+			<label>優先順位</label>
+			<input type="number" placeholder="優先順位を入力してください" th:field="*{priority}">
+			<label>期日</label>
+			<input type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
 			<div id="select-button">
 				<button type="submit">登録</button>
-				<a th:href="@{/getTimer}">キャンセル</a>
+				<a th:href="@{/getListTasks}">キャンセル</a>
 			</div>
 		</div>
-	</form>
+	</form>		
 </body>
 </html>

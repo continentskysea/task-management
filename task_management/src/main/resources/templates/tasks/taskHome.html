@@ -10,18 +10,20 @@
 		<h1>タスク管理</h1>
 	</div>
 	<div id="taskHome">
-		<!-- タスク登録画面遷移 -->
-		<form id="createTaskForm" th:action="@{/getCreateTask}" method="get">
-			<input id="createTask" type="submit" value="タスク登録" />
-		</form>
-		<!-- タスク一覧表示画面遷移 -->
-		<form id="listTasksForm" th:action="@{/listTasks}" method="get">
-			<input id="listTasks" type="submit" value="タスク一覧" />
-		</form>
-		<!-- 初期画面遷移 -->
-		<form th:action="@{/home}" method="get">
-			<input id="getHome" type="submit" value="戻る" />
-		</form>
+		<div id="firstContainer">
+			<!-- タスク登録画面遷移 -->
+			<form id="getCreateTaskForm" th:action="@{/getCreateTask}" method="get">
+				<input id="getCreateTask" type="submit" value="タスク登録" />
+			</form>
+			<!-- タスク一覧表示画面遷移 -->
+			<form id="getListTasksForm" th:action="@{/getListTasks}" method="get">
+				<input id="getListTasks" type="submit" value="タスク一覧" />
+			</form>
+			<!-- 初期画面遷移 -->
+			<form th:action="@{/home}" method="get">
+				<input id="getHome" type="submit" value="戻る" />
+			</form>
+		</div>
 	</div>
-	</body>
+</body>
 </html>
