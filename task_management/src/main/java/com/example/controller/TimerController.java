@@ -1,12 +1,12 @@
 package com.example.controller;
 
 import java.util.Optional;
-import java.util.Timer;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -15,7 +15,7 @@ import com.example.entity.TimersSetting;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -90,9 +90,12 @@ public class TimerController {
 	 * @return タスク一覧画面
 	 */
 	@PostMapping("/save")
-	public String save(TimersSetting timersSetting) {
+	public String save(@ModelAttribute("timersSetting") TimersSetting timersSetting, @RequestParam("formSendCheckPageValue") String formSendCheckPageValue) {
 		timersSettingService.save(timersSetting);
-		return "redirect:/listTasks";
+		if (Integer.parseInt(formSendCheckPageValue) == 1) {
+			return "redirect:/getListTasks";
+		} 
+		return "redirect:/getTimerlist";
 	}
 	
 	
@@ -183,8 +186,8 @@ public class TimerController {
 	 * 
 	 * @param id タイマーid
 	 */
-	@PostMapping("/delteTimer/{id}")
-	public String postMethodName(@PathVariable(name = "id") Integer id) {
+	@PostMapping("/deleteTimer/{id}")
+	public String deleteTimer(@PathVariable(name = "id") Integer id) {
 		timersSettingService.delete(id);
 		return "redirect:/getTimerlist";
 	}

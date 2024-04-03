@@ -140,28 +140,35 @@ button:hover, a:hover {
 }
 
 /* ---------------------------------
-タイマー一覧に適用
+タイマー一覧に適用(timers.html)
 --------------------------------- */
 
+/* フォームに適用 */
 #timerDeleteForm {
     width: 1500px;
     background-color: #007FFF;
     margin: 0 auto;
 }
 
+/* テーブル見出しと表示内容に適用 */
 #timerDeleteForm th, #timerDeleteForm td {
     background-color: #E6E6E6;
     padding: 0px;
     
 }
 
-
+/* ボタン群に適用 */
 .timerRelation {
     background-color: #007FFF;  
 }
 
+/* チェックボックスに適用 */
 .timerCheckbox {
     transform: scale(2);
+}
+/* 戻るボタン個別に適応 */
+.timerHomeRelation {
+    background-color: #f0f0f0
 }
 /* ---------------------------------
 ユーザー一覧に適用

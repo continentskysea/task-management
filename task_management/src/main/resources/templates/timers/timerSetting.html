@@ -8,8 +8,10 @@
 <body>
 	<h1>タイマーをセットします</h1>
 	
-	<form th:action="@{/save}" method="post" th:object="${timersSetting}">
+	<form th:action="@{/save}" method="post" th:object="${timersSetting}" >
 		<div class="timerSettingsForm">
+			<!-- ページ遷移先判定用のデータ送信 -->
+			<input type="hidden" name="formSendCheckPageValue" value="1">
 			<label>集中タイマー</label>
 			<input type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
 			<label>休憩タイマー</label>
