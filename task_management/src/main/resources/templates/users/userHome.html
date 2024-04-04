@@ -10,18 +10,20 @@
 		<h1>ユーザー管理</h1>
 	</div>
 	<div id="userHome">
-		<!-- ユーザー登録画面遷移 -->
-		<form id="createTaskForm" th:action="@{/getCreateUser}" method="get">
-			<input id="createUser" type="submit" value="ユーザー登録" />
-		</form>
-		<!-- タスク一覧表示画面遷移 -->
-		<form id="listTasksForm" th:action="@{/getListUsers}" method="get">
-			<input id="listUser" type="submit" value="ユーザー一覧" />
-		</form>
-		<!-- 初期画面遷移 -->
-		<form th:action="@{/home}" method="get">
-			<input id="getHome" type="submit" value="戻る" />
-		</form>
+		<div id="firstContainer">
+			<!-- ユーザー登録画面遷移 -->
+			<form id="createTaskForm" th:action="@{/getCreateUser}" method="get">
+				<input id="createUser" type="submit" value="ユーザー登録" />
+			</form>
+			<!-- タスク一覧表示画面遷移 -->
+			<form id="listTasksForm" th:action="@{/getListUsers}" method="get">
+				<input id="listUser" type="submit" value="ユーザー一覧" />
+			</form>
+			<!-- 初期画面遷移 -->
+			<form id="listTasksForm" th:action="@{/home}" method="get">
+				<input id="getHome" type="submit" value="戻る" />
+			</form>
+		</div>
 	</div>
 	</body>
 </html>
