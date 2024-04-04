@@ -67,6 +67,7 @@ button:hover, a:hover {
     background-color: #E6E6E6;
     margin-top: 50px;
     text-align: center;
+    padding-bottom: 50px;
 }
 #errorMsg {
     color: red;
@@ -77,6 +78,13 @@ button:hover, a:hover {
 
 .loginForm label {
     margin-left: 60px;
+}
+
+#login-button {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	
 }
 
 #login-button input {

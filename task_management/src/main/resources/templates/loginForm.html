@@ -9,23 +9,28 @@
 <body>
 	<h1>ログイン</h1>
 	<!-- パラメータのチェック -->
-	<div th:if="${param.error}">
+	<div id="errorMsg" th:if="${param.error}">
 		<p>ユーザー名またはパスワードが違います。</p>
 		<form th:action="@{/loginForm}" method="get">
 			<input id="loginError" type="submit" value="戻る">
 		</form>
 	</div>
-	<form th:action="@{/loginForm}" method="post">
+	<form id="userLoginForm" th:action="@{/loginForm}" method="post">
 		<div class="loginForm">
 			<label>メールアドレス</label>
 			<input id="mailInput" type="email" name="email">
 			<label>パスワード</label>
 			<input id="passwordInput" type="password" name="password">
-			<div id="login-button">
-				<input type="submit" value="ログイン">
-			</div>
 		</div>
 	</form>
-	
+	<div id="login-button">
+		<button class="userRelation">ユーザー登録</button>
+		<button class="loginRelation" >ログイン</button>
+	</div>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- ユーザー登録バリデーション用のJavaScriptファイルの読み込み -->
+	<script th:src="@{/js/validateUser.js}"></script>
+	<script src="/js/loginFormAction.js"></script>
 </body>
 </html>

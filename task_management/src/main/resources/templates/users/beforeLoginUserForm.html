@@ -18,6 +18,7 @@
 	<!-- 登録フォーム -->
 	<form th:action="@{/registarUser}" method="post" th:object="${user}">
 		<div class="userForm">
+			<!-- ページ遷移先判定 -->
 			<input type="hidden" name="createUserpageCheck" value="1">
 			<label>氏名</label>
 			<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
@@ -27,7 +28,7 @@
 			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
 			<div id="select-button">
 				<button type="submit" id="createUserButton">登録</button>
-				<a th:href="@{/getUserHome}">キャンセル</a>
+				<a th:href="@{/loginForm}">キャンセル</a>
 			</div>
 		</div>
 	</form>

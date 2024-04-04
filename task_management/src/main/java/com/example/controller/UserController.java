@@ -72,6 +72,21 @@ public class UserController {
 		return "users/userForm";
 	}
 	
+	
+	/**
+	 * ログイン前ユーザー登録画面表示
+	 * 
+	 * @return ログイン前ユーザー登録画面
+	 */
+	@GetMapping("/getBeforeLoginCreateUser")
+	public String getBeforeLoginCreateUser(Model model) {
+		// 空のユーザーオブジェクト生成
+		User user = new User();
+		// ユーザーオブジェクトを画面に渡す
+		model.addAttribute("user", user);
+		return "users/beforeLoginUserForm";
+	}
+	
 
 	/**
 	 * ユーザー編集画面表示
