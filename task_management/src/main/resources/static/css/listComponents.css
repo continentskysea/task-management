@@ -139,6 +139,7 @@ button:hover, a:hover {
     background-color: #f0f0f0;
 }
 
+
 /* ---------------------------------
 タイマー一覧に適用(timers.html)
 --------------------------------- */
@@ -170,41 +171,38 @@ button:hover, a:hover {
 .timerHomeRelation {
     background-color: #f0f0f0
 }
-/* ---------------------------------
-ユーザー一覧に適用
---------------------------------- */
-#listUserHeader {
-    margin: 0 auto;
-    background-color: #deb068; /* 飴色 */
-    width: 1089px;
-}
 
-#listUserHeader h1 {
-    background-color: #deb068; /* 飴色 */
-    margin-bottom: 0px;
-    border-radius: 15px;
-}
+
+/* ---------------------------------
+ユーザー一覧に適用(users.html)
+--------------------------------- */
+
 
 #userDeleteForm {
+    width: 1500px;
     background-color: #deb068;
-    border-radius: 0px;
-}
-#userDeleteForm table {
-        background-color: rgb(235, 191, 107); /* 飴色 */
-}
-
-
-#userButtonMenu {
-    display: flex;
     margin: 0 auto;
-    justify-content: center;
 }
 
-#createUser, #editUser, #deleteUser,  #userHome {
+/* ボタン群に適用 */
+.userRelation {
     margin: 20px 20px 20px 20px;
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
-#userHome {
-    padding-top: 35px;
+
+/* テーブル見出しと表示内容に適用 */
+#userDeleteForm th, #userDeleteForm td {
+    background-color: #E6E6E6;
+    padding: 0px;
+    
+}
+
+/* チェックボックスに適用 */
+.userCheckbox {
+    transform: scale(2);
+}
+/* 戻るボタン個別に適応 */
+.userHomeRelation {
+    background-color: #f0f0f0
 }
