@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.User;
@@ -112,7 +113,8 @@ public class UserController {
 			@Valid @ModelAttribute("user") User user, 
 			BindingResult bindingResult, 
 			RedirectAttributes ra,
-			Model model
+			Model model,
+			@RequestParam("createUserpageCheck") String createUserpageCheck
 		) {
 			System.out.println(user.getName());
 			System.out.println(user.getEmail());
@@ -126,7 +128,13 @@ public class UserController {
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);
-			// 登録が成功すればホーム画面をリダイレクト表示
+			
+			// 送信されたページを判定
+			if (Integer.parseInt(createUserpageCheck) == 1) {
+				// ログイン画面をリダイレクト表示
+				return "redirect:/loginForm";
+			}
+			// ホーム画面をリダイレクト表示
 			return "redirect:/home";
 	}
 
