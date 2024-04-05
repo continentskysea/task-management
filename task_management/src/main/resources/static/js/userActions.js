@@ -1,5 +1,4 @@
 // userActions.js
-
 $(document).ready(function() {
 	/**
 		新規登録画面に遷移する

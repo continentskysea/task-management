@@ -1,10 +1,7 @@
-
 /**
- * 
+ * タスク管理の操作
  */
- // taskActions.js
- 
- $(document).ready(function() {
+$(document).ready(function() {
 
 	/**
 	 * タイマー登録画面に遷移する
@@ -12,18 +9,18 @@
 	$(".settingTimerRelation").on("click", function() {
 		window.location.href = '/getTimerSetting';
 	});
-	 /**
+	/**
 		集中タイマー画面に遷移する
 	 */
 	$(".focusTimerRelation").on("click", function() {
 		let selectedCheckbox = getSelectedCheckbox();
 	
-	    if (selectedCheckbox) {
+		if (selectedCheckbox) {
 	        // 選択されたタスクの情報を取得
-	        let taskId = $(selectedCheckbox).val();
+			let taskId = $(selectedCheckbox).val();
 	        // タスク情報を使って集中タイマー画面にリダイレクト
-	        window.location.href = '/getFocusTimer/' + taskId;
-	    }
+			window.location.href = '/getFocusTimer/' + taskId;
+		}
 	});
 	
 	/**
@@ -50,34 +47,15 @@
 		タスク編集画面へ遷移する
 	 */
 	$(".taskEditRelation").on("click", function() {
-	    let selectedCheckbox = getSelectedCheckbox();
-	
-	    if (selectedCheckbox) {
+		let selectedCheckbox = getSelectedCheckbox();
+		
+		if (selectedCheckbox) {
 	        // 選択されたタスクの情報を取得
-	        let taskId = $(selectedCheckbox).val();
+			let taskId = $(selectedCheckbox).val();
 	        // タスク情報を使って編集画面にリダイレクト
-	        window.location.href = '/getEditTask/' + taskId;
-	    }
-	});
-	/**
-		チェックされた要素を調べる
-	 */
-	function getSelectedCheckbox() {
-	    let checkboxes = $("input.taskCheckbox:checked");
-	    let checkedCount = checkboxes.length;
-
-		// チェックの要素が1つだけか確認する
-		if (checkedCount  !== 1) {
-			const errorMsg = "タスクが未選択あるいは複数選択されています";
-			alert(errorMsg);
-			return null;
+			window.location.href = '/getEditTask/' + taskId;
 		}
-	    
-		return checkboxes[0];
-	} 
- 
-
-	
+	});
 	// 削除ボタンが押下された時の処理
 	$(".taskDeleteRelation").on("click", function() {
 		// チェックボックスクラスを取得する
@@ -93,14 +71,31 @@
 			deleteForm.attr('action', '/deleteTask/' + taskId); 
 			deleteForm.submit();// フォームを送信する
 		} else {
+			// エラーメッセージを出力し、削除をキャンセルする
 			const errorMsg = "タスクが未選択あるいは複数選択されています";
 			alert(errorMsg);
 			deleteForm.attr('action', '#');
 		}
 	});
-
+	
 	// タスク管理初期画面へ遷移
 	$(".taskHomeRelation").on("click", function() {
 		window.location.href = '/getTask';
 	});
+	
+	/**
+		チェックされた要素を調べる
+	 */
+	function getSelectedCheckbox() {
+		let checkboxes = $("input.taskCheckbox:checked");
+		let checkedCount = checkboxes.length;
+	
+		// チェックの要素が1つだけか確認する
+		if (checkedCount  !== 1) {
+			const errorMsg = "タスクが未選択あるいは複数選択されています";
+			alert(errorMsg);
+			return null;
+		}
+		return checkboxes[0];
+	} 
 });

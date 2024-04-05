@@ -1,7 +1,6 @@
 /**
- * loginFormAction.js
+ * ログイン画面の操作
  */
- // userActions.js
 
 $(document).ready(function() {
 	/**
