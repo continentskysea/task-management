@@ -10,8 +10,9 @@
 	<div id="timerHomeHedear">
 		<h1>集中タイマー</h1>
 	</div>
+	<!-- 背景 -->
 	<div id="timerHome">
-		<div id="firstContainer">
+		<div id="container">
 			<!-- タイマー入力画面へ遷移 -->
 			<form th:action="@{/getTimerSetting}" method="get">
 				<input id="getTimerSetting" type="submit" value="タイマー登録">
@@ -20,6 +21,7 @@
 			<form th:action="@{/getTimerlist}" method="get">
 				<input id="getTimerSetting" type="submit" value="タイマー一覧">
 			</form>
+			<!-- 初期画面遷移 -->
 			<form th:action="@{/home}" method="get">
 				<input id="getHome" type="submit" value="戻る">
 			</form>
