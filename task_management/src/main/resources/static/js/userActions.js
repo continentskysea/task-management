@@ -46,15 +46,15 @@ $(document).ready(function() {
 		// 削除フォームidを取得する
 		let userDeleteForm = $('#userDeleteForm');
 		
-		// タスクの選択数をチェック
-		if (checkedCheckboxes.length > 0) {
+		// ユーザーの選択数をチェック
+		if (checkedCheckboxes.length === 1) {
 			
 			// ユーザーを取得し、urlにリクエストする
 			let userId = checkedCheckboxes[0].value;
 			userDeleteForm.attr('action', '/deleteUser/' + userId); 
 			userDeleteForm.submit();// フォームを送信する
 		} else {
-			const errorMsg = "ユーザーが未選択です";
+			const errorMsg = "ユーザーが未選択あるいは複数選択されています";
 			alert(errorMsg);
 			userDeleteForm.attr('action', '#');
 		}

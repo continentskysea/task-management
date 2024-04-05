@@ -149,8 +149,8 @@ public class UserController {
 				// ログイン画面をリダイレクト表示
 				return "redirect:/loginForm";
 			}
-			// ホーム画面をリダイレクト表示
-			return "redirect:/home";
+			// ユーザー一覧画面をリダイレクト表示
+			return "redirect:/getListUsers";
 	}
 
 	/**

@@ -18,6 +18,8 @@
 	<!-- 登録フォーム -->
 	<form th:action="@{/registarUser}" method="post" th:object="${user}">
 		<div class="userForm">
+			<!-- ページ遷移先判定 -->
+			<input type="hidden" name="createUserpageCheck" value="2">
             <input type="hidden" th:field="*{id}">
 			<label>氏名</label>
 			<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
