@@ -13,7 +13,6 @@ $(document).ready(function() {
 		// 初期化用の時間
 		const immutableInitialTime = timerElement.textContent;
 		
-		
 		// 停止ボタンを活性化する
 		$("#stopButton").prop("disabled", false);
 		// 停止ボタンが活性化された場合
