@@ -17,7 +17,7 @@
 			<label>優先順位</label>
 			<input id="priority" type="number" placeholder="優先順位を入力してください" th:field="*{priority}">
 			<label>期日</label>
-			<input id="dueDate" type="date" placeholder="期日を入力してください" min="1" max="30" th:field="*{dueDate}">
+			<input id="dueDate" min="1" max="30" type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
 			<div id="select-button">
 				<button  type="submit">登録</button>
 				<a th:href="@{/getTask}">キャンセル</a>
