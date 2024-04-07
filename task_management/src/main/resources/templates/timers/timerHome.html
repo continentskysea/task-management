@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>集中タイマー</title>
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
+</head>
+<body>
+	<!-- ヘッダー -->
+	<div id="timerHomeHedear">
+		<h1>集中タイマー</h1>
+	</div>
+	<!-- 背景 -->
+	<div id="timerHome">
+		<div id="container">
+			<!-- タイマー入力画面へ遷移 -->
+			<form th:action="@{/getTimerSetting}" method="get">
+				<input id="getTimerSetting" type="submit" value="タイマー登録">
+			</form>
+			<!-- タイマー入力画面へ遷移 -->
+			<form th:action="@{/getTimerlist}" method="get">
+				<input id="getTimerSetting" type="submit" value="タイマー一覧">
+			</form>
+			<!-- 初期画面遷移 -->
+			<form th:action="@{/home}" method="get">
+				<input id="getHome" type="submit" value="戻る">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

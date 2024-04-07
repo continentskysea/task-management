@@ -1,0 +1,163 @@
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+}
+form {
+    margin: 0 auto;    
+    width: 500px;
+    text-align: center;
+}
+
+
+input, label {
+    width: 450px;
+    height: 30px;
+    margin: 0 0 0 5px
+}
+label {
+    text-align: left;
+    color: #000000;
+    padding: 15px 0 0 10px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    padding: 15px 0;
+    margin-right: 30px;
+}
+
+#select-button {
+    display: block;
+    font-size: 16px;
+    margin-top: 20px;
+    height: 80px;
+}
+a {
+    padding: 12.465px 20.2675px;
+    margin-left: 30px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    text-align: center;
+    border: solid 1px;
+    color: #000000;
+}
+
+button:hover, a:hover {
+    opacity: 0.5;
+}
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ---------------------------------
+ログインに適用
+--------------------------------- */
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #E6E6E6;
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+#errorMsg {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.loginForm label {
+    margin-left: 60px;
+}
+
+#login-button {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	
+}
+
+#login-button input {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 100px;
+    padding-right: 6px;
+    border-radius: 10px;
+}
+#login-button input:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#mailInput, #passwordInput {
+    margin-left: 70px;
+    width: 350px;
+    height: 25px;
+
+}
+
+/* ---------------------------------
+エラーメッセージが表示されたら出現
+--------------------------------- */
+#loginError {
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+#loginError:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+/* ---------------------------------
+ユーザー登録に適用
+--------------------------------- */
+.userForm {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(235, 191, 107); /* 飴色 */
+}
+
+#createUserButton {
+    background-color: rgb(239, 229, 202); /* 亜麻色 */
+}
+
+/* ---------------------------------
+タスク登録に適用
+--------------------------------- */
+.taskForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #99FF99;
+}
+
+/* ---------------------------------
+タイマー登録に適用
+--------------------------------- */
+.timerSettingsForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #007FFF;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}
+
+.error-message p {
+    font-size: 20px;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー管理初期画面</title>
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
+</head>
+<body>
+	<div id="userMgmtHeader">
+		<h1>ユーザー管理</h1>
+	</div>
+	<!-- 背景 -->
+	<div id="userHome">
+		<div id="container">
+			<!-- ユーザー登録画面遷移 -->
+			<form id="createTaskForm" th:action="@{/getCreateUser}" method="get">
+				<input id="createUser" type="submit" value="ユーザー登録" />
+			</form>
+			<!-- タスク一覧表示画面遷移 -->
+			<form id="listTasksForm" th:action="@{/getListUsers}" method="get">
+				<input id="listUser" type="submit" value="ユーザー一覧" />
+			</form>
+			<!-- 初期画面遷移 -->
+			<form id="listTasksForm" th:action="@{/home}" method="get">
+				<input id="getHome" type="submit" value="戻る" />
+			</form>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>タイマー登録画面</title>
+	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+</head>
+<body>
+	<h1>タイマーをセットします</h1>
+	
+	<form th:action="@{/save}" method="post" th:object="${timersSetting}" >
+		<div class="timerSettingsForm">
+			<!-- ページ遷移先判定用のデータ送信 -->
+			<input type="hidden" name="formSendCheckPageValue" value="1">
+			<label>集中タイマー</label>
+			<input type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
+			<label>休憩タイマー</label>
+			<input type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+			<div id="select-button">
+				<button type="submit">登録</button>
+				<a th:href="@{/getTimer}">キャンセル</a>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
