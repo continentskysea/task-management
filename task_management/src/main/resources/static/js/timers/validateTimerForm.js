@@ -9,6 +9,8 @@ $(document).ready(function() {
         // バリデーションフラグ
         let isValid = true;
         
+        console.log(focusTime);
+        console.log(breakTime);
         // タイマーの形式が正しいかチェックする関数
         function validateTimeFormat(timeString) {
             let regex = /^(?:2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$/;
@@ -26,8 +28,6 @@ $(document).ready(function() {
             isValid = false;
             return isValid;
         }
-
-
         
         // タイマーのバリデーション
         if (!validateTimeFormat(focusTime)) {
@@ -42,15 +42,22 @@ $(document).ready(function() {
             return isValid;
         }
         
-        
+        function parseTime(timeString) {
+            let parts = timeString.split(":");
+            let hours = parseInt(parts[0]);
+            let minutes = parseInt(parts[1]);
+            let seconds = parseInt(parts[2]);
+            return hours * 3600 + minutes * 60 + seconds;
+        }
+
         // 24:00:00でのバリデーション
-        if (parseInt(focusTime.replace(/:/, "")) >= "24:00:00" || parseInt(focusTime.replace(/:/, "")) <= 0) {
+        if (parseTime(focusTime) >= 86400  || parseTime(focusTime) < 0 || focusTime === "00:00:00") {
             alert("集中タイマーには00:00:01から24:00:00までの時間を入力してください");
             isValid = false;
             return isValid;
         }
         
-        if (parseInt(breakTime.replace(/:/, "")) >= "24:00:00" || parseInt(breakTime.replace(/:/, "")) <= 0) {
+        if (parseTime(breakTime) >= 86400  || parseTime(breakTime) < 0 || breakTime=== "00:00:00") {
             alert("休憩タイマーには00:00:01から24:00:00までの時間を入力してください");
             isValid = false;
             return isValid;
