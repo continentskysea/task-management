@@ -9,8 +9,6 @@ $(document).ready(function() {
         // バリデーションフラグ
         let isValid = true;
         
-        console.log(focusTime);
-        console.log(breakTime);
         // タイマーの形式が正しいかチェックする関数
         function validateTimeFormat(timeString) {
             let regex = /^(?:2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$/;
