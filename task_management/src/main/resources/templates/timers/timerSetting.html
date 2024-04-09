@@ -13,14 +13,18 @@
 			<!-- ページ遷移先判定用のデータ送信 -->
 			<input type="hidden" name="formSendCheckPageValue" value="1">
 			<label>集中タイマー</label>
-			<input type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
+			<input id="focusTime" type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
 			<label>休憩タイマー</label>
-			<input type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+			<input id="breakTime" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
 			<div id="select-button">
 				<button type="submit">登録</button>
 				<a th:href="@{/getTimer}">キャンセル</a>
 			</div>
 		</div>
 	</form>
+<!-- jquetyを読み込む -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- JavaScriptを読み込む -->
+<script src='/js/timers/validateTimerForm.js'></script>
 </body>
 </html>

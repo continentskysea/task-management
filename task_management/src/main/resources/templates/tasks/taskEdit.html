@@ -13,16 +13,20 @@
 		<div class="taskForm">
 			<input type="hidden" th:field="*{id}">
 			<label>タスク</label>
-			<input type="text" placeholder="タスクを入力してください" th:field="*{name}">
+			<input id="taskName" type="text" placeholder="タスクを入力してください" th:field="*{name}">
 			<label>優先順位</label>
-			<input type="number" placeholder="優先順位を入力してください" th:field="*{priority}">
+			<input id="priority" min="1" max="30" type="number" placeholder="優先順位を入力してください" th:field="*{priority}">
 			<label>期日</label>
-			<input type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
+			<input id="dueDate" type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
 			<div id="select-button">
 				<button type="submit">登録</button>
 				<a th:href="@{/getListTasks}">キャンセル</a>
 			</div>
 		</div>
-	</form>		
+	</form>
+	<!-- jquetyを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- JavaScriptを読み込む -->
+	<script src='/js/tasks/validateTask.js'></script>
 </body>
 </html>
