@@ -1,6 +1,6 @@
 package com.example.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,7 @@ public class Task {
 	private Long priority; // 優先順位
 	
 	@Column(name = "DUE_DATE") // 期日
-	private LocalDate dueDate;
+	private LocalDateTime dueDate;
 	
 	@Column(name = "USER_ID")
 	private Long userId; // ユーザーID
@@ -72,12 +72,12 @@ public class Task {
 	
 	
 	// 期日を取得する
-	public LocalDate getDueDate() {
+	public LocalDateTime getDueDate() {
 		return this.dueDate;
 	}
 	
 	// 期日をセットする
-	public void setDueDate(LocalDate dueDate) {
+	public void setDueDate(LocalDateTime dueDate) {
 		this.dueDate = dueDate;
 	}	
 	

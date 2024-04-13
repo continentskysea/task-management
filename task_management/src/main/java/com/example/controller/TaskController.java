@@ -93,7 +93,7 @@ public class TaskController {
 	 * @return タスク編集画面
 	 */
 	@GetMapping("/getEditTask/{id}")
-	public String getEditTask(@PathVariable(name = "id")  Integer id, Model model) {
+	public String getEditTask(@PathVariable(name = "id")  Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getListTasks";
 		}
@@ -120,7 +120,7 @@ public class TaskController {
 	 * @return タスク一覧画面 
 	 */
 	@PostMapping("/deleteTask/{id}")
-	public String deleteTask(@PathVariable(name = "id") Integer id) {
+	public String deleteTask(@PathVariable(name = "id") Long id) {
 		taskService.delete(id);
 		return "redirect:/getListTasks";
 	}
