@@ -22,29 +22,29 @@ public class Task {
 	@SequenceGenerator(name = "TASKS_ID_GENERATOR", sequenceName = "TASKS_ID_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TASKS_ID_GENERATOR")
 	@Column(name = "ID")
-	private Integer id; // タスクID
+	private Long id; // タスクID
 	
 	@Column(name = "NAME")
 	private String name; // タスク名
 	
 	@Column(name = "PRIORITY")
-	private Integer priority; // 優先順位
+	private Long priority; // 優先順位
 	
 	@Column(name = "DUE_DATE") // 期日
 	private LocalDate dueDate;
 	
 	@Column(name = "USER_ID")
-	private Integer userId; // ユーザーID
+	private Long userId; // ユーザーID
 	
 	// アクセサメソッド
 	
 	// タスクIDを取得する
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 	
 	// タスクIDをセットする
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -61,12 +61,12 @@ public class Task {
 	
 	
 	// 優先順位を取得する
-	public Integer getPriority() {
+	public Long getPriority() {
 		return this.priority;
 	}
 	
 	// 優先順位をセットする
-	public void setPriority(Integer priority) {
+	public void setPriority(Long priority) {
 		this.priority = priority;
 	}
 	
@@ -83,12 +83,12 @@ public class Task {
 	
 	
 	// ユーザーIDを取得する
-	public Integer getUserId() {
+	public Long getUserId() {
 		return this.userId;
 	}
 	
 	// ユーザーIDをセットする
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	

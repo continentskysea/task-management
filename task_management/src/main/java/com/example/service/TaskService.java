@@ -31,7 +31,7 @@ public class TaskService {
 	 * @param userId
 	 * @return ユーザー別タスク情報のリスト
 	 */
-	public List<Task> getTasksByUserId(Integer userId) {
+	public List<Task> getTasksByUserId(Long userId) {
 		return taskRepository.findByUserId(userId);
 	}
 	
@@ -43,7 +43,7 @@ public class TaskService {
 	 */
 	public Task save(Task task) {
 		// 現在ログインしているユーザーのIDを取得する
-		Integer currentLoggedInUserId = userService.getCurrentUserId();
+		Long currentLoggedInUserId = userService.getCurrentUserId();
 		// 取得してきたユーザーidをセットする
 		task.setUserId(currentLoggedInUserId);
 		return taskRepository.save(task);
@@ -55,7 +55,7 @@ public class TaskService {
 	 * @param id タスクID
 	 * @return タスク情報
 	 */
-	public Optional<Task> get(Integer id) {
+	public Optional<Task> get(Long id) {
 		return taskRepository.findById(id);
 	}
 	
@@ -64,7 +64,7 @@ public class TaskService {
 	 * 
 	 * @param id タスクID
 	 */
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		taskRepository.deleteById(id);
 	}
 }

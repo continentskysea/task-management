@@ -63,7 +63,7 @@ public class TimerController {
 	@GetMapping("/getTimerlist")
 	public String getTimerlist(Model model) {
 		// ログインしているユーザーのIDを取得する
-		Integer currentUserId = userService.getCurrentUserId();
+		Long currentUserId = userService.getCurrentUserId();
 		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
 		model.addAttribute("timersList", timersList);
 		return "timers/timers";
@@ -106,7 +106,7 @@ public class TimerController {
 	 */
 	
 	@GetMapping("/getFocusTimer/{id}")
-	public String getFocusTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getFocusTimer(@PathVariable(name = "id") Long id, Model model) {
 		if (id == null) {
 			// エラーページ
 			return "redirect:/listTasks";
@@ -135,7 +135,7 @@ public class TimerController {
 	 * @return 休憩タイマー画面
 	 */
 	@GetMapping("/getBreakTimer/{id}")
-	public String getBreakTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getBreakTimer(@PathVariable(name = "id") Long id, Model model) {
 		// エラーチェック
 		if (id == null) {
 			return "redirect:/listTasks";
@@ -162,7 +162,7 @@ public class TimerController {
 	 * タイマー編集画面表示
 	 */
 	@GetMapping("/getEditTimer/{id}")
-	public String getEditTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getEditTimer(@PathVariable(name = "id") Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getTimerlist";
 		}
@@ -187,7 +187,7 @@ public class TimerController {
 	 * @param id タイマーid
 	 */
 	@PostMapping("/deleteTimer/{id}")
-	public String deleteTimer(@PathVariable(name = "id") Integer id) {
+	public String deleteTimer(@PathVariable(name = "id") Long id) {
 		timersSettingService.delete(id);
 		return "redirect:/getTimerlist";
 	}

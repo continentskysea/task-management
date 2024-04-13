@@ -64,7 +64,7 @@ public class TaskController {
 	@GetMapping("/getListTasks") // URLの紐づけ
 	public String getListTasks(Model model) {
 		// ログインしているユーザーidを取得する
-		Integer currentUserId = userService.getCurrentUserId();
+		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
 		model.addAttribute("listTasks", listTasks);
 		return "tasks/tasks";	
