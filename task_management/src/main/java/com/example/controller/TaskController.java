@@ -64,7 +64,7 @@ public class TaskController {
 	@GetMapping("/getListTasks") // URLの紐づけ
 	public String getListTasks(Model model) {
 		// ログインしているユーザーidを取得する
-		Integer currentUserId = userService.getCurrentUserId();
+		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
 		model.addAttribute("listTasks", listTasks);
 		return "tasks/tasks";	
@@ -93,7 +93,7 @@ public class TaskController {
 	 * @return タスク編集画面
 	 */
 	@GetMapping("/getEditTask/{id}")
-	public String getEditTask(@PathVariable(name = "id")  Integer id, Model model) {
+	public String getEditTask(@PathVariable(name = "id")  Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getListTasks";
 		}
@@ -120,7 +120,7 @@ public class TaskController {
 	 * @return タスク一覧画面 
 	 */
 	@PostMapping("/deleteTask/{id}")
-	public String deleteTask(@PathVariable(name = "id") Integer id) {
+	public String deleteTask(@PathVariable(name = "id") Long id) {
 		taskService.delete(id);
 		return "redirect:/getListTasks";
 	}
