@@ -92,7 +92,7 @@ public class TimerController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute("timersSetting") TimersSetting timersSetting, @RequestParam("formSendCheckPageValue") String formSendCheckPageValue) {
 		timersSettingService.save(timersSetting);
-		if (Integer.parseInt(formSendCheckPageValue) == 1) {
+		if (Long.parseLong(formSendCheckPageValue) == 1) {
 			return "redirect:/getListTasks";
 		} 
 		return "redirect:/getTimerlist";

@@ -96,7 +96,7 @@ public class UserController {
 	 * @return　ユーザー編集画面
 	 */
 	@GetMapping("/getEditUser/{id}")
-	public String getEditUser(@PathVariable(name = "id") Integer id, Model model) {
+	public String getEditUser(@PathVariable(name = "id") Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getListUsers";
 		}
@@ -145,7 +145,7 @@ public class UserController {
 			userService.save(user);
 			
 			// 送信されたページを判定
-			if (Integer.parseInt(createUserpageCheck) == 1) {
+			if (Long.parseLong(createUserpageCheck) == 1) {
 				// ログイン画面をリダイレクト表示
 				return "redirect:/loginForm";
 			}
@@ -160,7 +160,7 @@ public class UserController {
 	 * @return ユーザー一覧画面
 	 */
 	@PostMapping("/deleteUser/{id}")
-	public String deleteUser(@PathVariable(name = "id") Integer id) {
+	public String deleteUser(@PathVariable(name = "id") Long id) {
 		userService.delete(id);
 		return "redirect:/getListUsers";
 	}
