@@ -24,7 +24,7 @@ public class User {
 	@SequenceGenerator(name = "USERS_ID_GENERATOR", sequenceName = "USERS_ID_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_ID_GENERATOR")
 	@Column(name = "ID")
-	private Integer id; // ユーザーID
+	private Long id; // ユーザーID
 	
 	@NotBlank(message = "名前は必須です")
 	@Size(min = 3, max = 12, message = "名前は3文字以上12文字以内で入力してください")
@@ -45,11 +45,11 @@ public class User {
 	private String password; // -^パスワード
 	
 	// アクセサメソッド
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
