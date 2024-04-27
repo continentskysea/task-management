@@ -37,13 +37,26 @@ public class LoginUserService implements UserDetailsService {
 	public LoginUser loadUserByUsername(String email) throws UsernameNotFoundException {
 		// ログインフォームから受け取った email情報を元にユーザー情報を取得
 		User user = userRepository.findByEmail(email);
+
 		
 		// ユーザー情報が見つからない場合は、例外を発生する
 		if (user == null) {
 			throw new UsernameNotFoundException("該当するユーザーが見つかりません");
 		}
 		
-		// ユーザーが見つかった場合は、UserDetailsを生成し返却する
-		return new LoginUser(user);
+		// ユーザーオブジェクトからロールを取得
+		String role = user.getRole();
+		
+		System.out.println("role.equals(\"ADMIN\")の結果: " + role.equals("ADMIN"));
+		System.out.println("role.equalsのロール: " + role);
+		
+		// ロールに応じて返す画面を変更する
+		if (role.equals("ADMIN")) {
+			
+			return new LoginUser(user, "/getAdminHome");
+			
+		}
+		
+		return new LoginUser(user, "/home");
 	}
 }

@@ -39,10 +39,12 @@ public class User {
 	private String email; // メールアドレス
 	
 	@NotBlank(message = "パスワードは必須です")
-//	@Size(max = 12, message = "パスワードは1文字以上12文字以内で入力してください")
 	@Pattern(regexp = "^(?=.*[a-z0-9]).*", message = "パスワードは小文字と数字のみを含む必要があります")
 	@Column(name = "PASSWORD")
 	private String password; // -^パスワード
+	
+	@Column(name = "ROLE")
+	private String role; // 一般ユーザー/管理者ユーザー
 	
 	// アクセサメソッド
 	public Long getId() {
@@ -75,6 +77,14 @@ public class User {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getRole() {
+		return this.role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	
