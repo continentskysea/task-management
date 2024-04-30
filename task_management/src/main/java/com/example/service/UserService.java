@@ -51,9 +51,10 @@ public class UserService implements Validator{
 	 * @return 保存したユーザー情報
 	 * 
 	 */
-	public User save(User user) {
+	public User save(User user) {		
 		// パスワードをハッシュ化
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
 		return userRepository.save(user);
 	}
 
@@ -66,6 +67,7 @@ public class UserService implements Validator{
 	public Optional<User> get(Long id) {
 		return userRepository.findById(id);
 	}
+	
 	
 	/**
 	 * ログイン中のユーザーのemailを比較し、一致したユーザーのIDを取得する

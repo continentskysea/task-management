@@ -1,21 +1,25 @@
 package com.example.controller;
 
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Task;
 import com.example.entity.TimersSetting;
+import com.example.entity.User;
+import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -50,7 +54,9 @@ public class TimerController {
 	 * @return タイマー管理初期画面
 	 */
 	@GetMapping("/getTimer")
-	public String getTimer() {
+	public String getTimer(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+		User currentUser = loginUser.getUser();
+		model.addAttribute("currentUser" , currentUser);
 		// タスク管理初期画面を表示
 		return "timers/timerHome";
 	}

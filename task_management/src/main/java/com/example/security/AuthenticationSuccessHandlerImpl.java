@@ -29,6 +29,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 			String roleName = authority.getAuthority();
 			System.out.println(roleName);
 			if (roleName.equals("ADMIN")) {
+				System.out.println(authority.getAuthority());
 				url = "/getAdminHome";
 				return url;
 			}

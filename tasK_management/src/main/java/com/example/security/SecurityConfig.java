@@ -56,6 +56,13 @@ public class SecurityConfig {
 				.logoutSuccessUrl("/loginForm") // ログアウト成功時のパス
 		
 		);
+		// 認可処理
+		http.authorizeHttpRequests(authz -> authz
+			.requestMatchers("/loginForm").permitAll()
+			.requestMatchers("/getAdminHome").hasAuthority("ADMIN")
+			.requestMatchers("/home").hasAnyAuthority("GENERAL")
+			.anyRequest().authenticated()
+		);
 		return http.build();
 	}
 	

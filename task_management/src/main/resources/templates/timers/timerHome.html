@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
 	<meta charset="UTF-8">
 	<title>集中タイマー</title>
@@ -11,8 +14,10 @@
 		<h1>集中タイマー</h1>
 	</div>
 	<!-- 背景 -->
-	<div id="timerHome">
+	<div id="timerHome" th:object="${currentUser}">
 		<div id="container">
+			<!-- ロールの判定用 -->
+			<input id="role" type="hidden" th:field="*{role}" />
 			<!-- タイマー入力画面へ遷移 -->
 			<form th:action="@{/getTimerSetting}" method="get">
 				<input id="getTimerSetting" type="submit" value="タイマー登録">
@@ -21,11 +26,19 @@
 			<form th:action="@{/getTimerlist}" method="get">
 				<input id="getTimerSetting" type="submit" value="タイマー一覧">
 			</form>
-			<!-- 初期画面遷移 -->
+			<!-- 管理者初期画面遷移 -->
+			<form th:action="@{/getAdminHome}" method="get">
+				<input id="getAdminHome" type="submit" value="戻る">
+			</form>			
+			<!-- 一般ユーザー初期画面遷移 -->
 			<form th:action="@{/home}" method="get">
 				<input id="getHome" type="submit" value="戻る">
 			</form>
 		</div>
 	</div>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!--タスク・タイマー管理初期画面へ適用 -->
+	<script src="/js/home/home.js"></script>
 </body>
 </html>

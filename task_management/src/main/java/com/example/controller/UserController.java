@@ -140,6 +140,17 @@ public class UserController {
 				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
 				return "redirect:/getCreateUser";
 			}
+			String role = user.getRole();
+			System.out.println(role);
+			// 送信されたロールを判定し登録する
+			if (role == null || role.equals("GENERAL")) {
+				user.setRole("GENERAL");
+				System.out.println("一般ユーザーとして登録されました");
+			} else if (role.equals("管理者")) {
+				user.setRole("ADMIN");
+				System.out.println("管理者として登録されました");
+
+			}
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);

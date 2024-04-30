@@ -39,9 +39,13 @@ input:hover {
 /* ---------------------------------
 戻るボタンに適用の適用
 --------------------------------- */
-#getHome {
+#getHome, #getAdminHome {
     margin: 50px;
     background-color: #E6E6E6;
+}
+
+#getHome:disabled,#getAdminHome:disabled {
+	display: none;
 }
 
 /* ---------------------------------
