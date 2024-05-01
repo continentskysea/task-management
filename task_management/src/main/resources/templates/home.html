@@ -14,7 +14,9 @@
 		<h1>タスク集中管理</h1>
 	</div>
 	<!-- 背景 -->
-	<div id="initHome">
+	<div id="homeBg">
+		<!-- ユーザー名を表示 -->
+		<p  id="userName" th:text="|ユーザー: ${currentUser.name}|"></p>
 		<!-- 一行目のボタン群 -->
 		<div id="firstRowContainer">
 			<!-- タスク管理画面遷移 -->

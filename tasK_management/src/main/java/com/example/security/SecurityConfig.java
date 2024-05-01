@@ -60,7 +60,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(authz -> authz
 			.requestMatchers("/loginForm").permitAll()
 			.requestMatchers("/getAdminHome").hasAuthority("ADMIN")
-			.requestMatchers("/home").hasAnyAuthority("GENERAL")
+			.requestMatchers("/home").hasAuthority("GENERAL")
 			.anyRequest().authenticated()
 		);
 		return http.build();
