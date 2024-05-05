@@ -59,6 +59,8 @@ public class SecurityConfig {
 		// 認可処理
 		http.authorizeHttpRequests(authz -> authz
 			.requestMatchers("/loginForm").permitAll()
+			.requestMatchers("/getBeforeLoginCreateUser").permitAll()
+			.requestMatchers("/registarUser").permitAll()
 			.requestMatchers("/getAdminHome").hasAuthority("ADMIN")
 			.requestMatchers("/home").hasAuthority("GENERAL")
 			.anyRequest().authenticated()

@@ -143,7 +143,7 @@ public class UserController {
 			String role = user.getRole();
 			System.out.println(role);
 			// 送信されたロールを判定し登録する
-			if (role == null || role.equals("GENERAL")) {
+			if (role == null || role.equals("") ||  role.equals("GENERAL")) {
 				user.setRole("GENERAL");
 				System.out.println("一般ユーザーとして登録されました");
 			} else if (role.equals("管理者")) {

@@ -38,7 +38,7 @@ public class LoginUserService implements UserDetailsService {
 		// ログインフォームから受け取った email情報を元にユーザー情報を取得
 		User user = userRepository.findByEmail(email);
 
-		
+		System.out.println(user);
 		// ユーザー情報が見つからない場合は、例外を発生する
 		if (user == null) {
 			throw new UsernameNotFoundException("該当するユーザーが見つかりません");
