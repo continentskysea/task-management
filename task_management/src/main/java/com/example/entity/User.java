@@ -24,7 +24,7 @@ public class User {
 	@SequenceGenerator(name = "USERS_ID_GENERATOR", sequenceName = "USERS_ID_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_ID_GENERATOR")
 	@Column(name = "ID")
-	private Integer id; // ユーザーID
+	private Long id; // ユーザーID
 	
 	@NotBlank(message = "名前は必須です")
 	@Size(min = 3, max = 12, message = "名前は3文字以上12文字以内で入力してください")
@@ -39,17 +39,19 @@ public class User {
 	private String email; // メールアドレス
 	
 	@NotBlank(message = "パスワードは必須です")
-//	@Size(max = 12, message = "パスワードは1文字以上12文字以内で入力してください")
 	@Pattern(regexp = "^(?=.*[a-z0-9]).*", message = "パスワードは小文字と数字のみを含む必要があります")
 	@Column(name = "PASSWORD")
 	private String password; // -^パスワード
 	
+	@Column(name = "ROLE")
+	private String role; // 一般ユーザー/管理者ユーザー
+	
 	// アクセサメソッド
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -75,6 +77,14 @@ public class User {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getRole() {
+		return this.role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	

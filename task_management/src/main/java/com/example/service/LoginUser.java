@@ -14,12 +14,14 @@ import com.example.entity.User;
  *
  */
 public class LoginUser implements UserDetails{
-	// Userオブジェクト(Entityクラス)
-	private final User user;
+	
+	private final User user; // ユーザー情報
+	private final String homePage; // ユーザー別ページ遷移先
 	
 	// コンストラクタ
-	public LoginUser(User user) {
+	public LoginUser(User user, String homePage) {
 		this.user = user;
+		this.homePage = homePage;
 	}
 	
 	// アクセサメソッド
@@ -30,7 +32,7 @@ public class LoginUser implements UserDetails{
 	 * @return ユーザー情報
 	 */
 	public  User  getUser() {
-		return this.user;
+		return user;
 	}
 	
 	
@@ -41,7 +43,7 @@ public class LoginUser implements UserDetails{
 	 */
 	@Override
 	public String getPassword() {
-		return this.user.getPassword();
+		return user.getPassword();
 	}
 	
 	/**
@@ -51,17 +53,35 @@ public class LoginUser implements UserDetails{
 	 */
 	@Override
 	public String getUsername() {
-		return this.user.getEmail();
+		return user.getEmail();
 	}
 	
 	
 	/**
-	 * ユーザー権限の情報を取得する
+	 * ホーム画面情報を取得する
+	 * 
+	 * @return ホーム画面
+	 */
+	public String getHomePage() {
+		return homePage;
+	}
+	
+
+	/**
+	 * ログインユーザーの権限情報を取得する
 	 * 
 	 * @return 一般ユーザー/管理者ユーザーの権限情報
 	 */
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return AuthorityUtils.NO_AUTHORITIES;
+
+		String role = user.getRole();
+		
+		System.out.println(role);
+		
+		if (role != null && role.equals("ADMIN")) {
+			return AuthorityUtils.createAuthorityList("ADMIN", "GENERAL");
+		}
+		return AuthorityUtils.createAuthorityList("GENERAL");
 	}
 	
 	/**

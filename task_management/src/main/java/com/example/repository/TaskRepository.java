@@ -11,7 +11,7 @@ import com.example.entity.Task;
  * @author yoshi
  *
  */
-public interface TaskRepository extends JpaRepository<Task, Integer>{
+public interface TaskRepository extends JpaRepository<Task, Long>{
 	// ユーザーidを検索する処理
-	List<Task> findByUserId(Integer userId);
+	List<Task> findByUserId(Long userId);
 }

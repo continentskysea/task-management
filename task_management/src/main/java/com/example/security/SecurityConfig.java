@@ -1,5 +1,6 @@
 package com.example.security;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,20 +39,32 @@ public class SecurityConfig {
 	
 	@Bean
 	protected SecurityFilterChain securityFilterChainConfig(HttpSecurity http) throws Exception {
+
 		// ログイン処理
 		http.formLogin(login -> login
 				.loginProcessingUrl("/loginForm") // ログイン処理のパス
 				.loginPage("/loginForm") // ログインページの指定
 				.usernameParameter("email") // ログインページのメールアドレス
 				.passwordParameter("password") // ログインページのパスワード
-				.defaultSuccessUrl("/home", true) // ログイン成功時のパス
+				.defaultSuccessUrl("/home") // ログイン成功時のデフォルトの表示
+				.successHandler(new AuthenticationSuccessHandlerImpl())
 				.failureUrl("/loginForm?error") // ログイン失敗時のパス
-		// ログアウト処理		
-		).logout(logout -> logout
+		);
+		// ログアウト処理
+		http.logout(logout -> logout
 				.logoutUrl("/logout") // ログアウト処理のパス
 				.logoutSuccessUrl("/loginForm") // ログアウト成功時のパス
-		);
 		
+		);
+		// 認可処理
+		http.authorizeHttpRequests(authz -> authz
+			.requestMatchers("/loginForm").permitAll()
+			.requestMatchers("/getBeforeLoginCreateUser").permitAll()
+			.requestMatchers("/registarUser").permitAll()
+			.requestMatchers("/getAdminHome").hasAuthority("ADMIN")
+			.requestMatchers("/home").hasAuthority("GENERAL")
+			.anyRequest().authenticated()
+		);
 		return http.build();
 	}
 	

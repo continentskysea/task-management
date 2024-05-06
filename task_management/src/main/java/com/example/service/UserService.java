@@ -51,9 +51,10 @@ public class UserService implements Validator{
 	 * @return 保存したユーザー情報
 	 * 
 	 */
-	public User save(User user) {
+	public User save(User user) {		
 		// パスワードをハッシュ化
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
 		return userRepository.save(user);
 	}
 
@@ -63,15 +64,16 @@ public class UserService implements Validator{
 	 * @param id ユーザーID
 	 * @return ユーザー情報
 	 */
-	public Optional<User> get(Integer id) {
+	public Optional<User> get(Long id) {
 		return userRepository.findById(id);
 	}
+	
 	
 	/**
 	 * ログイン中のユーザーのemailを比較し、一致したユーザーのIDを取得する
 	 * @return user.getId() ユーザーID
 	 */
-	public Integer getCurrentUserId() {
+	public Long getCurrentUserId() {
 		// ログインしているユーザーの email を取得
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String loggedInUserEmail = authentication.getName(); // ユーザーの email が格納されている可能性がある
@@ -119,7 +121,7 @@ public class UserService implements Validator{
 	 * 
 	 * @param id ユーザーID
 	 */
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		userRepository.deleteById(id);
 	}
 	

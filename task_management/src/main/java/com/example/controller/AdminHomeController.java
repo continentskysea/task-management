@@ -8,24 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.entity.User;
 import com.example.service.LoginUser;
 
-/**
- * 初期画面のコントローラクラス
- * @author yoshi
- *
- */
 @Controller
-public class HomeController {
+public class AdminHomeController {
 	
 	/**
-	 * 初期画面を表示
+	 * 管理者ホーム画面を呼び出す
 	 * 
-	 * @return 初期画面
+	 * @return 管理者ホーム画面
 	 */
-	@GetMapping("/home")
-	public String getHome(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+	@GetMapping("/getAdminHome")
+	public String getAdminHome(Model model, @AuthenticationPrincipal LoginUser loginUser) {
 		User currentUser = loginUser.getUser();
-		model.addAttribute("currentUser" ,currentUser);
-		// ログイン後の初期画面を表示
-		return "home";
+		model.addAttribute("currentUser", currentUser);
+		return "admin/adminHome";
 	}
 }

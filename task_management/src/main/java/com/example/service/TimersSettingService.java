@@ -1,9 +1,9 @@
 package com.example.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import com.example.entity.TimersSetting;
 import com.example.entity.User;
 import com.example.repository.TimersSettingRepository;
-
-import jakarta.validation.constraints.NotNull;
 
 /**
  * タイマー設定用サービスクラス
@@ -39,7 +37,7 @@ public class TimersSettingService {
 	 * @param 
 	 * 
 	 */
-	public TimersSetting findById(Integer settingId) {
+	public TimersSetting findById(Long settingId) {
 		Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
 		return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
 	}
@@ -69,9 +67,9 @@ public class TimersSettingService {
 	 * 
 	 * @return タイマー情報
 	 */
-	public TimersSetting getUsersFocusTimer() {
+	public TimersSetting getUsersSettingTimer() {
 		// ログインしているユーザー情報のIDを取得する
-		Integer userId = userService.getCurrentUserId();
+		Long userId = userService.getCurrentUserId();
 		
 		return timersSettingRepository.findTopByUserIdOrderByIdDesc(userId);
 		
@@ -83,7 +81,7 @@ public class TimersSettingService {
 	 * @param Id ユーザーID
 	 * @return ユーザー別登録タイマー情報リスト
 	 */
-	public List<TimersSetting> getTimersByUserId(Integer userId) {
+	public List<TimersSetting> getTimersByUserId(Long userId) {
 		return timersSettingRepository.findByUserId(userId);
 	}
 
@@ -93,7 +91,7 @@ public class TimersSettingService {
 	 * @param id タイマーID
 	 * @return タイマー情報
 	 */
-	public Optional<TimersSetting> get(Integer id) {
+	public Optional<TimersSetting> get(Long id) {
 		return timersSettingRepository.findById(id);
 	}
 
@@ -102,7 +100,7 @@ public class TimersSettingService {
 	 * 
 	 * @param id タイマーID
 	 */
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		timersSettingRepository.deleteById(id);
 	}
 }

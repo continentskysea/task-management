@@ -11,10 +11,10 @@ import java.util.List;
  * @author yoshi
  *
  */
-public interface TimersSettingRepository extends JpaRepository<TimersSetting, Integer>{
+public interface TimersSettingRepository extends JpaRepository<TimersSetting, Long>{
 	// ログインしているユーザーID情報から登録されているタイマーをエンティティの最新のレコードを取得する
-	public TimersSetting findTopByUserIdOrderByIdDesc(Integer currentUserId);
+	public TimersSetting findTopByUserIdOrderByIdDesc(Long currentUserId);
 
 	// ログインしているユーザーID情報から登録されているタイマーをエンティティのリストを取得する
-	public  List<TimersSetting> findByUserId(Integer userId);
+	public  List<TimersSetting> findByUserId(Long userId);
 }

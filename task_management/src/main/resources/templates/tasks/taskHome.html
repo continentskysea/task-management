@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"	
+>
 <head>
 	<meta charset="UTF-8">
 	<title>タスク管理</title>
@@ -10,21 +13,31 @@
 		<h1>タスク管理</h1>
 	</div>
 	<!-- 背景 -->
-	<div id="taskHome">
-		<div id="container">
+	<div id="taskHome" th:object="${currentUser}">
+		<div id="container" >
+			<!-- ロールの判定用 -->
+			<input id="role" type="hidden"  th:field="*{role}">
 			<!-- タスク登録画面遷移 -->
 			<form id="getCreateTaskForm" th:action="@{/getCreateTask}" method="get">
 				<input id="getCreateTask" type="submit" value="タスク登録" />
 			</form>
 			<!-- タスク一覧表示画面遷移 -->
-			<form id="getListTasksForm" th:action="@{/getListTasks}" method="get">
+			<form th:action="@{/getListTasks}" method="get">
 				<input id="getListTasks" type="submit" value="タスク一覧" />
 			</form>
-			<!-- 初期画面遷移 -->
-			<form th:action="@{/home}" method="get">
-				<input id="getHome" type="submit" value="戻る" />
+			<!-- 管理者初期画面遷移 -->
+			<form th:action="@{/getAdminHome}" method="get">
+				<input id="getAdminHome" type="submit" value="戻る" disabled />
+			</form>			
+			<!-- 一般ユーザー初期画面遷移 -->
+			<form  th:action="@{/home}" method="get">
+				<input id="getHome" type="submit" value="戻る" disabled />
 			</form>
 		</div>
 	</div>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!--タスク・タイマー管理初期画面へ適用 -->
+	<script src="/js/home/home.js"></script>
 </body>
 </html>

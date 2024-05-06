@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.Task;
+import com.example.entity.User;
+import com.example.service.LoginUser;
 /**
  * タスクコントローラクラス
  * @author yoshi
@@ -37,7 +41,9 @@ public class TaskController {
 	 * @return タスク管理初期画面
 	 */
 	@GetMapping("/getTask")
-	public String getTask() {
+	public String getTask(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+		User currentUser = loginUser.getUser();
+		model.addAttribute("currentUser", currentUser);
 		// タスク管理初期画面を表示
 		return "tasks/taskHome";
 	}
@@ -62,11 +68,18 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/getListTasks") // URLの紐づけ
-	public String getListTasks(Model model) {
+	public String getListTasks(Model model, RedirectAttributes ra) {
+		// Flash属性からエラーメッセージを取得する
+		String errorMessage = (String) model.getAttribute("errorMessage");
+		// エラーメッセージがある場合はモデルに追加する
+		if (errorMessage != null) {
+			model.addAttribute("flashErrorMessage", errorMessage);
+		}
+		
 		// ログインしているユーザーidを取得する
-		Integer currentUserId = userService.getCurrentUserId();
+		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
-		model.addAttribute("listTasks", listTasks);
+		model.addAttribute("listTasks", listTasks);		
 		return "tasks/tasks";	
 	}
 	
@@ -93,7 +106,7 @@ public class TaskController {
 	 * @return タスク編集画面
 	 */
 	@GetMapping("/getEditTask/{id}")
-	public String getEditTask(@PathVariable(name = "id")  Integer id, Model model) {
+	public String getEditTask(@PathVariable(name = "id")  Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getListTasks";
 		}
@@ -120,7 +133,7 @@ public class TaskController {
 	 * @return タスク一覧画面 
 	 */
 	@PostMapping("/deleteTask/{id}")
-	public String deleteTask(@PathVariable(name = "id") Integer id) {
+	public String deleteTask(@PathVariable(name = "id") Long id) {
 		taskService.delete(id);
 		return "redirect:/getListTasks";
 	}

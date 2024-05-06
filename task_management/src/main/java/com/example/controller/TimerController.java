@@ -1,21 +1,26 @@
 package com.example.controller;
 
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.Task;
 import com.example.entity.TimersSetting;
+import com.example.entity.User;
+import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -38,10 +43,10 @@ public class TimerController {
 			TimersSettingService timersSettingService,
 			TaskService taskService,
 			UserService userService
-			) {
-		this.timersSettingService = timersSettingService;
-		this.taskService = taskService;
-		this.userService = userService;
+	) {
+			this.timersSettingService = timersSettingService;
+			this.taskService = taskService;
+			this.userService = userService;
 	}
 	
 	/**
@@ -50,7 +55,9 @@ public class TimerController {
 	 * @return タイマー管理初期画面
 	 */
 	@GetMapping("/getTimer")
-	public String getTimer() {
+	public String getTimer(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+		User currentUser = loginUser.getUser();
+		model.addAttribute("currentUser" , currentUser);
 		// タスク管理初期画面を表示
 		return "timers/timerHome";
 	}
@@ -63,7 +70,7 @@ public class TimerController {
 	@GetMapping("/getTimerlist")
 	public String getTimerlist(Model model) {
 		// ログインしているユーザーのIDを取得する
-		Integer currentUserId = userService.getCurrentUserId();
+		Long currentUserId = userService.getCurrentUserId();
 		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
 		model.addAttribute("timersList", timersList);
 		return "timers/timers";
@@ -92,7 +99,7 @@ public class TimerController {
 	@PostMapping("/save")
 	public String save(@ModelAttribute("timersSetting") TimersSetting timersSetting, @RequestParam("formSendCheckPageValue") String formSendCheckPageValue) {
 		timersSettingService.save(timersSetting);
-		if (Integer.parseInt(formSendCheckPageValue) == 1) {
+		if (Long.parseLong(formSendCheckPageValue) == 1) {
 			return "redirect:/getListTasks";
 		} 
 		return "redirect:/getTimerlist";
@@ -106,10 +113,10 @@ public class TimerController {
 	 */
 	
 	@GetMapping("/getFocusTimer/{id}")
-	public String getFocusTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getFocusTimer(@PathVariable(name = "id") Long id, Model model, RedirectAttributes ra) {
 		if (id == null) {
 			// エラーページ
-			return "redirect:/listTasks";
+			return "redirect:/getListTasks";
 		}
 		
 		// タスクIDに紐づくタスク情報を取得
@@ -117,16 +124,26 @@ public class TimerController {
 			
 		if (optionalTask.isEmpty()) {
 			// エラーページ
-			return "redirect:/listTasks";
-		} else {
-			Task task = optionalTask.get();
-			// タイマー情報を取得し画面に渡す
-			TimersSetting latestTimersSetting = timersSettingService.getUsersFocusTimer(); 
-			// タスク情報を画面に流す
-			model.addAttribute("task", task);
-			model.addAttribute("timersSetting", latestTimersSetting);
-			return "timers/focusTimer";
+			return "redirect:/getListTasks";
 		}
+		
+		// タスク情報とタイマー情報を取得する
+		Task task = optionalTask.get();
+		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer(); 
+		
+		if (latestTimersSetting == null) {
+			String errorMessage = "タイマーが未登録です";
+			ra.addFlashAttribute("errorMessage", errorMessage);
+			// エラーとなりリダイレクトされる
+			return "redirect:/getListTasks";
+		}
+		
+		// 集中タイマーとタスク情報を画面に流す
+		model.addAttribute("task", task);
+		model.addAttribute("timersSetting", latestTimersSetting);
+		
+
+			return "timers/focusTimer";
 	}
 	
 	/**
@@ -135,34 +152,45 @@ public class TimerController {
 	 * @return 休憩タイマー画面
 	 */
 	@GetMapping("/getBreakTimer/{id}")
-	public String getBreakTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getBreakTimer(@PathVariable(name = "id") Long id, Model model, RedirectAttributes ra) {
+		
 		// エラーチェック
 		if (id == null) {
-			return "redirect:/listTasks";
+			return "redirect:/getListTasks";
 		}
 		// タスクIDに紐づくタスク情報を取得
 		Optional<Task> optinalTask = taskService.get(id);
 		
+		// タスク情報の有無をチェック
 		if (optinalTask.isEmpty()) {
 			// エラーページ
-			return "redirect:/listTasks";
-		} else {
-			Task task = optinalTask.get();
-			// タイマー情報を取得する
-			TimersSetting timersSetting = timersSettingService.getUsersFocusTimer();
-			// タスク情報を画面に渡す
-			model.addAttribute("task", task);
-			// タイマー情報を画面に渡す
-			model.addAttribute("timersSetting", timersSetting);
-			return "timers/breakTimer";
+			return "redirect:/getListTasks";
 		}
+			
+		// タスク情報とタイマー情報と取得する
+		Task task = optinalTask.get();
+		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer();
+		
+		if (latestTimersSetting == null) {
+			String errorMessage = "タイマーが未登録です";
+			ra.addFlashAttribute("errorMessage", errorMessage);
+			// エラーとなりリダイレクトされる
+			return "redirect:/getListTasks";			
+		}
+		
+		// タスク情報を画面に渡す
+		model.addAttribute("task", task);
+		// タイマー情報を画面に渡す
+		model.addAttribute("timersSetting", latestTimersSetting);
+		return "timers/breakTimer";
+
 	}
 
 	/**
 	 * タイマー編集画面表示
 	 */
 	@GetMapping("/getEditTimer/{id}")
-	public String getEditTimer(@PathVariable(name = "id") Integer id, Model model) {
+	public String getEditTimer(@PathVariable(name = "id") Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getTimerlist";
 		}
@@ -187,7 +215,7 @@ public class TimerController {
 	 * @param id タイマーid
 	 */
 	@PostMapping("/deleteTimer/{id}")
-	public String deleteTimer(@PathVariable(name = "id") Integer id) {
+	public String deleteTimer(@PathVariable(name = "id") Long id) {
 		timersSettingService.delete(id);
 		return "redirect:/getTimerlist";
 	}

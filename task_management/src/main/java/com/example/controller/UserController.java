@@ -96,7 +96,7 @@ public class UserController {
 	 * @return　ユーザー編集画面
 	 */
 	@GetMapping("/getEditUser/{id}")
-	public String getEditUser(@PathVariable(name = "id") Integer id, Model model) {
+	public String getEditUser(@PathVariable(name = "id") Long id, Model model) {
 		if (id == null) {
 			return "redirect:/getListUsers";
 		}
@@ -140,12 +140,23 @@ public class UserController {
 				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
 				return "redirect:/getCreateUser";
 			}
+			String role = user.getRole();
+			System.out.println(role);
+			// 送信されたロールを判定し登録する
+			if (role == null || role.equals("") ||  role.equals("GENERAL")) {
+				user.setRole("GENERAL");
+				System.out.println("一般ユーザーとして登録されました");
+			} else if (role.equals("管理者")) {
+				user.setRole("ADMIN");
+				System.out.println("管理者として登録されました");
+
+			}
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);
 			
 			// 送信されたページを判定
-			if (Integer.parseInt(createUserpageCheck) == 1) {
+			if (Long.parseLong(createUserpageCheck) == 1) {
 				// ログイン画面をリダイレクト表示
 				return "redirect:/loginForm";
 			}
@@ -160,7 +171,7 @@ public class UserController {
 	 * @return ユーザー一覧画面
 	 */
 	@PostMapping("/deleteUser/{id}")
-	public String deleteUser(@PathVariable(name = "id") Integer id) {
+	public String deleteUser(@PathVariable(name = "id") Long id) {
 		userService.delete(id);
 		return "redirect:/getListUsers";
 	}
