@@ -37,6 +37,4 @@ bootJar {
     version = "0.0.1"
     archiveClassifier = 'SNAPSHOT'
     archiveExtension = 'jar'
-    //archiveFileName = 'task-management.jar', // ファイル名の設定
-    //mainClassName = 'com.example.TaskManagementApplication' // エントリポイントの設定
 }
