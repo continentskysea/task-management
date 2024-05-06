@@ -18,7 +18,7 @@
 		<!-- ユーザー名を表示 -->
 		<p  id="userName" th:text="|ユーザー: ${currentUser.name}|"></p>
 		<!-- 一行目のボタン群 -->
-		<div id="firstRowContainer">
+		<div id="container">
 			<!-- タスク管理画面遷移 -->
 			<form th:action="@{/getTask}" method="get">
 				<input id="getTask" type="submit" value="タスク管理" />
@@ -30,8 +30,7 @@
 			<!-- ログアウト -->
 			<form th:action="@{/logout}" method="post">
 				<input id="logout" type="submit" value="ログアウト" />
-			</form>
-			
+			</form>			
 		</div>
 	</div>
 </body>
