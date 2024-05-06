@@ -1,5 +1,5 @@
 # JDK17の公式Dockerイメージを使用
-FROM adoptopenjdk:17-jdk-hotspot
+FROM eclipse-temurin:17-jdk-hotspot
 
 # アプリケーションのファイルをコピー
 COPY ./build/libs/spring-render-deploy-0.0.1-SNAPSHOT.jar /app/spring-render-deploy.jar
