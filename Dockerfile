@@ -2,7 +2,7 @@
 FROM openjdk:17-alpine
 
 # Gradleで生成されたJARファイルをコピー
-COPY ./task-management-0.0.1-SNAPSHOT.jar /app/task-management.jar
+COPY ./task-management/task-management-0.0.1-SNAPSHOT.jar /app/task-management.jar
 
 # アプリケーションのポートを公開
 EXPOSE 8080
