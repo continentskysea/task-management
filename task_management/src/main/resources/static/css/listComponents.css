@@ -83,6 +83,34 @@ button:hover, a:hover {
     height: 100px;
 }
 
+#timerError {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* ---------------------------------
+エラーメッセージが表示されたら出現
+--------------------------------- */
+#timerErrorButton {
+	width: 300px;
+	height: 150px;
+	border-radius: 10px;
+	font-size: 50px;
+	margin-bottom: 50px;
+}
+
+#timerErrorButton:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+#timerError p{
+	font-size: 50px;
+}
+
 
 /* ---------------------------------
 削除フォーム

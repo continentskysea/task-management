@@ -1,9 +1,9 @@
 package com.example.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -67,7 +67,7 @@ public class TimersSettingService {
 	 * 
 	 * @return タイマー情報
 	 */
-	public TimersSetting getUsersFocusTimer() {
+	public TimersSetting getUsersSettingTimer() {
 		// ログインしているユーザー情報のIDを取得する
 		Long userId = userService.getCurrentUserId();
 		
