@@ -5,7 +5,7 @@ FROM eclipse-eclipse-temurin:17
 RUN mkdir /app
 
 # Gradleで生成されたJARファイルをコピー
-COPY ./task-management-0.0.1-SNAPSHOT.jar ./app/task-management.jar
+COPY ./tasK_management/build/libs/task_task-management-0.0.1-SNAPSHOT.jar ./tasK_management/app/task-management.jar
 
 # アプリケーションのポートを公開
 EXPOSE 8080
