@@ -1,0 +1,236 @@
+/* ---------------------------------
+共通の適用
+--------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 50px;
+}
+
+table {
+    width: 1500px;
+    height: 500px;
+    border-collapse: separate;
+    border-spacing: 30px 50px;
+    font-size: 35px;
+    text-align: center;
+}
+
+table th, table td {
+    border-radius: 10px;
+}
+
+
+
+
+button {
+    width: 150px;
+    height: 100px;
+    padding: 15px 0;
+}
+
+
+button:hover, a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#listButtons {
+    width: 1500px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#listButtons button {
+    margin: 30px 15px 50px 15px;
+    width: 250px;
+    font-size: 25px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+
+
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ---------------------------------
+タスク一覧に適用
+--------------------------------- */
+
+
+/* ---------------------------------
+タイマー管理画面遷移のボタン
+--------------------------------- */
+#timerForm {
+    margin: 0;
+    padding: 0;
+    width: 180px;
+}
+
+#timerForm input {
+    width: 150px;
+    height: 100px;
+}
+
+#timerError {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* ---------------------------------
+エラーメッセージが表示されたら出現
+--------------------------------- */
+#timerErrorButton {
+	width: 300px;
+	height: 150px;
+	border-radius: 10px;
+	font-size: 50px;
+	margin-bottom: 50px;
+}
+
+#timerErrorButton:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+#timerError p{
+	font-size: 50px;
+}
+
+
+/* ---------------------------------
+削除フォーム
+--------------------------------- */
+#deleteForm {
+    margin: 0 auto;
+    width: 1500px;
+    border-radius: 15px;
+    padding: 30px 60px 60px 30px;
+    /* width: 1500px; */
+    background-color: #99FF99;
+    text-align: center;
+}
+
+#deleteForm th, #deleteForm td {
+    background-color: #E6E6E6;
+    padding: 10px 20px;
+}
+
+
+.taskCheckbox {
+    transform: scale(2);
+}
+
+
+/* ---------------------------------
+タイマー関係のボタン群(タイマー管理、集中タイマー、休憩タイマー)
+--------------------------------- */
+
+.timersRelation {
+    background-color: #007FFF;
+}
+
+.timersRelation:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.timersRelation input {
+    width: 100px;
+    height: 50px;
+}
+
+/* ---------------------------------
+タスク関係のボタン群(編集、削除)
+--------------------------------- */
+.taskRelation {
+    background-color: #00CCCC;
+}
+
+
+/* 戻るボタンに適応 */
+.taskHomeRelation {
+    background-color: #f0f0f0;
+}
+
+
+/* ---------------------------------
+タイマー一覧に適用(timers.html)
+--------------------------------- */
+
+/* フォームに適用 */
+#timerDeleteForm {
+    width: 1500px;
+    background-color: #007FFF;
+    margin: 0 auto;
+}
+
+/* テーブル見出しと表示内容に適用 */
+#timerDeleteForm th, #timerDeleteForm td {
+    background-color: #E6E6E6;
+    padding: 0px;
+    
+}
+
+/* ボタン群に適用 */
+.timerRelation {
+    background-color: #007FFF;  
+}
+
+/* チェックボックスに適用 */
+.timerCheckbox {
+    transform: scale(2);
+}
+/* 戻るボタン個別に適応 */
+.timerHomeRelation {
+    background-color: #f0f0f0
+}
+
+
+/* ---------------------------------
+ユーザー一覧に適用(users.html)
+--------------------------------- */
+
+
+#userDeleteForm {
+    width: 1500px;
+    background-color: #deb068;
+    margin: 0 auto;
+}
+
+/* ボタン群に適用 */
+.userRelation {
+    margin: 20px 20px 20px 20px;
+    background-color: rgb(239, 229, 202); /* 亜麻色 */
+}
+
+
+/* テーブル見出しと表示内容に適用 */
+#userDeleteForm th, #userDeleteForm td {
+    background-color: #E6E6E6;
+    padding: 0px;
+    
+}
+
+/* チェックボックスに適用 */
+.userCheckbox {
+    transform: scale(2);
+}
+/* 戻るボタン個別に適応 */
+.userHomeRelation {
+    background-color: #f0f0f0
+}
