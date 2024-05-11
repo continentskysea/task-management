@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー編集</title>
+<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+</head>
+<body>
+	<h1>ユーザー編集</h1>
+	<!-- エラーメッセージを表示 -->
+	<div th:if="${error_message}" class="error-message">
+		<p th:text="${error_message}"></p>
+		<form th:action="@{/getCreateUser}" method="get">
+			<input id="loginError" type="submit" value="OK">
+		</form>
+	</div>
+	
+	<!-- 登録フォーム -->
+	<form th:action="@{/registarUser}" method="post" th:object="${user}">
+		<div class="userForm">
+			<!-- ページ遷移先判定 -->
+			<input type="hidden" name="createUserpageCheck" value="2">
+            <input type="hidden" th:field="*{id}">
+			<label>氏名</label>
+			<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
+			<label>Email</label>
+			<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
+			<label>パスワード</label>
+			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
+			<label>ロール</label>
+			<select id="selectRole" th:field="*{role}">
+				<option value="ADMIN">管理者</option>
+				<option value="GENERAL">一般</option>
+			</select>
+			<div id="select-button">
+				<button type="submit" id="createUserButton">登録</button>
+				<a th:href="@{/getListUsers}">キャンセル</a>
+			</div>
+		</div>
+	</form>
+	<!-- jqueryを読み込む -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- ユーザー登録バリデーション用のJavaScriptファイルの読み込み -->
+	<script th:src="@{/js/users/validateUser.js}"></script>
+</body>
+</html>
