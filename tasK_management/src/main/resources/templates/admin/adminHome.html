@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
+<head>
+	<meta charset="UTF-8">
+	<title>管理者ホーム画面</title>
+</head>
+<body>
+	<!-- ヘッダー -->
+	<div id="homeHeader">
+		<h1>管理者ホーム</h1>
+	</div>
+	<!-- 背景 -->
+	<div id="homeBg">
+		<!-- ユーザー名を表示 -->
+		<p  id="userName" th:text="|ユーザー: ${currentUser.name}|"></p>
+		<!-- 一行目のボタン群 -->
+		<div id="firstRowContainer">
+			<!-- タスク管理画面遷移 -->
+			<form th:action="@{/getTask}" method="get">
+				<input id="getTask" type="submit" value="タスク管理" />
+			</form>
+			<!-- タイマー管理画面遷移 -->
+			<form th:action="@{/getTimer}" method="get">
+				<input id="getTimer" type="submit" value="タイマー管理" />
+			</form>
+		</div>
+		<!-- 二行目のボタン群 -->
+		<div id="secondRowContainer">
+			<!-- ユーザ管理画面遷移 -->
+			<form th:action="@{/getUserHome}" method="get">
+				<input id="getUserHome" type="submit" value="ユーザー管理" />
+			</form>
+			<!-- ログアウト -->
+			<form th:action="@{/logout}" method="post">
+				<input id="logout" type="submit" value="ログアウト" />
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>タイマー編集</title>
+	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+</head>
+<body>
+	<h1>タイマーをセットします</h1>
+	
+	<form th:action="@{/save}" method="post" th:object="${timersSetting}">
+		<div class="timerSettingsForm">
+			<input type="hidden" th:field="*{id}">
+			<label>集中タイマー</label>
+			<input id="focusTime" type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
+			<label>休憩タイマー</label>
+			<input id="breakTime" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+			<input type="hidden" th:field="*{registarAt}">
+			<!-- ページ遷移先判定用のデータ送信 -->
+			<input type="hidden" name="formSendCheckPageValue" value="2">
+			<div id="select-button">
+				<button type="submit">登録</button>
+				<a th:href="@{/getTimerlist}">キャンセル</a>
+			</div>
+		</div>
+	</form>
+<!-- jquetyを読み込む -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- JavaScriptを読み込む -->
+<script src='/js/timers/validateTimerForm.js'></script>
+</body>
+</html>
