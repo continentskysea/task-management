@@ -1,0 +1,130 @@
+
+
+/* ------------------------------------------------------------------
+共通プロパティ全体に適応
+------------------------------------------------------------------ */
+body {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: center;
+}
+
+a {
+    padding: 10px 30px;
+    background-color: #007FFF;
+    text-decoration: none;
+    text-align: center;
+    border: solid 1px;
+    border-radius: 10px;
+    color: #000000;
+    box-shadow: 0 1.5px 2px 0 #000000;
+}
+a:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+/* ---------------------------------
+個別の適用
+--------------------------------- */
+
+/* ------------------------------------------------------------------
+ヘッダー
+------------------------------------------------------------------ */
+#timerDisplayHeader {
+    background-color: #007FFF;
+    font-size: 35px;
+}    
+#timerDisplayHeader h1 {
+    margin-top: 30px;
+    margin-bottom: 0;
+}    
+
+
+
+
+
+
+/* ------------------------------------------------------------------
+フォーム全体
+------------------------------------------------------------------ */
+#timerDisplayWrapper {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #007FFF;
+    padding-bottom: 30px;
+}
+
+
+#startButton, #stopButton, #resetButton{
+    background-color: #007FFF;
+}
+
+
+#startButton:hover, #stopButton:hover, #resetButton:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+/* 停止ボタンが非活性化の時(初期状態) */
+#stopButton:disabled {
+	display: none;
+}
+
+#listTasks[disabled] {
+	display: none;
+}
+
+/* 起動ボタンが非活性化の時(起動ボタンがクリックされた時)*/
+#startButton:disabled {
+	display: none;
+}
+
+#taskContent {
+    font-size: 35px;
+    margin: 0 250px 30px 250px;
+}    
+#timerContent {
+    font-size: 35px;
+    margin: 0 250px 30px 250px;
+}
+#timerContent label {
+    color: #fff;
+    background-color:black;
+    padding: 0 50px 0 50px
+}
+
+#taskContent label {
+    color: #fff;
+    background-color:black;
+    padding: 0 50px 0 50px
+}
+#taskContent p {
+    color: #fff;
+    background-color:black;
+    padding: 15px 0px;
+    margin: 0px 0px;
+}
+#timerContent p {
+    color: #fff;
+    background-color:black;
+    padding: 15px 0px;
+    margin: 0px 0px;
+}
+
+#startButton, #stopButton, #resetButton {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#resetButton:disabled {
+	display: none;
+}
+
+#resetButton, #listTasks {
+	margin-left: 30px;
+}
+
