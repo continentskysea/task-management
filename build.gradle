@@ -34,7 +34,5 @@ tasks.named('test') {
 
 bootJar {
     archiveBaseName = "task_management"
-    version = "0.0.1"
-    archiveClassifier = 'SNAPSHOT'
     archiveExtension = 'jar'
 }
