@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 /**
@@ -16,24 +15,23 @@ import jakarta.persistence.Table;
  *
  */
 @Entity
-@Table(name = "TASKS")
+@Table(name = "tasks")
 public class Task {
 	@Id
-	@SequenceGenerator(name = "TASKS_ID_GENERATOR", sequenceName = "TASKS_ID_SEQ", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TASKS_ID_GENERATOR")
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Long id; // タスクID
 	
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name; // タスク名
 	
-	@Column(name = "PRIORITY")
+	@Column(name = "priority")
 	private Long priority; // 優先順位
 	
-	@Column(name = "DUE_DATE") // 期日
+	@Column(name = "due_date") // 期日
 	private LocalDate dueDate;
 	
-	@Column(name = "USER_ID")
+	@Column(name = "user_id")
 	private Long userId; // ユーザーID
 	
 	// アクセサメソッド

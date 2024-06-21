@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,32 +17,31 @@ import jakarta.validation.constraints.Size;
  *
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class User {
 	@Id
-	@SequenceGenerator(name = "USERS_ID_GENERATOR", sequenceName = "USERS_ID_SEQ", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_ID_GENERATOR")
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Long id; // ユーザーID
 	
 	@NotBlank(message = "名前は必須です")
 	@Size(min = 3, max = 12, message = "名前は3文字以上12文字以内で入力してください")
 	@Pattern(regexp = "[\\p{IsHan}}]*", message = "名前は漢字のみ入力したください")
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name; // ユーザー名
 	
 	@NotBlank(message = "メールアドレスは必須です")
 	@Email(message = "メールアドレスの形式が正しくありません")
 	@Size(max = 50, message = "メールアドレスは50文字以内で入力してください")
-	@Column(name = "EMAIL")
+	@Column(name = "email")
 	private String email; // メールアドレス
 	
 	@NotBlank(message = "パスワードは必須です")
 	@Pattern(regexp = "^(?=.*[a-z0-9]).*", message = "パスワードは小文字と数字のみを含む必要があります")
-	@Column(name = "PASSWORD")
+	@Column(name = "password")
 	private String password; // -^パスワード
 	
-	@Column(name = "ROLE")
+	@Column(name = "role")
 	private String role; // 一般ユーザー/管理者ユーザー
 	
 	// アクセサメソッド
