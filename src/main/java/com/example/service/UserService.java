@@ -110,9 +110,9 @@ public class UserService implements Validator{
 		}
 		
 	    // パスワードのバリデーション
-	    if (!user.getPassword().matches("^(?=.*[a-z0-9]).*$")) {
-	        errors.rejectValue("password", "password.invalid", "パスワードは小文字と数字のみを含む必要があります");
-	    }
+		if (!user.getPassword().matches("^(?=.*[a-z0-9]).*$")) {
+			errors.rejectValue("password", "password.invalid", "パスワードは小文字と数字のみを含む必要があります");
+		}
 	}
 
 
