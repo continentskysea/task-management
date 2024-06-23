@@ -60,9 +60,11 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(authz -> authz
 			.requestMatchers("/loginForm").permitAll()
 			.requestMatchers("/getBeforeLoginCreateUser").permitAll()
-			.requestMatchers("/registarUser").permitAll()
-			.requestMatchers("/getAdminHome").hasAuthority("ADMIN")
-			.requestMatchers("/home").hasAuthority("GENERAL")
+			.requestMatchers("/registarUser").permitAll() // ユーザー登録
+			.requestMatchers("/register").permitAll() //タスク登録
+			.requestMatchers("/save").permitAll() // タイマー登録
+			.requestMatchers("/getAdminHome").hasAuthority("ADMIN") // 管理者権限
+			.requestMatchers("/home").hasAuthority("GENERAL")// 一般ユーザー
 			.anyRequest().authenticated()
 		);
 		return http.build();
