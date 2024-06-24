@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 @Table(name = "timers_settings", schema = "public")
 public class TimersSetting {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id; // タイマー設定ID
 

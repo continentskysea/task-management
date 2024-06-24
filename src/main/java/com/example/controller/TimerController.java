@@ -98,6 +98,9 @@ public class TimerController {
 	 */
 	@PostMapping("/save")
 	public String save(@ModelAttribute("timersSetting") TimersSetting timersSetting, @RequestParam("formSendCheckPageValue") String formSendCheckPageValue) {
+		System.out.println(timersSetting.getFocusTime());
+		System.out.println(timersSetting.getBreakTime());
+		System.out.println(timersSetting.getUserId());
 		timersSettingService.save(timersSetting);
 		if (Long.parseLong(formSendCheckPageValue) == 1) {
 			return "redirect:/getListTasks";
