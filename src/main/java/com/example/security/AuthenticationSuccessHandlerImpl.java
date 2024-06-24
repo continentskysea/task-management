@@ -35,7 +35,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 			}
 			
 		}
-		url = "/home";
+		url = "/getAdminHome";
 		return url;
 	}
 	
