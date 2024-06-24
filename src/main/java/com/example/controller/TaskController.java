@@ -92,6 +92,10 @@ public class TaskController {
 	 */	 
 	@PostMapping("/register") // URLの紐づけ
 	public String registerTask(@ModelAttribute("task") Task task) {
+		System.out.println(task.getName());
+		System.out.println(task.getPriority());
+		System.out.println(task.getDueDate());
+		System.out.println(task.getUserId());
 		// タスクサービスを呼び出す
 		taskService.save(task);
 		// タスク一覧画面をリダイレクト表示
