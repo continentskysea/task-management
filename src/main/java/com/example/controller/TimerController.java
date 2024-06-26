@@ -21,6 +21,7 @@ import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 
 
@@ -97,12 +98,23 @@ public class TimerController {
 	 * @return タスク一覧画面
 	 */
 	@PostMapping("/save")
-	public String save(@ModelAttribute("timersSetting") TimersSetting timersSetting, @RequestParam("formSendCheckPageValue") String formSendCheckPageValue) {
-		System.out.println(timersSetting.getFocusTime());
-		System.out.println(timersSetting.getBreakTime());
-		System.out.println(timersSetting.getUserId());
+	public String save(
+		@ModelAttribute("timersSetting") TimersSetting timersSetting, 
+		@RequestParam("formSendCheckPageValue") String formSendCheckPageValue,
+		RedirectAttributes ra,
+		Model model
+	) {
+		// System.out.println(timersSetting.getFocusTime());
+		// System.out.println(timersSetting.getBreakTime());
+		// System.out.println(timersSetting.getUserId());
 		timersSettingService.save(timersSetting);
 		if (Long.parseLong(formSendCheckPageValue) == 1) {
+			// Flash属性からエラーメッセージを取得する
+			String errorMessage = (String) model.getAttribute("errorMessage");
+			// エラーメッセージがある場合はモデルに追加する
+			if (errorMessage != null) {
+				model.addAttribute("flashErrorMessage", errorMessage);
+			}
 			return "redirect:/getListTasks";
 		} 
 		return "redirect:/getTimerlist";

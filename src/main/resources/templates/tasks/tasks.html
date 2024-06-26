@@ -26,6 +26,8 @@
 					<th>タスク</th>
 					<th>優先順位</th>
 					<th>期日</th>
+					<th>集中時間</th>
+					<th>休憩時間</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,18 +40,13 @@
 					<td th:text="${task.dueDate}"></td>
 				</tr>
 			</tbody>
-		</table>	
+		</table>
 	</form>
 	<div id="listButtons">
-
-		<!-- タイマー登録ボタンの表示 -->
-		<button class="timersRelation settingTimerRelation" type="submit" value="タイマー登録">タイマー登録</button>
 		<!-- 集中タイマーボタンの表示 -->
 		<button class="timersRelation focusTimerRelation">集中タイマー</button>
 		<!-- 休憩タイマーボタンの表示 -->
 		<button class="timersRelation breakTimerRelation">休憩タイマー</button>
-		<!-- タスク登録ボタンの表示 -->
-		<button class="taskRelation taskCreateRelation" type="submit">タスク登録</button>
 		<!-- 編集ボタンの追加 -->
 		<button class="taskRelation taskEditRelation">編集</button>
 		<!-- 削除ボタンの表示 -->

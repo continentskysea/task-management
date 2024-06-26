@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.Task;
+import com.example.entity.TimersSetting;
 import com.example.entity.User;
 import com.example.service.LoginUser;
 /**
@@ -22,17 +23,20 @@ import com.example.service.LoginUser;
  *
  */
 import com.example.service.TaskService;
+import com.example.service.TimersSettingService;
 import com.example.service.UserService;
 @Controller
 public class TaskController {
 	
 	private final TaskService taskService;
 	private final UserService userService;
+	private final TimersSettingService timersSettingService;
 	// コンストラクタインジェクション
 	@Autowired
-	public TaskController(TaskService taskService, UserService userService) {
+	public TaskController(TaskService taskService, UserService userService, TimersSettingService timersSettingService) {
 		this.taskService = taskService;
 		this.userService = userService;
+		this.timersSettingService = timersSettingService;
 	}
 	
 	/**
@@ -79,7 +83,10 @@ public class TaskController {
 		// ログインしているユーザーidを取得する
 		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
-		model.addAttribute("listTasks", listTasks);		
+		model.addAttribute("listTasks", listTasks);
+		// 登録しているタイマー設定の最新版を取得する
+		TimersSetting latestSetTimes = timersSettingService.getUsersSettingTimer();
+		model.addAttribute("latestSetTimes", latestSetTimes);
 		return "tasks/tasks";	
 	}
 	
