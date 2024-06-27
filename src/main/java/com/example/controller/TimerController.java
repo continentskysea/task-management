@@ -21,9 +21,6 @@ import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
-
 
 /**
  * タイマーコントローラ
@@ -74,6 +71,9 @@ public class TimerController {
 		Long currentUserId = userService.getCurrentUserId();
 		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
 		model.addAttribute("timersList", timersList);
+		// 登録完了メッセージを通知
+		String timerSetMessage = (String) model.getAttribute("timerSetMessage");
+		model.addAttribute("timerSetMessage" ,timerSetMessage);
 		return "timers/timers";
 	} 
 
@@ -108,25 +108,20 @@ public class TimerController {
 		// System.out.println(timersSetting.getBreakTime());
 		// System.out.println(timersSetting.getUserId());
 		timersSettingService.save(timersSetting);
+		String timerSetMessage = "タイマーを登録しました";
+		ra.addFlashAttribute("timerSetMessage", timerSetMessage);
+		// リダイレクト先を判定
 		if (Long.parseLong(formSendCheckPageValue) == 1) {
-			// Flash属性からエラーメッセージを取得する
-			String errorMessage = (String) model.getAttribute("errorMessage");
-			// エラーメッセージがある場合はモデルに追加する
-			if (errorMessage != null) {
-				model.addAttribute("flashErrorMessage", errorMessage);
-			}
 			return "redirect:/getListTasks";
-		} 
+		}
 		return "redirect:/getTimerlist";
 	}
-	
 	
 	/**
 	 * 集中タイマー画面表示
 	 * 
 	 * @return 集中タイマー画面
 	 */
-	
 	@GetMapping("/getFocusTimer/{id}")
 	public String getFocusTimer(@PathVariable(name = "id") Long id, Model model, RedirectAttributes ra) {
 		if (id == null) {

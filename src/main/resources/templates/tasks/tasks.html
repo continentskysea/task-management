@@ -11,8 +11,8 @@
 <body>
 	<h1>タスク一覧</h1>
 	<!-- パラメータのチェック -->
-	<div id="timerError" th:if="${flashErrorMessage}">
-			<p th:text="${flashErrorMessage}"></p>
+	<div id="timerError" th:if="${flashMessage}">
+			<p th:text="${flashMessage}"></p>
 		<form th:action="@{/getListTasks}" method="get">
 			<input id="timerErrorButton" type="submit" value="OK">
 		</form>
@@ -26,8 +26,6 @@
 					<th>タスク</th>
 					<th>優先順位</th>
 					<th>期日</th>
-					<th>集中時間</th>
-					<th>休憩時間</th>
 				</tr>
 			</thead>
 			<tbody>
