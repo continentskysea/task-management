@@ -7,7 +7,14 @@
 </head>
 <body>
 	<h1>タイマー一覧</h1>
-	<!-- タスク削除機能用フォーム -->	
+	<!-- パラメータのチェック -->
+	<div id="timerError" th:if="${timerSetMessage}">
+		<p th:text="${timerSetMessage}"></p>
+		<form th:action="@{/getTimerlist}" method="get">
+			<input id="timerErrorButton" type="submit" value="OK">
+		</form>
+	</div>
+	<!-- タイマー削除機能用フォーム -->	
 	<form id="timerDeleteForm" th:action="@{/deleteTask}" method="post">
 		<table>
 			<thead>

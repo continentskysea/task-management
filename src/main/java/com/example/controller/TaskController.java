@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.Task;
 import com.example.entity.TimersSetting;
@@ -72,17 +72,14 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/getListTasks") // URLの紐づけ
-	public String getListTasks(Model model) {
-		// Flash属性からメッセージを取得する
-		String message = (String) model.getAttribute("errorMessage");
-		// メッセージがnullかチェック
-		if (Objects.isNull(message)) {
-			message = (String) model.getAttribute("timerSetMessage");
-			model.addAttribute("flashMessage" ,message);
-		} else {
-			model.addAttribute("flashMessage", message);
+	public String getListTasks(Model model, RedirectAttributes ra) {
+		// Flash属性からエラーメッセージを取得する
+		String errorMessage = (String) model.getAttribute("errorMessage");
+		// エラーメッセージがある場合はモデルに追加する
+		if (errorMessage != null) {
+			model.addAttribute("flashErrorMessage", errorMessage);
 		}
-
+		
 		// ログインしているユーザーidを取得する
 		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
