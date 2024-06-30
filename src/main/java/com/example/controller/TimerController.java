@@ -21,7 +21,8 @@ import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 
 
@@ -74,6 +75,13 @@ public class TimerController {
 		Long currentUserId = userService.getCurrentUserId();
 		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
 		model.addAttribute("timersList", timersList);
+		String messageType = (String) model.getAttribute("messageType");
+		String statusMessage = "";
+		if ("timerSetMessage".equals(messageType)) {
+			statusMessage = (String) model.getAttribute(statusMessage);
+		} else if ("timerDeleteMessage".equals(messageType)) {
+			statusMessage = (String) model.getAttribute(statusMessage);
+		}
 		return "timers/timers";
 	} 
 
@@ -102,19 +110,16 @@ public class TimerController {
 		@ModelAttribute("timersSetting") TimersSetting timersSetting, 
 		@RequestParam("formSendCheckPageValue") String formSendCheckPageValue,
 		RedirectAttributes ra,
-		Model model
+		Model model,
+		HttpServletRequest request
 	) {
-		// System.out.println(timersSetting.getFocusTime());
-		// System.out.println(timersSetting.getBreakTime());
-		// System.out.println(timersSetting.getUserId());
+
 		timersSettingService.save(timersSetting);
+		
+		ra.addFlashAttribute("messageType", "タイマーを登録しました");
+		HttpSession session = request.getSession();
+		session.setAttribute("messageType", "timerSet");
 		if (Long.parseLong(formSendCheckPageValue) == 1) {
-			// Flash属性からエラーメッセージを取得する
-			String errorMessage = (String) model.getAttribute("errorMessage");
-			// エラーメッセージがある場合はモデルに追加する
-			if (errorMessage != null) {
-				model.addAttribute("flashErrorMessage", errorMessage);
-			}
 			return "redirect:/getListTasks";
 		} 
 		return "redirect:/getTimerlist";
@@ -147,8 +152,8 @@ public class TimerController {
 		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer(); 
 		
 		if (latestTimersSetting == null) {
-			String errorMessage = "タイマーが未登録です";
-			ra.addFlashAttribute("errorMessage", errorMessage);
+			String timerNotSetMessage = "タイマーが未登録です";
+			ra.addFlashAttribute("messageType", timerNotSetMessage);
 			// エラーとなりリダイレクトされる
 			return "redirect:/getListTasks";
 		}
@@ -187,8 +192,8 @@ public class TimerController {
 		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer();
 		
 		if (latestTimersSetting == null) {
-			String errorMessage = "タイマーが未登録です";
-			ra.addFlashAttribute("errorMessage", errorMessage);
+			String timerNotSetMessage = "タイマーが未登録です";
+			ra.addFlashAttribute("messageType", timerNotSetMessage);
 			// エラーとなりリダイレクトされる
 			return "redirect:/getListTasks";			
 		}
@@ -230,8 +235,10 @@ public class TimerController {
 	 * @param id タイマーid
 	 */
 	@PostMapping("/deleteTimer/{id}")
-	public String deleteTimer(@PathVariable(name = "id") Long id) {
+	public String deleteTimer(@PathVariable(name = "id") Long id, RedirectAttributes ra) {
 		timersSettingService.delete(id);
+		String timerDeleteMessage = "タイマーを削除しました";
+		ra.addFlashAttribute("messageType", timerDeleteMessage);
 		return "redirect:/getTimerlist";
 	}
 	

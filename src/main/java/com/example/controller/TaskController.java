@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ import com.example.service.LoginUser;
 import com.example.service.TaskService;
 import com.example.service.TimersSettingService;
 import com.example.service.UserService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 @Controller
 public class TaskController {
 	
@@ -72,12 +76,26 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/getListTasks") // URLの紐づけ
-	public String getListTasks(Model model, RedirectAttributes ra) {
-		// Flash属性からエラーメッセージを取得する
-		String errorMessage = (String) model.getAttribute("errorMessage");
+	public String getListTasks(Model model, RedirectAttributes ra,
+	HttpServletRequest request) {
+
+
+		HttpSession session = request.getSession();
+		String messageType = (String) session.getAttribute("messageType");
+
+		String message = null;
 		// エラーメッセージがある場合はモデルに追加する
-		if (errorMessage != null) {
-			model.addAttribute("flashErrorMessage", errorMessage);
+		if ("taskRegistarMessage".equals(messageType)) {
+			message = (String) model.getAttribute("taskRegistarMessage");
+		} else if ("taskDeleteMessage".equals(messageType)) {
+			message = (String) model.getAttribute("taskDeleteMessage");
+		} else if ("timerSetMessage".equals(messageType)) {
+			message = (String) model.getAttribute("timerSetMessage");
+		} else if ("timerNotSetMessage".equals(messageType)) {
+			message = (String) model.getAttribute("timerNotSetMessage");
+		}
+		if (Objects.nonNull(message)) {
+			model.addAttribute("flashMessage" ,message);
 		}
 		
 		// ログインしているユーザーidを取得する
@@ -98,13 +116,22 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */	 
 	@PostMapping("/register") // URLの紐づけ
-	public String registerTask(@ModelAttribute("task") Task task) {
+	public String registerTask(
+		@ModelAttribute("task") Task task, 
+		RedirectAttributes ra,
+		HttpServletRequest request) {
 		System.out.println(task.getName());
 		System.out.println(task.getPriority());
 		System.out.println(task.getDueDate());
 		System.out.println(task.getUserId());
 		// タスクサービスを呼び出す
 		taskService.save(task);
+
+		ra.addFlashAttribute("taskDeleteMessage", "タスクを削除しました");
+
+		HttpSession session = request.getSession();
+		session.setAttribute("messageType", "taskDelete");
+
 		// タスク一覧画面をリダイレクト表示
 		return "redirect:/getListTasks";
 	}
@@ -144,8 +171,20 @@ public class TaskController {
 	 * @return タスク一覧画面 
 	 */
 	@PostMapping("/deleteTask/{id}")
-	public String deleteTask(@PathVariable(name = "id") Long id) {
+	public String deleteTask(
+		@PathVariable(name = "id") Long id, 
+		RedirectAttributes ra,
+		HttpServletRequest request
+	) {
 		taskService.delete(id);
+
+		// 削除完了メッセージをFlashScopeに保存
+		ra.addFlashAttribute("taskDeleteMessage", "タスクを削除しました");
+
+		// セッションスコープにメッセージの種類を保存
+		HttpSession session = request.getSession();
+		session.setAttribute("messageType", "taskDelete");
+
 		return "redirect:/getListTasks";
 	}
 	
