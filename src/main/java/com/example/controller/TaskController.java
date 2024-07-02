@@ -76,24 +76,30 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/getListTasks") // URLの紐づけ
-	public String getListTasks(Model model, RedirectAttributes ra,
-	HttpServletRequest request) {
+	public String getListTasks(Model model, HttpServletRequest request) {
 
-
+		// セッションスコープのオブジェクトを取得する
 		HttpSession session = request.getSession();
 		String messageType = (String) session.getAttribute("messageType");
 
 		String message = null;
-		// エラーメッセージがある場合はモデルに追加する
-		if ("taskRegistarMessage".equals(messageType)) {
+		if ("taskRegistar".equals(messageType)) {
+			// タスク登録完了メッセージをセットする
 			message = (String) model.getAttribute("taskRegistarMessage");
-		} else if ("taskDeleteMessage".equals(messageType)) {
+		} else if ("taskDelete".equals(messageType)) {
+			// タスク削除完了メッセージをセットする
 			message = (String) model.getAttribute("taskDeleteMessage");
-		} else if ("timerSetMessage".equals(messageType)) {
+		} else if ("timerSet".equals(messageType)) {
+			// タイマー設定完了メッセージをセットする
 			message = (String) model.getAttribute("timerSetMessage");
-		} else if ("timerNotSetMessage".equals(messageType)) {
+		} else if ("timerNotSet".equals(messageType)) {
+			// タイマー未設定メッセージをセットする
 			message = (String) model.getAttribute("timerNotSetMessage");
 		}
+		
+		// メッセージタイプを削除する
+		session.removeAttribute("messageType");
+		// 
 		if (Objects.nonNull(message)) {
 			model.addAttribute("flashMessage" ,message);
 		}
@@ -127,10 +133,10 @@ public class TaskController {
 		// タスクサービスを呼び出す
 		taskService.save(task);
 
-		ra.addFlashAttribute("taskDeleteMessage", "タスクを削除しました");
+		ra.addFlashAttribute("taskRegistarMessage", "タスクを登録しました");
 
 		HttpSession session = request.getSession();
-		session.setAttribute("messageType", "taskDelete");
+		session.setAttribute("messageType", "taskRegistar");
 
 		// タスク一覧画面をリダイレクト表示
 		return "redirect:/getListTasks";

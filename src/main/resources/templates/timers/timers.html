@@ -8,8 +8,8 @@
 <body>
 	<h1>タイマー一覧</h1>
 	<!-- パラメータのチェック -->
-	<div id="timerError" th:if="${timerSetMessage}">
-		<p th:text="${timerSetMessage}"></p>
+	<div id="timerError" th:if="${flashMessage != null}">
+		<p th:text="${flashMessage}"></p>
 		<form th:action="@{/getTimerlist}" method="get">
 			<input id="timerErrorButton" type="submit" value="OK">
 		</form>
