@@ -5,9 +5,17 @@
 	<title>ログイン</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
+	<link rel="stylesheet" th:href="@{/css/listComponents.css}">
 </head>
 <body>
 	<h1>ログイン</h1>
+	<!-- パラメータのチェック -->
+	<div id="flashMessageDisplay" th:if="${flashMessage != null}">
+		<p th:text="${flashMessage}"></p>
+		<form th:action="@{/loginForm}" method="get">
+			<input id="messageDeleteButton" type="submit" value="OK">
+		</form>
+	</div>
 	<!-- パラメータのチェック -->
 	<div id="errorMsg" th:if="${param.error}">
 		<p>ユーザー名またはパスワードが違います。</p>

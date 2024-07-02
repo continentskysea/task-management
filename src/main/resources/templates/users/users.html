@@ -7,6 +7,13 @@
 <link rel="stylesheet" th:href="@{/css/listComponents.css}">
 <body>
 	<h1>ユーザー一覧</h1>
+	<!-- パラメータのチェック -->
+	<div id="flashMessageDisplay" th:if="${flashMessage != null}">
+		<p th:text="${flashMessage}"></p>
+		<form th:action="@{/getListUsers}" method="get">
+			<input id="messageDeleteButton" type="submit" value="OK">
+		</form>
+	</div>
 	<!-- タスク削除機能用フォーム -->	
 	<form id="userDeleteForm" th:action="@{/deleteTask}" method="post">
 		<table>
