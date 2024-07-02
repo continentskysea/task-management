@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entity.Task;
+import com.example.entity.TimersSetting;
 import com.example.entity.User;
 import com.example.service.LoginUser;
 /**
@@ -22,17 +24,23 @@ import com.example.service.LoginUser;
  *
  */
 import com.example.service.TaskService;
+import com.example.service.TimersSettingService;
 import com.example.service.UserService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 @Controller
 public class TaskController {
 	
 	private final TaskService taskService;
 	private final UserService userService;
+	private final TimersSettingService timersSettingService;
 	// コンストラクタインジェクション
 	@Autowired
-	public TaskController(TaskService taskService, UserService userService) {
+	public TaskController(TaskService taskService, UserService userService, TimersSettingService timersSettingService) {
 		this.taskService = taskService;
 		this.userService = userService;
+		this.timersSettingService = timersSettingService;
 	}
 	
 	/**
@@ -68,18 +76,41 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */
 	@GetMapping("/getListTasks") // URLの紐づけ
-	public String getListTasks(Model model, RedirectAttributes ra) {
-		// Flash属性からエラーメッセージを取得する
-		String errorMessage = (String) model.getAttribute("errorMessage");
-		// エラーメッセージがある場合はモデルに追加する
-		if (errorMessage != null) {
-			model.addAttribute("flashErrorMessage", errorMessage);
+	public String getListTasks(Model model, HttpServletRequest request) {
+
+		// セッションスコープのオブジェクトを取得する
+		HttpSession session = request.getSession();
+		String messageType = (String) session.getAttribute("messageType");
+
+		String message = null;
+		if ("taskRegistar".equals(messageType)) {
+			// タスク登録完了メッセージをセットする
+			message = (String) model.getAttribute("taskRegistarMessage");
+		} else if ("taskDelete".equals(messageType)) {
+			// タスク削除完了メッセージをセットする
+			message = (String) model.getAttribute("taskDeleteMessage");
+		} else if ("timerSet".equals(messageType)) {
+			// タイマー設定完了メッセージをセットする
+			message = (String) model.getAttribute("timerSetMessage");
+		} else if ("timerNotSet".equals(messageType)) {
+			// タイマー未設定メッセージをセットする
+			message = (String) model.getAttribute("timerNotSetMessage");
+		}
+		
+		// メッセージタイプを削除する
+		session.removeAttribute("messageType");
+		// 
+		if (Objects.nonNull(message)) {
+			model.addAttribute("flashMessage" ,message);
 		}
 		
 		// ログインしているユーザーidを取得する
 		Long currentUserId = userService.getCurrentUserId();
 		List<Task> listTasks = taskService.getTasksByUserId(currentUserId);
-		model.addAttribute("listTasks", listTasks);		
+		model.addAttribute("listTasks", listTasks);
+		// 登録しているタイマー設定の最新版を取得する
+		TimersSetting latestSetTimes = timersSettingService.getUsersSettingTimer();
+		model.addAttribute("latestSetTimes", latestSetTimes);
 		return "tasks/tasks";	
 	}
 	
@@ -91,9 +122,22 @@ public class TaskController {
 	 * @return タスク一覧画面
 	 */	 
 	@PostMapping("/register") // URLの紐づけ
-	public String registerTask(@ModelAttribute("task") Task task) {
+	public String registerTask(
+		@ModelAttribute("task") Task task, 
+		RedirectAttributes ra,
+		HttpServletRequest request) {
+		System.out.println(task.getName());
+		System.out.println(task.getPriority());
+		System.out.println(task.getDueDate());
+		System.out.println(task.getUserId());
 		// タスクサービスを呼び出す
 		taskService.save(task);
+
+		ra.addFlashAttribute("taskRegistarMessage", "タスクを登録しました");
+
+		HttpSession session = request.getSession();
+		session.setAttribute("messageType", "taskRegistar");
+
 		// タスク一覧画面をリダイレクト表示
 		return "redirect:/getListTasks";
 	}
@@ -133,8 +177,20 @@ public class TaskController {
 	 * @return タスク一覧画面 
 	 */
 	@PostMapping("/deleteTask/{id}")
-	public String deleteTask(@PathVariable(name = "id") Long id) {
+	public String deleteTask(
+		@PathVariable(name = "id") Long id, 
+		RedirectAttributes ra,
+		HttpServletRequest request
+	) {
 		taskService.delete(id);
+
+		// 削除完了メッセージをFlashScopeに保存
+		ra.addFlashAttribute("taskDeleteMessage", "タスクを削除しました");
+
+		// セッションスコープにメッセージの種類を保存
+		HttpSession session = request.getSession();
+		session.setAttribute("messageType", "taskDelete");
+
 		return "redirect:/getListTasks";
 	}
 	

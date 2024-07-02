@@ -59,7 +59,7 @@ $(document).ready(function() {
 				// 初期登録時間を表示
 				timerElement.textContent = 
 				formatTime(immutableHours)+ ":"+ formatTime(immutableMin) + ":" + formatTime(immutableSec);
-				return; // タイマーを強制狩猟し、-1を描画させない
+				return; // タイマーを強制終了し、-1を描画させない
 			}
 			// タイマーを1秒減少
 			totalTimeInSeconds--;

@@ -70,8 +70,8 @@ public class TimersSettingService {
 	public TimersSetting getUsersSettingTimer() {
 		// ログインしているユーザー情報のIDを取得する
 		Long userId = userService.getCurrentUserId();
-		
-		return timersSettingRepository.findTopByUserIdOrderByIdDesc(userId);
+		System.out.println(userId);
+		return timersSettingRepository.findTopByUserIdOrderByIdDescFechFirstRowsOnlySetting(userId);
 		
 	}
 

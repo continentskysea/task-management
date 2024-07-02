@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 /**
@@ -16,26 +15,24 @@ import jakarta.persistence.Table;
  *
  */
 @Entity
-@Table(name = "TIMERS_SETTINGS")
+@Table(name = "timers_settings", schema = "verification")
 public class TimersSetting {
 	@Id
-	@SequenceGenerator(name = "TIMERS_SETTINGS_ID_GENERATOR", sequenceName = "TIMERS_SETTINGS_ID_SEQ", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TIMERS_SETTINGS_ID_GENERATOR")
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id; // タイマー設定ID
-	
-	@Column(name = "USER_ID")
-	private Long userId; // ユーザーID(外部キー)
-	
-	@Column(name = "FOCUS_TIME")
+
+	@Column(name = "focus_time")
 	private String focusTime; // 集中時間
 	
-	@Column(name = "BREAK_TIME")
+	@Column(name = "break_time")
 	private String breakTime; // 休憩時間
 	
-	@Column(name = "REGISTAR_AT")
+	@Column(name = "registar_at")
 	private LocalDateTime registarAt; // 登録日
 	
+	@Column(name = "user_id")
+	private Long userId; // ユーザーID(外部キー)
 	
 	// アクセサメソッド
 	
