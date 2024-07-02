@@ -72,15 +72,12 @@ public class TimerController {
 	 */
 	@GetMapping("/getTimerlist")
 	public String getTimerlist(Model model, HttpServletRequest request) {
-		// ログインユーザーのIDからタイマー設定情報のリストを画面に表示する
-		Long currentUserId = userService.getCurrentUserId();
-		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
-		model.addAttribute("timersList", timersList);
-
+		
 		// リダイレクト元から送信されたセッションスコープをオブジェクトに取得する
 		HttpSession session = request.getSession();
-		String messageType = (String) model.getAttribute("messageType");
-
+		String messageType = (String) session.getAttribute("messageType");
+		
+		// メッセージタイプオブジェクトのキーとバリューを比較する
 		String message = null;
 		if ("timerSet".equals(messageType)) {
 			// タイマー登録完了メッセージをセットする
@@ -93,16 +90,23 @@ public class TimerController {
 			message = (String) model.getAttribute("timerNotSetMassage");
 		}
 
-		// セッションスコープからメッセージの種類を削除
+		// セッションスコープからメッセージタイプを削除
 		session.removeAttribute("messageType");
 
 		// メッセージがある場合はModelに追加
 		if (Objects.nonNull(message)) {
 			model.addAttribute("flashMessage", message);
 		}
+
+		// ログインユーザーのIDからタイマー設定情報のリストを画面に表示する
+		Long currentUserId = userService.getCurrentUserId();
+		List<TimersSetting> timersList = timersSettingService.getTimersByUserId(currentUserId);
+		model.addAttribute("timersList", timersList);
+
+		// タイマー一覧画面へ遷移
 		return "timers/timers";
 	} 
-
+	
 	
 	/**
 	 * タイマー登録画面表示

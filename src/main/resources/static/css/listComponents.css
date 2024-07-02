@@ -83,8 +83,8 @@ button:hover, a:hover {
     height: 100px;
 }
 
-#timerError {
-    color: red;
+#flashMessageDisplay {
+    color: yellowgreen;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -94,7 +94,7 @@ button:hover, a:hover {
 /* ---------------------------------
 エラーメッセージが表示されたら出現
 --------------------------------- */
-#timerErrorButton {
+#messageDeleteButton {
 	width: 300px;
 	height: 150px;
 	border-radius: 10px;
@@ -102,12 +102,12 @@ button:hover, a:hover {
 	margin-bottom: 50px;
 }
 
-#timerErrorButton:hover {
+#messageDeleteButton:hover {
 	cursor: pointer;
 	opacity: 0.5;
 }
 
-#timerError p{
+#flashMessageDisplay p{
 	font-size: 50px;
 }
 

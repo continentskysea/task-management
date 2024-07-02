@@ -78,7 +78,7 @@ public class TaskController {
 	@GetMapping("/getListTasks") // URLの紐づけ
 	public String getListTasks(Model model, HttpServletRequest request) {
 
-		// セッションスコープのオブジェクトを取得する
+		// リダイレクト元から送信されたセッションスコープのオブジェクトを取得
 		HttpSession session = request.getSession();
 		String messageType = (String) session.getAttribute("messageType");
 
@@ -99,7 +99,7 @@ public class TaskController {
 		
 		// メッセージタイプを削除する
 		session.removeAttribute("messageType");
-		// 
+		// メッセージがある場合はModelに追加
 		if (Objects.nonNull(message)) {
 			model.addAttribute("flashMessage" ,message);
 		}
