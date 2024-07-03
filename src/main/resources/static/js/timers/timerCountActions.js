@@ -2,7 +2,6 @@
  * タイマーの動作制御
  */
 $(document).ready(function() {
-	
 	// 起動ボタンが押された時の処理
 	$("#startButton").on("click", function() {
 		
@@ -42,6 +41,7 @@ $(document).ready(function() {
 			
 			// 残り時間が0になったらフォームを自動的に送信
 			if (totalTimeInSeconds < 0) {
+				// タイマーを停止
 				clearInterval(countDownTimerId);
 				$("#stopButton").prop("disabled", true);
 				if ($("#stopButton").prop("disabled")) {
@@ -50,7 +50,41 @@ $(document).ready(function() {
 					$("#resetButton").prop("disabled", true);
 					
 				}
-				window.alert("時間です！");
+				//　confirmダイアログを表示
+				let message = "時間です!タイマーを切り替えますか?";
+				let nextUrl = ""; // 集中タイマーURL
+				let prevUrl = ""; // 休憩タイマーURL
+				let isFocusTimer = true; // 現在のタイマーが集中タイマーかどうか
+				// タスクの値とタイマーの値を取得する必要あり
+				let taskId = $('#taskId').val();
+				// console.log(taskId);
+				let timerPageNumber = parseInt($('#timerPageNumber').val());
+				console.log(timerPageNumber)
+
+				// 現在のタイマーが集中タイマーかどうか判定
+				if (timerPageNumber == 1) {
+					isFocusTimer = true;
+					nextUrl = '/getBreakTimer/' + taskId; // 休憩タイマーURL
+					prevUrl = '/getFocusTimer/'  + taskId; // 集中タイマーURL
+				} else if (timerPageNumber == 2) {
+					isFocusTimer = false;
+					nextUrl = '/getFocusTimer/'+ taskId; // 集中タイマーURL
+					prevUrl = '/getBreakTimer/' + taskId; // 休憩タイマーURL
+				}
+
+					let confirmResult = confirm(message);
+					if (confirmResult) {
+						// OKが選択された場合
+						if (isFocusTimer) {
+							window.location.href = nextUrl;
+						} else {
+							window.location.href = prevUrl;
+					}
+				} else {
+					// キャンセルが押された場合
+					// タイマーをリセットせずに元の画面を維持
+					
+				}
 				// : ごとに配列に格納
 				const immutableTimeArray = immutableInitialTime.split(":");
 				const immutableHours = parseInt(immutableTimeArray[0]);
