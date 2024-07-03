@@ -108,6 +108,35 @@ button:hover, a:hover {
 
 }
 
+
+#flashMessageDisplay {
+    color: yellowgreen;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* ---------------------------------
+ステータスメッセージが表示されたら出現
+--------------------------------- */
+#messageDeleteButton {
+	width: 300px;
+	height: 150px;
+	border-radius: 10px;
+	font-size: 50px;
+	margin-bottom: 50px;
+}
+
+#messageDeleteButton:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+#flashMessageDisplay p{
+	font-size: 50px;
+}
+
 /* ---------------------------------
 エラーメッセージが表示されたら出現
 --------------------------------- */

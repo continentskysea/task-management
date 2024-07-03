@@ -95,6 +95,7 @@ public class UserController {
 		User user = new User();
 		// ユーザーオブジェクトを画面に渡す
 		model.addAttribute("user", user);
+		// ユーザー登録画面へ遷移
 		return "users/userForm";
 	}
 	
@@ -123,7 +124,10 @@ public class UserController {
 	 */
 	@GetMapping("/getEditUser/{id}")
 	public String getEditUser(@PathVariable(name = "id") Long id, Model model) {
+
+		//ユーザーIDのエラ―チェック
 		if (id == null) {
+			// ユーザー一覧へリダイレクトする
 			return "redirect:/getListUsers";
 		}
 
@@ -132,12 +136,13 @@ public class UserController {
 
 		// ユーザー情報の有無をチェック
 		if (optionalUser.isEmpty()) {
-			// エラーページ
+			// ユーザー一覧へリダイレクトする
 			return "redirect:/getListUsers";
 		} else {
-
+			// 編集対処のユーザーを取得しモデルに追加する
 			User user = optionalUser.get();
 			model.addAttribute("user", user);
+			// ユーザー編集画面へ遷移
 			return "users/userEdit";
 		}
 	}

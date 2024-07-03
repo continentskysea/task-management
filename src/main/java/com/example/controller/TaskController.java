@@ -50,9 +50,10 @@ public class TaskController {
 	 */
 	@GetMapping("/getTask")
 	public String getTask(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+		// ログインユーザー情報を取得
 		User currentUser = loginUser.getUser();
 		model.addAttribute("currentUser", currentUser);
-		// タスク管理初期画面を表示
+		// タスク管理初期画面へ遷移
 		return "tasks/taskHome";
 	}
 	
@@ -132,9 +133,10 @@ public class TaskController {
 		System.out.println(task.getUserId());
 		// タスクサービスを呼び出す
 		taskService.save(task);
-
+		
+		// タスク登録完了メッセージをFlashScopeに保存
 		ra.addFlashAttribute("taskRegistarMessage", "タスクを登録しました");
-
+		// セッションスコープにメッセージの種類を保存
 		HttpSession session = request.getSession();
 		session.setAttribute("messageType", "taskRegistar");
 
@@ -151,7 +153,9 @@ public class TaskController {
 	 */
 	@GetMapping("/getEditTask/{id}")
 	public String getEditTask(@PathVariable(name = "id")  Long id, Model model) {
+		// タスクIDのエラーチェック
 		if (id == null) {
+			// タスク一覧画面へリダイレクトする
 			return "redirect:/getListTasks";
 		}
 				
@@ -165,6 +169,7 @@ public class TaskController {
 			Task task = optionalTask.get();
 			// 取得したタスク情報を画面に渡す
 			model.addAttribute("task" ,task);
+			// タスク編集画面へ遷移
 			return "tasks/taskEdit";		
 		}
 	}
@@ -191,6 +196,7 @@ public class TaskController {
 		HttpSession session = request.getSession();
 		session.setAttribute("messageType", "taskDelete");
 
+		// タスク一覧画面をリダイレクトする
 		return "redirect:/getListTasks";
 	}
 	
