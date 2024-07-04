@@ -11,7 +11,9 @@
 	</div>
 	<div id="timerDisplayForm">
 			<div id="timerDisplayWrapper">
-				<input type="hidden" name="taskId" th:vale="${task.id}">
+				<!-- ページ判定用の値 -->
+				<input type="hidden" id="timerPageNumber" value="2">
+				<input type="hidden" id="taskId" name="taskId" th:value="${task.id}">
 				<div id="taskContent">
 					<label>タスク名</label>
 					<p th:text="${task.name}"></p>
