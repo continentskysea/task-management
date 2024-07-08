@@ -46,12 +46,16 @@ public class TaskController {
 	/**
 	 * タスク管理初期画面表示
 	 * 
+	 * @param loginUser ログインユーザー情報
+	 * @param model ユーザーオブジェクトの属性を追加
+	 * 
 	 * @return タスク管理初期画面
 	 */
 	@GetMapping("/getTask")
-	public String getTask(Model model, @AuthenticationPrincipal LoginUser loginUser) {
-		// ログインユーザー情報を取得
+	public String getTask(@AuthenticationPrincipal LoginUser loginUser, Model model) {
+		// ログインユーザー情報からユーザーオブジェクトを生成する
 		User currentUser = loginUser.getUser();
+		// modelに追加し、遷移先へ渡す
 		model.addAttribute("currentUser", currentUser);
 		// タスク管理初期画面へ遷移
 		return "tasks/taskHome";
@@ -60,19 +64,25 @@ public class TaskController {
 	/**
 	 * タスク登録画面表示
 	 * 
+	 * @param model タスクオブジェクトの属性を追加
+	 * 
 	 * @return タスク登録画面
 	 */
 	@GetMapping("/getCreateTask") // URLの紐づけ
 	public String getCreateTask(Model model) {
 		// 新規登録用に空のタスク登録情報を作成
 		Task task = new Task();
+		// modelに渡す
 		model.addAttribute("task", task);
-		// タスク登録画面を表示
+		// タスク登録画面へ遷移
 		return "tasks/taskForm";
 	}	
 
 	/**
 	 * ユーザー別タスク一覧画面表示
+	 * 
+	 * @param model
+	 * @param request
 	 * 
 	 * @return タスク一覧画面
 	 */
@@ -119,6 +129,8 @@ public class TaskController {
 	 * タスク登録・更新処理
 	 * 
 	 * @param task タスク情報
+	 * @param ra
+	 * @param request
 	 * 
 	 * @return タスク一覧画面
 	 */	 
@@ -127,10 +139,6 @@ public class TaskController {
 		@ModelAttribute("task") Task task, 
 		RedirectAttributes ra,
 		HttpServletRequest request) {
-		System.out.println(task.getName());
-		System.out.println(task.getPriority());
-		System.out.println(task.getDueDate());
-		System.out.println(task.getUserId());
 		// タスクサービスを呼び出す
 		taskService.save(task);
 		
@@ -147,7 +155,8 @@ public class TaskController {
 	/**
 	 * タスク編集画面表示
 	 * 
-	 * @param task タスク情報
+	 * @param id タスクID
+	 * @param  model
 	 * 
 	 * @return タスク編集画面
 	 */
@@ -162,12 +171,14 @@ public class TaskController {
 		// タスクIDに紐づくタスク情報を取得
 		Optional<Task> optionalTask = taskService.get(id);
 
+		// タスク情報がnullかチェック
 		if (optionalTask.isEmpty()) {
 			// エラーページ
 			return "redirect:/getListTasks";
 		} else {
+			// 取得したタスク情報からオブジェクトを生成する
 			Task task = optionalTask.get();
-			// 取得したタスク情報を画面に渡す
+			// modelに追加し、遷移先へ渡す
 			model.addAttribute("task" ,task);
 			// タスク編集画面へ遷移
 			return "tasks/taskEdit";		

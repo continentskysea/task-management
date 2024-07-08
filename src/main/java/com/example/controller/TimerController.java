@@ -55,11 +55,16 @@ public class TimerController {
 	/**
 	 * タイマー管理初期画面表示
 	 * 
+	 * @param loginUser　ログインユーザー情報
+	 * @param model ユーザーオブジェクトの属性を追加
+	 * 
 	 * @return タイマー管理初期画面
 	 */
 	@GetMapping("/getTimer")
-	public String getTimer(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+	public String getTimer(@AuthenticationPrincipal LoginUser loginUser, Model model) {
+		// ログインユーザー情報からユーザーオブジェクトを生成する
 		User currentUser = loginUser.getUser();
+		// modelに追加し、遷移先へ渡す
 		model.addAttribute("currentUser" , currentUser);
 		// タスク管理初期画面を表示
 		return "timers/timerHome";
@@ -111,6 +116,8 @@ public class TimerController {
 	/**
 	 * タイマー登録画面表示
 	 * 
+	 * @param model　タイマーオブジェクトの属性を追加
+	 * 
 	 * @return タイマー登録画面
 	 */
 	@GetMapping("/getTimerSetting")
@@ -125,7 +132,10 @@ public class TimerController {
 	/**
 	 * タイマーの登録処理
 	 * 
-	 * @param timersSetting 集中時間と休憩時間
+	 * @param timersSetting タイマー設定情報(集中時間と休憩時間)
+	 * @param formSendCheckPageValue
+	 * @param ra  
+	 * @param request リダイレクト先へ渡すセッションを渡す
 	 * @return タスク一覧画面
 	 */
 	@PostMapping("/save")
@@ -133,7 +143,6 @@ public class TimerController {
 		@ModelAttribute("timersSetting") TimersSetting timersSetting, 
 		@RequestParam("formSendCheckPageValue") String formSendCheckPageValue,
 		RedirectAttributes ra,
-		Model model,
 		HttpServletRequest request
 	) {
 
@@ -159,13 +168,19 @@ public class TimerController {
 	/**
 	 * 集中タイマー画面表示
 	 * 
+	 * @param id タイマー設定ID
+	 * @param model　タイマーオブジェクトとタスクオブジェクトの属性を追加
+	 * @param ra リダイレクト先のステータスメッセージ
+	 * @param request リダイレクト先へ渡すセッションを渡す
+	 * 
 	 * @return 集中タイマー画面
 	 */
 	
 	@GetMapping("/getFocusTimer/{id}")
 	public String getFocusTimer(
 		@PathVariable(name = "id") Long id, 
-		Model model, RedirectAttributes ra,
+		Model model, 
+		RedirectAttributes ra,
 		HttpServletRequest request
 	) {
 		// タイマー設定IDのエラーチェック
@@ -200,7 +215,7 @@ public class TimerController {
 			return "redirect:/getListTasks";
 		}
 		
-		// 集中タイマーとタスク情報を画面に流す
+		// modelに追加し、遷移先へ渡す
 		model.addAttribute("task", task);
 		model.addAttribute("timersSetting", latestTimersSetting);
 		
@@ -211,25 +226,32 @@ public class TimerController {
 	/**
 	 * 休憩タイマー画面表示
 	 * 
+	 * @param id タスクID
+	 * @param model タスクオブジェクトとタイマーオブジェクトの属性を追加
+	 * @param ra リダイレクト先のステータスメッセージ
+	 * @param request リダイレクト先へ渡すセッションを渡す
+	 * 
 	 * @return 休憩タイマー画面
 	 */
 	@GetMapping("/getBreakTimer/{id}")
 	public String getBreakTimer(
 			@PathVariable(name = "id") Long id, 
-			Model model, RedirectAttributes ra,
+			Model model,
+			RedirectAttributes ra,
 			HttpServletRequest request
 		) {
 		
-		// エラーチェック
+		// タスクIDのエラーチェック
 		if (id == null) {
+			// タスク一覧画面ヘリダイレクトする
 			return "redirect:/getListTasks";
 		}
 		// タスクIDに紐づくタスク情報を取得
 		Optional<Task> optinalTask = taskService.get(id);
 		
-		// タスク情報の有無をチェック
+		// タスク情報がnullかチェック
 		if (optinalTask.isEmpty()) {
-			// エラーページ
+			// タスク一覧画面へリダイレクトする
 			return "redirect:/getListTasks";
 		}
 			
@@ -237,6 +259,7 @@ public class TimerController {
 		Task task = optinalTask.get();
 		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer();
 		
+		// タイマーがnullかチェック
 		if (latestTimersSetting == null) {
 			// FlashScopeに保存する
 			ra.addFlashAttribute("timerNotSetMessage", "タイマーが未登録です");
@@ -245,22 +268,25 @@ public class TimerController {
 			HttpSession session = request.getSession();
 			session.setAttribute("messageType", "timerNotSet");
 
-			// エラーとなりリダイレクトされる
+			// タスク一覧画面へリダイレクトする
 			return "redirect:/getListTasks";			
 		}
 		
-		// タスク情報を画面に渡す
+		// modelに保存し、遷移先へ渡す
 		model.addAttribute("task", task);
-		// タイマー情報を画面に渡す
 		model.addAttribute("timersSetting", latestTimersSetting);
 		
 		// 休憩タイマー画面へ遷移
 		return "timers/breakTimer";
-
 	}
 
 	/**
 	 * タイマー編集画面表示
+	 * 
+	 * @param id タイマーID
+	 * @param model
+	 * 
+	 * @return タイマー編集画面
 	 */
 	@GetMapping("/getEditTimer/{id}")
 	public String getEditTimer(@PathVariable(name = "id") Long id, Model model) {
@@ -272,13 +298,16 @@ public class TimerController {
 		// タスクIDに紐づくタスク情報を取得
 		Optional<TimersSetting> optinalTimer = timersSettingService.get(id);
 
+		// タイマー情報がnullかチェック
 		if (optinalTimer.isEmpty()) {
 			// エラーページ
 			return "redirect:/getTimerlist";
 		} else {
+			// 取得したタイマー情報からオブジェクトを生成する
 			TimersSetting timersSetting = optinalTimer.get();
-			// 取得したタスク情報を画面に渡す
+			// modelに保存し、遷移先へ渡す
 			model.addAttribute("timersSetting" ,timersSetting);
+			// タイマー編集画面へ遷移する
 			return "timers/timerEdit";		
 		}
 	}

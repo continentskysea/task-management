@@ -6,6 +6,7 @@
 	<link rel="stylesheet" th:href="@{/css/timerDisplay.css}">
 </head>
 <body>
+	<!-- 見出し -->
 	<div id="timerDisplayHeader">
 		<h1>休憩タイマー</h1>
 	</div>
@@ -14,10 +15,12 @@
 				<!-- ページ判定用の値 -->
 				<input type="hidden" id="timerPageNumber" value="2">
 				<input type="hidden" id="taskId" name="taskId" th:value="${task.id}">
+				<!-- タスク表示欄 -->
 				<div id="taskContent">
 					<label>タスク名</label>
 					<p th:text="${task.name}"></p>
 				</div>
+				<!-- タイマー表示欄 -->
 				<div id="timerContent">
 					<label>休憩時間</label>
 					<input type="hidden" name="settingId" th:value="${timersSetting.getId}" />

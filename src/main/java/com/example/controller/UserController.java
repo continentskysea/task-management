@@ -45,6 +45,7 @@ public class UserController {
 	 */
 	@GetMapping("/getUserHome")
 	public String getUserHome() {
+		// ユーザー管理初期画面へ遷移
 		return "users/userHome";
 	}
 	
@@ -52,11 +53,15 @@ public class UserController {
 	/**
 	 * ユーザー一覧画面表示
 	 * 
+	 * @param model
+	 * @param request
+	 * 
 	 * @return ユーザー一覧画面
 	 */
 	@GetMapping("/getListUsers")	
 	public String getListUsers(Model model, HttpServletRequest request) {
 		
+		// DBに登録されているユーザー情報の全てを取得しmodelに渡す
 		List<User> listUsers = userService.findAll();
 		model.addAttribute("listUsers", listUsers);
 		
@@ -87,6 +92,8 @@ public class UserController {
 	/**
 	 * ユーザー登録画面表示
 	 * 
+	 * @param model
+	 * 
 	 * @return ユーザー登録画面
 	 */
 	@GetMapping("/getCreateUser")
@@ -103,20 +110,24 @@ public class UserController {
 	/**
 	 * ログイン前ユーザー登録画面表示
 	 * 
+	 * @param model
+	 * 
 	 * @return ログイン前ユーザー登録画面
 	 */
 	@GetMapping("/getBeforeLoginCreateUser")
 	public String getBeforeLoginCreateUser(Model model) {
 		// 空のユーザーオブジェクト生成
 		User user = new User();
-		// ユーザーオブジェクトを画面に渡す
+		// modelに追加し、遷移先へ渡す
 		model.addAttribute("user", user);
+		// 登録フォームヘ遷移する(ログイン前新規登録用)
 		return "users/beforeLoginUserForm";
 	}
 	
 
 	/**
 	 * ユーザー編集画面表示
+	 * 
 	 * @param id ユーザーid
 	 * @param model
 	 * 
@@ -141,6 +152,7 @@ public class UserController {
 		} else {
 			// 編集対処のユーザーを取得しモデルに追加する
 			User user = optionalUser.get();
+			// modelに保存し、遷移先へ渡す
 			model.addAttribute("user", user);
 			// ユーザー編集画面へ遷移
 			return "users/userEdit";
@@ -151,6 +163,10 @@ public class UserController {
 	 * ユーザー情報登録
 	 * 
 	 * @param user ユーザー情報
+	 * @param bindingResult
+	 * @param ra
+	 * @param createUserPageCheck ユーザーが登録されたページの判定(admin/beforeLogin)
+	 * @param request
 	 * 
 	 * @return ユーザー一覧画面
 	 */	 
@@ -163,30 +179,25 @@ public class UserController {
 			HttpServletRequest request
 
 		) {
-			// System.out.println(user.getName());
-			// System.out.println(user.getEmail());
-			// System.out.println(user.getPassword());
 	        // 入力に登録に不備があれば登録画面に戻る(Entityで設定したバリデーションを使ってチェックする)
 			if (bindingResult.hasErrors()) {
 				// エラーメッセージを追加するのは、バリデーションエラーが発生した場合のみ
 				ra.addFlashAttribute("error_message", "入力内容に誤りがあります");
 				return "redirect:/getCreateUser";
 			}
+			// 登録されたロールをオブジェクト化
 			String role = user.getRole();
-			// System.out.println(role);
 			// 送信されたロールを判定し登録する
 			if (role == null || role.equals("") ||  role.equals("GENERAL")) {
 				user.setRole("GENERAL");
-				System.out.println("一般ユーザーとして登録されました");
 			} else if (role.equals("管理者")) {
 				user.setRole("ADMIN");
-				System.out.println("管理者として登録されました");
-
 			}
 			
 			// ユーザー情報をDBに保存する
 			userService.save(user);
 
+			// FlashScopeに保存する
 			ra.addFlashAttribute("userRegistarMessage", "ユーザーを登録しました");
 
 			// セッションスコープにメッセージの種類を保存
@@ -199,6 +210,7 @@ public class UserController {
 				// ログイン画面をリダイレクト表示
 				return "redirect:/loginForm";
 			}
+
 			// ユーザー一覧画面をリダイレクト表示
 			return "redirect:/getListUsers";
 	}
@@ -207,6 +219,9 @@ public class UserController {
 	 * ユーザー削除削除
 	 * 
 	 * @param id ユーザーID
+	 * @param ra
+	 * @param request
+	 * 
 	 * @return ユーザー一覧画面
 	 */
 	@PostMapping("/deleteUser/{id}")
@@ -215,15 +230,17 @@ public class UserController {
 		RedirectAttributes ra,
 		HttpServletRequest request		
 	) {
-		
+		// ユーザー情報を削除
 		userService.delete(id);
 
+		// FlashScopeに保存する
 		ra.addFlashAttribute("deleteUserMessage", "ユーザーを削除しました");
 
 		// セッションスコープにメッセージの種類を保存
 		HttpSession session = request.getSession();
 		session.setAttribute("messageType", "deleteUser");
 
+		// ユーザー一覧画面をリダイレクトする
 		return "redirect:/getListUsers";
 	}
 }
