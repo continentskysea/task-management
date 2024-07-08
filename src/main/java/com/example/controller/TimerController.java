@@ -115,9 +115,10 @@ public class TimerController {
 	 */
 	@GetMapping("/getTimerSetting")
 	public String getTimerSetting(Model model) {
-		// 登録用の空のオブジェクトを生成
+		// 登録用の空のオブジェクトをモデルに追加
 		TimersSetting timersSetting = new TimersSetting();
 		model.addAttribute("timersSetting" ,timersSetting);
+		// タイマー登録画面へ遷移
 		return "timers/timerSetting";
 	}
 	
@@ -169,7 +170,7 @@ public class TimerController {
 	) {
 		// タイマー設定IDのエラーチェック
 		if (id == null) {
-			// エラーページ
+			// エラーページ(タスク一覧をリダイレクト)
 			return "redirect:/getListTasks";
 		}
 		
@@ -178,15 +179,15 @@ public class TimerController {
 			
 		// タスク情報が何もない場合はタスク一覧表ヘ遷移
 		if (optionalTask.isEmpty()) {
-			// エラーページ
+			// エラーページ(タスク一覧をリダイレクト)
 			return "redirect:/getListTasks";
 		}
 		
-		// タスク情報とタイマー情報を取得する
+		// タスク情報と最新のタイマー情報を取得する
 		Task task = optionalTask.get();
 		TimersSetting latestTimersSetting = timersSettingService.getUsersSettingTimer(); 
 		
-		// 登録されてある最新のタイマー情報を取得
+		// タイマー未登録チェック
 		if (latestTimersSetting == null) {
 		
 			// FlashScopeに保存する
