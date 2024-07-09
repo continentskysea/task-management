@@ -37,19 +37,19 @@ $(document).ready(function() {
 		}
 	});
 	
+	/**
+	チェックされた要素を調べる
+	*/
+	function getSelectedCheckbox() {
+		let checkboxes = $("input.taskCheckbox:checked");
+		let checkedCount = checkboxes.length;
+	
+		// チェックの要素が1つだけか確認する
+		if (checkedCount  !== 1) {
+			const errorMsg = "タスクが未選択あるいは複数選択されています";
+			alert(errorMsg);
+			return null;
+		}
+		return checkboxes[0];
+	} 
 });
-/**
-チェックされた要素を調べる
-*/
-function getSelectedCheckbox() {
-	let checkboxes = $("input.taskCheckbox:checked");
-	let checkedCount = checkboxes.length;
-
-	// チェックの要素が1つだけか確認する
-	if (checkedCount  !== 1) {
-		const errorMsg = "タスクが未選択あるいは複数選択されています";
-		alert(errorMsg);
-		return null;
-	}
-	return checkboxes[0];
-} 
