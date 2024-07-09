@@ -28,7 +28,7 @@ public class TaskService {
 		
 	/**
 	 * ユーザー別タスク情報全件取得	
-	 * @param userId
+	 * @param userId タスクテーブルに紐づくユーザーID
 	 * @return ユーザー別タスク情報のリスト
 	 */
 	public List<Task> getTasksByUserId(Long userId) {

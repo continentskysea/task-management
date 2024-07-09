@@ -29,7 +29,7 @@ public class LoginUserService implements UserDetailsService {
 	 * 取得したユーザーオブジェクトの情報をユーザーテーブルと照合し、
 	 * 該当するユーザーが見つかれば、LoginUserを返す
 	 * 
-	 * @param email
+	 * @param email メールアドレス
 	 * @throws UsernameNotFoundException 
 	 * @return ログインしたユーザーの実体
 	 */

@@ -34,10 +34,11 @@ public class TimersSettingService {
 	/**
 	 * タイマー情報検索機能
 	 * 
-	 * @param 
+	 * @param settingId タイマーID
 	 * 
 	 */
 	public TimersSetting findById(Long settingId) {
+		// DBから該当するIDを取得しタイマーリストを生成する
 		Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
 		return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
 	}

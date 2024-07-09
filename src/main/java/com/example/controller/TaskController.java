@@ -81,8 +81,8 @@ public class TaskController {
 	/**
 	 * ユーザー別タスク一覧画面表示
 	 * 
-	 * @param model
-	 * @param request
+	 * @param model タスク一覧と最新のタイマーレコードの属性を追加
+	 * @param request リダイレクト元から受け取ったセッションを受け取る
 	 * 
 	 * @return タスク一覧画面
 	 */
@@ -129,8 +129,8 @@ public class TaskController {
 	 * タスク登録・更新処理
 	 * 
 	 * @param task タスク情報
-	 * @param ra
-	 * @param request
+	 * @param ra リダイレクト先のステータスメッセージ
+	 * @param request リダイレクト先へ渡すセッション
 	 * 
 	 * @return タスク一覧画面
 	 */	 
@@ -156,7 +156,7 @@ public class TaskController {
 	 * タスク編集画面表示
 	 * 
 	 * @param id タスクID
-	 * @param  model
+	 * @param  model タスクオブジェクトの属性を追加
 	 * 
 	 * @return タスク編集画面
 	 */

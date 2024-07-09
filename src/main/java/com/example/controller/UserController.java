@@ -41,6 +41,7 @@ public class UserController {
 	
 	/**
 	 * ユーザー管理初期画面表示
+	 * 
 	 * @return ユーザー管理初期画面
 	 */
 	@GetMapping("/getUserHome")
@@ -53,8 +54,8 @@ public class UserController {
 	/**
 	 * ユーザー一覧画面表示
 	 * 
-	 * @param model
-	 * @param request
+	 * @param model ユーザー一覧とステータスメッセージの属性を追加
+	 * @param request リダイレクト元から受け取ったセッションを受け取る
 	 * 
 	 * @return ユーザー一覧画面
 	 */
@@ -92,7 +93,7 @@ public class UserController {
 	/**
 	 * ユーザー登録画面表示
 	 * 
-	 * @param model
+	 * @param model ユーザーオブジェクトの属性を追加
 	 * 
 	 * @return ユーザー登録画面
 	 */
@@ -110,7 +111,7 @@ public class UserController {
 	/**
 	 * ログイン前ユーザー登録画面表示
 	 * 
-	 * @param model
+	 * @param model ユーザーオブジェクトの属性を追加
 	 * 
 	 * @return ログイン前ユーザー登録画面
 	 */
@@ -129,7 +130,7 @@ public class UserController {
 	 * ユーザー編集画面表示
 	 * 
 	 * @param id ユーザーid
-	 * @param model
+	 * @param model ユーザーオブジェクトの属性を追加
 	 * 
 	 * @return　ユーザー編集画面
 	 */
@@ -163,10 +164,10 @@ public class UserController {
 	 * ユーザー情報登録
 	 * 
 	 * @param user ユーザー情報
-	 * @param bindingResult
-	 * @param ra
-	 * @param createUserPageCheck ユーザーが登録されたページの判定(admin/beforeLogin)
-	 * @param request
+	 * @param bindingResult 
+	 * @param createUserPageCheck リクエストの送信がされたページの判定値
+	 * @param ra リダイレクト先のステータスメッセージ
+	 * @param request リダイレクト先へ渡すセッション
 	 * 
 	 * @return ユーザー一覧画面
 	 */	 
@@ -174,8 +175,8 @@ public class UserController {
 	public String registarUser(
 			@Valid @ModelAttribute("user") User user, 
 			BindingResult bindingResult, 
-			RedirectAttributes ra,
 			@RequestParam("createUserpageCheck") String createUserpageCheck,
+			RedirectAttributes ra,
 			HttpServletRequest request
 
 		) {
@@ -199,7 +200,6 @@ public class UserController {
 
 			// FlashScopeに保存する
 			ra.addFlashAttribute("userRegistarMessage", "ユーザーを登録しました");
-
 			// セッションスコープにメッセージの種類を保存
 			HttpSession session = request.getSession();
 			session.setAttribute("messageType", "userRegistar");
@@ -219,8 +219,8 @@ public class UserController {
 	 * ユーザー削除削除
 	 * 
 	 * @param id ユーザーID
-	 * @param ra
-	 * @param request
+	 * @param ra リダイレクト先のステータスメッセージ
+	 * @param request リダイレクト先へ渡すセッション
 	 * 
 	 * @return ユーザー一覧画面
 	 */
@@ -235,7 +235,6 @@ public class UserController {
 
 		// FlashScopeに保存する
 		ra.addFlashAttribute("deleteUserMessage", "ユーザーを削除しました");
-
 		// セッションスコープにメッセージの種類を保存
 		HttpSession session = request.getSession();
 		session.setAttribute("messageType", "deleteUser");

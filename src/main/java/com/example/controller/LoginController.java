@@ -18,6 +18,9 @@ public class LoginController {
 	/**
 	 * ログイン画面表示
 	 * 
+	 * @param model ステータスメッセージの属性を追加
+	 * @param request リダイレクト元から受け取ったセッションを受け取る
+	 * 
 	 * @return ログイン画面
 	 */
 	@GetMapping("/loginForm")
