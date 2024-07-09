@@ -1,4 +1,6 @@
-// userActions.js
+/**
+ * ユーザー管理の画面遷移を制御
+ */
 $(document).ready(function() {
 	/**
 		新規登録画面に遷移する
