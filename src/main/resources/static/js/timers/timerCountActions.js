@@ -33,15 +33,13 @@ $(document).ready(function() {
 			
 			// 残り時間が0になったらフォームを自動的に送信
 			if (totalTimeInSeconds < 0) {
-				// タイマーを停止
-				clearInterval(countDownTimerId);
-				// }
 				//　confirmダイアログを表示
 				let isFocusTimer = true; // 現在のタイマーが集中タイマーかどうか
 				let taskId = parseInt($('#taskId').val()); // タスクID
 				let timerPageNumber = parseInt($('#timerPageNumber').val()); // タイマーの種類を判定する
-
-				checkingTimerType(timerPageNumber, taskId);
+				// タイマーを停止
+				clearInterval(countDownTimerId);
+				checkingTimerType(isFocusTimer, timerPageNumber, taskId);
 				handleTimerEnd();
 
 				// : ごとに配列に格納
@@ -57,6 +55,7 @@ $(document).ready(function() {
 			// タイマーを1秒減少
 			totalTimeInSeconds--;
 		}, 1000);
+
 		// 停止ボタンがクリックされた時の処理
 		$("#stopButton").on("click", function() {
 			// インターバルを停止する
@@ -67,37 +66,23 @@ $(document).ready(function() {
 
 	/**
 	 * 	時間のフォーマットを調整する関数
-	 * @param {string} time 
+	 * 
+	 * @param {string} time
+	 *  
 	 * @returns 文字列連結された時間表示
 	 */
 	const formatTime = (time) => {
 		return time < 10 ? "0" + time : time;
 	}
 
-	// タイマーの種類を判定する関数? => 
+	
 	/**
-	 * 
-	 * @param {number} timerPageNumber 集中タイマー/休憩タイマーの判定値
-	 * @param {number} taskId タスクID
-	 * 
-	 * @returns 集中タイマーかどうか URL
-	 */
-	function checkingTimerType(timerPageNumber, taskId) {
-
-		const isFocusTimer = timerPageNumber === 1;
-		const nextUrl = isFocusTimer ? '/getBreakTimer/' + taskId : '/getFocusTimer/' + taskId;
-		const prevUrl = isFocusTimer ? '/getFocusTimer' + taskId : '/getBreakTimer/' + taskId;
-
-		return { isFocusTimer, nextUrl, prevUrl };
-	}
-
-	/**
-	 * 停止ボタンの操作
-	 */
+	 * 開始ボタンの操作を制御する関数
+	*/
 	const handleStartButton = () => {
-		// 停止ボタンを活性化する
+		// 停止ボタンを活性にする
 		$("#stopButton").prop("disabled", false);
-		// 停止ボタンが活性化された場合
+		// 停止ボタンが活性された場合
 		if($("#stopButton").prop("disabled", false)) {
 			$("#startButton").prop("disabled", true); // 起動ボタンの非活性
 			$("#listTasks").attr("disabled", true); // 戻るボタンの非活性
@@ -105,22 +90,47 @@ $(document).ready(function() {
 		}
 	}
 
+	/**
+	 * 停止ボタンの操作を制御する関数
+	 */
 	const handleStopButton = () => {
 		$("#stopButton").prop("disabled", true);
+		// 停止ボタンが非活性になった場合
 		if ($("#stopButton").prop("disabled", true)) {
-			$("#startButton").prop("disabled", false);
-			$("#resetButton").prop("disabled", true);
-			$("#listTasks").attr("disabled", false);
+			$("#startButton").prop("disabled", false); // 起動ボタンを活性
+			$("#listTasks").attr("disabled", false); // 戻るボタンを活性
+			$("#resetButton").prop("disabled", true); // リセットボタンを日活性
 		}
 	}
 
+	/**
+	 * タイマー終了時の動きを制御する関数
+	 */
 	const handleTimerEnd = () => {
-		const { isFocusTimer, nextUrl, prevUrl } = checkingTimerType(timerPageNumber);
+		const { isFocusTimer, nextUrl, prevUrl } = checkingTimerType(isFocusTimer, timerPageNumber, taskId);
 
 		if (confirm("時間です!タイマーを切り替えますか?")) {
+			console.log(nextUrl);
 			window.location.href = nextUrl;
 		} else {
 			window.location.href = prevUrl;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param {boolean} isFocusTimer 集中タイマーかどうかを判定する値
+	 * @param {number} timerPageNumber 集中タイマー/休憩タイマーのページを判別する値
+	 * @param {number} taskId タスクID
+	 * 
+	 * @returns フォーカスタイマーかどうか, OKボタンが押下された際に次に表示されるページ, キャンセルボタンが押下された際に表示されるページ
+	 */
+	function checkingTimerType(isFocusTimerflag, timerPageNumber, taskId) {
+	
+		const isFocusTimerflag = timerPageNumber === 1; 
+		const nextUrl = isFocusTimerflag ? '/getBreakTimer/' + taskId : '/getFocusTimer/' + taskId;
+		const prevUrl = isFocusTimerflag ? '/getFocusTimer/' + taskId : '/getBreakTimer/' + taskId;
+	
+		return { isFocusTimerflag, nextUrl, prevUrl };
 	}
 });
