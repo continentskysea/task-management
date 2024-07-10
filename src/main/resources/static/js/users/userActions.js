@@ -25,9 +25,11 @@ $(document).ready(function() {
 	
 
 	/**
-		チェックされた要素を調べる
+	 * チェックされた要素を調べる
+	 * 
+	 * @returns チェックされたユーザー情報
 	 */
-	function getSelectedCheckbox() {
+	const getSelectedCheckbox = () => {
 		let checkboxes = $("input.userCheckbox:checked");
 		let checkedCount = checkboxes.length;
 

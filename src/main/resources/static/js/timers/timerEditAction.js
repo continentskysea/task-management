@@ -43,9 +43,11 @@ $(document).ready(function() {
 	});
 
 	/**
-	チェックされた要素を調べる
+	 * チェックされた要素を調べる
+	 * 
+	 * @returns チェックされたタイマー情報
 	*/
-	function getSelectedCheckbox() {
+	const getSelectedCheckbox = () => {
 		let checkboxes = $("input.timerCheckbox:checked");
 		let checkedCount = checkboxes.length;
 		

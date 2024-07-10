@@ -9,8 +9,13 @@ $(document).ready(function() {
         // バリデーションフラグ
         let isValid = true;
         
-        // タイマーの形式が正しいかチェックする関数
-        function validateTimeFormat(timeString) {
+        /**
+         * タイマーの形式が正しいかチェックする関数
+         * 
+         * @param {string} timeString 
+         * @returns タイマー情報のバリデーション結果
+         */
+        const validateTimeFormat = (timeString) => {
             let regex = /^(?:2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]$/;
             return regex.test(timeString);
         }
@@ -40,7 +45,12 @@ $(document).ready(function() {
             return isValid;
         }
         
-        function parseTime(timeString) {
+        /**
+         * 取得したタイマー情報(文字列)を秒数に変換する関数
+         * @param {string} timeString 
+         * @returns ミリ秒数に変換したタイマー情報
+         */
+        const parseTime = (timeString) => {
             let parts = timeString.split(":");
             let hours = parseInt(parts[0]);
             let minutes = parseInt(parts[1]);

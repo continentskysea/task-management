@@ -4,9 +4,6 @@
 $(document).ready(function() {
 
 	let role = $("#role").val();
-	console.log(role);
-	
-	
 	
 	/**
 		ロールを比較して不要なものを非活性にする。

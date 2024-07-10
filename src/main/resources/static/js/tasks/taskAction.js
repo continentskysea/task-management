@@ -50,9 +50,11 @@ $(document).ready(function() {
 	});
 	
 	/**
-		チェックされた要素を調べる
+	 * チェックされた要素を調べる 
+	 * 
+	 * @returns チェックされたタスク情報
 	 */
-	function getSelectedCheckbox() {
+	const getSelectedCheckbox = () => {
 		let checkboxes = $("input.taskCheckbox:checked");
 		let checkedCount = checkboxes.length;
 	
