@@ -31,16 +31,18 @@ $(document).ready(function() {
 		
 		if (selectedCheckbox) {
 			// 選択されたタスク情報を取得
-			let taskId = $(selectedCheckbox).val();
+			let taskId = parseInt($(selectedCheckbox).val());
 			// タスク情報を使って休憩タイマー画面にリダイレクト
 			window.location.href = '/getBreakTimer/' + taskId;
 		}
 	});
 	
-		/**
-		チェックされた要素を調べる
-	 */
-	function getSelectedCheckbox() {
+	/**
+	 * チェックされた要素を調べる
+	 * 
+	 * @returns チェックされたタスク情報
+	*/
+	const getSelectedCheckbox = () => {
 		let checkboxes = $("input.taskCheckbox:checked");
 		let checkedCount = checkboxes.length;
 	
@@ -52,5 +54,4 @@ $(document).ready(function() {
 		}
 		return checkboxes[0];
 	} 
-	
 });

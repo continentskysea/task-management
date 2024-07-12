@@ -19,13 +19,18 @@ public class HomeController {
 	/**
 	 * 初期画面を表示
 	 * 
+	 * @param loginUser　ログインユーザー情報
+	 * @param model ログインユーザー情報
+	 *  
 	 * @return 初期画面
 	 */
 	@GetMapping("/home")
-	public String getHome(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+	public String getHome(@AuthenticationPrincipal LoginUser loginUser, Model model) {
+		// ログインユーザー情報からユーザーオブジェクトを生成する
 		User currentUser = loginUser.getUser();
+		// modelに追加し、遷移先へ渡す
 		model.addAttribute("currentUser" ,currentUser);
-		// ログイン後の初期画面を表示
+		// 初期画面へ遷移
 		return "home";
 	}
 }

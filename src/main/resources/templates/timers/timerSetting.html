@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>タイマーをセットします</h1>
-	
+	<!-- 登録フォーム -->
 	<form th:action="@{/save}" method="post" th:object="${timersSetting}" >
 		<div class="timerSettingsForm">
 			<!-- ページ遷移先判定用のデータ送信 -->
@@ -22,9 +22,7 @@
 			</div>
 		</div>
 	</form>
-<!-- jquetyを読み込む -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- JavaScriptを読み込む -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src='/js/timers/validateTimerForm.js'></script>
 </body>
 </html>

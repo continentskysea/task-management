@@ -8,7 +8,7 @@
 <body>
 	<h1>タスク編集</h1>
 	
-	<!-- 登録フォーム -->
+	<!-- 編集フォーム -->
 	<form th:action="@{/register}" method="post" th:object="${task}">
 		<div class="taskForm">
 			<input type="hidden" th:field="*{id}">
@@ -25,7 +25,7 @@
 		</div>
 	</form>
 	<!-- jquetyを読み込む -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<!-- JavaScriptを読み込む -->
 	<script src='/js/tasks/validateTask.js'></script>
 </body>

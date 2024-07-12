@@ -24,10 +24,11 @@ import com.example.repository.UserRepository;
  *
  */
 @Service
-public class UserService implements Validator{
+public class UserService implements Validator {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
 	
+	// コンストラクタインジェクション
 	@Autowired
 	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
@@ -47,7 +48,8 @@ public class UserService implements Validator{
 	/**
 	 * ユーザー情報登録処理
 	 * 
-	 * @param 保存したいユーザー情報
+	 * @param user 保存したいユーザー情報
+	 * 
 	 * @return 保存したユーザー情報
 	 * 
 	 */
@@ -61,7 +63,9 @@ public class UserService implements Validator{
 
 	/**
 	 * idに紐づくユーザー情報取得処理
+	 * 
 	 * @param id ユーザーID
+	 * 
 	 * @return ユーザー情報
 	 */
 	public Optional<User> get(Long id) {
@@ -70,8 +74,9 @@ public class UserService implements Validator{
 	
 	
 	/**
-	 * ログイン中のユーザーのemailを比較し、一致したユーザーのIDを取得する
-	 * @return user.getId() ユーザーID
+	 * ログインユーザーのIDを取得する
+	 * 
+	 * @return  ユーザーID
 	 */
 	public Long getCurrentUserId() {
 		// ログインしているユーザーの email を取得
@@ -95,6 +100,9 @@ public class UserService implements Validator{
 		return User.class.isAssignableFrom(clazz);
 	}
 	
+	/**
+	 * ユーザー登録のバリデーション
+	 */
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user = (User) target;
@@ -120,6 +128,7 @@ public class UserService implements Validator{
 	 * ID情報に紐づくユーザー情報削除処理
 	 * 
 	 * @param id ユーザーID
+	 * 
 	 */
 	public void delete(Long id) {
 		userRepository.deleteById(id);

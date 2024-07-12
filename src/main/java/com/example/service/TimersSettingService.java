@@ -34,31 +34,36 @@ public class TimersSettingService {
 	/**
 	 * タイマー情報検索機能
 	 * 
-	 * @param 
+	 * @param settingId タイマーID
+	 * 
+	 * @return 
 	 * 
 	 */
-	public TimersSetting findById(Long settingId) {
-		Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
-		return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
-	}
+	// public TimersSetting findById(Long settingId) {
+	// 	// 
+	// 	Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
+	// 	return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
+	// }
 	
 	/**
 	 * タイマー登録機能
 	 * 
-	 * @param focusTime 保存したい集中時間情報
-	 * @return 保存した集中時間情報
+	 * @param timersSetting 保存したいタイマー情報
+	 * 
+	 * @return 保存したタイマー情報
 	 */
 	public TimersSetting save(TimersSetting timersSetting) {
-		// ログインしているユーザー情報をtimersSettingにセットする
+		// ログインユーザーの情報をタイマーテーブルのレコードにセットする
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		LoginUser loginUser = (LoginUser)authentication.getPrincipal();
 		User user = loginUser.getUser();
 		timersSetting.setUserId(user.getId());
 		
-		// LocalDateTimeオブジェクトを生成し、登録日時をセットする
+		// 登録日時をタイマーテーブルのレコードにセットする
 		LocalDateTime registarAt = LocalDateTime.now();
 		timersSetting.setRegistarAt(registarAt);		
 		
+		// DBに保存する
 		return timersSettingRepository.save(timersSetting);
 	}
 	
@@ -70,8 +75,8 @@ public class TimersSettingService {
 	public TimersSetting getUsersSettingTimer() {
 		// ログインしているユーザー情報のIDを取得する
 		Long userId = userService.getCurrentUserId();
-		
-		return timersSettingRepository.findTopByUserIdOrderByIdDesc(userId);
+		// ユーザーIDに一致した最新のレコードを返す
+		return timersSettingRepository.findTopByUserIdOrderByIdDescFechFirstRowsOnlySetting(userId);
 		
 	}
 
@@ -79,9 +84,11 @@ public class TimersSettingService {
 	 * ユーザー別タイマー情報全件取得処理
 	 * 
 	 * @param Id ユーザーID
+	 * 
 	 * @return ユーザー別登録タイマー情報リスト
 	 */
 	public List<TimersSetting> getTimersByUserId(Long userId) {
+		// ユーザーIDに紐づくタイマー情報を返す
 		return timersSettingRepository.findByUserId(userId);
 	}
 
@@ -89,9 +96,11 @@ public class TimersSettingService {
 	 * IDに紐づくタイマー情報取得処理
 	 * 
 	 * @param id タイマーID
+	 * 
 	 * @return タイマー情報
 	 */
 	public Optional<TimersSetting> get(Long id) {
+		// タイマーIDに一致したタイマー情報を返す
 		return timersSettingRepository.findById(id);
 	}
 
@@ -101,6 +110,7 @@ public class TimersSettingService {
 	 * @param id タイマーID
 	 */
 	public void delete(Long id) {
+		// タイマーIDに一致したタイマー情報をDBから削除する
 		timersSettingRepository.deleteById(id);
 	}
 }

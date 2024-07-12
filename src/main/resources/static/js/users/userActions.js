@@ -1,4 +1,6 @@
-// userActions.js
+/**
+ * ユーザー管理の画面遷移を制御
+ */
 $(document).ready(function() {
 	/**
 		新規登録画面に遷移する
@@ -23,9 +25,11 @@ $(document).ready(function() {
 	
 
 	/**
-		チェックされた要素を調べる
+	 * チェックされた要素を調べる
+	 * 
+	 * @returns チェックされたユーザー情報
 	 */
-	function getSelectedCheckbox() {
+	const getSelectedCheckbox = () => {
 		let checkboxes = $("input.userCheckbox:checked");
 		let checkedCount = checkboxes.length;
 
