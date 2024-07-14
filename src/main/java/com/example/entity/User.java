@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
  *
  */
 @Entity
-@Table(name = "users", schema = "verification")
+@Table(name = "users", schema = "public")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class User {
 	@NotBlank(message = "パスワードは必須です")
 	@Pattern(regexp = "^(?=.*[a-z0-9]).*", message = "パスワードは小文字と数字のみを含む必要があります")
 	@Column(name = "password")
-	private String password; // -^パスワード
+	private String password; // パスワード
 	
 	@Column(name = "role")
 	private String role; // 一般ユーザー/管理者ユーザー
