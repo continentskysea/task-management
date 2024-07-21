@@ -1,4 +1,9 @@
 /* ---------------------------------------------------------------------------------------------------
+PC画面はここから適用
+--------------------------------------------------------------------------------------------------- */
+
+
+/* ---------------------------------------------------------------------------------------------------
 デフォルトセレクタに適用
 --------------------------------------------------------------------------------------------------- */
 
@@ -28,10 +33,12 @@ label {
 }
 
 button {
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 70px;
     padding: 15px 0;
     margin-right: 30px;
+    border-radius: 15px;
+    font-size: 16px;
 }
 
 #select-button {
@@ -68,6 +75,7 @@ button:hover, a:hover {
     margin-top: 50px;
     text-align: center;
     padding-bottom: 50px;
+    height: 200px;
 }
 #errorMsg {
     color: red;
@@ -225,4 +233,107 @@ button:hover, a:hover {
 
 .error-message p {
     font-size: 20px;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------
+タブレットサイズはここから
+--------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 769px) {
+
+    /* 共通の見出し */
+    h1 {
+        font-size: 70px;
+    }
+
+    
+    /* ---------------------------------
+    ログイン画面に適用
+    --------------------------------- */
+    .loginForm {
+        height: 300px;
+        padding: 0;
+        font-size: 22px;
+
+    }
+    /* 入力欄に適用 */
+    #mailInput, #passwordInput {
+        height: 35px;
+    }
+    /* ログインボタン群の親要素に適用 */
+    #login-button {
+        flex-direction: column;
+        align-items: center;
+        font-size: 25px;
+
+    }
+    
+    .loginRelation, .userRelation {
+        width: 450px;
+        height: 70px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------
+スマホサイズはここから
+--------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 426px) {
+
+    /* 共通の見出し */
+    h1 {
+        font-size: 70px;
+        margin: 20px 0 0 45px;
+        text-align: center;
+
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    form {
+        width: 460px;
+    }
+    
+    button {
+        font-size: 25px;
+    }
+    /* ---------------------------------
+    ログイン画面に適用
+    --------------------------------- */
+    .loginForm {
+        margin-top: 15px;
+        height: 300px;
+        padding: 0;
+        font-size: 22px;
+    }
+
+    .loginForm label, #mailInput, #passwordInput {
+        margin-left: 5px;
+        font-size: 25px;
+    }
+    /* 入力欄に適用 */
+    #mailInput, #passwordInput {
+        height: 45px;
+        width: 430px;
+    }
+    /* ログインボタン群の親要素に適用 */
+    #login-button {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .loginRelation, .userRelation {
+        width: 450px;
+        height: 70px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+    
+
+
 }
