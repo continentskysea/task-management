@@ -9,6 +9,11 @@ $(document).ready(function() {
 	$(".userRelation").on("click", function() {
 		window.location.href = '/getBeforeLoginCreateUser';
 	});
+
+	/**
+	 * ユーザー登録をキャンセルした場合
+	 */
+	$()
 	
 	/**
 		ログインデータを送信する
