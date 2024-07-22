@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ユーザー登録</title>
 <link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
@@ -28,7 +29,7 @@
 			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
 			<div id="select-button">
 				<button type="submit" id="createUserButton">登録</button>
-				<a th:href="@{/loginForm}">キャンセル</a>
+				<button th:href="@{/loginForm}" id="">キャンセル</button>
 			</div>
 		</div>
 	</form>
