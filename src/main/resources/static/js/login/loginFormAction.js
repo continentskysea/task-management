@@ -13,7 +13,9 @@ $(document).ready(function() {
 	/**
 	 * ユーザー登録をキャンセルした場合
 	 */
-	$()
+	$("getLoginFormButton").on("click", function() {
+		window.location.href = '/loginForm'
+	});
 	
 	/**
 		ログインデータを送信する

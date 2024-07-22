@@ -243,7 +243,7 @@ button:hover, a:hover {
 
     /* 共通の見出し */
     h1 {
-        font-size: 70px;
+        font-size: 50px;
     }
 
     
@@ -251,10 +251,9 @@ button:hover, a:hover {
     ログイン画面に適用
     --------------------------------- */
     .loginForm {
-        height: 300px;
+        height: 450px;
         padding: 0;
         font-size: 22px;
-
     }
     /* 入力欄に適用 */
     #mailInput, #passwordInput {
@@ -268,7 +267,14 @@ button:hover, a:hover {
 
     }
     
-    button, #createUserButton {
+    button {
+        width: 450px;
+        height: 70px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+
+    .loginRelation, .userRelation {
         width: 450px;
         height: 70px;
         margin: 0 auto;
@@ -278,11 +284,16 @@ button:hover, a:hover {
     /* ---------------------------------
     ログイン前のユーザー登録画面に適用
     --------------------------------- */
-    .loginRelation, .userRelation {
-        width: 450px;
-        height: 70px;
-        margin: 0 auto;
-        margin-bottom: 30px;
+
+    .userForm {
+        height: 450px;
+    }
+
+
+
+    button {
+        width: 75%;
+        
     }
 }
 
@@ -294,7 +305,7 @@ button:hover, a:hover {
 
     /* 共通の見出し */
     h1 {
-        font-size: 70px;
+        font-size: 35px;
         margin: 20px 0 0 45px;
         text-align: center;
 
@@ -307,6 +318,7 @@ button:hover, a:hover {
 
     form {
         width: 460px;
+        margin: 0 auto;
     }
     
     button {
@@ -317,7 +329,7 @@ button:hover, a:hover {
     --------------------------------- */
     .loginForm {
         margin-top: 15px;
-        height: 300px;
+        height: 100%;
         padding: 0;
         font-size: 22px;
     }
@@ -344,6 +356,23 @@ button:hover, a:hover {
         margin-bottom: 30px;
     }
     
+    /* ---------------------------------
+    ログイン前のユーザー登録画面に適用
+    --------------------------------- */
+    .loginRelation, .userRelation {
+        width: 250px;
+        height: 70px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
 
+    /* ボタン群に適用 */
+    button {
+        width: 75%;
+    }
+    /* 入力欄に適用 */
+    #name, #email, #password {
+        width: 90%;
+    }
 
 }
