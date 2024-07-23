@@ -61,6 +61,17 @@ button:hover, a:hover {
     opacity: 0.5;
 }
 
+/* ログイン画面を起点に展開していく */
+.form {
+    display: flex;
+    flex-direction: column;
+    /* background-color: #E6E6E6; */
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+    height: 200px; 
+}
+
 /* ---------------------------------------------------------------------------------------------------
 指定のセレクタに適用
 --------------------------------------------------------------------------------------------------- */
@@ -69,13 +80,13 @@ button:hover, a:hover {
 ログイン画面に適用
 --------------------------------- */
 .loginForm {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: #E6E6E6;
-    margin-top: 50px;
+    /* margin-top: 50px;
     text-align: center;
     padding-bottom: 50px;
-    height: 200px;
+    height: 200px; */
 }
 #errorMsg {
     color: red;
@@ -189,8 +200,8 @@ button:hover, a:hover {
 ユーザー登録に適用
 --------------------------------- */
 .userForm {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: rgb(235, 191, 107); /* 飴色 */
 }
 
@@ -212,8 +223,8 @@ button:hover, a:hover {
 タスク登録に適用
 --------------------------------- */
 .taskForm {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: #99FF99;
 }
 
@@ -221,8 +232,8 @@ button:hover, a:hover {
 タイマー登録に適用
 --------------------------------- */
 .timerSettingsForm {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: #007FFF;
 }
 
@@ -246,15 +257,22 @@ button:hover, a:hover {
         font-size: 50px;
     }
 
+    .form {
+        height: 300px;
+        padding: 0;
+        font-size: 22px;
+        flex-direction: column;
+    }
+
     
     /* ---------------------------------
     ログイン画面に適用
     --------------------------------- */
-    .loginForm {
-        height: 450px;
+    /* .loginForm {
+        height: 300px;
         padding: 0;
         font-size: 22px;
-    }
+    } */
     /* 入力欄に適用 */
     #mailInput, #passwordInput {
         height: 35px;
