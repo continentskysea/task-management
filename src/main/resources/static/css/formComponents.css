@@ -62,7 +62,7 @@ button:hover, a:hover {
 }
 
 /* ログイン画面を起点に展開していく */
-.form {
+.registarForm {
     display: flex;
     flex-direction: column;
     /* background-color: #E6E6E6; */

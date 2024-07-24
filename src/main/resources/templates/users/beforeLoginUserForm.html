@@ -18,7 +18,7 @@
 	
 	<!-- 登録フォーム -->
 	<form th:action="@{/registarUser}" method="post" th:object="${user}">
-		<div class="userForm">
+		<div class="registarForm userForm">
 			<!-- ページ遷移先判定 -->
 			<input type="hidden" name="createUserpageCheck" value="1">
 			<label>氏名</label>
@@ -28,8 +28,8 @@
 			<label>パスワード</label>
 			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
 			<div id="select-button">
-				<button type="submit" id="btn createUserButton">登録</button>
-				<button type="submit" id="btn getLoginFormButton">キャンセル</button>
+				<button type="submit" id="action-btn createUserButton">登録</button>
+				<button type="submit" id="action-btn getLoginFormButton">キャンセル</button>
 			</div>
 		</div>
 	</form>

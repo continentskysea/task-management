@@ -17,7 +17,7 @@
 	
 	<!-- 登録フォーム -->
 	<form th:action="@{/registarUser}" method="post" th:object="${user}">
-		<div class="form userForm">
+		<div class="registarForm userForm">
 			<!-- ページ遷移先判定 -->
 			<input type="hidden" name="createUserpageCheck" value="2">
 			<label>氏名</label>
