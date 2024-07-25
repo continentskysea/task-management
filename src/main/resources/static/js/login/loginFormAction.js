@@ -6,14 +6,14 @@ $(document).ready(function() {
 	/**
 		新規登録画面に遷移する
 	 */
-	$(".userRelation").on("click", function() {
+	$(".registar").on("click", function() {
 		window.location.href = '/getBeforeLoginCreateUser';
 	});
 
 	/**
-	 * ユーザー登録をキャンセルした場合
+	 * ログイン前ユーザー登録画面からログイン画面へ遷移する
 	 */
-	$("getLoginFormButton").on("click", function() {
+	$(".getLoginFormButton").on("click", function() {
 		window.location.href = '/loginForm'
 	});
 	

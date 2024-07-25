@@ -9,33 +9,34 @@
 </head>
 <body>
 	<h1>ログイン</h1>
-	<!-- パラメータのチェック -->
-	<div id="flashMessageDisplay" th:if="${flashMessage != null}">
-		<p th:text="${flashMessage}"></p>
-		<form th:action="@{/loginForm}" method="get">
-			<input id="messageDeleteButton" type="submit" value="OK">
-		</form>
-	</div>
-	<!-- パラメータのチェック -->
-	<div id="errorMsg" th:if="${param.error}">
-		<p>ユーザー名またはパスワードが違います。</p>
-		<form th:action="@{/loginForm}" method="get">
-			<input id="loginError" type="submit" value="戻る">
-		</form>
-	</div>
-	<form id="userLoginForm" th:action="@{/loginForm}" method="post">
-		<div class="registarForm loginForm">
-			<label>メールアドレス</label>
-			<input id="mailInput" type="email" name="email">
-			<label>パスワード</label>
-			<input id="passwordInput" type="password" name="password">
-			<!-- <input id="role" type="hidden" name="role"> -->
+	<main>
+			<!-- パラメータのチェック -->
+			<div id="flashMessageDisplay" th:if="${flashMessage != null}">
+				<p th:text="${flashMessage}"></p>
+				<form th:action="@{/loginForm}" method="get">
+					<input id="messageDeleteButton" type="submit" value="OK">
+				</form>
+			</div>
+			<!-- パラメータのチェック -->
+			<div id="errorMsg" th:if="${param.error}">
+			<p>ユーザー名またはパスワードが違います。</p>
+			<form th:action="@{/loginForm}" method="get">
+				<input id="loginError" type="submit" value="戻る">
+			</form>
 		</div>
-	</form>
-	<div id="login-button">
-		<button class="loginRelation" >ログイン</button>
-		<button class="userRelation">ユーザー登録</button>
-	</div>
+		<form class="sendDataForm" th:action="@{/loginForm}" method="post">
+			<div class="formContainer loginFormContainer">
+				<label>メールアドレス</label>
+				<input id="mailInput" type="email" name="email">
+				<label>パスワード</label>
+				<input id="passwordInput" type="password" name="password">
+			</div>
+		</form>
+		<div class="buttonContainer">
+			<button class="actionButton login">ログイン</button>
+			<button class="actionButton registar">ユーザー登録</button>
+		</div>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script th:src="@{/js/validateUser.js}"></script>
 	<script src="/js/login/loginFormAction.js"></script>

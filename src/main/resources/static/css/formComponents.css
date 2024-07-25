@@ -14,7 +14,11 @@ body {
 h1 {
     text-align: center;
 }
-form {
+
+main {
+    padding-inline: 8px;
+}
+.sendDataForm {
     margin: 0 auto;    
     width: 500px;
     text-align: center;
@@ -32,7 +36,7 @@ label {
     padding: 15px 0 0 10px;
 }
 
-button {
+.actionButton {
     width: 150px;
     height: 70px;
     padding: 15px 0;
@@ -47,22 +51,9 @@ button {
     margin-top: 20px;
     height: 80px;
 }
-a {
-    padding: 12.465px 20.2675px;
-    margin-left: 30px;
-    background-color: #f0f0f0;
-    text-decoration: none;
-    text-align: center;
-    border: solid 1px;
-    color: #000000;
-}
-
-button:hover, a:hover {
-    opacity: 0.5;
-}
 
 /* ログイン画面を起点に展開していく */
-.registarForm {
+.formContainer {
     display: flex;
     flex-direction: column;
     /* background-color: #E6E6E6; */
@@ -79,14 +70,8 @@ button:hover, a:hover {
 /* ---------------------------------
 ログイン画面に適用
 --------------------------------- */
-.loginForm {
-    /* display: flex;
-    flex-direction: column; */
+.loginFormContainer {
     background-color: #E6E6E6;
-    /* margin-top: 50px;
-    text-align: center;
-    padding-bottom: 50px;
-    height: 200px; */
 }
 #errorMsg {
     color: red;
@@ -95,18 +80,18 @@ button:hover, a:hover {
     text-align: center;
 }
 
-.loginForm label {
+.formContainer label {
     margin-left: 60px;
 }
 
-#login-button {
+.buttonContainer {
 	display: flex;
 	justify-content: center;
 	margin-top: 30px;
 	
 }
 
-#login-button input {
+.actionButton input {
     font-size: 16px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -115,7 +100,7 @@ button:hover, a:hover {
     padding-right: 6px;
     border-radius: 10px;
 }
-#login-button input:hover {
+.actionButton:hover {
     cursor: pointer;
     opacity: 0.5;
 }
@@ -199,13 +184,11 @@ button:hover, a:hover {
 /* ---------------------------------
 ユーザー登録に適用
 --------------------------------- */
-.userForm {
-    /* display: flex;
-    flex-direction: column; */
+.userFormContainer {
     background-color: rgb(235, 191, 107); /* 飴色 */
 }
 
-#createUserButton {
+#registarUserButton {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
@@ -257,10 +240,9 @@ button:hover, a:hover {
         font-size: 50px;
     }
 
-    .form {
+    .buttonContainer {
         height: 300px;
         padding: 0;
-        font-size: 22px;
         flex-direction: column;
     }
 
@@ -273,8 +255,12 @@ button:hover, a:hover {
         padding: 0;
         font-size: 22px;
     } */
+
+    .formContainer label {
+        font-size: 20px;
+    }
     /* 入力欄に適用 */
-    #mailInput, #passwordInput {
+    #formContainer input {
         height: 35px;
     }
     /* ログインボタン群の親要素に適用 */
@@ -285,18 +271,12 @@ button:hover, a:hover {
 
     }
     
-    button {
+    .actionButton {
         width: 450px;
         height: 70px;
         margin: 0 auto;
         margin-bottom: 30px;
-    }
-
-    .loginRelation, .userRelation {
-        width: 450px;
-        height: 70px;
-        margin: 0 auto;
-        margin-bottom: 30px;
+        font-size: 20px;
     }
 
     /* ---------------------------------
@@ -312,6 +292,7 @@ button:hover, a:hover {
     button {
         width: 75%;
         
+
     }
 }
 

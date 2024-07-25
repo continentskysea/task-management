@@ -8,31 +8,31 @@
 </head>
 <body>
 	<h1>ユーザー登録</h1>
-	<!-- エラーメッセージを表示 -->
-	<div th:if="${error_message}" class="error-message">
-		<p th:text="${error_message}"></p>
-		<form th:action="@{/getCreateUser}" method="get">
-			<input id="loginError" type="submit" value="OK">
-		</form>
-	</div>
-	
-	<!-- 登録フォーム -->
-	<form th:action="@{/registarUser}" method="post" th:object="${user}">
-		<div class="registarForm userForm">
-			<!-- ページ遷移先判定 -->
-			<input type="hidden" name="createUserpageCheck" value="1">
-			<label>氏名</label>
-			<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
-			<label>Email</label>
-			<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
-			<label>パスワード</label>
-			<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
-			<div id="select-button">
-				<button type="submit" id="action-btn createUserButton">登録</button>
-				<button type="submit" id="action-btn getLoginFormButton">キャンセル</button>
-			</div>
+	<main>
+		<!-- エラーメッセージを表示 -->
+		<div th:if="${error_message}" class="error-message">
+			<p th:text="${error_message}"></p>
+			<form th:action="@{/getCreateUser}" method="get">
+				<input id="loginError" type="submit" value="OK">
+			</form>
 		</div>
-	</form>
+		<form class="sendDataForm" th:action="@{/registarUser}" method="post" th:object="${user}">
+			<div class="formContainer userFormContainer">
+				<!-- ページ遷移先判定 -->
+				<input type="hidden" name="createUserpageCheck" value="1">
+				<label>氏名</label>
+				<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
+				<label>Email</label>
+				<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
+				<label>パスワード</label>
+				<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
+				<div class="buttonContainer">
+					<button type="submit" class="actionButton registarUserButton">登録</button>
+					<button type="submit" class="actionButton getLoginFormButton">キャンセル</button>
+				</div>
+			</div>
+		</form>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script th:src="@{/js/users/validateUser.js}"></script>
 </body>
