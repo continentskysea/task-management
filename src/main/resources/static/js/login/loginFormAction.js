@@ -4,16 +4,9 @@
 
 $(document).ready(function() {
 	/**
-		新規登録画面に遷移する
-	 */
-	$(".registar").on("click", function() {
-		window.location.href = '/getBeforeLoginCreateUser';
-	});
-
-	/**
 	 * ログイン前ユーザー登録画面からログイン画面へ遷移する
 	 */
-	$(".getLoginFormButton").on("click", function() {
+	$(".getLoginForm").on("click", function() {
 		window.location.href = '/loginForm'
 	});
 	
@@ -41,5 +34,5 @@ $(document).ready(function() {
 		// フォームのデフォルトの送信キャンセル
 		return false;
 	});
-			
+
 });

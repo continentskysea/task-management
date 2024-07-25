@@ -52,15 +52,46 @@ label {
     height: 80px;
 }
 
-/* ログイン画面を起点に展開していく */
+/* 共通フォームクラスに適用 */
 .formContainer {
     display: flex;
     flex-direction: column;
-    /* background-color: #E6E6E6; */
     margin-top: 50px;
     text-align: center;
     padding-bottom: 50px;
     height: 200px; 
+}
+/* 共通フォームクラスのラベルに適用 */
+.formContainer label {
+    margin-left: 60px;
+}
+
+.buttonContainer {
+    text-align: center;
+    margin-top: 30px;
+}
+/* 共通ボタンクラスに適用 */
+.actionButton input {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 100px;
+    padding-right: 6px;
+    border-radius: 10px;
+}
+
+/* 共通ボタンクラスに適用 */
+.actionButton:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+/* 共通入力欄属性に適用 */
+#nameInput, #mailInput, #passwordInput {
+    margin-left: 70px;
+    width: 350px;
+    height: 25px;
 }
 
 /* ---------------------------------------------------------------------------------------------------
@@ -80,37 +111,6 @@ label {
     text-align: center;
 }
 
-.formContainer label {
-    margin-left: 60px;
-}
-
-.buttonContainer {
-	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-	
-}
-
-.actionButton input {
-    font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    height: 50px;
-    width: 100px;
-    padding-right: 6px;
-    border-radius: 10px;
-}
-.actionButton:hover {
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-#mailInput, #passwordInput {
-    margin-left: 70px;
-    width: 350px;
-    height: 25px;
-
-}
 #flashMessageDisplay {
     color: yellowgreen;
     font-size: 20px;
@@ -188,7 +188,7 @@ label {
     background-color: rgb(235, 191, 107); /* 飴色 */
 }
 
-#registarUserButton {
+.registarUserButton {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
@@ -206,9 +206,7 @@ label {
 タスク登録に適用
 --------------------------------- */
 .taskForm {
-    /* display: flex;
-    flex-direction: column; */
-    background-color: #99FF99;
+    background-color: #ccffcc;
 }
 
 /* ---------------------------------
@@ -244,17 +242,13 @@ label {
         height: 300px;
         padding: 0;
         flex-direction: column;
+        margin: 0 auto;
     }
 
     
     /* ---------------------------------
     ログイン画面に適用
     --------------------------------- */
-    /* .loginForm {
-        height: 300px;
-        padding: 0;
-        font-size: 22px;
-    } */
 
     .formContainer label {
         font-size: 20px;
@@ -262,13 +256,6 @@ label {
     /* 入力欄に適用 */
     #formContainer input {
         height: 35px;
-    }
-    /* ログインボタン群の親要素に適用 */
-    #login-button {
-        flex-direction: column;
-        align-items: center;
-        font-size: 25px;
-
     }
     
     .actionButton {

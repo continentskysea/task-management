@@ -31,14 +31,15 @@
 				<label>パスワード</label>
 				<input id="passwordInput" type="password" name="password">
 			</div>
+			<div class="buttonContainer">
+				<button class="actionButton login">ログイン</button>
+				<button class="actionButton registarUser">ユーザー登録</button>
+			</div>
 		</form>
-		<div class="buttonContainer">
-			<button class="actionButton login">ログイン</button>
-			<button class="actionButton registar">ユーザー登録</button>
-		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script th:src="@{/js/validateUser.js}"></script>
 	<script src="/js/login/loginFormAction.js"></script>
+	<script src="/js/users/userActions.js"></script>
 </body>
 </html>

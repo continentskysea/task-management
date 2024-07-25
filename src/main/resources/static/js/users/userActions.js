@@ -5,7 +5,7 @@ $(document).ready(function() {
 	/**
 		新規登録画面に遷移する
 	 */
-	$(".createUserRelation").on("click", function() {
+	$(".registarUser").on("click", function() {
 		window.location.href = '/getCreateUser';
 	});
 	
@@ -66,4 +66,5 @@ $(document).ready(function() {
 	$(".userHomeRelation").on("click", function() {
 		window.location.href ='/getUserHome';
 	});
+
 });

@@ -21,14 +21,14 @@
 				<!-- ページ遷移先判定 -->
 				<input type="hidden" name="createUserpageCheck" value="1">
 				<label>氏名</label>
-				<input type="text" id="name" placeholder="名前を入力してください" th:field="*{name}">
+				<input type="text" id="nameInput" placeholder="名前を入力してください" th:field="*{name}">
 				<label>Email</label>
-				<input type="text"  id="email" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
+				<input type="text"  id="mailInput" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
 				<label>パスワード</label>
-				<input type="text"id="password" placeholder="パスワードを入力してください" th:field="*{password}">
+				<input type="text"id="passwordInput" placeholder="パスワードを入力してください" th:field="*{password}">
 				<div class="buttonContainer">
-					<button type="submit" class="actionButton registarUserButton">登録</button>
-					<button type="submit" class="actionButton getLoginFormButton">キャンセル</button>
+					<button type="submit" class="actionButton registar">登録</button>
+					<button type="submit" class="actionButton getLoginForm">キャンセル</button>
 				</div>
 			</div>
 		</form>
