@@ -8,6 +8,33 @@ $(document).ready(function() {
 	$(".registarUser").on("click", function() {
 		window.location.href = '/getCreateUser';
 	});
+
+	/**
+	 * 登録データを送信する
+	 */
+	$(".registar").on("click", function() {
+
+		// htmlに入力された値を格納する
+		let name = $("#nameInput").val();
+		let email = $("#mailInput").val();
+		let password = $("#passwordInput").val();
+
+		// 入力データをオブジェクトに格納
+		let user = {
+			name: name,
+			email: email, 
+			password: password
+		};
+
+		// フォームの値をセットする
+		$("#userFormContainer input[ name = 'name' ]").val(user.name);
+		$("#userFormContainer input[ name = 'email' ]").val(user.email);
+		$("#userFormContainer input[ name = 'password' ]").val(user.password);
+		
+		// フォームを送信
+		$("#userLoginForm").submit();
+	});
+
 	
 	/**
 		編集画面に遷移する
@@ -21,8 +48,7 @@ $(document).ready(function() {
 			// タスク情報を使って休憩タイマー画面にリダイレクト
 			window.location.href = '/getEditUser/' + userId;
 		}
-	});
-	
+	});	
 
 	/**
 	 * チェックされた要素を調べる
@@ -67,4 +93,14 @@ $(document).ready(function() {
 		window.location.href ='/getUserHome';
 	});
 
+	/**
+	 * ログイン前ユーザー登録画面へ遷移
+	 */
+	$(".registarUser").on("click", function() {
+		window.location.href = '/getBeforeLoginCreateUser';
+
+		// フォームのデフォルトの送信キャンセル
+		return false;
+	});
+	
 });

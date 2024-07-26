@@ -188,7 +188,7 @@ label {
     background-color: rgb(235, 191, 107); /* 飴色 */
 }
 
-.registarUserButton {
+.registarUser, .registar {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
@@ -242,7 +242,7 @@ label {
         height: 300px;
         padding: 0;
         flex-direction: column;
-        margin: 0 auto;
+        margin: 30px 0 auto;
     }
 
     
@@ -357,7 +357,7 @@ label {
         width: 75%;
     }
     /* 入力欄に適用 */
-    #name, #email, #password {
+    #nameInput, #emailInput, #passwordInput {
         width: 90%;
     }
 

@@ -27,9 +27,9 @@
 		<form class="sendDataForm" th:action="@{/loginForm}" method="post">
 			<div class="formContainer loginFormContainer">
 				<label>メールアドレス</label>
-				<input id="mailInput" type="email" name="email">
+				<input id="mailInput" type="email" name="email" autocomplete="on">
 				<label>パスワード</label>
-				<input id="passwordInput" type="password" name="password">
+				<input id="passwordInput" type="password" name="password" autocomplete="off">
 			</div>
 			<div class="buttonContainer">
 				<button class="actionButton login">ログイン</button>

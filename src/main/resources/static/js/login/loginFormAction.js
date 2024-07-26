@@ -13,11 +13,13 @@ $(document).ready(function() {
 	/**
 		ログインデータを送信する
 	 */
-	$(".loginRelation").on("click", function() {
+	$(".login").on("click", function() {
 		// htmlに入力された値を格納する
 		let email = $("#mailInput").val();
 		let password = $("#passwordInput").val();
 		
+		// console.log(email);
+		// console.log(password);
 		// ログインデータをオブジェクトに格納
 		let loginUser = {
 			email: email, 
@@ -25,14 +27,12 @@ $(document).ready(function() {
 		};
 
 		// フォームの値をセットする
-		$("#userLoginForm input[ name = 'email' ]").val(loginUser.email);
-		$("#userLoginForm input[ name = 'password' ]").val(loginUser.password);
+		$(".loginFormContainer input[ name = 'email' ]").val(loginUser.email);
+		$(".loginFormContainer input[ name = 'password' ]").val(loginUser.password);
 		
 		// フォームを送信
-		$("#userLoginForm").submit();
+		$(".loginFormContainer").submit();
+		// return false;
 		
-		// フォームのデフォルトの送信キャンセル
-		return false;
 	});
-
 });
