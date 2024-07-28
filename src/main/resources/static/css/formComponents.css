@@ -11,12 +11,18 @@ body {
     margin: 0;
     padding: 0;
 }
-h1 {
-    text-align: center;
+
+header {
+    max-width: 1024px;
 }
 
+h1 {
+    margin:  0 auto;
+}
 main {
     padding-inline: 8px;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 .sendDataForm {
     margin: 0 auto;    
@@ -45,12 +51,12 @@ label {
     font-size: 16px;
 }
 
-#select-button {
+/* #select-button {
     display: block;
     font-size: 16px;
     margin-top: 20px;
     height: 80px;
-}
+} */
 
 /* 共通フォームクラスに適用 */
 .formContainer {
@@ -58,12 +64,13 @@ label {
     flex-direction: column;
     margin-top: 50px;
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
     height: 200px; 
 }
 /* 共通フォームクラスのラベルに適用 */
 .formContainer label {
-    margin-left: 60px;
+    margin-left: 25px;
+    padding-bottom: 5px;
 }
 
 .buttonContainer {
@@ -89,9 +96,11 @@ label {
 
 /* 共通入力欄属性に適用 */
 #nameInput, #mailInput, #passwordInput {
-    margin-left: 70px;
-    width: 350px;
+    margin-left: 25px;
+    width: 400px;
     height: 25px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 /* ---------------------------------------------------------------------------------------------------
@@ -266,21 +275,6 @@ label {
         font-size: 20px;
     }
 
-    /* ---------------------------------
-    ログイン前のユーザー登録画面に適用
-    --------------------------------- */
-
-    .userForm {
-        height: 450px;
-    }
-
-
-
-    button {
-        width: 75%;
-        
-
-    }
 }
 
 
@@ -289,12 +283,12 @@ label {
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 426px) {
 
-    /* 共通の見出し */
     h1 {
-        font-size: 35px;
-        margin: 20px 0 0 45px;
+        font-size: 50px;
         text-align: center;
-
+    }
+    main {
+        text-align: center;
     }
 
     body {
@@ -320,12 +314,14 @@ label {
         font-size: 22px;
     }
 
-    .loginForm label, #mailInput, #passwordInput {
+    .loginForm label{
         margin-left: 5px;
         font-size: 25px;
     }
     /* 入力欄に適用 */
-    #mailInput, #passwordInput {
+    #nameInput, #mailInput, #passwordInput {
+        font-size: 15px;
+        margin-left: 5px;
         height: 45px;
         width: 430px;
     }

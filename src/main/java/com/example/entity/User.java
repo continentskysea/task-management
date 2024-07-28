@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
  *
  */
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "users", schema = "verification")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
