@@ -6,9 +6,12 @@
 	<title>ログイン</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-	<h1>ログイン</h1>
+	<header>
+		<h1>ログイン</h1>
+	</header>
 	<main>
 			<!-- パラメータのチェック -->
 			<div id="flashMessageDisplay" th:if="${flashMessage != null}">
@@ -26,20 +29,21 @@
 		</div>
 		<form class="sendDataForm"  method="?">
 			<div class="formContainer loginFormContainer">
-				<label>メールアドレス</label>
-				<input id="mailInput" type="email" name="email">
-				<label>パスワード</label>
-				<input id="passwordInput" type="password" name="password">
+				<label class="black-text">メールアドレス</label>
+				<input class="white" id="mailInput" type="email" name="email" autocomplete="on">
+				<label class="black-text">パスワード</label>
+				<input class="white" id="passwordInput" type="password" name="password" autocomplete="off">
 			</div>
 			<div class="buttonContainer">
-				<button class="actionButton login" value="post" th:formaction="@{/loginForm}">ログイン</button>
-				<button class="actionButton registarUser" value="get" formaction="/getBeforeLoginCreateUser">ユーザー登録</button>
+				<button class="waves-effect  grey lighten-4 black-text btn actionButton login">ログイン</button>
+				<button class="waves-effect waves-light btn black-text	 actionButton registarUser">ユーザー登録</button>
 			</div>
 		</form>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script th:src="@{/js/validateUser.js}"></script>
 	<script src="/js/login/loginFormAction.js"></script>
-	<!-- <script src="/js/users/userActions.js"></script> -->
+	<script src="/js/users/userActions.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

@@ -26,6 +26,8 @@ $(document).ready(function() {
 		let email = $("#mailInput").val();
 		let password = $("#passwordInput").val();
 		
+		// console.log(email);
+		// console.log(password);
 		// ログインデータをオブジェクトに格納
 		let loginUser = {
 			email: email, 
@@ -37,10 +39,6 @@ $(document).ready(function() {
 		$(".loginFormContainer input[ name = 'password' ]").val(loginUser.password);
 		
 		// フォームを送信
-		$(".sendDataForm").submit();
-		
-		// フォームのデフォルトの送信キャンセル
-		return false;
+		$(".sendDataForm").submit();		
 	});
-
 });

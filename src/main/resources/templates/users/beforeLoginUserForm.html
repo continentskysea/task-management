@@ -25,15 +25,16 @@
 				<label>Email</label>
 				<input type="text"  id="mailInput" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
 				<label>パスワード</label>
-				<input type="text"id="passwordInput" placeholder="パスワードを入力してください" th:field="*{password}">
-				<div class="buttonContainer">
-					<button type="submit" class="actionButton registar">登録</button>
-					<button type="submit" class="actionButton getLoginForm">キャンセル</button>
-				</div>
+				<input type="password" id="passwordInput" placeholder="パスワードを入力してください" th:field="*{password}">
+			</div>
+			<div class="buttonContainer">
+				<button type="submit" class="actionButton registar">登録</button>
+				<button type="submit" class="actionButton getLoginForm">キャンセル</button>
 			</div>
 		</form>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script th:src="@{/js/users/validateUser.js}"></script>
+	<script src="/js/users/userActions.js"></script>
 </body>
 </html>
