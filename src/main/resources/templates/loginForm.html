@@ -6,7 +6,7 @@
 	<title>ログイン</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/css/materialize.min.css">
 </head>
 <body>
 	<header>
@@ -35,8 +35,8 @@
 				<input class="white" id="passwordInput" type="password" name="password" autocomplete="off">
 			</div>
 			<div class="buttonContainer">
-				<button class="waves-effect  grey lighten-4 black-text btn actionButton login">ログイン</button>
-				<button class="waves-effect waves-light btn black-text	 actionButton registarUser">ユーザー登録</button>
+				<button class="waves-effect grey lighten-4   btn black-text actionButton login">ログイン</button>
+				<button class="waves-effect orange lighten-5 btn black-text actionButton registarUser">ユーザー登録</button>
 			</div>
 		</form>
 	</main>
@@ -44,6 +44,6 @@
 	<script th:src="@{/js/validateUser.js}"></script>
 	<script src="/js/login/loginFormAction.js"></script>
 	<script src="/js/users/userActions.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.1.0/dist/js/materialize.min.js"></script>
 </body>
 </html>

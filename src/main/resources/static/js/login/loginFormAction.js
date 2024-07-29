@@ -7,7 +7,6 @@ $(document).ready(function() {
 	 * ログイン前ユーザー登録画面からログイン画面へ遷移する
 	 */
 	$(".getLoginForm").on("click", function() {
-		// $(".registarUser").hide();
 		window.location.href = '/loginForm'
 	});
 
@@ -26,8 +25,8 @@ $(document).ready(function() {
 		let email = $("#mailInput").val();
 		let password = $("#passwordInput").val();
 		
-		// console.log(email);
-		// console.log(password);
+		console.log(email);
+		console.log(password);
 		// ログインデータをオブジェクトに格納
 		let loginUser = {
 			email: email, 
@@ -39,6 +38,7 @@ $(document).ready(function() {
 		$(".loginFormContainer input[ name = 'password' ]").val(loginUser.password);
 		
 		// フォームを送信
-		$(".sendDataForm").submit();		
+		$(".sendDataForm").submit();
+		return false;	
 	});
 });

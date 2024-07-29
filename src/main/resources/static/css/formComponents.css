@@ -14,6 +14,7 @@ body {
 
 header {
     max-width: 1024px;
+    text-align: center;
 }
 
 h1 {
@@ -51,12 +52,6 @@ label {
     font-size: 16px;
 }
 
-/* #select-button {
-    display: block;
-    font-size: 16px;
-    margin-top: 20px;
-    height: 80px;
-} */
 
 /* 共通フォームクラスに適用 */
 .formContainer {
@@ -68,9 +63,9 @@ label {
     height: 200px; 
 }
 /* 共通フォームクラスのラベルに適用 */
-.formContainer label {
+.formContainer label.black-text {
     margin-left: 25px;
-    padding-bottom: 5px;
+    padding-bottom: 25px;
 }
 
 .buttonContainer {
@@ -95,8 +90,8 @@ label {
 }
 
 /* 共通入力欄属性に適用 */
-#nameInput, #mailInput, #passwordInput {
-    margin-left: 25px;
+#nameInput, #mailInput.white, #passwordInput.white {
+    margin: 0  0 25px 25px;
     width: 400px;
     height: 25px;
     border-radius: 10px;
