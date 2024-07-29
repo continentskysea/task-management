@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
  *
  */
 @Entity
-@Table(name = "tasks", schema = "public")
+@Table(name = "tasks", schema = "verification")
 public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

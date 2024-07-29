@@ -24,7 +24,7 @@
 				<input id="loginError" type="submit" value="戻る">
 			</form>
 		</div>
-		<form class="sendDataForm" th:action="@{/loginForm}" method="post">
+		<form class="sendDataForm"  method="?">
 			<div class="formContainer loginFormContainer">
 				<label>メールアドレス</label>
 				<input id="mailInput" type="email" name="email">
@@ -32,14 +32,14 @@
 				<input id="passwordInput" type="password" name="password">
 			</div>
 			<div class="buttonContainer">
-				<button class="actionButton login">ログイン</button>
-				<button class="actionButton registarUser">ユーザー登録</button>
+				<button class="actionButton login" value="post" th:formaction="@{/loginForm}">ログイン</button>
+				<button class="actionButton registarUser" value="get" formaction="/getBeforeLoginCreateUser">ユーザー登録</button>
 			</div>
 		</form>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script th:src="@{/js/validateUser.js}"></script>
 	<script src="/js/login/loginFormAction.js"></script>
-	<script src="/js/users/userActions.js"></script>
+	<!-- <script src="/js/users/userActions.js"></script> -->
 </body>
 </html>
