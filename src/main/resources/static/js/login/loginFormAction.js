@@ -39,6 +39,6 @@ $(document).ready(function() {
 		
 		// フォームを送信
 		$(".sendDataForm").submit();
-		return false;	
+		// return false;	
 	});
 });

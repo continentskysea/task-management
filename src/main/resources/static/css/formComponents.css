@@ -13,8 +13,8 @@ body {
 }
 
 header {
-    max-width: 1024px;
     text-align: center;
+    justify-content: center;
 }
 
 h1 {
@@ -22,25 +22,38 @@ h1 {
 }
 main {
     padding-inline: 8px;
-    max-width: 1024px;
+    max-width: 1044px;
     margin: 0 auto;
 }
 .sendDataForm {
     margin: 0 auto;    
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
     text-align: center;
 }
 
+/* 共通フォームクラスに適用 */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    text-align: center;
+    height: 250px
 
-input, label {
-    width: 450px;
-    height: 30px;
-    margin: 0 0 0 5px
 }
-label {
+/* 共通フォームクラスのラベルに適用 */
+.formContainer label {
+    max-width: 450px;
+    width: 100%;
+    height: 30px;
+    margin: 15px 0 0 25px;
     text-align: left;
     color: #000000;
-    padding: 15px 0 0 10px;
+}
+
+.buttonContainer {
+    text-align: center;
+    margin-top: 30px;
 }
 
 .actionButton {
@@ -52,26 +65,6 @@ label {
     font-size: 16px;
 }
 
-
-/* 共通フォームクラスに適用 */
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    text-align: center;
-    padding-bottom: 80px;
-    height: 200px; 
-}
-/* 共通フォームクラスのラベルに適用 */
-.formContainer label.black-text {
-    margin-left: 25px;
-    padding-bottom: 25px;
-}
-
-.buttonContainer {
-    text-align: center;
-    margin-top: 30px;
-}
 /* 共通ボタンクラスに適用 */
 .actionButton input {
     font-size: 16px;
@@ -90,10 +83,11 @@ label {
 }
 
 /* 共通入力欄属性に適用 */
-#nameInput, #mailInput.white, #passwordInput.white {
-    margin: 0  0 25px 25px;
-    width: 400px;
-    height: 25px;
+#nameInput, #mailInput, #passwordInput {
+    margin-left: 25px;
+    max-width: 400px;
+    width: 100%;
+    height: 10px;
     border-radius: 10px;
     padding: 5px;
 }
@@ -237,11 +231,38 @@ label {
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 769px) {
 
+    header {
+        width: 100%;
+    }
+
     /* 共通の見出し */
     h1 {
         font-size: 50px;
     }
+    
+    /* フォーム共通に適用 */
+    .formContainer {
+        width: 100%;
+        height: 350px;
+    }
 
+    /* ---------------------------------
+    ログイン画面に適用
+    --------------------------------- */
+    .loginFormContainer {
+        height: 250px;
+    }
+
+    .formContainer label {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+    /* 入力欄に適用 */
+    #nameInput, #mailInput, #passwordInput {
+        width: 85%;
+        height: 15px;
+    }
+    
     .buttonContainer {
         height: 300px;
         padding: 0;
@@ -249,21 +270,9 @@ label {
         margin: 30px 0 auto;
     }
 
-    
-    /* ---------------------------------
-    ログイン画面に適用
-    --------------------------------- */
-
-    .formContainer label {
-        font-size: 20px;
-    }
-    /* 入力欄に適用 */
-    #formContainer input {
-        height: 35px;
-    }
-    
     .actionButton {
-        width: 450px;
+        max-width: 450px;
+        width: 85%;
         height: 70px;
         margin: 0 auto;
         margin-bottom: 30px;
@@ -277,6 +286,9 @@ label {
 スマホサイズはここから
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 426px) {
+    header {
+        width: 100%;
+    }
 
     h1 {
         font-size: 50px;
@@ -302,23 +314,9 @@ label {
     /* ---------------------------------
     ログイン画面に適用
     --------------------------------- */
-    .loginForm {
-        margin-top: 15px;
-        height: 100%;
-        padding: 0;
-        font-size: 22px;
-    }
-
-    .loginForm label{
-        margin-left: 5px;
-        font-size: 25px;
-    }
     /* 入力欄に適用 */
     #nameInput, #mailInput, #passwordInput {
         font-size: 15px;
-        margin-left: 5px;
-        height: 45px;
-        width: 430px;
     }
     /* ログインボタン群の親要素に適用 */
     #login-button {
@@ -333,23 +331,6 @@ label {
         margin-bottom: 30px;
     }
     
-    /* ---------------------------------
-    ログイン前のユーザー登録画面に適用
-    --------------------------------- */
-    .loginRelation, .userRelation {
-        width: 250px;
-        height: 70px;
-        margin: 0 auto;
-        margin-bottom: 30px;
-    }
 
-    /* ボタン群に適用 */
-    button {
-        width: 75%;
-    }
-    /* 入力欄に適用 */
-    #nameInput, #emailInput, #passwordInput {
-        width: 90%;
-    }
 
 }
