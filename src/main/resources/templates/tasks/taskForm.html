@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>タスク登録</title>
 <link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
 <body>
 	<header>
-		<h1>タスク</h1>
+		<h1>タスク登録</h1>
 	</header>
 	<main>
 		<!-- 登録フォーム -->
@@ -20,7 +21,7 @@
 					<label>期日</label>
 					<input id="dueDateInput" name="dueDate" min="1" max="30" type="date" placeholder="期日を入力してください" th:field="*{dueDate}">
 				</div>
-				<div id="buttonContainer">
+				<div class="buttonContainer">
 					<button class="actionButton registarTask"  type="submit">登録</button>
 					<button class="actionButton getTaskHome">キャンセル</button>
 				</div>

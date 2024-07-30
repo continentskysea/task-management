@@ -49,6 +49,7 @@ main {
     margin: 15px 0 0 25px;
     text-align: left;
     color: #000000;
+    font-weight: bold;
 }
 
 .buttonContainer {
@@ -63,6 +64,7 @@ main {
     margin-right: 30px;
     border-radius: 15px;
     font-size: 16px;
+    font-weight: bold;
 }
 
 /* 共通ボタンクラスに適用 */
@@ -102,6 +104,11 @@ main {
 .loginFormContainer {
     background-color: #E6E6E6;
 }
+
+.loginFormContainer label {
+    margin-top: 35px;
+}
+
 #errorMsg {
     color: red;
     font-size: 20px;
@@ -206,7 +213,7 @@ main {
 
 /* タスク登録フォームに適用 */
 .taskFormContainer {
-    background-color: #ccffcc;
+    background-color: #99FF99;
 }
 
 /* 入力欄に適用 */
@@ -222,7 +229,7 @@ main {
 
 /* タスク登録ボタン */
 .registarTask {
-    background-color: #00CCCC;
+    background-color: #99FF99;
 }
 
 /* ---------------------------------
