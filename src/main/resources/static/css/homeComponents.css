@@ -10,8 +10,29 @@ body {
 h1 {
     text-align: center;
     font-size: 50px;
-    margin-bottom: 30px;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    justify-content: center;
+    max-width: 1044px;
+    width: 100%;
+}
+
+
+h1 {
+    margin:  0 auto;
+}
+main {
+    padding-inline: 8px;
+    max-width: 1044px;
+    margin: 0 auto;
+}
+
 
 form {
     margin: 0 auto;
@@ -21,6 +42,20 @@ form {
 /* ---------------------------------
 ボタン全てに適用
 --------------------------------- */
+
+.buttonContainer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.actionButton {
+    width: 250px;
+    height: 100px;
+    padding: 15px 0;
+    margin-right: 30px;
+    border-radius: 15px;
+    font-size: 16px;
+}
 input {
     font-size: 16px;
     margin: 15px 0;
@@ -28,6 +63,16 @@ input {
     height: 100px;
     border-radius: 10px;
 }
+
+
+.getTaskHome {
+    background-color: #99FF99;
+}
+
+.getTimerHome {
+    background-color: #007FFF; 
+}
+
 
 /* ---------------------------------
 ボタンにカーソルが合えば
@@ -80,14 +125,9 @@ home.htmlに適用
 /* ---------------------------------
 ヘッダーに適用
 --------------------------------- */
-#homeHeader {
+header {
     background-color: #E6E6E6;
     margin: 0 auto;
-}
-
-#homeHeader h1 {
-    margin-top: 30px;
-    margin-bottom: 0px;
 }
 
 /* ---------------------------------
