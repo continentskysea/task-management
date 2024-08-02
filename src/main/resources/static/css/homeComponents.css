@@ -10,6 +10,9 @@ body {
 h1 {
     text-align: center;
     font-size: 50px;
+    padding-inline: 8px;
+    max-width: 1044px;
+    margin: 0 auto;
 }
 body {
     margin: 0;
@@ -21,6 +24,7 @@ header {
     justify-content: center;
     max-width: 1044px;
     width: 100%;
+    padding-inline: 8px;
 }
 
 
@@ -113,7 +117,7 @@ home.htmlとadminHome共通適用
 ------------------------------------------------------------------ */
 #userName {
 	font-size: 30px;
-	margin: 0px 0px 30px 25px;
+	margin: 0
 }
 
 
@@ -386,7 +390,6 @@ main {
 .formContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
     text-align: center;
     height: 250px
 
@@ -584,13 +587,15 @@ main {
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 769px) {
 
+    
+
     header {
         width: 100%;
     }
 
     /* 共通の見出し */
     h1 {
-        font-size: 50px;
+        font-size: 30px;
     }
     
     /* フォーム共通に適用 */
@@ -624,12 +629,18 @@ main {
     }
 
     .actionButton {
-        max-width: 450px;
+        max-width: 350px;
         width: 85%;
         height: 70px;
         margin: 0 auto;
         margin-bottom: 30px;
         font-size: 20px;
+    }
+
+    #userName {
+        text-align: center;
+        font-size: 25px;
+        padding:  30px 25px;
     }
 
 }
