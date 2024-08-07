@@ -11,6 +11,14 @@ $(document).ready(function() {
 		return false;
 	});
 
+	/**
+	 * タイマー管理ボタンが押されたら
+	 */
+	$(".getTimerHome").on("click", function () {
+		window.location.href = "/getTimer";
+		return false;
+	})
+
 	let role = $("#role").val();
 	/**
 		ロールを比較して不要なものを非活性にする。
