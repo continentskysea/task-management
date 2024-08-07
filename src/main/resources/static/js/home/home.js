@@ -3,6 +3,14 @@
  */
 $(document).ready(function() {
 
+	/**
+	 * タスク管理ボタンが押されたら
+	 */
+	$(".getTaskHome").on("click", function() {
+		window.location.href = "/getTask";
+		return false;
+	});
+
 	let role = $("#role").val();
 	/**
 		ロールを比較して不要なものを非活性にする。
