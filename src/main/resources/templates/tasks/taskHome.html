@@ -5,38 +5,38 @@
 >
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">	
 	<title>タスク管理</title>
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 </head>
 <body>
 	<!-- 見出し -->
-	<div id="taskMgmtHeader">
+	<header class="taskMgmtHeader">
 		<h1>タスク管理</h1>
-	</div>
-	<!-- 背景 -->
-	<div id="taskHome" th:object="${currentUser}">
-		<div id="container" >
-			<!-- ロールの判定用 -->
-			<input id="role" type="hidden"  th:field="*{role}">
-			<!-- タスク登録画面遷移 -->
-			<form id="getCreateTaskForm" th:action="@{/getCreateTask}" method="get">
-				<input id="getCreateTask" type="submit" value="タスク登録" />
-			</form>
-			<!-- タスク一覧表示画面遷移 -->
-			<form th:action="@{/getListTasks}" method="get">
-				<input id="getListTasks" type="submit" value="タスク一覧" />
-			</form>
-			<!-- 管理者初期画面遷移 -->
-			<form th:action="@{/getAdminHome}" method="get">
-				<input id="getAdminHome" type="submit" value="戻る" disabled />
-			</form>			
-			<!-- 一般ユーザー初期画面遷移 -->
-			<form  th:action="@{/home}" method="get">
-				<input id="getHome" type="submit" value="戻る" disabled />
-			</form>
-		</div>
-	</div>
+	</header>
+	<main>
+		<form>
+			<!-- 背景 -->
+			<div class="homeContainer taskHomeMenuContainer" th:object="${currentUser}">
+				<div class="buttonContainer taskHomeButtonContainer">
+					<!-- ロールの判定用 -->
+					<input id="role" type="hidden"  th:field="*{role}">
+					<!-- タスク登録画面遷移 -->
+					<button type="submit" class="actionButton getCreateTask">タスク登録</button>
+					<!-- タスク一覧表示画面遷移 -->
+					<button type="submit" class="actionButton getListTasks">タスク一覧</button>
+					<!-- 管理者初期画面遷移 -->
+					<button type="submit" class="actionButton getAdminHome" disabled>戻る</button>	
+					<!-- 一般ユーザー初期画面遷移 -->
+					<button type="submit" class="actionButton getHome">戻る</button>			
+				</div>
+			</div>
+		</form>
+	</main>
+	
+
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="/js/home/home.js"></script>
+	<script src="/js/tasks/taskHomeAction.js"></script>
 </body>
 </html>
