@@ -254,19 +254,15 @@ timerHome.html
 /* ---------------------------------
 ヘッダーに適用
 --------------------------------- */
-#timerHomeHedear {
+.timerHomeHedear {
     background-color: #007FFF; /* 青色 */
 }
-#timerHomeHedear h1 {
-    margin-top: 30px;
-    margin-bottom: 0px;
-}
+
 
 /* ---------------------------------
 背景に適用
 --------------------------------- */
-#timerHome {
-    display: flex;
+.timerHomeMenuContainer {
     background-color: #007FFF; /* 青色 */
     height: 500px;
 }
@@ -274,12 +270,8 @@ timerHome.html
 /* ---------------------------------
 ボタン単体に適用
 --------------------------------- */
-#getTimerSetting, #getStartTimer, #getRestTimer {
-    width: 250px;
-    height: 100px;
-    margin: 50px;
+.getTimerSetting, .getTimerlist {
     background-color: #3399FF; /* 青色 */
-    margin-left: 50px;
 }
 
 
@@ -314,30 +306,6 @@ userHome.html
     background-color: rgb(239, 229, 202); /* 亜麻色 */
     margin: 50px;
 }
-
-
-
-/* ---------------------------------------------------------------------------------------------------
-タブレットサイズはここから
---------------------------------------------------------------------------------------------------- */
-@media screen and (max-width: 769px) { 
-
-    header {
-        width: 752px;
-    }
-
-    .buttonContainer {
-        display: flex;
-        flex-direction: column;
-        margin-top: 50px;
-        text-align: center;
-        height: 250px;
-    }
-
-    
-}
-
-
 
 /* ---------------------------------------------------------------------------------------------------
 PC画面はここから適用
@@ -564,6 +532,7 @@ main {
 }
 
 
+
 /* ---------------------------------------------------------------------------------------------------
 タブレットサイズはここから
 --------------------------------------------------------------------------------------------------- */
@@ -600,12 +569,20 @@ main {
         height: 15px;
     }
     
+    header {
+        width: 752px;
+    }
+
     .buttonContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        text-align: center;
         height: 300px;
         padding: 0;
-        flex-direction: column;
         margin: 30px 0 auto;
     }
+
 
     .actionButton {
         max-width: 350px;
@@ -621,6 +598,12 @@ main {
         margin-top:  auto;
         padding: 30px;
     }
+    
+    .timerHomeMenuContainer {
+        margin-top:  auto;
+        padding: 30px;
+    }
+
     #userName {
         text-align: center;
         font-size: 25px;

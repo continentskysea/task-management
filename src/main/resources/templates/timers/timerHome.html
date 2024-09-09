@@ -5,38 +5,36 @@
 >
 <head>
 	<meta charset="UTF-8">
-	<title>集中タイマー</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">	
+	<title>タイマー管理</title>
 	<link rel="stylesheet" th:href="@{/css/homeComponents.css}">
 </head>
 <body>
-	<!-- ヘッダー -->
-	<div id="timerHomeHedear">
-		<h1>集中タイマー</h1>
-	</div>
-	<!-- 背景 -->
-	<div id="timerHome" th:object="${currentUser}">
-		<div id="container">
-			<!-- ロールの判定用 -->
-			<input id="role" type="hidden" th:field="*{role}" />
-			<!-- タイマー入力画面へ遷移 -->
-			<form th:action="@{/getTimerSetting}" method="get">
-				<input id="getTimerSetting" type="submit" value="タイマー登録">
-			</form>
-			<!-- タイマー入力画面へ遷移 -->
-			<form th:action="@{/getTimerlist}" method="get">
-				<input id="getTimerSetting" type="submit" value="タイマー一覧">
-			</form>
-			<!-- 管理者初期画面遷移 -->
-			<form th:action="@{/getAdminHome}" method="get">
-				<input id="getAdminHome" type="submit" value="戻る">
-			</form>			
-			<!-- 一般ユーザー初期画面遷移 -->
-			<form th:action="@{/home}" method="get">
-				<input id="getHome" type="submit" value="戻る">
-			</form>
-		</div>
-	</div>
+	<!-- 見出し -->
+	<header class="timerHomeHedear">
+		<h1>タイマー管理</h1>
+	</header>
+	<main>
+		<form>
+			<!-- 背景 -->
+			<div class="homeContainer timerHomeMenuContainer" th:object="${currentUser}">
+				<div class="buttonContainer timerHomeMenuContainer">
+					<!-- ロールの判定用 -->
+					<input id="role" type="hidden"  th:field="*{role}">
+					<!-- タスク登録画面遷移 -->
+					<button type="submit" class="actionButton getTimerSetting">タスク登録</button>
+					<!-- タスク一覧表示画面遷移 -->
+					<button type="submit" class="actionButton getTimerlist">タスク一覧</button>
+					<!-- 管理者初期画面遷移 -->
+					<button type="submit" class="actionButton getAdminHome" disabled>戻る</button>	
+					<!-- 一般ユーザー初期画面遷移 -->
+					<button type="submit" class="actionButton getHome">戻る</button>			
+				</div>
+			</div>
+		</form>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="/js/home/home.js"></script>
+	<script src="/js/timers/timerHomeAction.js"></script>
 </body>
 </html>
