@@ -85,8 +85,16 @@ main {
     opacity: 0.5;
 }
 
-/* 共通入力欄属性に適用 */
-#nameInput, #mailInput, #passwordInput {
+/* 登録フォーム入力欄
+    (ログイン、ユーザー登録・編集、タスク登録・編集、タイマー登録・編集)
+*/
+#nameInput,
+#mailInput,
+#passwordInput,
+#taskNameInput,
+#priorityInput,
+#dueDateInput
+{
     margin-left: 25px;
     max-width: 400px;
     width: 100%;
@@ -206,8 +214,13 @@ main {
 /* ---------------------------------
 タスク登録に適用
 --------------------------------- */
-.taskForm {
-    background-color: #ccffcc;
+.taskFormContainer {
+    background-color: #99FF99;
+}
+
+/* 登録ボタン */
+.registarTask {
+    background-color: #99FF99;
 }
 
 /* ---------------------------------
@@ -261,11 +274,23 @@ main {
         margin-top: 30px;
     }
     /* 入力欄に適用 */
-    #nameInput, #mailInput, #passwordInput {
+    #nameInput,
+    #mailInput,
+    #passwordInput,
+    #taskNameInput,
+    #priorityInput,
+    #dueDateInput
+    {
         width: 85%;
         height: 15px;
     }
+
+    /* ---------------------------------
+    タスク登録に適用
+    --------------------------------- */
     
+    
+
     .buttonContainer {
         height: 300px;
         padding: 0;
