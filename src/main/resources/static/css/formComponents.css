@@ -215,12 +215,12 @@ main {
 タスク登録に適用
 --------------------------------- */
 .taskFormContainer {
-    background-color: #99FF99;
+    background-color: palegreen;
 }
 
 /* 登録ボタン */
 .registarTask {
-    background-color: #99FF99;
+    background-color: palegreen;
 }
 
 /* ---------------------------------
