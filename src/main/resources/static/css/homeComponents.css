@@ -221,7 +221,8 @@ taskHome.html
 --------------------------------- */
 
 .taskMgmtHeader {
-    background-color: #99FF99; /* 緑色 */
+    background-color: springgreen;
+    /* 緑色 */
 }
 
 /* ---------------------------------
@@ -229,7 +230,9 @@ taskHome.html
 --------------------------------- */
 
 .taskHomeMenuContainer {
-    background-color: #99FF99; /* 緑色 */
+
+    background-color: springgreen;
+    /* 緑色 */
     height: 500px;
 }
 
@@ -238,7 +241,8 @@ taskHome.html
 登録と一覧ボタンに適用
 --------------------------------- */
 .getCreateTask, .getListTasks {
-    background-color: #00CCCC; /* 緑色 */
+    background-color: palegreen;
+    /* 緑色 */
     /* width: 250px;
     height: 100px;
     margin: 50px;
