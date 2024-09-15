@@ -71,7 +71,7 @@ $(document).ready(function() {
 	});
 	
 	// タスク管理初期画面へ遷移
-	$(".taskHomeRelation").on("click", function () {
+	$(".getTaskHome").on("click", function () {
 		window.location.href = "/getTask";
 		return false;
 	});
