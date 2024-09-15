@@ -74,7 +74,7 @@ input {
 }
 
 .getTimerHome {
-    background-color: #007FFF; 
+    background-color: cornflowerblue;
 }
 
 
@@ -259,7 +259,8 @@ timerHome.html
 ヘッダーに適用
 --------------------------------- */
 .timerHomeHedear {
-    background-color: #007FFF; /* 青色 */
+    background-color: dodgerblue;
+    /* 青色 */
 }
 
 
@@ -267,7 +268,8 @@ timerHome.html
 背景に適用
 --------------------------------- */
 .timerHomeMenuContainer {
-    background-color: #007FFF; /* 青色 */
+    background-color: dodgerblue;
+    /* 青色 */
     height: 500px;
 }
 
