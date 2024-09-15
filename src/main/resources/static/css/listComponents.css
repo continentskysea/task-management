@@ -118,12 +118,11 @@ button:hover, a:hover {
 /* ---------------------------------
 削除フォーム
 --------------------------------- */
-#deleteForm {
+.deleteForm {
     margin: 0 auto;
     width: 1500px;
     border-radius: 15px;
     padding: 30px 60px 60px 30px;
-    /* width: 1500px; */
     background-color: #99FF99;
     text-align: center;
 }
@@ -131,7 +130,7 @@ button:hover, a:hover {
 /* ---------------------------------
 テーブルの見出し
 --------------------------------- */
-#deleteForm th, #deleteForm td {
+.deleteForm th, .deleteForm td {
     background-color: #E6E6E6;
     padding: 10px 20px;
 }
@@ -149,7 +148,7 @@ button:hover, a:hover {
 --------------------------------- */
 
 .timersRelation {
-    background-color: #007FFF;
+    background-color: cornflowerblue;
 }
 
 .timersRelation:hover {
@@ -166,7 +165,7 @@ button:hover, a:hover {
 タスク関係のボタン群(編集、削除)
 --------------------------------- */
 .taskRelation {
-    background-color: #00CCCC;
+    background-color: palegreen;
 }
 
 /* 戻るボタンに適応 */
