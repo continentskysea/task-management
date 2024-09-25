@@ -93,7 +93,9 @@ main {
 #passwordInput,
 #taskNameInput,
 #priorityInput,
-#dueDateInput
+#dueDateInput,
+#focusTimeInput,
+#breakTimeInput
 {
     margin-left: 25px;
     max-width: 400px;
@@ -226,10 +228,12 @@ main {
 /* ---------------------------------
 タイマー登録に適用
 --------------------------------- */
-.timerSettingsForm {
-    /* display: flex;
-    flex-direction: column; */
+.timerFormContainer {
     background-color: #007FFF;
+}
+
+.registarTimer {
+    background-color:cornflowerblue;
 }
 
 .error-message {
@@ -279,7 +283,9 @@ main {
     #passwordInput,
     #taskNameInput,
     #priorityInput,
-    #dueDateInput
+    #dueDateInput,
+    #focusTimeInput,
+    #breakTimeInput
     {
         width: 85%;
         height: 15px;
