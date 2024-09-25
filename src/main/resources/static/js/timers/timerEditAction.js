@@ -5,19 +5,19 @@ $(document).ready(function() {
 	/**
 	タイマー編集画面へ遷移する
 	*/
-	$(".timerEditRelation").on("click", function() {
+	$(".timerEdit").on("click", function () {
 		let selectedCheckbox = getSelectedCheckbox();
-		
+
 		if (selectedCheckbox) {
-			// 選択されたタスクの情報を取得
-			let timerId = $(selectedCheckbox).val();
-			// タスク情報を使って編集画面にリダイレクト
-			window.location.href = '/getEditTimer/' + timerId;
+		// 選択されたタスクの情報を取得
+		let timerId = $(selectedCheckbox).val();
+		// タスク情報を使って編集画面にリダイレクト
+		window.location.href = "/getEditTimer/" + timerId;
 		}
 	});
 
 	// 削除ボタンが押下された時の処理
-	$(".timerDeleteRelation").on("click", function() {
+	$(".timerDelete").on("click", function() {
 		// チェックボックスクラスを取得する
 		let checkedCheckboxes = $('.timerCheckbox:checked');
 		// 削除フォームidを取得する

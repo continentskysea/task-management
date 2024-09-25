@@ -26,10 +26,18 @@ table {
 
 table th, table td {
     border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #E6E6E6;
 }
 
 
-
+form {
+    width: 1500px;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 30px 60px 60px 30px;
+    text-align: center;
+}
 
 button {
     width: 150px;
@@ -51,14 +59,14 @@ button:hover, a:hover {
 指定のセレクタに適用
 --------------------------------------------------------------------------------------------------- */
 
-#listButtons {
+.listButtons {
     width: 1500px;
     display: flex;
     margin: 0 auto;
     justify-content: center;
 }
 
-#listButtons button {
+.listButtons button {
     margin: 30px 15px 50px 15px;
     width: 250px;
     font-size: 25px;
@@ -127,13 +135,6 @@ button:hover, a:hover {
     text-align: center;
 }
 
-/* ---------------------------------
-テーブルの見出し
---------------------------------- */
-.deleteForm th, .deleteForm td {
-    background-color: #E6E6E6;
-    padding: 10px 20px;
-}
 
 /* ---------------------------------
 チェックボックスのサイズ
@@ -179,15 +180,13 @@ button:hover, a:hover {
 --------------------------------- */
 
 /* フォームに適用 */
-#timerDeleteForm {
-    width: 1500px;
+.timerDeleteForm {
     background-color: #007FFF;
-    margin: 0 auto;
 }
 
 /* テーブル見出しと表示内容に適用 */
-#timerDeleteForm th, #timerDeleteForm td {
-    background-color: #E6E6E6;
+.timerDeleteForm th, #timerDeleteForm td {
+    
     padding: 0px;
     
 }
@@ -239,4 +238,24 @@ button:hover, a:hover {
 /* 戻るボタン個別に適応 */
 .userHomeRelation {
     background-color: #f0f0f0
+}
+
+/* ---------------------------------------------------------------------------------------------------
+タブレットサイズはここから
+--------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 769px) {
+        table {
+            border-collapse: collapse;
+            writing-mode: vertical-lr;
+            padding: 0px;
+        }
+
+        table th,
+        table td {
+            writing-mode: horizontal-tb;
+            padding: 0px;
+            text-align: left;
+            width: 10rem;
+        }
+        
 }

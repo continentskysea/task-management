@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>タイマー一覧</title>
 	<link rel="stylesheet" th:href="@{/css/listComponents.css}">
 </head>
@@ -16,7 +17,7 @@
 		</form>
 	</div>
 	<!-- タイマー削除機能用フォーム -->	
-	<form id="timerDeleteForm" th:action="@{/deleteTask}" method="post">
+	<form class="timerDeleteForm" th:action="@{/deleteTask}" method="post">
 		<table>
 			<thead>
 				<tr>
@@ -38,11 +39,11 @@
 			</tbody>
 		</table>	
 	</form>
-	<div id="listButtons">
+	<div class="listButtons">
 		<!-- 編集画面へ遷移 -->
-		<button class="timerRelation timerEditRelation">編集</button>
+		<button class="timerRelation timerEdit">編集</button>
 		<!-- タイマーを削除 -->
-		<button class="timerRelation timerDeleteRelation" type="submit">削除</button>
+		<button class="timerRelation timerDelete" type="submit">削除</button>
 		<!-- タイマ―管理初期画面へ遷移 -->
 		<button class="timerRelation timerHomeRelation">戻る</button>
 	</div>
