@@ -11,24 +11,26 @@
 			<h1>タイマー登録</h1>
 			<h3>タイマーをセットします</h3>
 		</header>
-		<!-- 登録フォーム -->
-		<form class="sendDataForm" th:action="@{/save}" method="post" th:object="${timersSetting}" >
-			<div class="formContainer timerFormContainer">
-				<!-- ページ遷移先判定用のデータ送信 -->
-				<input type="hidden" name="formSendCheckPageValue" value="1">
-				<label>集中タイマー</label>
-				<input id="focusTimeInput" type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
-				<label>休憩タイマー</label>
-				<input id="breakTimeInput" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+		<main>
+			<!-- 登録フォーム -->
+			<form class="sendDataForm TimerSettingForm" th:action="@{/save}" method="post" th:object="${timersSetting}" >
+				<div class="formContainer timerFormContainer">
+					<!-- ページ遷移先判定用のデータ送信 -->
+					<input type="hidden" id="formSendCheckPageValue" name="formSendCheckPageValue" value="1">
+					<label>集中タイマー</label>
+					<input id="focusTimeInput" name="focusTime" type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
+					<label>休憩タイマー</label>
+					<input id="breakTimeInput" name="breakTime" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+				</div>
 				<div class="buttonContainer">
 					<button type="submit" class="actionButton registarTimer">登録</button>
 					<button type="submit" class="actionButton getTimerHome">キャンセル</button>
 				</div>
-			</div>
-		</form>
+			</form>
+		</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="/js/timers/validateTimerForm.js"></script>
-	<script src="/js/timers/timersSettingAction.js"></script>
+	<script src="/js/timers/timerSettingAction.js"></script>
 	</body>
 </html>
 

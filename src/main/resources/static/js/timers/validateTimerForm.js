@@ -2,10 +2,10 @@
  * タイマー登録のバリデーション
 */
 $(document).ready(function() {
-    $("button").on("click", function() {
+    $(".registarTimer").on("click", function() {
         // フォームから入力値を取得
-        let focusTime = $("#focusTime").val();
-        let breakTime = $("#breakTime").val();
+        let focusTime = $("#focusTimeInput").val();
+        let breakTime = $("#breakTimeInput").val();
         // バリデーションフラグ
         let isValid = true;
         
