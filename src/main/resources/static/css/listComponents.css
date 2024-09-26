@@ -8,6 +8,10 @@ body {
     padding: 0;
 }
 
+header {
+    margin: 0 auto;
+}
+
 h1 {
     text-align: center;
     margin-top: 25px;
@@ -244,18 +248,22 @@ button:hover, a:hover {
 タブレットサイズはここから
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 769px) {
-        table {
-            border-collapse: collapse;
-            writing-mode: vertical-lr;
-            padding: 0px;
-        }
+    /* テーブル共通 */
+    table {
+        writing-mode: vertical-lr;
+    }
+    /* テーブルの見出しとデータを縦表示 */
+    table th,
+    table td {
+        writing-mode: horizontal-tb;
+    }
 
-        table th,
-        table td {
-            writing-mode: horizontal-tb;
-            padding: 0px;
-            text-align: left;
-            width: 10rem;
-        }
+    table th {
+        width: 10rem;
+    }
+
+    table td {
+        width: 2.5rem;
+    }
         
 }
