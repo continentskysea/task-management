@@ -9,7 +9,7 @@ $(document).ready(function () {
         // htmlに入力された値を格納する
         let pageChecked = $("#formSendCheckPageValue").val();
         let focusTimeInput = $("#focusTimeInput").val();
-        let breakTimeInput = $("#breakTimeInputriorityInput").val();
+        let breakTimeInput = $("#breakTimeInput").val();
 
         // 入力データをオブジェクトに格納
         let timer = {
