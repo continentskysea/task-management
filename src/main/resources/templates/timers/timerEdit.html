@@ -2,29 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>タイマー編集</title>
 	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
 <body>
-	<h1>タイマーをセットします</h1>
-	
-	<form th:action="@{/save}" method="post" th:object="${timersSetting}">
-		<div class="timerSettingsForm">
-			<input type="hidden" th:field="*{id}">
-			<label>集中タイマー</label>
-			<input id="focusTime" type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
-			<label>休憩タイマー</label>
-			<input id="breakTime" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
-			<input type="hidden" th:field="*{registarAt}">
-			<!-- ページ遷移先判定用のデータ送信 -->
-			<input type="hidden" name="formSendCheckPageValue" value="2">
-			<div id="select-button">
-				<button type="submit">登録</button>
-				<a th:href="@{/getTimerlist}">キャンセル</a>
+	<header>
+		<h1>タイマー登録</h1>
+		<h3>タイマーをセットします</h3>
+	</header>
+	<main>
+		<form class="sendDataForm TimerSettingForm" th:action="@{/save}" method="post" th:object="${timersSetting}" >
+			<div class="formContainer timerFormContainer">
+				<!-- ページ遷移先判定用のデータ送信 -->
+				<input type="hidden" name="formSendCheckPageValue" value="2">
+				<input type="hidden" th:field="*{id}">
+				<label>集中タイマー</label>
+				<input id="focusTimeInput" name="focusTime"  type="text" placeholder="00:00:00" th:field="*{focusTime}"/>
+				<label>休憩タイマー</label>
+				<input id="breakTimeInput" name="breakTime" type="text" placeholder="00:00:00" th:field="*{breakTime}"/>
+				<input type="hidden" th:field="*{registarAt}">
 			</div>
-		</div>
-	</form>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js "></script>
-	<script src='/js/timers/validateTimerForm.js'></script>
+			<div class="buttonContainer">
+				<button type="submit" class="actionButton registarTimer">登録</button>
+				<button type="submit" class="actionButton getTimersList">キャンセル</button>
+			</div>
+		</form>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="/js/timers/validateTimerForm.js"></script>
+	<script src="/js/timers/timerEditAction.js"></script>
 </body>
 </html>

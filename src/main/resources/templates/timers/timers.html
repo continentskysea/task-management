@@ -19,7 +19,7 @@
 		</form>
 	</div>
 	<!-- タイマー削除機能用フォーム -->	
-	<form class="timerDeleteForm" th:action="@{/deleteTask}" method="post">
+	<form class="timerDeleteForm" th:action="@{/deleteTimer}" method="post">
 		<table>
 			<thead>
 				<tr>
@@ -41,15 +41,15 @@
 			</tbody>
 		</table>	
 	</form>
-	<div class="listButtons">
+	<div class="buttonContainer">
 		<!-- 編集画面へ遷移 -->
-		<button class="timerRelation timerEdit">編集</button>
+		<button class="actionButton getTimerEdit" type="submit">編集</button>
 		<!-- タイマーを削除 -->
-		<button class="timerRelation timerDelete" type="submit">削除</button>
+		<button class="actionButton timerDelete" type="submit">削除</button>
 		<!-- タイマ―管理初期画面へ遷移 -->
-		<button class="timerRelation timerHomeRelation">戻る</button>
+		<button class="actionButton getTimerHome" type="submit" >戻る</button>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src='/js/timers/timerEditAction.js'></script>
+	<script src='/js/timers/timersListAction.js'></script>
 </body>
 </html>

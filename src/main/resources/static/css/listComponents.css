@@ -56,6 +56,22 @@ button:hover, a:hover {
 }
 
 
+/* 共通ボタンクラスに適用 */
+.actionButton input {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 100px;
+    padding-right: 6px;
+    border-radius: 10px;
+}
+
+/* 共通ボタンクラスに適用 */
+.actionButton:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
 
 
 
@@ -63,14 +79,14 @@ button:hover, a:hover {
 指定のセレクタに適用
 --------------------------------------------------------------------------------------------------- */
 
-.listButtons {
+.buttonContainer {
     width: 1500px;
     display: flex;
     margin: 0 auto;
     justify-content: center;
 }
 
-.listButtons button {
+.buttonContainer button {
     margin: 30px 15px 50px 15px;
     width: 250px;
     font-size: 25px;
@@ -147,23 +163,17 @@ button:hover, a:hover {
     transform: scale(2);
 }
 
+/* 戻るボタンに適応 */
+.getTaskHome, .getTimerHome {
+    background-color: #f0f0f0;
+}
 
 /* ---------------------------------
 タイマー関係のボタン群(タイマー一覧画面、集中タイマー画面)
 --------------------------------- */
 
-.timersRelation {
+.getTimerEdit, .timerDelete {
     background-color: cornflowerblue;
-}
-
-.timersRelation:hover {
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-.timersRelation input {
-    width: 100px;
-    height: 50px;
 }
 
 /* ---------------------------------
@@ -173,10 +183,6 @@ button:hover, a:hover {
     background-color: palegreen;
 }
 
-/* 戻るボタンに適応 */
-.getTaskHome {
-    background-color: #f0f0f0;
-}
 
 
 /* ---------------------------------
@@ -185,7 +191,7 @@ button:hover, a:hover {
 
 /* フォームに適用 */
 .timerDeleteForm {
-    background-color: #007FFF;
+    background-color: dodgerblue;
 }
 
 /* テーブル見出しと表示内容に適用 */
@@ -195,10 +201,6 @@ button:hover, a:hover {
     
 }
 
-/* ボタン群に適用 */
-.timerRelation {
-    background-color: #007FFF;  
-}
 
 /* チェックボックスに適用 */
 .timerCheckbox {
@@ -248,22 +250,46 @@ button:hover, a:hover {
 タブレットサイズはここから
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 769px) {
+
+    form {
+        width: 80%;
+    }
+
     /* テーブル共通 */
     table {
         writing-mode: vertical-lr;
+        width: 80%;
     }
     /* テーブルの見出しとデータを縦表示 */
     table th,
     table td {
         writing-mode: horizontal-tb;
     }
-
+    
     table th {
         width: 10rem;
     }
-
+    
     table td {
         width: 2.5rem;
     }
-        
+    
+    .buttonContainer {
+        height: 300px;
+        padding: 0;
+        flex-direction: column;
+        margin: 30px 0 auto;
+        text-align: center;
+    }
+
+    .actionButton {
+        max-width: 450px;
+        width: 85%;
+        height: 70px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+
+
 }
