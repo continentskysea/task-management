@@ -11,44 +11,46 @@
 	<header>
 		<h1>タイマー一覧</h1>
 	</header>
-	<!-- ステータスメッセージの表示欄 -->
-	<div id="flashMessageDisplay" th:if="${flashMessage != null}">
-		<p th:text="${flashMessage}"></p>
-		<form th:action="@{/getTimerlist}" method="get">
-			<input id="messageDeleteButton" type="submit" value="OK">
+	<main>
+			<!-- ステータスメッセージの表示欄 -->
+			<div id="flashMessageDisplay" th:if="${flashMessage != null}">
+				<p th:text="${flashMessage}"></p>
+				<form th:action="@{/getTimerlist}" method="get">
+					<input id="messageDeleteButton" type="submit" value="OK">
+				</form>
+			</div>
+			<!-- タイマー削除機能用フォーム -->	
+			<form class="timerDeleteForm" th:action="@{/deleteTimer}" method="post">
+				<table>
+					<thead>
+						<tr>
+							<th>選択</th>
+							<th>集中時間</th>
+							<th>休憩時間</th>
+							<th>登録日</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- タスクリストの表示 -->
+						<tr th:each="timer : ${timersList}">
+						<!-- チェックボックスを追加 -->
+						<td><input class="timerCheckbox" type="checkbox" th:value="${timer.id}" th:name="timerIds" /></td>
+						<td th:text="${timer.focusTime}"></td>
+						<td th:text="${timer.breakTime}"></td>
+						<td th:text="${#temporals.format(timer.registarAt, 'yyyy年MM月dd日hh時mm分ss秒')}"></td>
+					</tr>
+				</tbody>
+			</table>	
 		</form>
-	</div>
-	<!-- タイマー削除機能用フォーム -->	
-	<form class="timerDeleteForm" th:action="@{/deleteTimer}" method="post">
-		<table>
-			<thead>
-				<tr>
-					<th>選択</th>
-					<th>集中時間</th>
-					<th>休憩時間</th>
-					<th>登録日</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- タスクリストの表示 -->
-				<tr th:each="timer : ${timersList}">
-					<!-- チェックボックスを追加 -->
-					<td><input class="timerCheckbox" type="checkbox" th:value="${timer.id}" th:name="timerIds" /></td>
-					<td th:text="${timer.focusTime}"></td>
-					<td th:text="${timer.breakTime}"></td>
-                    <td th:text="${#temporals.format(timer.registarAt, 'yyyy年MM月dd日hh時mm分ss秒')}"></td>
-				</tr>
-			</tbody>
-		</table>	
-	</form>
-	<div class="buttonContainer">
-		<!-- 編集画面へ遷移 -->
-		<button class="actionButton getTimerEdit" type="submit">編集</button>
-		<!-- タイマーを削除 -->
-		<button class="actionButton timerDelete" type="submit">削除</button>
-		<!-- タイマ―管理初期画面へ遷移 -->
-		<button class="actionButton getTimerHome" type="submit" >戻る</button>
-	</div>
+		<div class="buttonContainer">
+			<!-- 編集画面へ遷移 -->
+			<button class="actionButton getTimerEdit" type="submit">編集</button>
+			<!-- タイマーを削除 -->
+			<button class="actionButton timerDelete" type="submit">削除</button>
+			<!-- タイマ―管理初期画面へ遷移 -->
+			<button class="actionButton getTimerHome" type="submit" >戻る</button>
+		</div>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src='/js/timers/timersListAction.js'></script>
 </body>

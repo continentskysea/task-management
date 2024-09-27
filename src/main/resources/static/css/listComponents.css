@@ -9,6 +9,13 @@ body {
 }
 
 header {
+    text-align: center;
+    justify-content: center;
+}
+
+main {
+    padding-inline: 8px;
+    max-width: 1044px;
     margin: 0 auto;
 }
 
@@ -62,7 +69,7 @@ button:hover, a:hover {
     margin-top: 20px;
     margin-bottom: 20px;
     height: 50px;
-    width: 100px;
+    width: 75%;
     padding-right: 6px;
     border-radius: 10px;
 }
@@ -84,11 +91,12 @@ button:hover, a:hover {
     display: flex;
     margin: 0 auto;
     justify-content: center;
+    font-weight: bold;
 }
 
-.buttonContainer button {
+.actionButton {
     margin: 30px 15px 50px 15px;
-    width: 250px;
+    width: 100%;
     font-size: 25px;
     border-radius: 10px;
     font-weight: bold;
@@ -251,45 +259,77 @@ button:hover, a:hover {
 --------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 769px) {
 
+    header {
+        width: 100%;
+    }
+
+    main {
+        text-align: center;
+    }
     form {
-        width: 80%;
+        width: 95%;
+        height: 55%;
     }
 
     /* テーブル共通 */
     table {
         writing-mode: vertical-lr;
-        width: 80%;
+        width: 95%;
+        height: 55%;
     }
     /* テーブルの見出しとデータを縦表示 */
     table th,
     table td {
         writing-mode: horizontal-tb;
+        font-size: 25px;
     }
     
     table th {
-        width: 10rem;
+        width: 5rem;
+
     }
     
     table td {
-        width: 2.5rem;
+        width: 0.5rem;
     }
     
     .buttonContainer {
-        height: 300px;
-        padding: 0;
         flex-direction: column;
-        margin: 30px 0 auto;
+        margin: 50px 0px auto;
         text-align: center;
     }
 
     .actionButton {
-        max-width: 450px;
-        width: 85%;
-        height: 70px;
-        margin: 0 auto;
+        width: 52%;
+        height: 100px;
         margin-bottom: 30px;
         font-size: 20px;
     }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------
+スマホサイズはここから
+--------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 426px) {
+    header {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    main {
+        text-align: center;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
 
 
 }

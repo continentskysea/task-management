@@ -9,12 +9,12 @@ $(document).ready(function() {
 		let selectedCheckbox = getSelectedCheckbox();
 
 		if (selectedCheckbox) {
-			// 選択されたタスクの情報を取得
-			let timerId = $(selectedCheckbox).val();
-			// タスク情報を使って編集画面にリダイレクト
-			window.location.href = "/getEditTimer/" + timerId;
+		// 選択されたタスクの情報を取得
+		let timerId = $(selectedCheckbox).val();
+		// タスク情報を使って編集画面にリダイレクト
+		window.location.href = "/getEditTimer/" + timerId;
 		}
-	});
+  });
 
 	// 削除ボタンが押下された時の処理
 	$(".timerDelete").on("click", function() {
@@ -34,6 +34,7 @@ $(document).ready(function() {
 			const errorMsg = "タイマーが未選択あるいは複数選択されています";
 			alert(errorMsg);
 			timerDeleteForm.attr('action', '#');
+			return false;
 		}
 	});
 
