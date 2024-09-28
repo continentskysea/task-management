@@ -179,7 +179,7 @@ button:hover, a:hover {
 /* ---------------------------------
 タスク関係のボタン群(編集、削除)
 --------------------------------- */
-.taskRelation {
+.getTaskEdit, .taskDelete {
     background-color: palegreen;
 }
 
