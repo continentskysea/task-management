@@ -1,5 +1,5 @@
 /**
- * タスク管理の操作 
+ * タスクフォームの操作 
  */
 $(document).ready(function() {
 	
@@ -34,5 +34,22 @@ $(document).ready(function() {
 		// フォームを送信
 		$(".taskRegistarForm").submit();
 	});
+
+
+    /**
+     * タスク一覧画面へ遷移
+     */
+    $(".getTasksList").on("click", function() {
+        window.location.href = '/getListTasks';
+        return false;
+    });
+
+    /**
+     * タスク管理初期画面へ遷移
+     */
+    $(".getTaskHome").on("click", function() {
+        window.location.href = '/getTask';
+        return false;
+    });
 
 });
