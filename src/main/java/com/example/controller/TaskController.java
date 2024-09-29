@@ -181,7 +181,7 @@ public class TaskController {
 			// modelに追加し、遷移先へ渡す
 			model.addAttribute("task" ,task);
 			// タスク編集画面へ遷移
-			return "tasks/taskEdit";		
+			return "tasks/taskEditForm";		
 		}
 	}
 	

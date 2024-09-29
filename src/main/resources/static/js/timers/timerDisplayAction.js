@@ -1,18 +1,12 @@
 /**
- * タイマー画面の表示の動きに関して制御する
+ * 集中タイマー表示に関する操作
  */
 $(document).ready(function() {
-	
-	/**
-	 * タイマー登録画面に遷移する
-	 */
-	$(".settingTimerRelation").on("click", function() {
-		window.location.href = '/getTimerSetting';
-	});
+
 	/**
 		集中タイマー画面に遷移する
 	 */
-	$(".focusTimerRelation").on("click", function() {
+	$(".getFocusTimer").on("click", function() {
 		let selectedCheckbox = getSelectedCheckbox();
 	
 		if (selectedCheckbox) {
@@ -22,20 +16,7 @@ $(document).ready(function() {
 			window.location.href = '/getFocusTimer/' + taskId;
 		}
 	});
-	
-	/**
-		休憩タイマー画面に遷移する
-	 */
-	$(".breakTimerRelation").on("click", function() {
-		let selectedCheckbox = getSelectedCheckbox();
-		
-		if (selectedCheckbox) {
-			// 選択されたタスク情報を取得
-			let taskId = parseInt($(selectedCheckbox).val());
-			// タスク情報を使って休憩タイマー画面にリダイレクト
-			window.location.href = '/getBreakTimer/' + taskId;
-		}
-	});
+
 	
 	/**
 	 * チェックされた要素を調べる
