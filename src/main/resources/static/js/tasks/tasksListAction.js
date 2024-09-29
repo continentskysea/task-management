@@ -35,7 +35,7 @@ $(document).ready(function() {
         // チェックボックスクラスを取得する
         let checkedCheckboxes = $('.taskCheckbox:checked');
         // 削除フォームidを取得する
-        let deleteForm = $('#deleteForm');
+        let deleteForm = $(".taskDeleteForm");
         
         // タスクの選択数をチェック
         if (checkedCheckboxes.length === 1) {

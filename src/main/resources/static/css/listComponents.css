@@ -154,13 +154,8 @@ button:hover, a:hover {
 /* ---------------------------------
 削除フォーム
 --------------------------------- */
-.deleteForm {
-    margin: 0 auto;
-    width: 1500px;
-    border-radius: 15px;
-    padding: 30px 60px 60px 30px;
-    background-color: #99FF99;
-    text-align: center;
+.taskDeleteForm {
+    background-color: springgreen;
 }
 
 
@@ -180,7 +175,9 @@ button:hover, a:hover {
 タイマー関係のボタン群(タイマー一覧画面、集中タイマー画面)
 --------------------------------- */
 
-.getTimerEdit, .timerDelete {
+.getTimerEdit,
+.timerDelete,
+.getFocusTimer {
     background-color: cornflowerblue;
 }
 

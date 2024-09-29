@@ -11,11 +11,10 @@
 </head>
 <body>
 	<!-- 見出し -->
-	 <header>
-		 <h1>タスク一覧</h1>
-	 </header>
-	 <main>
-
+	<header>
+		<h1>タスク一覧</h1>
+	</header>
+	<main>
 			<!-- ステータスメッセージの表示欄 -->
 			<div id="flashMessageDisplay" th:if="${flashMessage != null}">
 				<p th:text="${flashMessage}"></p>
@@ -24,7 +23,7 @@
 			</form>
 		</div>
 		<!-- タスク削除機能用フォーム -->	
-		<form class="deleteForm" th:action="@{/deleteTask}" method="post">
+		<form class="taskDeleteForm" th:action="@{/deleteTask}" method="post">
 			<table>
 				<thead>
 					<tr>
@@ -46,7 +45,7 @@
 				</tbody>
 			</table>
 		</form>
-		<div id="buttonContainer">
+		<div class="buttonContainer">
 			<!-- 集中タイマ―画面へ遷移 -->
 			<button type="submit" class="actionButton getFocusTimer">集中タイマー</button>
 			<!-- タスク編集画面へ遷移 -->
@@ -54,7 +53,7 @@
 			<!-- タスクを削除 -->
 			<button type="submit" class="actionButton taskDelete">削除</button>
 			<!-- タスク管理初期画面へ遷移 -->
-			<button type="submit" class="taskRelation getTaskHome">戻る</button>
+			<button type="submit" class="actionButton getTaskHome">戻る</button>
 		</div>
 	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
