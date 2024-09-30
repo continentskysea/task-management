@@ -12,7 +12,7 @@
 	</header>
 	<main>
 		<!-- 登録フォーム -->
-		<form class="sendDataForm" th:action="@{/register}" method="post" th:object="${task}">
+		<form class="sendDataForm taskRegistarForm" th:action="@{/register}" method="post" th:object="${task}">
 				<div class="formContainer taskFormContainer">
 					<label>タスク</label>
 					<input id="taskNameInput" name="taskName" type="text" placeholder="タスクを入力してください" th:field="*{name}">
@@ -29,5 +29,5 @@
 	</main>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="/js/tasks/validateTask.js"></script>
-	<script src="/js/tasks/taskAction.js"></script>
+	<script src="/js/tasks/taskFormAction.js"></script>
 </body>
