@@ -26,9 +26,17 @@ h1 {
     font-size: 50px;
 }
 
+form {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 15px;
+    text-align: center;
+}
+
 table {
     max-width: 1000px;
     height: 500px;
+    margin: 0 auto;
     border-collapse: separate;
     border-spacing: 30px 50px;
     font-size: 20px;
@@ -36,8 +44,8 @@ table {
 }
 
 table th, table td {
-    margin-left: 500px;
-    max-width: 1000px;
+
+    margin: 0 auto;
     border-radius: 10px;
     padding: 10px 20px;
     background-color: #E6E6E6;
@@ -45,12 +53,6 @@ table th, table td {
 }
 
 
-form {
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 15px;
-    text-align: center;
-}
 
 button {
     width: 150px;
@@ -60,7 +62,7 @@ button {
 .buttonContainer {
     margin: 30px 15px 50px 15px;
     padding: 15px;
-    width: 100%;
+    max-width: 1000px;
     height: 100px;
     display: flex;
     font-size: 25px;
@@ -270,15 +272,13 @@ button:hover, a:hover {
         text-align: center;
     }
     form {
-        width: 90%;
-        height: 55%;
         padding: 30px;
     }
 
     /* テーブル共通 */
     table {
         writing-mode: vertical-lr;
-        width: 10%;
+        width: 70%;
         height: 10%;
     }
     /* テーブルの見出しとデータを縦表示 */
@@ -287,16 +287,15 @@ button:hover, a:hover {
         overflow-wrap: break-word;
         writing-mode: horizontal-tb;
         font-size: 16px;
-        width: 90%;
     }
     
     table th {
-        width: 5rem;
+        width: 3%;
 
     }
     
     table td {
-        width: 3.5rem;
+        width: 10%;
     }
 
     .taskCheckbox {
@@ -307,12 +306,12 @@ button:hover, a:hover {
         flex-direction: column;
         text-align: center;
         margin-left: 50px;
-        width:75%;
+        width: 70%;
     }
 
     .actionButton {
         height: 100%;
-        margin-bottom: 30px;
+        margin: 0 15px 50px 15px;
         font-size: 20px;
     }
 }
@@ -336,29 +335,23 @@ button:hover, a:hover {
     }
 
     form {
-        width: 300px;
         padding: 0px 25px 25px 0px;
-
     }
-    table {
-        width: 300px;
-        text-align: center;
+
     }
     table th, table td {
         font-size: 14px;
-
         padding: 8px;
+        width: 15%;
     }
 
     body {
         margin: 0;
         padding: 0;
     }
-
-
-
-    .actionButton {
-        margin-bottom: 30px;
+    
+    .buttonContainer {
+        margin: 0 0 50px 0;
         font-size: 20px;
     }
 
