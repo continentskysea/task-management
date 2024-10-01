@@ -19,6 +19,12 @@ $(document).ready(function() {
 		return false;
 	})
 
+    // ユーザー管理ボタンが押されたら
+    $(".getUserHome").on("click", function () {
+        window.location.href = "/getUserHome";
+        return false;
+    });
+
 	let role = $("#role").val();
 	/**
 		ロールを比較して不要なものを非活性にする。
