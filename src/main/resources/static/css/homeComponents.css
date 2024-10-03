@@ -181,24 +181,6 @@ adminHome.html
 ------------------------------------------------------------------ */
 
 
-/* ---------------------------------
-一行目のボタン群(タスク管理、タイマー管理)に適応
---------------------------------- */
-#firstRowContainer {
-	display: flex;
-	margin: 0px 20px 30px 20px;
-
-}
-
-/* ---------------------------------
-二行目のボタン群(ユーザー管理、ログアウト)に適応
---------------------------------- */
-#secondRowContainer {
-	display: flex;
-	margin: 30px 20px 0px 20px;
-	
-}
-
 
 /* ---------------------------------
 タスク管理ボタン、タイマー管理ボタン、ログアウトボタンに共通で適応
@@ -289,28 +271,22 @@ userHome.html
 /* ---------------------------------
 ヘッダーに適用
 --------------------------------- */
-#userMgmtHeader {
+.userMgmtHeader, .UserHomeMenuContainer {
     background-color: rgb(235, 191, 107); /* 飴色 */
-}
-#userMgmtHeader h1 {
-    margin-bottom: 0px;
 }
 
 /* ---------------------------------
 背景に適用
 --------------------------------- */
-#userHome {
-    display: flex;
-    background-color: rgb(235, 191, 107); /* 飴色 */
+.UserHomeMenuContainer {
     height: 500px;
 }
 
 /* ---------------------------------
 作成と一覧ボタンに適用
 --------------------------------- */
-#createUser, #listUser {
+.getCreateUser, .getListUsers {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
-    margin: 50px;
 }
 
 /* ---------------------------------------------------------------------------------------------------
@@ -616,6 +592,10 @@ main {
         padding:  30px 25px;
     }
 
+    .UserHomeMenuContainer {
+        margin-top: auto;
+        padding: 30px;
+    }
 }
 
 
