@@ -24,4 +24,20 @@ $(document).ready(function () {
         window.location.href = "/home";
         return false;
     });
+
+    // getAdminHome
+
+    
+	let role = $("#role").val();
+	/**
+		ロールを比較して不要なものを非活性にする。
+	 */
+	if (role == "ADMIN") {
+		$("#getAdminHome").prop("disabled", false); // 管理者用の戻るボタンを表示
+		$("#getHome").prop("disabled", true); // 一般ユーザー用の戻るボタンを非表示
+	} else if(role == "GENERAL") {
+			$("#getAdminHome").prop("disabled", true); // 管理者用の戻るボタンを表示
+		$("#getHome").prop("disabled", false); // 一般ユーザー用の戻るボタンを非表示
+	}
+	
 });
