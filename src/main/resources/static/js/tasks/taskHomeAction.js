@@ -25,7 +25,11 @@ $(document).ready(function () {
         return false;
     });
 
-    // getAdminHome
+    // 管理者ホーム画面へ遷移する
+    $(".getAdminHome").on("click", function() {
+        window.location.href = "/getAdminHome";
+        return false;
+    });
 
     
 	let role = $("#role").val();
@@ -36,7 +40,7 @@ $(document).ready(function () {
 		$("#getAdminHome").prop("disabled", false); // 管理者用の戻るボタンを表示
 		$("#getHome").prop("disabled", true); // 一般ユーザー用の戻るボタンを非表示
 	} else if(role == "GENERAL") {
-			$("#getAdminHome").prop("disabled", true); // 管理者用の戻るボタンを表示
+        $("#getAdminHome").prop("disabled", true); // 管理者用の戻るボタンを表示
 		$("#getHome").prop("disabled", false); // 一般ユーザー用の戻るボタンを非表示
 	}
 	
