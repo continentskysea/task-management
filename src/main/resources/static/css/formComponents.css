@@ -211,7 +211,7 @@ main {
 --------------------------------- */
 #selectRole {
 	width: 150px;
-	padding: 15px;
+    height: 2rem;
 }
 
 
@@ -287,12 +287,18 @@ main {
     #priorityInput,
     #dueDateInput,
     #focusTimeInput,
-    #breakTimeInput,
-    #selectRole
+    #breakTimeInput
     {
         width: 85%;
         height: 15px;
     }
+    
+    #selectRole {
+            width: 150px;
+            height: 2rem;
+
+    }
+
 
     /* ---------------------------------
     タスク登録に適用
@@ -321,6 +327,11 @@ main {
     .timerFormContainer {
         height: 250px;
         
+    }
+    
+    /* ユーザー登録 */
+    .registarUserFormContainer {
+        height: 400px;
     }
 
 }
