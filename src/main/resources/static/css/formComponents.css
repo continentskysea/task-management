@@ -96,7 +96,8 @@ main {
 #priorityInput,
 #dueDateInput,
 #focusTimeInput,
-#breakTimeInput
+#breakTimeInput,
+#selectRole
 {
     margin-left: 25px;
     max-width: 400px;
@@ -196,11 +197,12 @@ main {
 /* ---------------------------------
 ユーザー登録に適用
 --------------------------------- */
-.userFormContainer {
+.registarUserFormContainer {
     background-color: rgb(235, 191, 107); /* 飴色 */
+    height: 350px;
 }
 
-.registarUser, .registar {
+.registarUser {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
@@ -209,8 +211,7 @@ main {
 --------------------------------- */
 #selectRole {
 	width: 150px;
-	margin-left: 5px;
-	padding: 5px 0px;
+	padding: 15px;
 }
 
 
@@ -286,7 +287,8 @@ main {
     #priorityInput,
     #dueDateInput,
     #focusTimeInput,
-    #breakTimeInput
+    #breakTimeInput,
+    #selectRole
     {
         width: 85%;
         height: 15px;
