@@ -2,11 +2,11 @@
  * ユーザー登録のバリデーション
  */
 $(document).ready(function() {
-    $("#createUserButton").on("click", function() {
+    $(".registarUser").on("click", function() {
         // フォームから入力値を取得
-        let name = $("#name").val();
-        let password = $("#password").val();
-        let email = $("#email").val();
+        let name = $("#nameInput").val();
+        let password = $("#passwordInput").val();
+        let email = $("#mailInput").val();
         
         // バリデーションフラグ
         let isValid = true;
@@ -43,7 +43,7 @@ $(document).ready(function() {
         const nameRegex = /^[\u4E00-\u9FAF]+$/; // 名前の正規表現
              // 1文字以上の漢字か
         if (!nameRegex.test(name)) {
-            alert("1文字以上の漢字を使ってください");
+            alert("名前には1文字以上の漢字を使ってください");
             isValid = false;
             return isValid;
         } else if (name === "") {
