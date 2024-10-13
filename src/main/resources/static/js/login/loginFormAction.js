@@ -15,6 +15,7 @@ $(document).ready(function() {
 	 */
 	$(".registarUser").on("click", function() {
 		window.location.href = '/getBeforeLoginCreateUser';
+		return false;
 	});
 
 	/**

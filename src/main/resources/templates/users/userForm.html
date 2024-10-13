@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ユーザー登録</title>
-<link rel="stylesheet" th:href="@{/css/formComponents.css}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>ユーザー登録</title>
+	<link rel="stylesheet" th:href="@{/css/formComponents.css}">
 </head>
 <body>
 	<header>
 		<h1>ユーザー登録</h1>
 	</header>
-	<!-- エラーメッセージを表示 -->
-	<div th:if="${error_message}" class="error-message">
-		<p th:text="${error_message}"></p>
-		<form th:action="@{/getCreateUser}" method="get">
-			<input id="loginError" type="submit" value="OK">
-		</form>
-	</div>
-	<!-- 登録フォーム -->
-	<form class="sendDataForm registarUserForm" th:action="@{/registarUser}" method="post" th:object="${user}">
-		<div class="formContainer registarUserFormContainer">
-			<!-- ページ遷移先判定 -->
-			<input type="hidden" name="createUserpageCheck" value="2">
-			<label>氏名</label>
-			<input type="text" name="name"  id="nameInput" placeholder="名前を入力してください" th:field="*{name}">
-			<label>Email</label>
-			<input type="text" name="email"  id="mailInput" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
-			<label>パスワード</label>
-			<input type="text" name="password" id="passwordInput" placeholder="パスワードを入力してください" th:field="*{password}">
-			<label>ロール</label>
-			<select id="selectRole" th:field="*{role}">
-				<option value="ADMIN">管理者</option>
-				<option value="GENERAL">一般</option>
-			</select>
+	<main>
+		<!-- エラーメッセージを表示 -->
+		<div th:if="${error_message}" class="error-message">
+			<p th:text="${error_message}"></p>
+			<form th:action="@{/getCreateUser}" method="get">
+				<input id="loginError" type="submit" value="OK">
+			</form>
 		</div>
-		<div class="buttonContainer">
+		<!-- 登録フォーム -->
+		<form class="sendDataForm registarUserForm" th:action="@{/registarUser}" method="post" th:object="${user}">
+			<div class="formContainer registarUserFormContainer">
+				<!-- ページ遷移先判定 -->
+				<input type="hidden" name="createUserpageCheck" value="2">
+				<label>氏名</label>
+				<input type="text" name="name"  id="nameInput" placeholder="名前を入力してください" th:field="*{name}">
+				<label>Email</label>
+				<input type="text" name="email"  id="mailInput" placeholder="メールアドレスを入力してください 例: 〇〇@example.com" th:field="*{email}" >
+				<label>パスワード</label>
+				<input type="text" name="password" id="passwordInput" placeholder="パスワードを入力してください" th:field="*{password}">
+				<label>ロール</label>
+				<select id="selectRole" th:field="*{role}">
+					<option value="ADMIN">管理者</option>
+					<option value="GENERAL">一般</option>
+				</select>
+			</div>
+			<div class="buttonContainer">
 				<button type="submit" class="actionButton registarUser">登録</button>
 				<button type="submit" class="actionButton getUserHome">キャンセル</button>
-		</div>
-	</form>
+			</div>
+		</form>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="/js/users/validateUser.js"></script>
 	<script src="/js/users/userFormAction.js"></script>
