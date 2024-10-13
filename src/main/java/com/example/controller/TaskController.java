@@ -51,7 +51,7 @@ public class TaskController {
 	 * 
 	 * @return タスク管理初期画面
 	 */
-	@GetMapping("/getTask")
+	@GetMapping("/getTaskHome")
 	public String getTask(@AuthenticationPrincipal LoginUser loginUser, Model model) {
 		// ログインユーザー情報からユーザーオブジェクトを生成する
 		User currentUser = loginUser.getUser();

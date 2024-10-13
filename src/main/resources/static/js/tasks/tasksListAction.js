@@ -54,7 +54,7 @@ $(document).ready(function() {
     
     // タスク管理初期画面へ遷移
     $(".getTaskHome").on("click", function () {
-        window.location.href = "/getTask";
+        window.location.href = "/getTaskHome";
         return false;
     });
     
