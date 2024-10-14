@@ -1,45 +1,16 @@
 /**
- * ユーザー管理の画面遷移を制御
+ * ユーザー一覧画面の操作
  */
 $(document).ready(function() {
-	/**
-		新規登録画面に遷移する
-	 */
-	$(".registarUser").on("click", function() {
+
+	// 新規登録画面に遷移する
+	$(".getCreateUser").on("click", function() {
 		window.location.href = '/getCreateUser';
+		return false;
 	});
 
-	/**
-	 * 登録データを送信する
-	 */
-	$(".registar").on("click", function() {
-
-		// htmlに入力された値を格納する
-		let name = $("#nameInput").val();
-		let email = $("#mailInput").val();
-		let password = $("#passwordInput").val();
-
-		// 入力データをオブジェクトに格納
-		let user = {
-			name: name,
-			email: email, 
-			password: password
-		};
-
-		// フォームの値をセットする
-		$("#userFormContainer input[ name = 'name' ]").val(user.name);
-		$("#userFormContainer input[ name = 'email' ]").val(user.email);
-		$("#userFormContainer input[ name = 'password' ]").val(user.password);
-		
-		// フォームを送信
-		$("#userLoginForm").submit();
-	});
-
-	
-	/**
-		編集画面に遷移する
-	 */
-	$(".editUserRelation").on("click", function() {
+	// 編集画面に遷移する
+	$(".getEditUser").on("click", function() {
 		let selectedCheckbox = getSelectedCheckbox();
 		
 		if (selectedCheckbox) {
@@ -47,29 +18,12 @@ $(document).ready(function() {
 			let userId = $(selectedCheckbox).val();
 			// タスク情報を使って休憩タイマー画面にリダイレクト
 			window.location.href = '/getEditUser/' + userId;
+			return false;
 		}
-	});	
-
-	/**
-	 * チェックされた要素を調べる
-	 * 
-	 * @returns チェックされたユーザー情報
-	 */
-	const getSelectedCheckbox = () => {
-		let checkboxes = $("input.userCheckbox:checked");
-		let checkedCount = checkboxes.length;
-
-		// チェックの要素が1つだけか確認する
-		if (checkedCount  !== 1) {
-			const errorMsg = "ユーザーが未選択あるいは複数選択されています";
-			alert(errorMsg);
-			return null;
-		}
-		return checkboxes[0];
-	} 
+	});
 
 	// ユーザー削除
-	$(".deleteUserRelation").on("click", function() {
+	$(".deleteUser").on("click", function() {
 		// チェックボックスクラスを取得する
 		let checkedCheckboxes = $('.userCheckbox:checked');
 		// 削除フォームidを取得する
@@ -88,19 +42,28 @@ $(document).ready(function() {
 			userDeleteForm.attr('action', '#');
 		}
 	});
+
 	// ユーザー管理初期画面へ遷移
-	$(".userHomeRelation").on("click", function() {
+	$(".getUserHome").on("click", function() {
 		window.location.href ='/getUserHome';
+		return false;
 	});
 
 	/**
-	 * ログイン前ユーザー登録画面へ遷移
+	 * チェックされた要素を調べる
+	 * 
+	 * @returns チェックされたユーザー情報
 	 */
-	$(".registarUser").on("click", function() {
-		window.location.href = '/getBeforeLoginCreateUser';
+	const getSelectedCheckbox = () => {
+		let checkboxes = $("input.userCheckbox:checked");
+		let checkedCount = checkboxes.length;
 
-		// フォームのデフォルトの送信キャンセル
-		return false;
-	});
-	
+		// チェックの要素が1つだけか確認する
+		if (checkedCount  !== 1) {
+			const errorMsg = "ユーザーが未選択あるいは複数選択されています";
+			alert(errorMsg);
+			return null;
+		}
+		return checkboxes[0];
+	} 
 });

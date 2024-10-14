@@ -211,22 +211,19 @@ button:hover, a:hover {
 --------------------------------- */
 
 /* フォームに適用 */
-#userDeleteForm {
-    width: 1500px;
+.userDeleteForm {
     background-color: #deb068;
-    margin: 0 auto;
 }
 
-/* ボタン群に適用 */
-.userRelation {
-    margin: 20px 20px 20px 20px;
+/* 登録・編集・削除ボタンに適用 */
+.getCreateUser, .getEditUser, .deleteUser {
     background-color: rgb(239, 229, 202); /* 亜麻色 */
 }
 
 
 /* テーブル見出しと表示内容に適用 */
-#userDeleteForm th, #userDeleteForm td {
-    background-color: #E6E6E6;
+.userDeleteForm th, .userDeleteForm td {
+
     padding: 0px;
     
 }

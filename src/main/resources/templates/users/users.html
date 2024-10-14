@@ -2,50 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>ユーザー一覧</title>
+	<link rel="stylesheet" th:href="@{/css/listComponents.css}">
 </head>
-<link rel="stylesheet" th:href="@{/css/listComponents.css}">
 <body>
-	<h1>ユーザー一覧</h1>
-	<!-- ステータスメッセージの表示欄 -->
-	<div id="flashMessageDisplay" th:if="${flashMessage != null}">
-		<p th:text="${flashMessage}"></p>
-		<form th:action="@{/getListUsers}" method="get">
-			<input id="messageDeleteButton" type="submit" value="OK">
+	<header>
+		<h1>ユーザー一覧</h1>
+	</header>
+	<main>
+		<!-- ステータスメッセージの表示欄 -->
+		<div id="flashMessageDisplay" th:if="${flashMessage != null}">
+			<p th:text="${flashMessage}"></p>
+			<form th:action="@{/getListUsers}" method="get">
+				<input id="messageDeleteButton" type="submit" value="OK">
+			</form>
+		</div>
+		<!-- ユーザー削除機能用フォーム -->	
+		<form class="userDeleteForm" th:action="@{/deleteTask}" method="post">
+			<table>
+				<thead>
+					<tr>
+						<th>チェック</th>
+						<th>ユーザー名</th>
+						<th>メールアドレス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- ユーザーリストの表示 -->
+					<tr th:each="user : ${listUsers}">
+						<!-- チェックボックスを追加 -->
+						<td><input class="userCheckbox" type="checkbox" th:value="${user.id}" th:name="userIds" /></td>
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>
+					</tr>
+				</tbody>
+			</table>	
 		</form>
-	</div>
-	<!-- タスク削除機能用フォーム -->	
-	<form id="userDeleteForm" th:action="@{/deleteTask}" method="post">
-		<table>
-			<thead>
-				<tr>
-					<th>チェック</th>
-					<th>ユーザー名</th>
-					<th>メールアドレス</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- ユーザーリストの表示 -->
-				<tr th:each="user : ${listUsers}">
-					<!-- チェックボックスを追加 -->
-					<td><input class="userCheckbox" type="checkbox" th:value="${user.id}" th:name="userIds" /></td>
-					<td th:text="${user.name}"></td>
-					<td th:text="${user.email}"></td>
-				</tr>
-			</tbody>
-		</table>	
-	</form>
-	<div id="listButtons">
-		<!-- 登録画面へ遷移 -->
-		<button class="userRelation createUserRelation" type="submit">新規登録</button>
-		<!-- 編集画面へ遷移-->
-		<button class="userRelation editUserRelation" type="submit">編集</button>
-		<!-- ユーザーの削除ボタン -->
-		<button class="userRelation deleteUserRelation" type="submit">削除</button>
-		<!-- ユーザー管理初期画面へ遷移 -->
-		<button class="userRelation userHomeRelation" type="submit">戻る</button>
-	</div>
+		<div class="buttonContainer">
+			<!-- 集中タイマ―画面へ遷移 -->
+			<button type="submit" class="actionButton getCreateUser">新規登録</button>
+			<!-- タスク編集画面へ遷移 -->
+			<button type="submit" class="actionButton getEditUser">編集</button>
+			<!-- タスクを削除 -->
+			<button type="submit" class="actionButton deleteUser">削除</button>
+			<!-- タスク管理初期画面へ遷移 -->
+			<button type="submit" class="actionButton getUserHome">戻る</button>
+		</div>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src="/js/users/userActions.js"></script>
+	<script src="/js/users/usersListAction.js"></script>
 </body>
 </html>
