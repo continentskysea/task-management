@@ -7,10 +7,10 @@
 </head>
 <body>
 	<!-- 見出し -->
-	<div id="timerDisplayHeader">
+	<header>
 		<h1>集中タイマー</h1>
-	</div>
-	<div id="timerDisplayForm">
+	</header>
+	<form id="timerDisplayForm">
 			<div id="timerDisplayWrapper">
 				<!-- ページ判定用の値 -->
 				<input type="hidden" id="timerPageNumber" value="1">
@@ -26,6 +26,7 @@
 					<input type="hidden" name="settingId" th:value="${timersSetting.getId}" />
 					<p id="timerCount" th:text="${timersSetting.getFocusTime}"></p>	
 				</div>
+				
 				<!-- スタートボタン -->
 				<input id="startButton"  type="submit" value="起動" />
 				<!-- ストップボタン -->
@@ -35,8 +36,30 @@
 				<!-- リセットボタン -->
 				<input type="button" id="resetButton" onclick="location.reload();" value="リセット " disabled />
 			</div>
-	</div>
+			<div class="buttonContainer timerHomeMenuContainer">
+	<!-- タスク登録画面遷移 -->
+	<button type="submit" class="actionButton getTimerSetting">タスク登録</button>
+	<!-- タスク一覧表示画面遷移 -->
+	<button type="submit" class="actionButton getTimerlist">タスク一覧</button>
+	<!-- 管理者初期画面遷移 -->
+	<button type="submit" class="actionButton getAdminHome" disabled>戻る</button>	
+	<!-- 一般ユーザー初期画面遷移 -->
+	<button type="submit" class="actionButton getHome">戻る</button>			
+</div>
+	</form>
+	<div class="buttonContainer timerHomeMenuContainer">
+	<!-- タスク登録画面遷移 -->
+	<button type="submit" class="actionButton getTimerSetting">タスク登録</button>
+	<!-- タスク一覧表示画面遷移 -->
+	<button type="submit" class="actionButton getTimerlist">タスク一覧</button>
+	<!-- 管理者初期画面遷移 -->
+	<button type="submit" class="actionButton getAdminHome" disabled>戻る</button>	
+	<!-- 一般ユーザー初期画面遷移 -->
+	<button type="submit" class="actionButton getHome">戻る</button>			
+</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src='/js/timers/timerCountActions.js'></script>
+	<script src='/js/timers/timerDisplayActions.js'></script>
 </body>
 </html>
+

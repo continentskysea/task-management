@@ -32,12 +32,11 @@ a:hover {
 /* ------------------------------------------------------------------
 ヘッダー
 ------------------------------------------------------------------ */
-#timerDisplayHeader {
-    background-color: #007FFF;
-    font-size: 35px;
+header {
+    background-color: dodgerblue;
+    font-size: 25px;
 }    
-#timerDisplayHeader h1 {
-    margin-top: 30px;
+h1 {
     margin-bottom: 0;
 }    
 
@@ -124,3 +123,12 @@ a:hover {
 	margin-left: 30px;
 }
 
+
+.actionButton {
+    width: 150px;
+    height: 70px;
+    padding: 15px 0;
+    margin-right: 30px;
+    border-radius: 15px;
+    font-size: 20px;
+}
