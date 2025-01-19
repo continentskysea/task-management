@@ -11,6 +11,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+
+
 /**
  * ユーザー情報のデータクラス
  * @author yoshi
@@ -19,6 +21,9 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "users", schema = "verification")
 public class User {
+
+
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")

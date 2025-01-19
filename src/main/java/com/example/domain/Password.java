@@ -1,5 +1,8 @@
 package com.example.domain;
 
+/**
+ * パスワードクラス
+ */
 public class Password {
     private String password;
 
