@@ -11,20 +11,21 @@ public class Password {
     }
 
 
-    public boolean validation(String password) {
-
-    }
 
     /**
      * パスワードの未入力チェック
      * @param password
      * @return true/false
      */
-    public boolean isPasswordInput(String password) {
-        return password.equals(password);
+    public boolean isPasswordInput() {
+        return password != null;
     }
 
-    public boolean numberInputIsVertify(String password) {
-
+    /**
+     * 
+     * @return
+     */
+    public boolean passwordRegex() {
+        return password.matches( "^(?=.*[a-z0-9]).*");
     }
 }
