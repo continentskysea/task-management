@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.domain.value_object;
 
 /**
  * 権限クラス

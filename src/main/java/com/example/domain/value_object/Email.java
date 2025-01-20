@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.domain.value_object;
 
 /**
  * メールアドレスクラス
@@ -21,5 +21,9 @@ public class Email {
 
     public boolean emailLengthCheck(String email) {
         return email.length() <= 50;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
