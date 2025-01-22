@@ -15,8 +15,17 @@ public class UserName {
      * @param username
      * @return true/false
      */
-    public boolean isUsernameInput(String userName) {
+    private boolean isUsernameInput(String userName) {
         return userName.equals(userName);
+    }
+
+    /**
+     * ユーザー名が入力状況の結果を返す
+     * @param userName
+     * @return 検証結果
+     */
+    private String userNameInputVertificationResult(String userName) {
+        return isUsernameInput(userName) ? "ユーザー名が未入力です。" : "問題ありません。";        
     }
 
     /**
@@ -26,5 +35,20 @@ public class UserName {
      */
     public boolean userNameLengthCheck(String userName) {
         return userName.length() >= 3 && userName.length() <= 12;
+    }
+
+    /**
+     * ユーザー名が漢字かチェックする機能
+     * @param userName
+     * @return true/false
+     */
+    public boolean userNameRegex(String userName) {
+        return userName.matches("[\\p{IsHan}}]*");
+    }
+
+    public String getUserNameValue() {
+        userNameInputVertificationResult(userName);
+
+        return userName;
     }
 }
