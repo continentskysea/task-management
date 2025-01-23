@@ -15,10 +15,20 @@ public class Password {
     /**
      * パスワードの未入力チェック
      * @param password
-     * @return true/false
+     * @return true = 入力あり / false = 未入力
      */
-    public boolean isPasswordInput() {
-        return password != null;
+    public boolean isPasswordInput(String password) {
+        return password != null || password != "";
+    }
+
+
+    /**
+     * パスワードが入力・未入力かの検証結果を返す
+     * @param password
+     * @return 
+     */
+    private String passwordInputVertificationResult(String password) {
+        return isPasswordInput(password) ? "問題ありません。" : "パスワードが未入力です。";
     }
 
     /**
@@ -27,5 +37,10 @@ public class Password {
      */
     public boolean passwordRegex() {
         return password.matches( "^(?=.*[a-z0-9]).*");
+    }
+
+    public String getPassword() {
+        passwordInputVertificationResult(password);
+        return password;
     }
 }
