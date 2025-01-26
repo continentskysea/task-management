@@ -1,7 +1,7 @@
 package com.example.domain.value_object;
 
 /**
- * パスワードクラス
+ * パスワード値オブジェクトクラス
  */
 public class Password {
     private String password;
@@ -32,15 +32,16 @@ public class Password {
     }
 
     /**
-     * 
-     * @return
+     * パスワードの正規表現チェック
+     * @return true = a~zと0~9までの文字が含まれる小文字のパスワード / それ以外
      */
-    public boolean passwordRegex() {
+    private boolean passwordRegex(String password) {
         return password.matches( "^(?=.*[a-z0-9]).*");
     }
 
     public String getPassword() {
-        passwordInputVertificationResult(password);
-        return password;
+        passwordInputVertificationResult(this.password);
+        passwordRegex(this.password);
+        return this.password;
     }
 }
