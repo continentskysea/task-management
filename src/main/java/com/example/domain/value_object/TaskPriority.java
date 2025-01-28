@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.domain.value_object;
 
 /**
  * 優先順位値オブジェクトクラス
