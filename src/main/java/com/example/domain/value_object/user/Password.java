@@ -1,4 +1,4 @@
-package com.example.domain.value_object;
+package com.example.domain.value_object.user;
 
 /**
  * パスワード値オブジェクトクラス

@@ -1,4 +1,4 @@
-package com.example.domain.value_object;
+package com.example.domain.value_object.user;
 
 public class UserId {
     private final Long userId;
