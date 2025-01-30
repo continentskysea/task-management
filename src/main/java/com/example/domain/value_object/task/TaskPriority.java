@@ -1,4 +1,4 @@
-package com.example.domain.value_object;
+package com.example.domain.value_object.task;
 
 /**
  * 優先順位値オブジェクトクラス
