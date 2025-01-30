@@ -28,7 +28,7 @@ public class TaskPriority {
         return taskPriorityInput(taskPriority) ? "" : "優先順位は1から30までの数字を入力してください";
     }
 
-    public Long getTasKPriority(Long taskPriority) {
+    public Long getTasKPriority() {
         taskPriorityInputVertificationResult(taskPriority);
         return taskPriority;
     }
