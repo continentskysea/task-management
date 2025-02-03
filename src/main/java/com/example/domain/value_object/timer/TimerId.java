@@ -1,7 +1,5 @@
 package com.example.domain.value_object.timer;
 
-import java.util.Timer;
-
 /**
  * 集中タイマー
  */
