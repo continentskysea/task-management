@@ -5,6 +5,8 @@ package com.example.domain.value_object;
  */
 public class Priority {
     private Long priority;
+    private static int PRIORITY_MIN = 1;
+    private static int PRIORITY_MAX = 30;
 
     public Priority(Long priority) {
         this.priority = priority;
@@ -16,7 +18,7 @@ public class Priority {
      * @return true = 1文字以上30文字以内 / false = それ以外
      */
     private boolean priorityInput(Long priority) {
-        return priority >= 1 && priority <= 30;
+        return priority >= PRIORITY_MIN && priority <= PRIORITY_MAX;
     }
 
     /**
