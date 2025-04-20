@@ -1,14 +1,9 @@
 package com.example.domain.value_object.user;
 
-public class UserId {
+class UserId {
     private final Long userId;
     
-    public UserId(Long userId) {
+    UserId(Long userId) {
         this.userId = userId;
-    }
-    
-
-    public Long getUserId() {
-        return userId;
     }
 }
