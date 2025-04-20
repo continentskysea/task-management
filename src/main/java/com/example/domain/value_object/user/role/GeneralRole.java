@@ -1,6 +1,6 @@
 package com.example.domain.value_object.user.role;
 
-public class GeneralRole {
+class GeneralRole {
     private static final String ROLE_NAME = "GENERAL";
 
     public GeneralRole() {
