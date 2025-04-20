@@ -1,5 +1,6 @@
 package com.example.domain.shared;
 
-public class UnexceptionDomainException {
+public class UnexceptionDomainException extends
+ Error {
     
 }
