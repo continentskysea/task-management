@@ -7,8 +7,7 @@ public class Role {
     private final String role;
 
     public Role(String role) {
-        inputRole(role);
-        this.role = role;
+        this.role = inputRole(role);;
     }
 
 
