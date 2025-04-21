@@ -7,6 +7,10 @@ public class UserName {
     private final String userName;
 
     public UserName(String userName) {
+        // 文字数制限のチェック
+        if (!isUsernameInput(userName)) throw new UserNameCharacterLimitException();
+
+
         this.userName = userName;
     }
 
