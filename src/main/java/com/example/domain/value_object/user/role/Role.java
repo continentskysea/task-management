@@ -10,6 +10,9 @@ public class Role {
         this.role = inputRole(role);;
     }
 
+    public String getRole() {
+        return this.role;
+    }
 
     /**
      * 入力された権限を設定する
