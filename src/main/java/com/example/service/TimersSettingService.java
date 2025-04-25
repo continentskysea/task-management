@@ -39,11 +39,11 @@ public class TimersSettingService {
 	 * @return 
 	 * 
 	 */
-	// public TimersSetting findById(Long settingId) {
-	// 	// 
-	// 	Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
-	// 	return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
-	// }
+	public TimersSetting findById(Long settingId) {
+		// 
+		Optional<TimersSetting> timsersSettingOptional = timersSettingRepository.findById(settingId);
+		return timsersSettingOptional.orElse(null); // OptinalからTimersSettingオブジェクトを取得する
+	}
 	
 	/**
 	 * タイマー登録機能
