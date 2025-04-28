@@ -9,6 +9,11 @@ public class Priority {
     private static int PRIORITY_MAX = 30;
 
     public Priority(Long priority) {
+        // 未入力チェック
+        if(!hasInputted(priority)) throw new PriorityNotInputException();
+        // 数値範囲のチェック
+        if (!isPriorityNumberRange(priority))  throw new PriorityNumberException();
+
         this.priority = priority;
     }
 
@@ -17,21 +22,20 @@ public class Priority {
      * @param priority
      * @return true = 1文字以上30文字以内 / false = それ以外
      */
-    private boolean priorityInput(Long priority) {
+    private boolean isPriorityNumberRange(Long priority) {
         return priority >= PRIORITY_MIN && priority <= PRIORITY_MAX;
     }
 
     /**
-     * 優先順位の検証結果を返す
-     * @param taskPriority
-     * @return 検証結果
+     * 入力されているかチェック
+     * @param priority
+     * @return true = 入力されている / false = 巳乳慮k
      */
-    private String priorityInputVertificationResult(Long priority) {
-        return priorityInput(priority) ? "" : "優先順位は1から30までの数字を入力してください";
+    private boolean hasInputted(Long priority) {
+        return priority >= PRIORITY_MIN && priority <= PRIORITY_MAX;
     }
 
     public Long getTasKPriority() {
-        priorityInputVertificationResult(priority);
-        return priority;
+        return this.priority;
     }
 }
