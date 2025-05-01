@@ -32,7 +32,7 @@ public class Priority {
      * @return true = 入力されている / false = 巳乳慮k
      */
     private boolean hasInputted(Long priority) {
-        return priority >= PRIORITY_MIN && priority <= PRIORITY_MAX;
+        return priority != null;
     }
 
     public Long getTasKPriority() {
