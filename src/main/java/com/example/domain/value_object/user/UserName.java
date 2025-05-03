@@ -6,28 +6,18 @@ import org.apache.commons.lang3.StringUtils;
  * ユーザー名クラス
  */
 public class UserName {
-    private final String userName;
+    private String userName;
+    private FirstName firstName;
+    private LastName lastName;
 
-    public UserName(String userName) {
-        
-        // 入力チェック
-        if (!isUserNameInput(userName)) throw new UserNameNotInputException();
+    public UserName(FirstName firstName, LastName lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = firstName.getFirstNameValue() + lastName.getLastNameValue();
 
-        // 文字数制限のチェック
-        if (!userNameLengthCheck(userName)) throw new UserNameCharacterLimitException();
+        // 文字数チェック
+        if (!userNameLengthCheck(this.userName)) throw new UserNameCharacterLimitException();
 
-        // 表記チェック
-        if (!userNameRegex(userName)) throw new UserNameNotationException();
-        this.userName = userName;
-    }
-
-    /**
-     * ユーザー名入力チェック機能
-     * @param username
-     * @return true = 入力されている / false = 未入力
-     */
-    private boolean isUserNameInput(String userName) {
-        return  StringUtils.isNotEmpty(userName);
     }
 
     /**
@@ -40,19 +30,26 @@ public class UserName {
     }
 
     /**
-     * ユーザー名表記チェック機能
-     * @param userName
-     * @return true = 漢字 / false = それ以外(アルファベット・ひらがな・カタカナ)
+     * フルネームを取得する
+     * @return ユーザー名
      */
-    public boolean userNameRegex(String userName) {
-        return userName.matches("[\\p{IsHan}}]*");
+    public String getFullName() {
+        return this.userName;
     }
 
     /**
-     * ユーザー名を取得する
-     * @return ユーザー名
+     * 苗字を取得する機能
+     * @return firstName
      */
-    public String getUserNameValue() {
-        return userName;
+    public FirstName getFirstName() {
+        return this.firstName;
+    }
+
+    /**
+     * 名前を取得する機能
+     * @return lastName
+     */
+    public LastName getLastName() {
+        return this.lastName;
     }
 }

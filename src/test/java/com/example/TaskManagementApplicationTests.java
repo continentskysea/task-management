@@ -2,24 +2,33 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-// import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.example.domain.shared.ValidationDomainException;
-import com.example.domain.value_object.user.UserName;
-// import com.example.domain.value_object.user.UserNameNotationException;
+
+import com.example.domain.value_object.user.FirstName;
 
 @SpringBootTest
-class TaskManagementApplicationTests {
+public class TaskManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
 
+    @Test
+    public void testFirstNameAdd() throws ValidationDomainException {
+        // FirstName firstName = new FirstName(null);
+        FirstName firstName2 = new FirstName("11");
+        firstName2.getFirstNameValue();
+
+    }
+
 	
+    
     @Test
     public void testUserName() throws ValidationDomainException {
+
         // 失敗ケース1 空文字入力
-        UserName userName = new UserName("");
+        // UserName userName = new UserName("");
         
 
         // 失敗ケース2 表記ミス
