@@ -1,4 +1,4 @@
-package com.example.domain.value_object.user;
+package com.example.domain.value_object.user.password;
 
 import com.example.domain.shared.ValidationDomainException;
 

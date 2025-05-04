@@ -1,6 +1,6 @@
-package com.example.domain.value_object.user;
+package com.example.domain.value_object.user.name;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 
 public class LastName {
     private final String lastName;
@@ -20,7 +20,7 @@ public class LastName {
      * @return true = 入力されている / false = 未入力
      */
     private boolean hasLastNameInputted(String lastName) {
-        return  StringUtils.isNotEmpty(lastName);
+        return  StringUtils.hasLength(lastName);
     }
 
     /**

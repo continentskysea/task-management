@@ -3,6 +3,8 @@ package com.example.domain.value_object;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.domain.value_object.task.priority.Priority;
+
 
 @SpringBootTest
 public class PriorityInputTest {

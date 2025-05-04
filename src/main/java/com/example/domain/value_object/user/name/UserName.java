@@ -1,6 +1,4 @@
-package com.example.domain.value_object.user;
-
-import org.apache.commons.lang3.StringUtils;
+package com.example.domain.value_object.user.name;
 
 /**
  * ユーザー名クラス

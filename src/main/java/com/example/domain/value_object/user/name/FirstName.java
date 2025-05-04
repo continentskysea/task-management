@@ -1,6 +1,6 @@
-package com.example.domain.value_object.user;
+package com.example.domain.value_object.user.name;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 
 // import com.example.domain.shared.ValidationDomainException;
 
@@ -23,7 +23,7 @@ public class FirstName {
      * @return true = 入力されている / false = 未入力
      */
     private boolean hasFirstNameInputted(String firstName) {
-        return  StringUtils.isNotEmpty(firstName);
+        return  StringUtils.hasLength(firstName);
     }
 
 

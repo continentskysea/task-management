@@ -1,4 +1,4 @@
-package com.example.domain.value_object.task;
+package com.example.domain.value_object.task.due_date;
 
 import com.example.domain.shared.ValidationDomainException;
 

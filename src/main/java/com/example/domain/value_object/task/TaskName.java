@@ -1,6 +1,7 @@
 package com.example.domain.value_object.task;
 
-import com.sun.tools.javac.util.StringUtils;
+
+import org.springframework.util.StringUtils;
 
 /**
  * タスク名値オブジェクトクラス
@@ -18,10 +19,10 @@ public class TaskName {
     /**
      * タスク名入力チェック機能
      * @param taskName
-     * @return true = 入力されている / false = 巳乳慮k
+     * @return true = 入力されている / false = 0及びnull
      */
     private boolean hasInputted(String taskName) {
-        return StringUtils.isNotEmpty(taskName);
+        return StringUtils.hasLength(taskName);
     }
 
     public String getTaskName() {

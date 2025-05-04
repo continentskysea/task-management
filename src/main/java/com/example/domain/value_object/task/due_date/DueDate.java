@@ -1,6 +1,7 @@
-package com.example.domain.value_object;
+package com.example.domain.value_object.task.due_date;
 
 import java.time.LocalDate;
+
 
 /**
  * 期日値オブジェクトクラス

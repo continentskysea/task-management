@@ -3,7 +3,7 @@ package com.example.domain.value_object;
 import org.junit.jupiter.api.Test;
 
 import com.example.domain.shared.ValidationDomainException;
-import com.example.domain.value_object.user.FirstName;
+import com.example.domain.value_object.user.name.FirstName;
 
 public class FirstNameTest {
     @Test

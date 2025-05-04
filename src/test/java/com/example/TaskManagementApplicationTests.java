@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.domain.shared.ValidationDomainException;
-
-import com.example.domain.value_object.user.FirstName;
+import com.example.domain.value_object.user.name.FirstName;
 
 @SpringBootTest
 public class TaskManagementApplicationTests {
