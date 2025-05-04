@@ -4,13 +4,13 @@ package com.example.domain.value_object;
  * 優先順位値オブジェクトクラス
  */
 public class Priority {
-    private Long priority;
+    private int priority;
     private static int PRIORITY_MIN = 1;
     private static int PRIORITY_MAX = 30;
 
-    public Priority(Long priority) {
+    public Priority(int priority) {
         // 未入力チェック
-        if(!hasInputted(priority)) throw new PriorityNotInputException();
+        if(hasInputted(priority)) throw new PriorityNotInputException();
         // 数値範囲のチェック
         if (!isPriorityNumberRange(priority))  throw new PriorityNumberException();
 
@@ -22,7 +22,7 @@ public class Priority {
      * @param priority
      * @return true = 1文字以上30文字以内 / false = それ以外
      */
-    private boolean isPriorityNumberRange(Long priority) {
+    private boolean isPriorityNumberRange(int priority) {
         return priority >= PRIORITY_MIN && priority <= PRIORITY_MAX;
     }
 
@@ -31,11 +31,11 @@ public class Priority {
      * @param priority
      * @return true = 入力されている / false = 巳乳慮k
      */
-    private boolean hasInputted(Long priority) {
-        return priority != null;
+    private boolean hasInputted(int priority) {
+        return priority != 0;
     }
 
-    public Long getTasKPriority() {
+    public int getTasKPriority() {
         return this.priority;
     }
 }
