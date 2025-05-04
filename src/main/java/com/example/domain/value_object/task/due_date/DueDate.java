@@ -2,7 +2,6 @@ package com.example.domain.value_object.task.due_date;
 
 import java.time.LocalDate;
 
-
 /**
  * 期日値オブジェクトクラス
  */
@@ -11,7 +10,7 @@ public class DueDate {
 
     public DueDate(LocalDate dueDate) {
         // 入力チェック
-        if (!hasInputted(dueDate)) return new DueDateNotInputException();
+        if (!hasInputted(dueDate)) throw new DueDateNotInputException();
 
         this.dueDate = dueDate;
     }

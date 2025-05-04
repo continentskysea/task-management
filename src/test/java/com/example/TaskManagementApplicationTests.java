@@ -1,5 +1,7 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,12 +11,17 @@ import com.example.domain.value_object.user.name.FirstName;
 @SpringBootTest
 public class TaskManagementApplicationTests {
 
+    @BeforeAll
+    void beforeAll() {        
+        System.out.println("FirstNameTest テスト開始");
+    }
+
 	@Test
 	void contextLoads() {
 	}
 
     @Test
-    public void testFirstNameAdd() throws ValidationDomainException {
+    public void testFirstNameAdd() {
         // FirstName firstName = new FirstName(null);
         FirstName firstName2 = new FirstName("11");
         firstName2.getFirstNameValue();
@@ -54,6 +61,11 @@ public class TaskManagementApplicationTests {
         // // 成功ケース2 入力あり 且つ 漢字表記 且つ 3文字以上12文字
         // UserName userName7 = new UserName("石田太郎石田太郎石田太郎");
         // System.out.println(userName7.getUserNameValue());
+    }
+
+    @AfterAll
+    void afterAll() {
+        System.out.println("FirstNameTest テスト終了");
     }
 
 }

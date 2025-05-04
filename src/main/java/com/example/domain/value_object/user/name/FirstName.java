@@ -2,8 +2,6 @@ package com.example.domain.value_object.user.name;
 
 import org.springframework.util.StringUtils;
 
-// import com.example.domain.shared.ValidationDomainException;
-
 public class FirstName {
     private final String firstName;
 
