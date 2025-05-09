@@ -29,7 +29,7 @@ import com.example.domain.value_object.user.email.Email;
 // @Entity
 // @Table(name = "users", schema = "verification")
 public class User {
-	
+
 	
 	private final UserId id;
 	private final UserName name;
@@ -70,7 +70,9 @@ public class User {
 		return this.role;
 	}
 
-
+	public User getUser() {
+		return new User(id, name, email, password, role);
+	}
 
 	// @Id
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
