@@ -8,7 +8,7 @@ enum StatusType {
     inProcess(new  InProcessStatus()),
     completed(new  CompletedStatus());
 
-    private Status status;
+    private final Status status;
     
     private StatusType(Status status) {
         this.status = status;

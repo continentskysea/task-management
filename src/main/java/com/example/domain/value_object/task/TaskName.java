@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
  * タスク名値オブジェクトクラス
  */
 public class TaskName {
-    private String taskName;
+    private final String taskName;
 
     public TaskName(String taskName) {
         // 入力チェック

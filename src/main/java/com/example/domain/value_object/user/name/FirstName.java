@@ -1,6 +1,6 @@
 package com.example.domain.value_object.user.name;
 
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class FirstName {
     private final String firstName;
@@ -21,7 +21,7 @@ public class FirstName {
      * @return true = 入力されている / false = 未入力
      */
     private boolean hasFirstNameInputted(String firstName) {
-        return  StringUtils.hasLength(firstName);
+        return  StringUtils.isNotEmpty(firstName);
     }
 
 

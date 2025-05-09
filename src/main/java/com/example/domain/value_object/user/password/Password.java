@@ -1,8 +1,6 @@
 package com.example.domain.value_object.user.password;
 
-
-
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * パスワード値オブジェクトクラス
@@ -32,7 +30,7 @@ public class Password {
      * @return true = 入力あり / false = 未入力
      */
     public boolean isPasswordInput(String password) {
-        return StringUtils.hasLength(password);
+        return StringUtils.isNotEmpty(password);
     }
 
     /**

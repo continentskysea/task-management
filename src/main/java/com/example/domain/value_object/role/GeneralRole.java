@@ -1,4 +1,4 @@
-package com.example.domain.value_object.user.role;
+package com.example.domain.value_object.role;
 
 class GeneralRole {
     private static final String ROLE_NAME = "GENERAL";

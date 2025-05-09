@@ -1,6 +1,7 @@
 package com.example.domain.value_object.user.email;
 
-import com.sun.tools.javac.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * メールアドレス値オブジェクトクラス
  */

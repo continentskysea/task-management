@@ -1,4 +1,4 @@
-package com.example.domain.value_object.user.role;
+package com.example.domain.value_object.role;
 
 /**
  * 権限クラス

@@ -1,17 +1,17 @@
-package com.example.repository;
+// package com.example.repository;
 
-import java.util.List;
+// import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.entity.Task;
+// import com.example.domain.entity.Task;
 
-/**
- * タスクリポジトリ―インターフェース
- * @author yoshi
- *
- */
-public interface TaskRepository extends JpaRepository<Task, Long>{
-	// ユーザーidを検索する処理
-	List<Task> findByUserId(Long userId);
-}
+// /**
+//  * タスクリポジトリ―インターフェース
+//  * @author yoshi
+//  *
+//  */
+// public interface TaskRepository extends JpaRepository<Task, Long>{
+// 	// ユーザーidを検索する処理
+// 	List<Task> findByUserId(Long userId);
+// }

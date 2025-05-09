@@ -4,14 +4,15 @@ package com.example.domain.value_object.task.priority;
  * 優先順位値オブジェクトクラス
  */
 public class Priority {
-    private int priority;
-    private static int PRIORITY_MIN = 1;
-    private static int PRIORITY_MAX = 30;
+    private final static int PRIORITY_MIN = 1;
+    private final static int PRIORITY_MAX = 30;
+
+    private final int priority;
 
     public Priority(int priority) {
         // 未入力チェック
         if(hasInputted(priority)) throw new PriorityNotInputException();
-        // 数値範囲のチェック
+        // 1以上30以内の優先順位
         if (!isPriorityNumberRange(priority))  throw new PriorityNumberException();
 
         this.priority = priority;
