@@ -2,7 +2,7 @@ package com.example.domain.value_object.user.name;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class LastName {
+class LastName {
     private final String lastName;
 
     public LastName(String lastName) {

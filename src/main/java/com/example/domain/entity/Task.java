@@ -1,4 +1,4 @@
-// package com.example.domain.entity;
+package com.example.domain.entity;
 
 // import java.time.LocalDate;
 
@@ -31,7 +31,7 @@ public class Task {
     private final Priority priority;
     private final DueDate dueDate;
     private final Status status;
-    private final User user;
+    private final UserId userId;
 
 
     public Task(
@@ -40,18 +40,22 @@ public class Task {
         Priority priority,
         DueDate dueDate,
         Status status,
-        User user
+        UserId userId
     )  {
         this.id = id;
         this.name = name;
         this.priority = priority;
         this.dueDate = dueDate;
         this.status = status;
-        this.user = user;
+        this.userId = userId;
     }
 
+    /**
+     * オブジェクト生成
+     * @return new Task(id, name, priority, dueDate, status, userId);
+     */
     public Task getTask() {
-        return new Task(id, name, priority, dueDate, status, user);
+        return new Task(id, name, priority, dueDate, status, userId);
     }
 
 // 	@Id
