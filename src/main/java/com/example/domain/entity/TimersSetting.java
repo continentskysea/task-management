@@ -1,4 +1,4 @@
-// package com.example.domain.entity;
+package com.example.domain.entity;
 
 // import java.time.LocalDateTime;
 
@@ -9,14 +9,40 @@
 // import jakarta.persistence.Id;
 // import jakarta.persistence.Table;
 
-// /**
-//  * タイマー設定用のデータクラス
-//  * @author yoshi
-//  *
-//  */
+import com.example.domain.value_object.timer.BreakTime;
+import com.example.domain.value_object.timer.FocusTime;
+import com.example.domain.value_object.timer.TimerId;
+import com.example.domain.value_object.user.UserId;
+
+/**
+ * タイマー設定用のデータクラス
+ * @author yoshi
+ *
+ */
 // @Entity
 // @Table(name = "timers_settings", schema = "verification")
-// public class TimersSetting {
+public class TimersSetting {
+    private final TimerId id;
+    private final FocusTime focusTime;
+    private final BreakTime breakTime;
+    private final UserId userId;
+
+    public TimersSetting(
+            TimerId id,
+            FocusTime focusTime,
+            BreakTime breakTime,
+            UserId userId
+    ) {
+        this.id = id;
+        this.focusTime = focusTime;
+        this.breakTime = breakTime;
+        this.userId = userId;
+    }
+
+    public TimersSetting getTimersSetting() {
+        return new TimersSetting(id, focusTime, breakTime, userId);
+    }
+
 // 	@Id
 // 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 // 	@Column(name = "id")
@@ -85,4 +111,4 @@
 // 		this.registarAt = registarAt;
 // 	}
 	
-// }
+}
