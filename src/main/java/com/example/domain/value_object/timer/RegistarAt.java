@@ -1,4 +1,4 @@
-package com.example.domain.value_object;
+package com.example.domain.value_object.timer;
 
 import java.time.LocalDateTime;
 
@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
  * 登録日時値オブジェクトクラス
  */
 public class RegistarAt {
-    private LocalDateTime registarAt;
+    private final LocalDateTime registarAt;
 
     public RegistarAt(LocalDateTime registarAt) {
         this.registarAt = registarAt;
     }
 
-    public LocalDateTime LocalDateTime() {
-        return registarAt;
+    public LocalDateTime getRegistarAt() {
+        return this.registarAt;
     }
 }

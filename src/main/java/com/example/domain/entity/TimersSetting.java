@@ -1,114 +1,72 @@
 package com.example.domain.entity;
 
-// import java.time.LocalDateTime;
-
-// import jakarta.persistence.Column;
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
-// import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import com.example.domain.value_object.timer.BreakTime;
 import com.example.domain.value_object.timer.FocusTime;
 import com.example.domain.value_object.timer.TimerId;
 import com.example.domain.value_object.user.UserId;
+import com.example.domain.value_object.timer.RegistarAt;
 
 /**
- * タイマー設定用のデータクラス
+ * タイマー情報集約エンティティ
  * @author yoshi
  *
  */
-// @Entity
-// @Table(name = "timers_settings", schema = "verification")
+@Entity
+@Table(name = "timers_settings", schema = "verification")
 public class TimersSetting {
+
+    /**
+     * メンバフィールド
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private final TimerId id;
+
+    @Column(name = "focus_time")
     private final FocusTime focusTime;
+
+    @Column(name = "break_time")
     private final BreakTime breakTime;
+    
+    @Column(name = "user_id")
     private final UserId userId;
 
+	@Column(name = "registar_at")
+    private final RegistarAt
+
+
+    /**
+     * コンストラクタ
+     */
     public TimersSetting(
             TimerId id,
             FocusTime focusTime,
             BreakTime breakTime,
-            UserId userId
+            UserId userId,
+            RegistarAt registarAt
     ) {
         this.id = id;
         this.focusTime = focusTime;
         this.breakTime = breakTime;
         this.userId = userId;
+        this.registarAt = registarAt; 
     }
 
+
+    /**
+     * オブジェクト生成
+     * @return new Task(id, focusTime, breakTime, userId, registarAt);
+     */
     public TimersSetting getTimersSetting() {
-        return new TimersSetting(id, focusTime, breakTime, userId);
+        return new TimersSetting(id, focusTime, breakTime, userId, registarAt);
     }
 
-// 	@Id
-// 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-// 	@Column(name = "id")
-// 	private Long id; // タイマー設定ID
-
-// 	@Column(name = "focus_time")
-// 	private String focusTime; // 集中時間
-	
-// 	@Column(name = "break_time")
-// 	private String breakTime; // 休憩時間
-	
-// 	@Column(name = "registar_at")
-// 	private LocalDateTime registarAt; // 登録日
-	
-// 	@Column(name = "user_id")
-// 	private Long userId; // ユーザーID(外部キー)
-	
-// 	// アクセサメソッド
-	
-// 	// タイマー設定ID
-// 	public Long getId() {
-// 		return id;
-// 	}
-	
-// 	public void setId(Long id) {
-// 		this.id = id;
-// 	}
-	
-	
-// 	// ユーザーID
-// 	public Long getUserId() {
-// 		return userId;
-// 	}
-	
-// 	public void setUserId(Long userId) {
-// 		this.userId = userId;
-// 	}
-	
-	
-// 	// 集中時間
-// 	public String getFocusTime() {
-// 		return focusTime;
-// 	}
-	
-// 	public void setFocusTime(String focusTime) {
-// 		this.focusTime = focusTime;
-// 	}
-	
-	
-// 	// 休憩時間
-// 	public String getBreakTime() {
-// 		return breakTime;
-// 	}
-	
-// 	public void setBreakTime(String breakTime) {
-// 		this.breakTime = breakTime;
-// 	}
-	
-	
-// 	// 登録日
-// 	public LocalDateTime getRegistarAt() {
-// 		return registarAt;
-// 	}
-	
-// 	public void setRegistarAt(LocalDateTime registarAt) {
-// 		this.registarAt = registarAt;
-// 	}
-	
 }
