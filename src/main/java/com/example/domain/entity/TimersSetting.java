@@ -40,7 +40,7 @@ public class TimersSetting {
     private final UserId userId;
 
 	@Column(name = "registar_at")
-    private final RegistarAt
+    private final RegistarAt registarAt;
 
 
     /**
